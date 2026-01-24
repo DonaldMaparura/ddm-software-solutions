@@ -50,4 +50,41 @@ document.addEventListener('DOMContentLoaded',()=>{
 		}
 		requestAnimationFrame(step);
 	}
+	// Contact form submission (posts to configurable endpoint)
+	const contactForm=document.getElementById('contact-form');
+	if(contactForm){
+		const statusEl=document.getElementById('form-status');
+		const endpointMeta=document.querySelector('meta[name="form-endpoint"]');
+		const endpoint = endpointMeta ? endpointMeta.content.trim() : '';
+
+		contactForm.addEventListener('submit', async (e)=>{
+			e.preventDefault();
+			if(!endpoint){ statusEl.textContent='Form endpoint is not configured. See README.'; return; }
+			const data={
+				name:document.getElementById('fld-name').value.trim(),
+				email:document.getElementById('fld-email').value.trim(),
+				company:document.getElementById('fld-company').value.trim(),
+				phone:document.getElementById('fld-phone')?document.getElementById('fld-phone').value.trim():'',
+				budget:document.getElementById('fld-budget')?document.getElementById('fld-budget').value.trim():'',
+				message:document.getElementById('fld-message').value.trim()
+			};
+			statusEl.textContent='Sending...';
+			try{
+				const res = await fetch(endpoint,{
+					method:'POST',
+					headers:{'Content-Type':'application/json','Accept':'application/json'},
+					body:JSON.stringify(data)
+				});
+				if(res.ok){ contactForm.reset(); statusEl.textContent='Thanks — your message was sent.'; }
+				else{
+					const txt = await res.text();
+					statusEl.textContent='Submission failed. Please try again later.';
+					console.error('Form submit error',res.status,txt);
+				}
+			}catch(err){
+				statusEl.textContent='Network error. Please try again.';
+				console.error(err);
+			}
+		});
+	}
 });
