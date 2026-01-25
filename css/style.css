@@ -107,6 +107,21 @@ body{
   background:linear-gradient(180deg,var(--bg-1),var(--bg-2));
 }
 
+/* Section transition and layout: place page sections in a relative
+   stacking context and animate visibility via opacity/transform. */
+main{position:relative;min-height:420px}
+.hero, .services, .work, .about, .contact{
+  position:absolute;left:0;right:0;top:0;
+  opacity:0;transform:translateY(10px);pointer-events:none;visibility:hidden;
+  transition:opacity 360ms ease, transform 360ms ease;
+}
+.hero.active, .services.active, .work.active, .about.active, .contact.active{
+  opacity:1;transform:none;pointer-events:auto;visibility:visible;
+}
+
+/* Keep footer spacing when sections are absolute */
+main:after{content:"";display:block;height:40px}
+
 .site-footer{display:flex;justify-content:space-between;padding:24px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
 
 @media (max-width:900px){

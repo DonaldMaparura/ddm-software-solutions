@@ -18,6 +18,46 @@ document.addEventListener('DOMContentLoaded',()=>{
 		})
 	}));
 
+	// Section navigation: show/hide sections with a transition
+	(function(){
+		const ids=['hero','services','technologies','about','contact'];
+		const sections={};
+		ids.forEach(id=>{
+			let el=document.getElementById(id);
+			if(!el && id==='technologies') el=document.querySelector('.work');
+			if(el) sections[id]=el;
+		});
+
+		function showSection(id){
+			Object.keys(sections).forEach(k=>{
+				if(k===id) sections[k].classList.add('active');
+				else sections[k].classList.remove('active');
+			});
+			try{ if(history.replaceState) history.replaceState(null,'', '#'+id); }catch(e){}
+			const el=sections[id];
+			if(el){
+				const h=el.querySelector('h2,h1');
+				if(h){ h.setAttribute('tabindex','-1'); h.focus(); }
+			}
+		}
+
+		// Intercept in-page anchor clicks
+		document.querySelectorAll('a[href^="#"]').forEach(a=>{
+			a.addEventListener('click', (e)=>{
+				const href=a.getAttribute('href');
+				if(!href || !href.startsWith('#')) return;
+				const id=href.slice(1);
+				if(sections[id]){
+					e.preventDefault(); showSection(id);
+				}
+			});
+		});
+
+		// initial state
+		const initial = (location.hash && location.hash.slice(1)) || 'hero';
+		if(sections[initial]) showSection(initial); else if(sections['hero']) showSection('hero');
+	})();
+
 	// Canvas background: subtle moving nodes
 	const canvas=document.getElementById('hero-canvas');
 	if(canvas && canvas.getContext){
