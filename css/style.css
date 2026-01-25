@@ -29,6 +29,7 @@ body{
 .app-wrap{max-width:var(--max-width);margin:0 auto;padding:18px}
 
 .topbar{display:flex;align-items:center;justify-content:space-between;padding:8px 4px}
+.topbar{position:relative}
 .brand{display:flex;gap:12px;align-items:center}
 .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#041024}
 .name{font-weight:600}
@@ -161,6 +162,16 @@ main{position:relative}
   .cap-grid{grid-template-columns:1fr}
   .app-wrap{padding:18px}
   .nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+}
+
+/* Mobile navigation: hidden by default, shown when `.open` is present */
+.menu-toggle{display:none;background:transparent;border:0;color:var(--muted);font-size:22px;padding:8px;border-radius:8px}
+@media (max-width:600px){
+  .menu-toggle{display:block}
+  .nav{display:none;position:absolute;right:14px;top:62px;flex-direction:column;padding:10px;background:var(--bg-1);border-radius:10px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 14px 40px rgba(2,8,20,0.6);min-width:200px;z-index:40}
+  .nav.open{display:flex}
+  .nav a{margin:8px 0}
+  .nav a.cta{justify-self:stretch;text-align:center}
 }
 
 /* subtle entrance */

@@ -65,6 +65,21 @@ document.addEventListener('DOMContentLoaded',()=>{
 	})();
 
 	// Canvas background: subtle moving nodes
+	// Mobile menu toggle
+	(function(){
+		const menuToggle = document.querySelector('.menu-toggle');
+		const nav = document.querySelector('.nav');
+		if(!menuToggle || !nav) return;
+		menuToggle.addEventListener('click', ()=>{
+			const open = nav.classList.toggle('open');
+			menuToggle.setAttribute('aria-expanded', String(open));
+		});
+		// close nav after clicking a link (mobile)
+		nav.querySelectorAll('a').forEach(a=> a.addEventListener('click', ()=>{
+			if(window.innerWidth <= 600){ nav.classList.remove('open'); menuToggle.setAttribute('aria-expanded','false'); }
+		}));
+	})();
+
 	const canvas=document.getElementById('home-canvas');
 	if(canvas && canvas.getContext){
 		const ctx=canvas.getContext('2d');
