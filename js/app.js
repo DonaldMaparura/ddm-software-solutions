@@ -103,21 +103,44 @@ document.addEventListener('DOMContentLoaded',()=>{
 		const endpointMeta=document.querySelector('meta[name="form-endpoint"]');
 		const endpoint = endpointMeta ? endpointMeta.content.trim() : '';
 
+		// helper functions for per-field errors
+		const setFieldError=(id,msg)=>{
+			const el=document.getElementById(id);
+			const err=document.getElementById('err-'+id.replace('fld-',''));
+			if(err){ err.textContent=msg; err.classList.add('visible'); }
+			if(el) el.classList.add('invalid');
+		};
+		const clearFieldError=(id)=>{
+			const el=document.getElementById(id);
+			const err=document.getElementById('err-'+id.replace('fld-',''));
+			if(err){ err.textContent=''; err.classList.remove('visible'); }
+			if(el) el.classList.remove('invalid');
+		};
+
+		// live message counter
+		const msgCounter=document.getElementById('msg-counter');
+		const msgEl=document.getElementById('fld-message');
+		if(msgEl && msgCounter){
+			msgCounter.textContent = `${msgEl.value.length} / 100`;
+			msgEl.addEventListener('input', ()=>{
+				msgCounter.textContent = `${msgEl.value.length} / 100`;
+				if(msgEl.classList.contains('invalid') && msgEl.value.length>=100) clearFieldError('fld-message');
+			});
+		}
+
+		// clear errors on input for each field
+		['fld-name','fld-email','fld-company','fld-phone','fld-budget','fld-message'].forEach(id=>{
+			const el=document.getElementById(id);
+			if(el) el.addEventListener('input', ()=> clearFieldError(id));
+		});
+
 		contactForm.addEventListener('submit', async (e)=>{
 			e.preventDefault();
-			// simple client-side validation before submitting
+			// gather values
 			const nameEl = document.getElementById('fld-name');
 			const emailEl = document.getElementById('fld-email');
 			const phoneEl = document.getElementById('fld-phone');
 			const msgEl = document.getElementById('fld-message');
-
-			function clearInvalid(){
-				document.querySelectorAll('.invalid').forEach(el=>{ el.classList.remove('invalid'); el.removeAttribute('aria-invalid'); });
-				statusEl.classList.remove('error');
-			}
-			function markInvalid(el){ if(el){ el.classList.add('invalid'); el.setAttribute('aria-invalid','true'); } }
-
-			clearInvalid();
 
 			const data = {
 				name: nameEl ? nameEl.value.trim() : '',
@@ -128,17 +151,19 @@ document.addEventListener('DOMContentLoaded',()=>{
 				message: msgEl ? msgEl.value.trim() : ''
 			};
 
-			const errors = [];
-			if(!data.name) { errors.push('Name is required.'); markInvalid(nameEl); }
-			if(!data.email || !/^\S+@\S+\.\S+$/.test(data.email)) { errors.push('A valid email is required.'); markInvalid(emailEl); }
-			if(phoneEl && !data.phone) { errors.push('Phone is required.'); markInvalid(phoneEl); }
-			if(!data.message || data.message.length < 100) { errors.push('Message must be at least 100 characters.'); markInvalid(msgEl); }
+			// clear global status
+			statusEl.textContent=''; statusEl.classList.remove('error');
 
-			if(errors.length){
-				statusEl.textContent = errors.join(' ');
-				statusEl.classList.add('error');
-				const firstInvalid = document.querySelector('.invalid');
-				if(firstInvalid) firstInvalid.focus();
+			let hadError=false;
+			// per-field checks
+			if(!data.name){ setFieldError('fld-name','Name is required.'); hadError=true; }
+			if(!data.email || !/^\S+@\S+\.\S+$/.test(data.email)){ setFieldError('fld-email','A valid email is required.'); hadError=true; }
+			if(phoneEl && !data.phone){ setFieldError('fld-phone','Phone is required.'); hadError=true; }
+			if(!data.message || data.message.length < 100){ setFieldError('fld-message','Message must be at least 100 characters.'); hadError=true; }
+
+			if(hadError){
+				// focus first invalid field
+				const firstInvalid=document.querySelector('.invalid'); if(firstInvalid) firstInvalid.focus();
 				return;
 			}
 
