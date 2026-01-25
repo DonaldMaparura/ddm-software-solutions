@@ -48,18 +48,18 @@ body{
 .hero-visual{height:260px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:center}
 #home-canvas{width:100%;height:100%;display:block;border-radius:10px}
 
-.contact{display:flex;flex-direction:column;align-items:flex-start;padding:8px 0 20px}
+.contact{display:flex;flex-direction:column;align-items:flex-start;padding:0 0 8px}
 .contact-form{
   width:100%;max-width:920px;
   background: linear-gradient(180deg, var(--warm-2) 0%, var(--warm-1) 100%);
   color: #041024;
-  border-radius:18px;padding:32px;
+  border-radius:18px;padding:18px;
   border:2px solid rgba(4,8,20,0.08);
   box-shadow:0 20px 50px rgba(255,159,28,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
 }
-.contact-form .section-title{color:#041024;font-size:22px;font-weight:700;margin:0 0 6px}
-.contact-form .section-sub{color:rgba(4,8,20,0.6);margin-bottom:18px}
-.contact-form .form-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:8px;align-items:center}
+.contact-form .section-title{color:#041024;font-size:22px;font-weight:700;margin:0 0 4px}
+.contact-form .section-sub{color:rgba(4,8,20,0.6);margin-bottom:8px}
+.contact-form .form-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:6px;align-items:center}
 .contact-form input,.contact-form textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(4,8,20,0.08);background:#ffffff;color:#041024;font-size:15px}
 .contact-form textarea{min-height:140px;resize:vertical}
 .contact-form .form-row:last-of-type{margin-bottom:0}
@@ -101,7 +101,10 @@ body{
 .cap span{color:rgba(230,238,248,0.9);font-size:13px}
 
 .about{padding:8px 0 18px}
-.contact{padding:4px 0 12px}
+.contact{padding:0 0 8px}
+
+/* tighten heading spacing for contact */
+.contact h2{margin:0 0 8px}
 
 /* Sections that should sit on the base page gradient so headings and tiles
    align visually with the rest of the page. */
