@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 	// Section navigation: show/hide sections with a transition
 	(function(){
-		const ids=['hero','services','technologies','about','contact'];
+		const ids=['home','services','technologies','about','contact'];
 		const sections={};
 		ids.forEach(id=>{
 			let el=document.getElementById(id);
@@ -60,12 +60,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 		});
 
 		// initial state
-		const initial = (location.hash && location.hash.slice(1)) || 'hero';
-		if(sections[initial]) showSection(initial); else if(sections['hero']) showSection('hero');
+		const initial = (location.hash && location.hash.slice(1)) || 'home';
+		if(sections[initial]) showSection(initial); else if(sections['home']) showSection('home');
 	})();
 
 	// Canvas background: subtle moving nodes
-	const canvas=document.getElementById('hero-canvas');
+	const canvas=document.getElementById('home-canvas');
 	if(canvas && canvas.getContext){
 		const ctx=canvas.getContext('2d');
 		const DPR=window.devicePixelRatio||1;
