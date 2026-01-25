@@ -1,6 +1,8 @@
 :root{
   --bg-1: #050816;
   --bg-2: #0b1530;
+  --warm-1: #FF9F1C;
+  --warm-2: #FFB86B;
   --accent: #6ee7b7;
   --accent-2: #7dd3fc;
   --muted: #9aa7bb;
@@ -44,20 +46,25 @@ body{
 #hero-canvas{width:100%;height:100%;display:block;border-radius:10px}
 
 /* Contact form card - modern 2026 tech style */
+
 .contact{display:flex;justify-content:center;padding:28px 0}
 .contact-form{
-  width:100%;max-width:920px;background:linear-gradient(180deg, rgba(11,23,40,0.92), rgba(4,8,20,0.96));
-  border-radius:18px;padding:32px;border:1px solid rgba(125,211,252,0.05);box-shadow:0 12px 36px rgba(2,6,16,0.7);
+  width:100%;max-width:920px;
+  background: linear-gradient(180deg, var(--warm-2) 0%, var(--warm-1) 100%);
+  color: #041024;
+  border-radius:18px;padding:32px;
+  border:2px solid rgba(4,8,20,0.08);
+  box-shadow:0 20px 50px rgba(255,159,28,0.12), inset 0 1px 0 rgba(255,255,255,0.06);
 }
-.contact-form .section-title{color:var(--accent);font-size:22px;font-weight:700;margin:0 0 6px}
-.contact-form .section-sub{color:var(--muted);margin-bottom:18px}
+.contact-form .section-title{color:#041024;font-size:22px;font-weight:700;margin:0 0 6px}
+.contact-form .section-sub{color:rgba(4,8,20,0.6);margin-bottom:18px}
 .contact-form .form-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-bottom:14px;align-items:center}
-.contact-form input,.contact-form textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(255,255,255,0.04);background:rgba(255,255,255,0.02);color:#e6eef8;font-size:15px}
+.contact-form input,.contact-form textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid rgba(4,8,20,0.08);background:#ffffff;color:#041024;font-size:15px}
 .contact-form textarea{min-height:140px;resize:vertical}
-.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(230,238,248,0.45)}
-.contact-form input:focus,.contact-form textarea:focus{border-color:rgba(125,211,252,0.28);box-shadow:0 6px 20px rgba(125,211,252,0.06)}
+.contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(4,8,20,0.45)}
+.contact-form input:focus,.contact-form textarea:focus{border-color:rgba(4,8,20,0.14);box-shadow:0 8px 28px rgba(4,8,20,0.08)}
 .contact-form textarea{grid-column:1 / -1}
-.contact-form .form-row .btn.primary{grid-column:1 / -1;padding:16px;border-radius:12px;font-size:16px}
+.contact-form .form-row .btn.primary{grid-column:1 / -1;padding:16px;border-radius:12px;font-size:16px;background:linear-gradient(90deg,#041024,#063048);color:var(--accent-2);box-shadow:0 10px 30px rgba(4,8,20,0.28)}
 .contact-form .form-row .btn.ghost{justify-self:start}
 
 @media (max-width:900px){
