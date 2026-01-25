@@ -56,24 +56,6 @@ document.addEventListener('DOMContentLoaded',()=>{
 				if(sections[id]){
 					e.preventDefault(); showSection(id);
 				}
-
-				// Reviews carousel navigation
-				const track=document.querySelector('.reviews-track');
-				const nextBtn=document.querySelector('.review-nav.next');
-				const prevBtn=document.querySelector('.review-nav.prev');
-				if(track && (nextBtn || prevBtn)){
-					const card = track.querySelector('.review-card');
-					const gap = 20;
-					const cardW = card ? card.getBoundingClientRect().width : 320;
-					if(nextBtn) nextBtn.addEventListener('click', ()=> track.scrollBy({left: cardW + gap, behavior:'smooth'}));
-					if(prevBtn) prevBtn.addEventListener('click', ()=> track.scrollBy({left: -(cardW + gap), behavior:'smooth'}));
-					// keyboard support
-					document.addEventListener('keydown', (e)=>{
-						if(!document.querySelector('#reviews.active')) return;
-						if(e.key==='ArrowRight' && nextBtn) nextBtn.click();
-						if(e.key==='ArrowLeft' && prevBtn) prevBtn.click();
-					});
-				}
 			});
 		});
 
