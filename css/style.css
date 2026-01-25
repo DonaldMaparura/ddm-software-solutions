@@ -88,17 +88,6 @@ body{
 .card p{margin:0;color:var(--muted)}
 
 .work{padding:28px 0}
-
-/* Make primary content sections share the same page background and spacing
-   so headings and tiles align visually and sections transition cleanly. */
-.services, #technologies, .about, .contact{
-  background: linear-gradient(180deg,var(--bg-1),var(--bg-2));
-  padding-top:36px;
-  padding-bottom:36px;
-}
-
-/* keep hero visually distinct */
-.hero{background:transparent}
 .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .cap{
   padding:16px;border-radius:12px;border:1px solid rgba(125,211,252,0.06);
