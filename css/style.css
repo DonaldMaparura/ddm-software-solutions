@@ -70,15 +70,20 @@ body{
 .contact-form .form-row .btn.ghost{justify-self:start}
 
 /* validation styles */
-.invalid{border-color:#ff6b6b !important;box-shadow:0 8px 20px rgba(255,107,107,0.08) !important}
-#form-status.error{color:#ffb4b4}
+/* stronger invalid field visuals */
+.invalid{border:2px solid #ff6b6b !important;box-shadow:0 12px 30px rgba(255,107,107,0.14) !important;background:linear-gradient(180deg, rgba(255,107,107,0.04), transparent) !important}
+.invalid:focus{outline:3px solid rgba(255,107,107,0.12);outline-offset:3px}
+#form-status.error{color:#ff6b6b;background:rgba(255,107,107,0.04);padding:8px;border-radius:8px}
 
 /* field error messages and counter */
-.field-error{color:#FFB4B4;font-size:13px;min-height:18px;margin-top:6px}
+.field-error{color:#FFF0F0;font-size:13px;min-height:20px;margin-top:8px}
 .field-meta{display:flex;justify-content:space-between;align-items:center}
 #msg-counter{font-size:13px;color:rgba(4,8,20,0.6)}
-.field-error[id^="err-"]{opacity:0;transition:opacity 180ms ease}
-.field-error.visible{opacity:1}
+.field-error[id^="err-"]{opacity:0;transition:opacity 160ms ease, transform 160ms ease}
+.field-error.visible{opacity:1;transform:translateY(0)}
+.field-error{padding:6px 8px;border-radius:8px;background:rgba(255,85,85,0.06);border:1px solid rgba(255,85,85,0.14);color:#ffdddd;font-weight:600}
+.field-error.success{background:rgba(110,231,183,0.06);border:1px solid rgba(110,231,183,0.14);color:#e8fff6}
+.valid{border:2px solid #6ee7b7 !important;box-shadow:0 8px 24px rgba(110,231,183,0.10) !important;background:linear-gradient(180deg, rgba(110,231,183,0.03), transparent) !important}
 
 @media (max-width:900px){
   .contact-form{padding:22px}
