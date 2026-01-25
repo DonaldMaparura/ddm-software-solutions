@@ -105,16 +105,45 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 		contactForm.addEventListener('submit', async (e)=>{
 			e.preventDefault();
-			if(!endpoint){ statusEl.textContent='Form endpoint is not configured. See README.'; return; }
-			const data={
-				name:document.getElementById('fld-name').value.trim(),
-				email:document.getElementById('fld-email').value.trim(),
-				company:document.getElementById('fld-company').value.trim(),
-				phone:document.getElementById('fld-phone')?document.getElementById('fld-phone').value.trim():'',
-				budget:document.getElementById('fld-budget')?document.getElementById('fld-budget').value.trim():'',
-				message:document.getElementById('fld-message').value.trim()
+			// simple client-side validation before submitting
+			const nameEl = document.getElementById('fld-name');
+			const emailEl = document.getElementById('fld-email');
+			const phoneEl = document.getElementById('fld-phone');
+			const msgEl = document.getElementById('fld-message');
+
+			function clearInvalid(){
+				document.querySelectorAll('.invalid').forEach(el=>{ el.classList.remove('invalid'); el.removeAttribute('aria-invalid'); });
+				statusEl.classList.remove('error');
+			}
+			function markInvalid(el){ if(el){ el.classList.add('invalid'); el.setAttribute('aria-invalid','true'); } }
+
+			clearInvalid();
+
+			const data = {
+				name: nameEl ? nameEl.value.trim() : '',
+				email: emailEl ? emailEl.value.trim() : '',
+				company: document.getElementById('fld-company')?document.getElementById('fld-company').value.trim():'',
+				phone: phoneEl ? phoneEl.value.trim() : '',
+				budget: document.getElementById('fld-budget')?document.getElementById('fld-budget').value.trim():'',
+				message: msgEl ? msgEl.value.trim() : ''
 			};
-			statusEl.textContent='Sending...';
+
+			const errors = [];
+			if(!data.name) { errors.push('Name is required.'); markInvalid(nameEl); }
+			if(!data.email || !/^\S+@\S+\.\S+$/.test(data.email)) { errors.push('A valid email is required.'); markInvalid(emailEl); }
+			if(phoneEl && !data.phone) { errors.push('Phone is required.'); markInvalid(phoneEl); }
+			if(!data.message || data.message.length < 100) { errors.push('Message must be at least 100 characters.'); markInvalid(msgEl); }
+
+			if(errors.length){
+				statusEl.textContent = errors.join(' ');
+				statusEl.classList.add('error');
+				const firstInvalid = document.querySelector('.invalid');
+				if(firstInvalid) firstInvalid.focus();
+				return;
+			}
+
+			if(!endpoint){ statusEl.textContent='Form endpoint is not configured. See README.'; return; }
+			statusEl.textContent='Sending...'; statusEl.classList.remove('error');
 			try{
 				const res = await fetch(endpoint,{
 					method:'POST',
@@ -125,10 +154,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 				else{
 					const txt = await res.text();
 					statusEl.textContent='Submission failed. Please try again later.';
+					statusEl.classList.add('error');
 					console.error('Form submit error',res.status,txt);
 				}
 			}catch(err){
 				statusEl.textContent='Network error. Please try again.';
+				statusEl.classList.add('error');
 				console.error(err);
 			}
 		});

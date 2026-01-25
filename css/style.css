@@ -69,6 +69,10 @@ body{
 .contact-form .form-row .btn.primary{grid-column:1 / -1;padding:16px;border-radius:12px;font-size:16px;background:linear-gradient(90deg,#041024,#063048);color:var(--accent-2);box-shadow:0 10px 30px rgba(4,8,20,0.28)}
 .contact-form .form-row .btn.ghost{justify-self:start}
 
+/* validation styles */
+.invalid{border-color:#ff6b6b !important;box-shadow:0 8px 20px rgba(255,107,107,0.08) !important}
+#form-status.error{color:#ffb4b4}
+
 @media (max-width:900px){
   .contact-form{padding:22px}
   .contact-form .form-row{grid-template-columns:1fr}
