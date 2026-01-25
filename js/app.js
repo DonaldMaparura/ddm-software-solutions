@@ -107,14 +107,21 @@ document.addEventListener('DOMContentLoaded',()=>{
 		const setFieldError=(id,msg)=>{
 			const el=document.getElementById(id);
 			const err=document.getElementById('err-'+id.replace('fld-',''));
-			if(err){ err.textContent=msg; err.classList.add('visible'); }
-			if(el) el.classList.add('invalid');
+			if(err){ err.textContent=msg; err.classList.remove('success'); err.classList.add('visible'); }
+			if(el){ el.classList.remove('valid'); el.classList.add('invalid'); }
 		};
 		const clearFieldError=(id)=>{
 			const el=document.getElementById(id);
 			const err=document.getElementById('err-'+id.replace('fld-',''));
-			if(err){ err.textContent=''; err.classList.remove('visible'); }
-			if(el) el.classList.remove('invalid');
+			if(err){ err.textContent=''; err.classList.remove('visible'); err.classList.remove('success'); }
+			if(el){ el.classList.remove('invalid'); el.classList.remove('valid'); }
+		};
+
+		const setFieldSuccess=(id,msg)=>{
+			const el=document.getElementById(id);
+			const err=document.getElementById('err-'+id.replace('fld-',''));
+			if(err){ err.textContent=msg||'Looks good'; err.classList.add('visible','success'); }
+			if(el){ el.classList.remove('invalid'); el.classList.add('valid'); }
 		};
 
 		// live message counter
@@ -128,10 +135,26 @@ document.addEventListener('DOMContentLoaded',()=>{
 			});
 		}
 
-		// clear errors on input for each field
+		// clear errors on input for each field and show success when corrected
 		['fld-name','fld-email','fld-company','fld-phone','fld-budget','fld-message'].forEach(id=>{
 			const el=document.getElementById(id);
-			if(el) el.addEventListener('input', ()=> clearFieldError(id));
+			if(!el) return;
+			el.addEventListener('input', ()=>{
+				const v=el.value.trim();
+				clearFieldError(id);
+				// basic per-field validation
+				switch(id){
+					case 'fld-name': if(v.length>0) setFieldSuccess(id); break;
+					case 'fld-email': if(/^\S+@\S+\.\S+$/.test(v)) setFieldSuccess(id); break;
+					case 'fld-phone': if(v.length>0) setFieldSuccess(id); break;
+					case 'fld-message': if(v.length>=100) setFieldSuccess(id); break;
+					case 'fld-company': if(v.length>0) setFieldSuccess(id); break;
+					case 'fld-budget':
+						if(v.length>0 && /^\d+$/.test(v)) setFieldSuccess(id);
+						else if(v.length>0) setFieldError(id,'Numbers only');
+						break;
+				}
+			});
 		});
 
 		contactForm.addEventListener('submit', async (e)=>{
@@ -160,6 +183,9 @@ document.addEventListener('DOMContentLoaded',()=>{
 			if(!data.email || !/^\S+@\S+\.\S+$/.test(data.email)){ setFieldError('fld-email','A valid email is required.'); hadError=true; }
 			if(phoneEl && !data.phone){ setFieldError('fld-phone','Phone is required.'); hadError=true; }
 			if(!data.message || data.message.length < 100){ setFieldError('fld-message','Message must be at least 100 characters.'); hadError=true; }
+			// budget is required and must be numeric
+			if(!data.budget){ setFieldError('fld-budget','Budget is required.'); hadError=true; }
+			else if(!/^\d+$/.test(data.budget)) { setFieldError('fld-budget','Budget must be numbers only.'); hadError=true; }
 
 			if(hadError){
 				// focus first invalid field
