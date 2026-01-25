@@ -36,7 +36,7 @@ body{
 .nav a.active{color:var(--accent);font-weight:700}
 .nav a.cta{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:var(--accent);}
 
-.hero{padding:8px 0 28px}
+.hero{padding:32px 0 28px}
 .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center}
 .hero h1{font-size:clamp(28px,4vw,44px);margin:0 0 12px}
 .lead{color:var(--muted);max-width:56ch}
