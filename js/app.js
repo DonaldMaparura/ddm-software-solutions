@@ -33,6 +33,12 @@ document.addEventListener('DOMContentLoaded',()=>{
 				if(k===id) sections[k].classList.add('active');
 				else sections[k].classList.remove('active');
 			});
+			// highlight nav link that targets this section
+			document.querySelectorAll('.nav a').forEach(a=>{
+				const href=a.getAttribute('href');
+				if(href===('#'+id) || href===('index.html#'+id)) a.classList.add('active');
+				else a.classList.remove('active');
+			});
 			try{ if(history.replaceState) history.replaceState(null,'', '#'+id); }catch(e){}
 			const el=sections[id];
 			if(el){

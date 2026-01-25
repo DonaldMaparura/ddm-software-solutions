@@ -33,6 +33,7 @@ body{
 .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#041024}
 .name{font-weight:600}
 .nav a{color:var(--muted);margin-left:18px;text-decoration:none}
+.nav a.active{color:var(--accent);font-weight:700}
 .nav a.cta{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:var(--accent);}
 
 .hero{padding:48px 0}
@@ -49,7 +50,7 @@ body{
 
 /* Contact form card - modern 2026 tech style */
 
-.contact{display:flex;justify-content:center;padding:28px 0}
+.contact{display:flex;flex-direction:column;align-items:flex-start;padding:28px 0}
 .contact-form{
   width:100%;max-width:920px;
   background: linear-gradient(180deg, var(--warm-2) 0%, var(--warm-1) 100%);
