@@ -101,6 +101,12 @@ body{
 .about{padding:22px 0}
 .contact{padding:28px 0}
 
+/* Sections that should sit on the base page gradient so headings and tiles
+   align visually with the rest of the page. */
+.services, .work, #technologies, .about, .contact{
+  background:linear-gradient(180deg,var(--bg-1),var(--bg-2));
+}
+
 .site-footer{display:flex;justify-content:space-between;padding:24px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
 
 @media (max-width:900px){
