@@ -48,7 +48,7 @@ body{
 .hero-visual{height:260px;background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border-radius:14px;padding:12px;display:flex;align-items:center;justify-content:center}
 #home-canvas{width:100%;height:100%;display:block;border-radius:10px}
 
-.contact{display:flex;flex-direction:column;align-items:flex-start;padding:0 0 8px}
+.contact{display:flex;flex-direction:column;align-items:flex-start;padding:0 0 8px;margin-top:0}
 .contact-form{
   width:100%;max-width:920px;
   background: linear-gradient(180deg, var(--warm-2) 0%, var(--warm-1) 100%);
@@ -105,6 +105,13 @@ body{
 
 /* tighten heading spacing for contact */
 .contact h2{margin:0 0 8px}
+
+/* Pull contact up slightly when visible so heading sits closer to header */
+.contact.active{margin-top:-22px}
+
+@media (max-width:900px){
+  .contact.active{margin-top:-12px}
+}
 
 /* Sections that should sit on the base page gradient so headings and tiles
    align visually with the rest of the page. */
