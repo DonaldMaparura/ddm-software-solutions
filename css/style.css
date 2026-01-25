@@ -79,7 +79,7 @@ body{
 
 .sr-only{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap;border:0;padding:0;margin:-1px}
 
-.services{padding:20px 0}
+.services{padding:8px 0}
 .services h2{margin:0 0 6px}
 .section-sub{color:var(--muted);margin-bottom:14px}
 .service-filters{display:flex;gap:8px;margin-bottom:18px}
@@ -91,7 +91,7 @@ body{
 .card h3{margin:0 0 8px}
 .card p{margin:0;color:var(--muted)}
 
-.work{padding:20px 0}
+.work{padding:8px 0}
 .cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 .cap{
   padding:16px;border-radius:12px;border:1px solid rgba(125,211,252,0.06);
@@ -102,8 +102,8 @@ body{
 .cap strong{display:block;color:var(--accent);font-size:15px;margin-bottom:6px}
 .cap span{color:rgba(230,238,248,0.9);font-size:13px}
 
-.about{padding:16px 0}
-.contact{padding:18px 0}
+.about{padding:8px 0}
+.contact{padding:8px 0}
 
 /* Sections that should sit on the base page gradient so headings and tiles
    align visually with the rest of the page. */
