@@ -36,7 +36,7 @@ body{
 .nav a.active{color:var(--accent);font-weight:700}
 .nav a.cta{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 12px;border-radius:8px;color:var(--accent);}
 
-.hero{padding:12px 0 28px}
+.hero{padding:8px 0 18px}
 .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center}
 .hero h1{font-size:clamp(28px,4vw,44px);margin:0 0 12px}
 .lead{color:var(--muted);max-width:56ch}
@@ -102,8 +102,8 @@ body{
 .cap strong{display:block;color:var(--accent);font-size:15px;margin-bottom:6px}
 .cap span{color:rgba(230,238,248,0.9);font-size:13px}
 
-.about{padding:6px 0 18px}
-.contact{padding:6px 0 40px}
+.about{padding:8px 0 18px}
+.contact{padding:8px 0 20px}
 
 /* Sections that should sit on the base page gradient so headings and tiles
    align visually with the rest of the page. */
