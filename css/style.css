@@ -167,11 +167,18 @@ main{position:relative}
 /* Mobile navigation: hidden by default, shown when `.open` is present */
 .menu-toggle{display:none;background:transparent;border:0;color:var(--muted);font-size:22px;padding:8px;border-radius:8px}
 @media (max-width:600px){
-  .menu-toggle{display:block}
-  .nav{display:none;position:absolute;right:14px;top:62px;flex-direction:column;padding:10px;background:var(--bg-1);border-radius:10px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 14px 40px rgba(2,8,20,0.6);min-width:200px;z-index:40}
+  .menu-toggle{display:block;margin-left:auto;position:relative;z-index:60}
+  .nav{display:none;position:absolute;right:14px;top:100%;margin-top:8px;flex-direction:column;padding:10px;background:var(--bg-1);border-radius:10px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 14px 40px rgba(2,8,20,0.6);min-width:200px;z-index:40}
   .nav.open{display:flex}
   .nav a{margin:8px 0}
   .nav a.cta{justify-self:stretch;text-align:center}
+}
+
+/* Ensure hamburger is completely hidden on wider screens and restore nav layout */
+@media (min-width:601px){
+  .menu-toggle{display:none !important}
+  .nav{display:flex !important;position:static !important;right:auto !important;top:auto !important;flex-direction:row !important;padding:0 !important;background:transparent !important;border-radius:0 !important;border:0 !important;box-shadow:none !important;min-width:0}
+  .nav a{margin-left:18px;margin:8px 0 8px 18px}
 }
 
 /* subtle entrance */
