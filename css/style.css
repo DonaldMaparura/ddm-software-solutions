@@ -144,7 +144,7 @@ main{position:relative}
   .services-grid{grid-template-columns:1fr}
   .cap-grid{grid-template-columns:1fr}
   .app-wrap{padding:18px}
-  .nav{display:none}
+  .nav{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
 }
 
 /* subtle entrance */
