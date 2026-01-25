@@ -111,18 +111,17 @@ body{
 
 /* Section transition and layout: place page sections in a relative
    stacking context and animate visibility via opacity/transform. */
-main{position:relative;min-height:420px}
+main{position:relative}
+/* Keep sections in normal document flow but hide by collapsing height.
+   This ensures content (like the contact form) fits the page and remains scrollable. */
 .hero, .services, .work, .about, .contact{
-  position:absolute;left:0;right:0;top:0;
-  opacity:0;transform:translateY(10px);pointer-events:none;visibility:hidden;
-  transition:opacity 360ms ease, transform 360ms ease;
+  position:relative;opacity:0;transform:translateY(8px);
+  max-height:0;overflow:hidden;pointer-events:none;visibility:hidden;
+  transition:opacity 360ms ease, transform 360ms ease, max-height 420ms ease;
 }
 .hero.active, .services.active, .work.active, .about.active, .contact.active{
-  opacity:1;transform:none;pointer-events:auto;visibility:visible;
+  opacity:1;transform:none;pointer-events:auto;visibility:visible;max-height:2000px;
 }
-
-/* Keep footer spacing when sections are absolute */
-main:after{content:"";display:block;height:40px}
 
 .site-footer{display:flex;justify-content:space-between;padding:24px 0;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
 
