@@ -1,6 +1,8 @@
 :root{
-  --bg-1: #050816;
-  --bg-2: #0b1530;
+  /* Single theme background color (use this everywhere) */
+  --bg: #0b1530;
+  --bg-1: var(--bg);
+  --bg-2: var(--bg);
   --warm-1: #FF9F1C;
   --warm-2: #FFB86B;
   --accent: #6ee7b7;
@@ -18,7 +20,7 @@ html,body{height:100%}
 body{
   margin:0;
   color:#e6eef8;
-  background:linear-gradient(180deg,var(--bg-1),var(--bg-2));
+  background:var(--bg);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
   line-height:1.5;
@@ -104,7 +106,7 @@ body{
 /* Sections that should sit on the base page gradient so headings and tiles
    align visually with the rest of the page. */
 .services, .work, #technologies, .about, .contact{
-  background:linear-gradient(180deg,var(--bg-1),var(--bg-2));
+  background:var(--bg);
 }
 
 /* Section transition and layout: place page sections in a relative
