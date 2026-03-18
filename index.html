@@ -990,17 +990,27 @@
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
        SCROLL ANIMATIONS
     ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    /* Reveal animation — CSS-first, JS enhances */
     .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      /* Fallback: show after 1.5s even if observer never fires */
+      animation: revealFallback 0s 1.5s forwards;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
+    @keyframes revealFallback {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      animation: none;
+    }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+    .reveal-delay-5 { transition-delay: 0.4s; }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
        RESPONSIVE
@@ -1599,15 +1609,8 @@
         <div class="contact-form reveal reveal-delay-2">
           <div class="form-title">Send us a message</div>
 
-          <form id="contact-form"
-                action="https://formspree.io/f/xzdelned"
-                method="POST"
-                novalidate>
-
-            <!-- Formspree honeypot to block spam -->
-            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-            <!-- Redirect back to site after submission -->
-            <input type="hidden" name="_next" value="https://ddm-software-solutions.co.za/#contact" />
+          <form id="contact-form" novalidate>
+            <!-- Formspree submission endpoint -->
             <input type="hidden" name="_subject" value="New project enquiry — DDM Software Solutions" />
 
             <div class="form-row">
@@ -1655,8 +1658,8 @@
             </div>
 
             <div class="form-group">
-              <label>Tell us about your project * <span id="msg-counter" style="font-weight:400;color:var(--muted2);float:right">0 / 100 min</span></label>
-              <textarea name="message" id="fmessage" rows="5" minlength="100" placeholder="Describe what you're building, your timeline, and any specific requirements. The more detail the better — we'll come back with a practical proposal." required></textarea>
+              <label>Tell us about your project * <span id="msg-counter" style="font-weight:400;color:var(--muted2);float:right">0 / 50 min</span></label>
+              <textarea name="message" id="fmessage" rows="5" placeholder="Describe what you're building, your timeline, and any specific requirements. The more detail the better — we'll come back with a practical proposal." required></textarea>
               <div class="field-error" id="err-message" aria-live="polite"></div>
             </div>
 
@@ -1692,19 +1695,20 @@
 
   <script>
     // ── Navigation scroll behaviour ──────────────────
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 40);
-      // Update active link
-      const sections = document.querySelectorAll('section[id], div[id]');
-      let current = '';
-      sections.forEach(s => {
-        if (window.scrollY >= s.offsetTop - 100) current = s.id;
-      });
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-      });
-    }, { passive: true });
+    try {
+      const nav = document.getElementById('nav');
+      window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        const sections = document.querySelectorAll('section[id], div[id]');
+        let current = '';
+        sections.forEach(s => {
+          if (window.scrollY >= s.offsetTop - 100) current = s.id;
+        });
+        document.querySelectorAll('.nav-links a').forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+        });
+      }, { passive: true });
+    } catch(e) { console.warn('Nav scroll error:', e); }
 
     // ── Mobile nav ───────────────────────────────────
     const drawer = document.getElementById('navDrawer');
@@ -1720,28 +1724,37 @@
     });
 
     // ── Smooth scroll for anchor links ───────────────
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) {
-          e.preventDefault();
-          const top = target.getBoundingClientRect().top + window.scrollY - 80;
-          window.scrollTo({ top, behavior: 'smooth' });
-        }
+    try {
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          const href = a.getAttribute('href');
+          if (!href || href === '#') return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            const top = target.getBoundingClientRect().top + window.scrollY - 80;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }
+        });
       });
-    });
+    } catch(e) { console.warn('Scroll error:', e); }
 
     // ── Scroll reveal ────────────────────────────────
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    try {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px 0px 0px' });
 
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    } catch(e) {
+      // If observer fails entirely, show all elements immediately
+      document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+    }
 
     // ── Contact form — Formspree AJAX submission ─────
     (function () {
@@ -1753,12 +1766,17 @@
 
       if (!form) return;
 
-      // Live character counter for message
+      // Count words in message
+      const countWords = (text) => {
+        return text.trim().split(/\s+/).filter(w => w.length > 0).length;
+      };
+
+      // Live word counter for message
       if (msgField && counter) {
         msgField.addEventListener('input', function () {
-          const len = this.value.length;
-          counter.textContent = len + ' / 100 min';
-          counter.style.color = len >= 100 ? '#34D399' : 'var(--muted2)';
+          const wordCount = countWords(this.value);
+          counter.textContent = wordCount + ' / 50 min';
+          counter.style.color = wordCount >= 50 ? '#34D399' : 'var(--muted2)';
         });
       }
 
@@ -1784,6 +1802,7 @@
         const email   = document.getElementById('femail').value.trim();
         const service = document.getElementById('fservice').value;
         const message = document.getElementById('fmessage').value.trim();
+        const wordCount = countWords(message);
 
         if (!name)    { showFieldError('err-name',    'Please enter your name.'); valid = false; }
         if (!email)   { showFieldError('err-email',   'Please enter your email.'); valid = false; }
@@ -1791,8 +1810,8 @@
           showFieldError('err-email', 'Please enter a valid email address.'); valid = false;
         }
         if (!service) { showFieldError('err-service', 'Please select a service.'); valid = false; }
-        if (message.length < 100) {
-          showFieldError('err-message', 'Please describe your project (minimum 100 characters). Currently: ' + message.length + '/100.');
+        if (wordCount < 50) {
+          showFieldError('err-message', 'Please describe your project in at least 50 words (currently ' + wordCount + ' words).');
           valid = false;
         }
         return valid;
@@ -1821,32 +1840,13 @@
           if (res.ok) {
             // ── Success ────────────────────────────
             const name = document.getElementById('fname').value.trim();
-            const phone = document.getElementById('fphone').value.trim();
-            const service = document.getElementById('fservice').value;
-            const message = document.getElementById('fmessage').value.trim();
-            const company = document.getElementById('fcompany').value.trim();
-
-            const waText = encodeURIComponent(
-              'Hi DDM Software Solutions,\n\n' +
-              'Name: ' + name + '\n' +
-              (company ? 'Company: ' + company + '\n' : '') +
-              (phone    ? 'Phone: ' + phone + '\n' : '') +
-              'Service needed: ' + service + '\n\n' + message
-            );
-            const waUrl = 'https://wa.me/27715431166?text=' + waText;
 
             status.className = 'success';
             status.innerHTML =
-              '<strong>✅ Message sent! Thank you, ' + name + '.</strong><br/>' +
-              'We'll be in touch within 1 business day.<br/><br/>' +
-              '<a href="' + waUrl + '" target="_blank" rel="noopener" ' +
-              'style="display:inline-flex;align-items:center;gap:6px;color:#38BDF8;font-weight:600;' +
-              'text-decoration:none;background:rgba(56,189,248,0.1);padding:8px 14px;border-radius:8px;' +
-              'border:1px solid rgba(56,189,248,0.3)">' +
-              '💬 Also reach us on WhatsApp</a>';
+              '<div style="padding:16px;background:rgba(34,197,94,0.1);border-left:4px solid #22c55e;border-radius:4px;color:#22c55e;font-weight:500;margin-top:12px;">✓ Form Successfully Submitted</div><p style="margin-top:12px;color:var(--text2);">We\'ll be in touch within 1 business day.<br/><br/>Thank you for reaching out!</p>';
             status.style.display = 'block';
             form.reset();
-            if (counter) { counter.textContent = '0 / 100 min'; counter.style.color = 'var(--muted2)'; }
+            if (counter) { counter.textContent = '0 / 50 min'; counter.style.color = 'var(--muted2)'; }
 
           } else {
             // ── Formspree returned an error ────────

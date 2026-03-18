@@ -75,6 +75,7 @@ body{
 .invalid{border:2px solid #ff6b6b !important;box-shadow:0 12px 30px rgba(255,107,107,0.14) !important;background:linear-gradient(180deg, rgba(255,107,107,0.04), transparent) !important}
 .invalid:focus{outline:3px solid rgba(255,107,107,0.12);outline-offset:3px}
 #form-status.error{color:#ff6b6b;background:rgba(255,107,107,0.04);padding:8px;border-radius:8px}
+#formStatus.success{color:#22c55e}
 
 /* field error messages and counter */
 .field-error{color:#FFF0F0;font-size:13px;min-height:20px;margin-top:8px}
