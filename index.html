@@ -13,6 +13,83 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <!-- Schema.org structured data for Google rich results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://ddm-software-solutions.co.za/#business",
+        "name": "DDM Software Solutions",
+        "url": "https://ddm-software-solutions.co.za",
+        "description": "DDM Software Solutions builds production-grade web apps, mobile platforms, cloud systems, e-commerce integrations, and AI solutions for South African businesses.",
+        "telephone": "+27715431166",
+        "contactPoint": [{
+          "@type": "ContactPoint",
+          "telephone": "+27715431166",
+          "contactType": "customer service",
+          "areaServed": "ZA",
+          "availableLanguage": "English"
+        }],
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "ZA",
+          "addressRegion": "Gauteng"
+        },
+        "areaServed": { "@type": "Country", "name": "South Africa" },
+        "priceRange": "$$",
+        "currenciesAccepted": "ZAR",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Software Development Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "E-commerce & Accounting Integration", "description": "Takealot, WooCommerce, Shopify integrations with Xero, QuickBooks and Sage." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile & Web Application Development", "description": "Cross-platform mobile apps and web applications for South African businesses." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud Architecture & DevOps", "description": "AWS, Azure, and GCP cloud-native infrastructure and CI/CD pipelines." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI & Data Engineering", "description": "Machine learning, automation, data pipelines and analytics platforms." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Security & Compliance", "description": "POPIA compliance, penetration testing, ISO 27001 and SOC2." } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Systems Integration & APIs", "description": "API design, event-driven architectures and system integrations." } }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://ddm-software-solutions.co.za/#website",
+        "url": "https://ddm-software-solutions.co.za",
+        "name": "DDM Software Solutions",
+        "description": "Modern, secure and scalable software development for South African businesses.",
+        "publisher": { "@id": "https://ddm-software-solutions.co.za/#business" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What software development services does DDM offer in South Africa?",
+            "acceptedAnswer": { "@type": "Answer", "text": "DDM Software Solutions offers e-commerce integrations including Takealot, web and mobile app development, cloud architecture on AWS/Azure/GCP, AI and data engineering, POPIA security compliance, and API/systems integration." }
+          },
+          {
+            "@type": "Question",
+            "name": "Does DDM integrate with Takealot?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. DDM has built Takealot seller integrations that sync orders, inventory, and financials with accounting platforms like Xero, QuickBooks, and Sage in real time." }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I get a quote from DDM Software Solutions?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Contact DDM via the website contact form, or WhatsApp on 071 543 1166. We respond within 1 business day with a practical plan and cost estimate at no charge." }
+          },
+          {
+            "@type": "Question",
+            "name": "Is DDM POPIA compliant?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Yes. DDM builds all software with POPIA compliance by default and can assist businesses with POPIA audits and implementation." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
   <style>
     :root {
       --bg:         #07090D;
@@ -884,9 +961,11 @@
     .form-submit { width: 100%; padding: 14px; font-size: 0.95rem; border-radius: 11px; margin-top: 4px; }
     .form-note { font-size: 0.76rem; color: var(--muted2); text-align: center; margin-top: 12px; }
 
-    #formStatus { display: none; padding: 12px 16px; border-radius: var(--radius); font-size: 0.88rem; margin-top: 12px; }
+    #formStatus { display: none; padding: 13px 16px; border-radius: var(--radius); font-size: 0.88rem; margin-top: 12px; line-height: 1.6; }
     #formStatus.success { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: #34D399; }
     #formStatus.error   { background: rgba(239,68,68,0.1);  border: 1px solid rgba(239,68,68,0.3);  color: #F87171; }
+
+    .field-error { font-size: 0.76rem; color: #F87171; margin-top: 5px; min-height: 16px; }
 
     /* ━━━━━━━━━━━━━━━━━━━━━━━━━━
        FOOTER
@@ -1491,6 +1570,7 @@
           <p class="section-sub reveal reveal-delay-2">Tell us what you're working on. We'll come back with a practical plan, timeline, and cost estimate — no commitment required.</p>
 
           <div class="contact-info-items reveal reveal-delay-3">
+
             <a href="https://wa.me/27715431166" class="contact-info-item" target="_blank" rel="noopener">
               <div class="contact-info-icon">💬</div>
               <div>
@@ -1517,54 +1597,75 @@
         </div>
 
         <div class="contact-form reveal reveal-delay-2">
-          <div class="form-title">Email Us</div>
+          <div class="form-title">Send us a message</div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label>Your Name *</label>
-              <input type="text" id="fname" placeholder="Jane Smith" required />
+          <form id="contact-form"
+                action="https://formspree.io/f/xzdelned"
+                method="POST"
+                novalidate>
+
+            <!-- Formspree honeypot to block spam -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+            <!-- Redirect back to site after submission -->
+            <input type="hidden" name="_next" value="https://ddm-software-solutions.co.za/#contact" />
+            <input type="hidden" name="_subject" value="New project enquiry — DDM Software Solutions" />
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Your Name *</label>
+                <input type="text" name="name" id="fname" placeholder="Jane Smith" required />
+                <div class="field-error" id="err-name" aria-live="polite"></div>
+              </div>
+              <div class="form-group">
+                <label>Company</label>
+                <input type="text" name="company" id="fcompany" placeholder="Acme Corp" />
+              </div>
             </div>
+
             <div class="form-group">
-              <label>Company</label>
-              <input type="text" id="fcompany" placeholder="Acme Corp" />
+              <label>Email Address *</label>
+              <input type="email" name="email" id="femail" placeholder="jane@company.co.za" required />
+              <div class="field-error" id="err-email" aria-live="polite"></div>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label>Email Address *</label>
-            <input type="email" id="femail" placeholder="jane@company.co.za" required />
-          </div>
+            <div class="form-group">
+              <label>Phone / WhatsApp</label>
+              <input type="tel" name="phone" id="fphone" placeholder="+27 XX XXX XXXX" />
+            </div>
 
-          <div class="form-group">
-            <label>Phone / WhatsApp</label>
-            <input type="tel" id="fphone" placeholder="+27 XX XXX XXXX" />
-          </div>
+            <div class="form-group">
+              <label>Budget (ZAR)</label>
+              <input type="number" name="budget" id="fbudget" inputmode="numeric" min="0" step="1000" placeholder="e.g. 50000" />
+            </div>
 
-          <div class="form-group">
-            <label>What do you need? *</label>
-            <select id="fservice">
-              <option value="">Select a service…</option>
-              <option>E-commerce / Accounting Integration</option>
-              <option>Web Application</option>
-              <option>Mobile App</option>
-              <option>Cloud Architecture / Migration</option>
-              <option>AI / Data Engineering</option>
-              <option>Security & Compliance</option>
-              <option>API / Systems Integration</option>
-              <option>Other / Not Sure Yet</option>
-            </select>
-          </div>
+            <div class="form-group">
+              <label>What do you need? *</label>
+              <select name="service" id="fservice" required>
+                <option value="">Select a service…</option>
+                <option>E-commerce / Accounting Integration</option>
+                <option>Web Application</option>
+                <option>Mobile App</option>
+                <option>Cloud Architecture / Migration</option>
+                <option>AI / Data Engineering</option>
+                <option>Security &amp; Compliance</option>
+                <option>API / Systems Integration</option>
+                <option>Other / Not Sure Yet</option>
+              </select>
+              <div class="field-error" id="err-service" aria-live="polite"></div>
+            </div>
 
-          <div class="form-group">
-            <label>Tell us about your project *</label>
-            <textarea id="fmessage" placeholder="Describe what you're building, your timeline, and any specific requirements. The more detail the better — we'll come back with a practical proposal." maxlength="2000"></textarea>
-          </div>
+            <div class="form-group">
+              <label>Tell us about your project * <span id="msg-counter" style="font-weight:400;color:var(--muted2);float:right">0 / 100 min</span></label>
+              <textarea name="message" id="fmessage" rows="5" minlength="100" placeholder="Describe what you're building, your timeline, and any specific requirements. The more detail the better — we'll come back with a practical proposal." required></textarea>
+              <div class="field-error" id="err-message" aria-live="polite"></div>
+            </div>
 
-          <button class="btn btn-primary form-submit" onclick="submitForm()">
-            Send Message →
-          </button>
-          <div id="formStatus"></div>
-          <div class="form-note">We respond within 1 business day. No spam, no sales pitches.</div>
+            <button type="submit" class="btn btn-primary form-submit" id="submitBtn">
+              Send Message →
+            </button>
+            <div id="formStatus" aria-live="polite"></div>
+            <div class="form-note">We respond within 1 business day. No spam, no sales pitches.</div>
+          </form>
         </div>
       </div>
     </div>
@@ -1642,51 +1743,131 @@
 
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // ── Contact form ─────────────────────────────────
-    function submitForm() {
-      const name    = document.getElementById('fname').value.trim();
-      const email   = document.getElementById('femail').value.trim();
-      const service = document.getElementById('fservice').value;
-      const message = document.getElementById('fmessage').value.trim();
+    // ── Contact form — Formspree AJAX submission ─────
+    (function () {
+      const form    = document.getElementById('contact-form');
       const status  = document.getElementById('formStatus');
+      const btn     = document.getElementById('submitBtn');
+      const counter = document.getElementById('msg-counter');
+      const msgField = document.getElementById('fmessage');
 
-      if (!name || !email || !service || !message) {
-        status.className = 'error';
-        status.textContent = '⚠️ Please fill in all required fields.';
-        status.style.display = 'block';
-        return;
-      }
-      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        status.className = 'error';
-        status.textContent = '⚠️ Please enter a valid email address.';
-        status.style.display = 'block';
-        return;
-      }
-      if (message.length < 20) {
-        status.className = 'error';
-        status.textContent = '⚠️ Please describe your project in a bit more detail.';
-        status.style.display = 'block';
-        return;
+      if (!form) return;
+
+      // Live character counter for message
+      if (msgField && counter) {
+        msgField.addEventListener('input', function () {
+          const len = this.value.length;
+          counter.textContent = len + ' / 100 min';
+          counter.style.color = len >= 100 ? '#34D399' : 'var(--muted2)';
+        });
       }
 
-      // Build WhatsApp message with form data
-      const waText = encodeURIComponent(
-        `Hi DDM Software Solutions,\n\nName: ${name}\nCompany: ${document.getElementById('fcompany').value || 'N/A'}\nPhone: ${document.getElementById('fphone').value || 'N/A'}\nService needed: ${service}\n\n${message}`
-      );
-      const waUrl = `https://wa.me/27715431166?text=${waText}`;
+      // Clear field errors on input
+      form.querySelectorAll('input, select, textarea').forEach(el => {
+        el.addEventListener('input', () => {
+          const err = document.getElementById('err-' + el.id.replace('f', ''));
+          if (err) err.textContent = '';
+          el.style.borderColor = '';
+        });
+      });
 
-      status.className = 'success';
-      status.innerHTML = `✅ Thank you, ${name}! <a href="${waUrl}" target="_blank" rel="noopener" style="color:#34D399;font-weight:600;text-decoration:underline">Click here to send via WhatsApp →</a><br/><span style="opacity:0.75">Or we'll reach out to you within 1 business day.</span>`;
-      status.style.display = 'block';
+      function showFieldError(id, msg) {
+        const err = document.getElementById(id);
+        const field = document.getElementById(id.replace('err-', 'f'));
+        if (err) err.textContent = msg;
+        if (field) field.style.borderColor = '#EF4444';
+      }
 
-      // Auto-open WhatsApp
-      setTimeout(() => window.open(waUrl, '_blank'), 800);
-    }
+      function validate() {
+        let valid = true;
+        const name    = document.getElementById('fname').value.trim();
+        const email   = document.getElementById('femail').value.trim();
+        const service = document.getElementById('fservice').value;
+        const message = document.getElementById('fmessage').value.trim();
 
-    // Allow Enter key in form fields (except textarea)
-    document.querySelectorAll('.contact-form input, .contact-form select').forEach(el => {
-      el.addEventListener('keydown', e => { if (e.key === 'Enter') submitForm(); });
-    });
+        if (!name)    { showFieldError('err-name',    'Please enter your name.'); valid = false; }
+        if (!email)   { showFieldError('err-email',   'Please enter your email.'); valid = false; }
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          showFieldError('err-email', 'Please enter a valid email address.'); valid = false;
+        }
+        if (!service) { showFieldError('err-service', 'Please select a service.'); valid = false; }
+        if (message.length < 100) {
+          showFieldError('err-message', 'Please describe your project (minimum 100 characters). Currently: ' + message.length + '/100.');
+          valid = false;
+        }
+        return valid;
+      }
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Clear previous status
+        status.style.display = 'none';
+        status.className = '';
+
+        if (!validate()) return;
+
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        try {
+          const data = new FormData(form);
+          const res = await fetch('https://formspree.io/f/xzdelned', {
+            method: 'POST',
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (res.ok) {
+            // ── Success ────────────────────────────
+            const name = document.getElementById('fname').value.trim();
+            const phone = document.getElementById('fphone').value.trim();
+            const service = document.getElementById('fservice').value;
+            const message = document.getElementById('fmessage').value.trim();
+            const company = document.getElementById('fcompany').value.trim();
+
+            const waText = encodeURIComponent(
+              'Hi DDM Software Solutions,\n\n' +
+              'Name: ' + name + '\n' +
+              (company ? 'Company: ' + company + '\n' : '') +
+              (phone    ? 'Phone: ' + phone + '\n' : '') +
+              'Service needed: ' + service + '\n\n' + message
+            );
+            const waUrl = 'https://wa.me/27715431166?text=' + waText;
+
+            status.className = 'success';
+            status.innerHTML =
+              '<strong>✅ Message sent! Thank you, ' + name + '.</strong><br/>' +
+              'We'll be in touch within 1 business day.<br/><br/>' +
+              '<a href="' + waUrl + '" target="_blank" rel="noopener" ' +
+              'style="display:inline-flex;align-items:center;gap:6px;color:#38BDF8;font-weight:600;' +
+              'text-decoration:none;background:rgba(56,189,248,0.1);padding:8px 14px;border-radius:8px;' +
+              'border:1px solid rgba(56,189,248,0.3)">' +
+              '💬 Also reach us on WhatsApp</a>';
+            status.style.display = 'block';
+            form.reset();
+            if (counter) { counter.textContent = '0 / 100 min'; counter.style.color = 'var(--muted2)'; }
+
+          } else {
+            // ── Formspree returned an error ────────
+            const json = await res.json().catch(() => ({}));
+            throw new Error(json.error || 'Submission failed (status ' + res.status + ')');
+          }
+
+        } catch (err) {
+          status.className = 'error';
+          status.innerHTML =
+            '⚠️ Something went wrong — ' + err.message + '.<br/>' +
+            'Please try again or reach us directly on ' +
+            '<a href="https://wa.me/27715431166" target="_blank" rel="noopener" ' +
+            'style="color:#F87171;font-weight:600">WhatsApp 071 543 1166</a>.';
+          status.style.display = 'block';
+        } finally {
+          btn.disabled = false;
+          btn.textContent = 'Send Message →';
+        }
+      });
+    })();
   </script>
 
 </body>
