@@ -363,6 +363,73 @@
       box-shadow: var(--shadow);
       overflow: hidden;
     }
+    .hero-visual {
+      position: relative;
+      min-height: 560px;
+      border-radius: 16px;
+      overflow: hidden;
+      background: var(--dark);
+      box-shadow: var(--shadow);
+    }
+    .hero-visual img,
+    .hero-visual video,
+    .card-media img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .hero-visual img {
+      position: absolute;
+      inset: 0;
+      opacity: .86;
+    }
+    .visual-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(17,24,32,.05), rgba(17,24,32,.72));
+    }
+    .visual-caption {
+      position: absolute;
+      left: 22px;
+      right: 22px;
+      bottom: 22px;
+      color: #fff;
+    }
+    .visual-caption h2 {
+      font-size: 1.35rem;
+      letter-spacing: -.025em;
+      margin-bottom: 8px;
+    }
+    .visual-caption p {
+      max-width: 360px;
+      color: rgba(255,255,255,.78);
+      margin-bottom: 0;
+    }
+    .video-tile {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      width: min(260px, 48%);
+      aspect-ratio: 16 / 10;
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 12px;
+      overflow: hidden;
+      background: #070b10;
+      box-shadow: 0 20px 46px rgba(0,0,0,.25);
+    }
+    .video-tile::after {
+      content: "Live build";
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      padding: 5px 8px;
+      border-radius: 99px;
+      background: rgba(17,24,32,.72);
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 800;
+    }
     .founder-photo {
       min-height: 260px;
       background:
@@ -436,6 +503,14 @@
       border-radius: var(--radius);
       padding: 24px;
       box-shadow: 0 8px 26px rgba(17,24,32,.04);
+    }
+    .visual-card { padding: 0; overflow: hidden; }
+    .visual-card .card-body { padding: 22px; }
+    .card-media {
+      height: 190px;
+      background: var(--dark);
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
     }
     .card p { color: var(--muted); margin-bottom: 0; }
     .tag-list {
@@ -533,7 +608,7 @@
     .work-card {
       display: flex;
       flex-direction: column;
-      gap: 18px;
+      gap: 14px;
     }
     .case-label {
       color: var(--blue);
@@ -544,7 +619,7 @@
     }
     .case-block {
       border-top: 1px solid var(--line);
-      padding-top: 13px;
+      padding-top: 11px;
     }
     .case-block strong { display: block; margin-bottom: 4px; }
     .case-block p { font-size: .93rem; }
@@ -727,6 +802,7 @@
       .process-grid,
       .stack-list { grid-template-columns: repeat(2, 1fr); }
       .founder-card { max-width: 560px; }
+      .hero-visual { min-height: 440px; }
     }
 
     @media (max-width: 760px) {
@@ -755,6 +831,14 @@
       }
       .sticky-cta .btn { flex: 1; padding-inline: 10px; }
       .site-footer { padding-bottom: 92px; }
+      .video-tile {
+        position: relative;
+        width: auto;
+        right: auto;
+        top: auto;
+        margin: 18px;
+      }
+      .visual-caption { left: 18px; right: 18px; }
     }
   </style>
 </head>
@@ -800,36 +884,34 @@
           <div class="hero-eyebrow">Software development in South Africa</div>
           <h1>Custom software built around your business.</h1>
           <p class="lead">
-            DDM Software Solutions builds practical software for businesses that need to save time,
-            automate manual work, connect systems, and launch reliable web applications.
+            DDM builds web apps, automation, payment integrations, and cloud systems for businesses that need software to remove friction.
           </p>
           <div class="hero-actions">
             <a class="btn btn-primary btn-large" href="#contact">Book a Consultation</a>
             <a class="btn btn-secondary btn-large" href="#work">View Case Studies</a>
           </div>
           <div class="trust-row" aria-label="Trust signals">
-            <div class="trust-item"><strong>Engineer-led</strong>Talk directly to the person responsible for the build.</div>
-            <div class="trust-item"><strong>Production systems</strong>Banking, payments, cloud, APIs, and business software.</div>
-            <div class="trust-item"><strong>Long-term support</strong>Launch is not the end of the relationship.</div>
+            <div class="trust-item"><strong>Engineer-led</strong>Direct access to the builder.</div>
+            <div class="trust-item"><strong>Real systems</strong>Banking, payments, AWS, APIs.</div>
+            <div class="trust-item"><strong>Support</strong>Help after launch.</div>
           </div>
         </div>
 
-        <aside class="founder-card" aria-label="Founder profile">
-          <div class="founder-photo">
-            <div class="portrait-mark">DDM</div>
+        <aside class="hero-visual" aria-label="Software engineer at work">
+          <img
+            src="img/hero-engineering.svg"
+            alt="Stylised software engineering workspace with laptop, code, and dashboards"
+            loading="eager"
+          />
+          <div class="visual-overlay"></div>
+          <div class="video-tile" aria-label="Coding video preview">
+            <video autoplay muted loop playsinline poster="img/build-motion.svg">
+              <source src="img/build-preview.mp4" type="video/mp4" />
+            </video>
           </div>
-          <div class="founder-body">
-            <h2 style="font-size:1.45rem;margin-bottom:10px;letter-spacing:-.03em;">Founder-led by a software engineer</h2>
-            <p>
-              DDM exists for business owners who want straight answers, careful engineering, and software
-              that solves a real operational problem.
-            </p>
-            <div class="founder-meta">
-              <div class="meta-pill"><strong>Backend</strong>Java, Spring Boot, APIs</div>
-              <div class="meta-pill"><strong>Cloud</strong>AWS deployments</div>
-              <div class="meta-pill"><strong>Experience</strong>Banking systems</div>
-              <div class="meta-pill"><strong>Integrations</strong>Payments and data sync</div>
-            </div>
+          <div class="visual-caption">
+            <h2>Founder-led software engineering</h2>
+            <p>Backend systems, integrations, automation, and cloud deployments built with clear ownership.</p>
           </div>
         </aside>
       </div>
@@ -837,10 +919,10 @@
 
     <div class="proof-strip" aria-label="Company proof points">
       <div class="container proof-grid">
-        <div class="proof-item"><strong>Custom systems</strong>Built for your workflow, not forced into a template.</div>
-        <div class="proof-item"><strong>Payment integrations</strong>Practical experience connecting money movement and business logic.</div>
-        <div class="proof-item"><strong>AWS cloud</strong>Deployments designed for reliability, cost, and maintenance.</div>
-        <div class="proof-item"><strong>Business automation</strong>Less copying, chasing, exporting, and fixing spreadsheets.</div>
+        <div class="proof-item"><strong>Custom systems</strong>Built around your workflow.</div>
+        <div class="proof-item"><strong>Payments</strong>Integrations that reduce manual checks.</div>
+        <div class="proof-item"><strong>AWS cloud</strong>Reliable hosting and deployment.</div>
+        <div class="proof-item"><strong>Automation</strong>Less spreadsheet work.</div>
       </div>
     </div>
 
@@ -852,40 +934,39 @@
             <h2>Software for businesses that have outgrown manual work.</h2>
           </div>
           <p class="lead">
-            The work usually starts with a painful process: double capturing, unreliable reports,
-            disconnected systems, slow internal tools, or a website that no longer supports the business.
+            If a process is slow, manual, or scattered across tools, DDM helps turn it into software your team can use every day.
           </p>
         </div>
 
         <div class="services-grid">
           <article class="card">
             <h3>Custom Software Development</h3>
-            <p>Web applications, internal systems, portals, dashboards, and tools built around how your business actually operates.</p>
+            <p>Web apps, portals, dashboards, and internal tools.</p>
             <div class="tag-list"><span class="tag">Web apps</span><span class="tag">Dashboards</span><span class="tag">Portals</span></div>
           </article>
           <article class="card">
             <h3>Business Process Automation</h3>
-            <p>Automate repetitive admin, approvals, reports, notifications, document flows, and handovers between teams.</p>
+            <p>Automate admin, approvals, reports, and handovers.</p>
             <div class="tag-list"><span class="tag">Workflows</span><span class="tag">Reports</span><span class="tag">Admin tools</span></div>
           </article>
           <article class="card">
             <h3>Backend Engineering</h3>
-            <p>Reliable APIs, database design, authentication, scheduled jobs, integrations, and server-side business logic.</p>
+            <p>APIs, databases, authentication, jobs, and business logic.</p>
             <div class="tag-list"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">REST APIs</span></div>
           </article>
           <article class="card">
             <h3>Payment and System Integrations</h3>
-            <p>Connect payment providers, accounting platforms, CRMs, e-commerce platforms, and third-party APIs without fragile manual steps.</p>
+            <p>Connect payments, accounting, CRMs, shops, and APIs.</p>
             <div class="tag-list"><span class="tag">Payments</span><span class="tag">Webhooks</span><span class="tag">Data sync</span></div>
           </article>
           <article class="card">
             <h3>AWS Cloud Solutions</h3>
-            <p>Host, deploy, monitor, and improve software on AWS with simple infrastructure choices that suit the stage of the business.</p>
+            <p>Host, deploy, monitor, and improve software on AWS.</p>
             <div class="tag-list"><span class="tag">AWS</span><span class="tag">CI/CD</span><span class="tag">Monitoring</span></div>
           </article>
           <article class="card">
             <h3>Website Development</h3>
-            <p>Business websites that explain what you do clearly, load fast, work on mobile, and turn serious visitors into enquiries.</p>
+            <p>Fast business websites that explain the offer clearly.</p>
             <div class="tag-list"><span class="tag">SEO</span><span class="tag">Conversion</span><span class="tag">Performance</span></div>
           </article>
         </div>
@@ -896,35 +977,27 @@
       <div class="container about-grid">
         <div class="story">
           <p class="section-kicker">Why DDM Exists</p>
-          <h2>Built by someone who has had to make software work in the real world.</h2>
+          <h2>Built by an engineer, not a marketing agency.</h2>
           <p>
-            DDM Software Solutions was started to give businesses direct access to experienced software
-            engineering without the agency layers that often slow projects down.
+            DDM gives businesses direct access to software engineering without agency layers.
           </p>
           <p>
-            The focus is simple: understand the business problem, design the smallest useful first version,
-            build it properly, and stay available after launch. That approach comes from working on systems
-            where reliability, data accuracy, and clear ownership matter.
-          </p>
-          <p>
-            If you need a polished sales process and a vague proposal, DDM is probably not the right fit.
-            If you need someone who can discuss the workflow, the database, the API, the cloud setup, and
-            the support plan in plain language, that is the work DDM is built for.
+            The focus is simple: understand the workflow, build the useful first version, and stay close after launch.
           </p>
         </div>
 
         <div class="principles">
           <div class="principle">
             <h3>Real engineering experience</h3>
-            <p>Banking systems, enterprise applications, backend services, payment integrations, AWS cloud work, and business automation.</p>
+            <p>Banking systems, enterprise applications, backend services, payments, AWS, and automation.</p>
           </div>
           <div class="principle">
             <h3>Direct communication</h3>
-            <p>You are not passed from salesperson to project manager to anonymous developer. You get practical answers from the person close to the code.</p>
+            <p>You get practical answers from the person close to the code.</p>
           </div>
           <div class="principle">
             <h3>Careful scope</h3>
-            <p>Good software starts with deciding what not to build yet. Projects are shaped into phases so the first release can prove value.</p>
+            <p>Projects are shaped into phases so the first release proves value.</p>
           </div>
           <div class="experience-list">
             <div class="experience-item"><strong>Core strengths</strong><span>Java, Spring Boot, APIs, databases, AWS, integrations, automation.</span></div>
@@ -938,79 +1011,67 @@
       <div class="container">
         <div class="section-head">
           <div>
-            <p class="section-kicker">Case Study Style Work</p>
-            <h2>Not a gallery. Real business problems and the software behind them.</h2>
+            <p class="section-kicker">Work Examples</p>
+            <h2>Real problems. Practical builds.</h2>
           </div>
-          <p class="lead">Use these as examples of the type of work DDM takes on. Public client details can be added as approvals are confirmed.</p>
+          <p class="lead">Short examples of the kind of systems DDM builds.</p>
         </div>
 
         <div class="work-grid">
-          <article class="card work-card">
-            <div>
+          <article class="card visual-card work-card">
+            <div class="card-media">
+              <img src="img/case-payments.svg" alt="Payment integration dashboard illustration" loading="lazy" />
+            </div>
+            <div class="card-body">
               <p class="case-label">Payment and accounting integration</p>
               <h3>Reducing manual reconciliation for an online business</h3>
-            </div>
-            <div class="case-block">
-              <strong>Business challenge</strong>
-              <p>Orders, payments, and accounting records had to be checked manually, creating delays and avoidable mistakes.</p>
-            </div>
-            <div class="case-block">
-              <strong>Solution provided</strong>
-              <p>API integration, background sync jobs, exception handling, and reporting so the finance workflow became visible and repeatable.</p>
-            </div>
-            <div class="case-block">
-              <strong>Technologies used</strong>
-              <p>Java, Spring Boot, REST APIs, webhooks, PostgreSQL, AWS.</p>
-            </div>
-            <div class="case-block">
-              <strong>Business outcome</strong>
-              <p>Less spreadsheet work, faster checks, and a cleaner view of transactions that need attention.</p>
+              <div class="case-block">
+                <strong>Built</strong>
+                <p>API sync, webhooks, background jobs, exception handling, and finance reporting.</p>
+              </div>
+              <div class="case-block">
+                <strong>Outcome</strong>
+                <p>Less spreadsheet work and faster transaction checks.</p>
+              </div>
+              <div class="tag-list"><span class="tag">Java</span><span class="tag">Spring Boot</span><span class="tag">AWS</span></div>
             </div>
           </article>
 
-          <article class="card work-card">
-            <div>
+          <article class="card visual-card work-card">
+            <div class="card-media">
+              <img src="img/case-operations.svg" alt="Operations workflow platform illustration" loading="lazy" />
+            </div>
+            <div class="card-body">
               <p class="case-label">Internal operations platform</p>
               <h3>Replacing scattered admin with one working system</h3>
-            </div>
-            <div class="case-block">
-              <strong>Business challenge</strong>
-              <p>Staff were managing tasks across email, spreadsheets, and disconnected tools with no reliable status view.</p>
-            </div>
-            <div class="case-block">
-              <strong>Solution provided</strong>
-              <p>A web application with role-based access, workflow states, audit history, reports, and notifications.</p>
-            </div>
-            <div class="case-block">
-              <strong>Technologies used</strong>
-              <p>React, Java, Spring Boot, PostgreSQL, AWS, CI/CD.</p>
-            </div>
-            <div class="case-block">
-              <strong>Business outcome</strong>
-              <p>Clearer accountability, fewer follow-up messages, and a process the team could train new staff on.</p>
+              <div class="case-block">
+                <strong>Built</strong>
+                <p>Roles, workflow states, audit history, reports, and notifications.</p>
+              </div>
+              <div class="case-block">
+                <strong>Outcome</strong>
+                <p>Clearer ownership and fewer follow-up messages.</p>
+              </div>
+              <div class="tag-list"><span class="tag">React</span><span class="tag">PostgreSQL</span><span class="tag">CI/CD</span></div>
             </div>
           </article>
 
-          <article class="card work-card">
-            <div>
+          <article class="card visual-card work-card">
+            <div class="card-media">
+              <img src="img/case-website.svg" alt="Website conversion layout illustration" loading="lazy" />
+            </div>
+            <div class="card-body">
               <p class="case-label">Website and conversion rebuild</p>
               <h3>Turning a vague website into a clearer sales tool</h3>
-            </div>
-            <div class="case-block">
-              <strong>Business challenge</strong>
-              <p>The website looked presentable but did not explain the offer, build trust, or guide visitors toward an enquiry.</p>
-            </div>
-            <div class="case-block">
-              <strong>Solution provided</strong>
-              <p>Sharper positioning, rewritten service pages, faster frontend, stronger calls to action, and better mobile layouts.</p>
-            </div>
-            <div class="case-block">
-              <strong>Technologies used</strong>
-              <p>HTML, CSS, JavaScript, SEO metadata, analytics-ready event structure.</p>
-            </div>
-            <div class="case-block">
-              <strong>Business outcome</strong>
-              <p>A site that feels credible, answers buyer questions sooner, and makes contacting the business easier.</p>
+              <div class="case-block">
+                <strong>Built</strong>
+                <p>Sharper copy, faster frontend, SEO basics, and clearer contact paths.</p>
+              </div>
+              <div class="case-block">
+                <strong>Outcome</strong>
+                <p>A site that feels more credible and easier to act on.</p>
+              </div>
+              <div class="tag-list"><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">SEO</span></div>
             </div>
           </article>
         </div>
@@ -1022,31 +1083,31 @@
         <div class="section-head">
           <div>
             <p class="section-kicker">Real Process</p>
-            <h2>A clear path from idea to supported software.</h2>
+            <h2>Simple process. No mystery.</h2>
           </div>
-          <p class="lead">Every project should make sense before development starts. You will know what is being built, why it matters, what it will cost, and what happens after launch.</p>
+          <p class="lead">You know what is being built, why it matters, what it costs, and what happens after launch.</p>
         </div>
 
         <div class="process-grid">
           <article class="process-step">
             <h3>Discovery</h3>
-            <p>We map the business problem, users, current process, risks, systems involved, and what success looks like.</p>
+            <p>Map the problem, users, systems, and success criteria.</p>
           </article>
           <article class="process-step">
             <h3>Planning</h3>
-            <p>You get a practical scope, phased roadmap, timeline, estimate, and technical plan before build work starts.</p>
+            <p>Define scope, phases, timeline, and estimate.</p>
           </article>
           <article class="process-step">
             <h3>Development</h3>
-            <p>The system is built in focused increments with regular demos, direct feedback, and visible progress.</p>
+            <p>Build in focused increments with regular demos.</p>
           </article>
           <article class="process-step">
             <h3>Testing and Launch</h3>
-            <p>Key flows are tested, deployment is planned, data is checked, and launch risk is handled carefully.</p>
+            <p>Test key flows, check data, and launch carefully.</p>
           </article>
           <article class="process-step">
             <h3>Ongoing Support</h3>
-            <p>After launch, DDM can support fixes, improvements, monitoring, hosting, and the next phase of development.</p>
+            <p>Support fixes, hosting, monitoring, and improvements.</p>
           </article>
         </div>
       </div>
@@ -1057,16 +1118,14 @@
         <div class="section-head">
           <div>
             <p class="section-kicker">Why Clients Choose DDM</p>
-            <h2>The practical reasons matter more than slogans.</h2>
+            <h2>Why clients choose DDM.</h2>
           </div>
         </div>
         <div class="why-grid">
-          <article class="card"><h3>Direct communication</h3><p>You speak to someone who understands the business problem and the technical work required to solve it.</p></article>
-          <article class="card"><h3>No silent outsourcing</h3><p>The work stays close to DDM, which keeps accountability clear and reduces handover mistakes.</p></article>
-          <article class="card"><h3>Fast turnaround where it counts</h3><p>Small useful releases are prioritised so you can validate value before adding complexity.</p></article>
-          <article class="card"><h3>Custom solutions</h3><p>The software is shaped around your workflow, data, team, and constraints, not a generic package.</p></article>
-          <article class="card"><h3>Long-term support</h3><p>DDM can stay involved after launch, because software needs maintenance, fixes, and improvements.</p></article>
-          <article class="card"><h3>Plain-language advice</h3><p>You get honest guidance on what is worth building, what can wait, and where risk exists.</p></article>
+          <article class="card"><h3>Direct communication</h3><p>Talk to the person close to the code.</p></article>
+          <article class="card"><h3>No silent outsourcing</h3><p>Clear ownership from start to finish.</p></article>
+          <article class="card"><h3>Custom solutions</h3><p>Built around your workflow and team.</p></article>
+          <article class="card"><h3>Long-term support</h3><p>Help after the software goes live.</p></article>
         </div>
       </div>
     </section>
@@ -1076,9 +1135,9 @@
         <div class="section-head">
           <div>
             <p class="section-kicker">Technology</p>
-            <h2>Tools chosen for the job, not for the pitch deck.</h2>
+            <h2>Technology DDM works with.</h2>
           </div>
-          <p class="lead">DDM is strongest where business logic, backend reliability, integrations, and cloud deployment matter.</p>
+          <p class="lead">Backend reliability, integrations, and cloud deployment are the core strength.</p>
         </div>
         <div class="stack-list">
           <article class="stack-card"><h3>Backend</h3><p>Java, Spring Boot, REST APIs, authentication, scheduled jobs, business rules.</p></article>
@@ -1094,9 +1153,9 @@
         <div class="section-head">
           <div>
             <p class="section-kicker">Client Proof</p>
-            <h2>Useful proof is specific.</h2>
+            <h2>Proof without fake polish.</h2>
           </div>
-          <p class="lead">DDM avoids filler testimonials. Client quotes should be published only when the client has approved the name, business, problem solved, and outcome.</p>
+          <p class="lead">Short outcomes are better than generic five-star filler.</p>
         </div>
         <div class="testimonial-grid">
           <article class="quote">
@@ -1116,17 +1175,17 @@
         <div class="section-head">
           <div>
             <p class="section-kicker">FAQ</p>
-            <h2>Questions business owners usually ask first.</h2>
+            <h2>Quick answers.</h2>
           </div>
         </div>
         <div class="faq-grid">
           <details>
             <summary>How long does a project take?</summary>
-            <p>A focused website or automation can take 2 to 6 weeks. A larger custom system is usually phased over 8 to 16 weeks or more, depending on integrations, data, and approval cycles.</p>
+            <p>A focused website or automation can take 2 to 6 weeks. Larger systems are usually phased over 8 to 16 weeks or more.</p>
           </details>
           <details>
             <summary>How much does custom software cost?</summary>
-            <p>It depends on scope, risk, integrations, and support needs. After discovery, DDM gives you a practical estimate and can split the work into phases so you do not fund unnecessary features upfront.</p>
+            <p>It depends on scope, integrations, and support needs. DDM estimates after discovery and can split work into phases.</p>
           </details>
           <details>
             <summary>Do you provide support after launch?</summary>
@@ -1134,7 +1193,7 @@
           </details>
           <details>
             <summary>Can you improve an existing system?</summary>
-            <p>Yes. DDM can review an existing website, API, backend, database, or cloud setup, then fix performance, reliability, integration, UX, or maintenance issues.</p>
+            <p>Yes. DDM can review a website, API, backend, database, or cloud setup and improve it.</p>
           </details>
           <details>
             <summary>Do you build websites and custom software?</summary>
@@ -1142,7 +1201,7 @@
           </details>
           <details>
             <summary>What makes DDM different from a general agency?</summary>
-            <p>DDM is positioned around engineering ownership. The emphasis is on direct communication, practical scope, backend reliability, integrations, and support after launch.</p>
+            <p>DDM is built around engineering ownership, direct communication, and practical software delivery.</p>
           </details>
         </div>
       </div>
@@ -1152,10 +1211,9 @@
       <div class="container contact-grid">
         <div>
           <p class="section-kicker">Tell Us About Your Project</p>
-          <h2>Start with the problem. We will help shape the software.</h2>
+          <h2>Tell us what needs fixing.</h2>
           <p class="lead">
-            Send a short description of what you are trying to fix, automate, or launch. You will get a practical next step,
-            not a generic sales reply.
+            Send the problem, workflow, or idea. DDM will reply with a practical next step.
           </p>
           <div class="contact-options">
             <a class="contact-option" href="https://wa.me/27715431166" target="_blank" rel="noopener">

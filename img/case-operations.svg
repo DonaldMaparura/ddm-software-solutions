@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+  <title id="title">Operations workflow platform</title>
+  <desc id="desc">Workflow board illustration for internal operations software.</desc>
+  <rect width="900" height="620" fill="#e6edf1"/>
+  <rect x="78" y="70" width="744" height="480" rx="30" fill="#fffdf8"/>
+  <rect x="128" y="124" width="210" height="360" rx="18" fill="#f3efe7"/>
+  <rect x="356" y="124" width="210" height="360" rx="18" fill="#f3efe7"/>
+  <rect x="584" y="124" width="210" height="360" rx="18" fill="#f3efe7"/>
+  <rect x="154" y="158" width="96" height="14" rx="7" fill="#1769aa"/>
+  <rect x="382" y="158" width="96" height="14" rx="7" fill="#23745d"/>
+  <rect x="610" y="158" width="96" height="14" rx="7" fill="#aa6a17"/>
+  <rect x="154" y="214" width="158" height="82" rx="14" fill="#fffdf8"/>
+  <rect x="154" y="320" width="158" height="82" rx="14" fill="#fffdf8"/>
+  <rect x="382" y="214" width="158" height="82" rx="14" fill="#fffdf8"/>
+  <rect x="382" y="320" width="158" height="82" rx="14" fill="#fffdf8"/>
+  <rect x="610" y="214" width="158" height="82" rx="14" fill="#fffdf8"/>
+  <path d="M312 255h70M540 255h70" stroke="#111820" stroke-width="12" stroke-linecap="round"/>
+</svg>
