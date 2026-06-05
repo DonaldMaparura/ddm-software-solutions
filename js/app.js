@@ -42,25 +42,36 @@
   const menuButton = document.getElementById('menuButton');
   const mobileMenu = document.getElementById('mobileMenu');
 
+  function setMenuOpen(open) {
+    if (!mobileMenu || !menuButton) return;
+    mobileMenu.classList.toggle('open', open);
+    document.body.classList.toggle('menu-open', open);
+    menuButton.setAttribute('aria-expanded', String(open));
+    menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
   if (menuButton && mobileMenu) {
     menuButton.addEventListener('click', () => {
-      const open = mobileMenu.classList.toggle('open');
-      menuButton.setAttribute('aria-expanded', String(open));
+      setMenuOpen(!mobileMenu.classList.contains('open'));
     });
 
     mobileMenu.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-        menuButton.setAttribute('aria-expanded', 'false');
-      });
+      link.addEventListener('click', () => setMenuOpen(false));
     });
 
-    document.addEventListener('click', (event) => {
-      if (!event.target.closest('.site-nav') && !event.target.closest('#mobileMenu')) {
-        mobileMenu.classList.remove('open');
-        menuButton.setAttribute('aria-expanded', 'false');
-      }
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760) setMenuOpen(false);
     });
+  }
+
+  /* Fixed nav: elevation on scroll */
+  const siteNav = document.querySelector('.site-nav');
+  if (siteNav) {
+    const onScroll = () => {
+      siteNav.classList.toggle('scrolled', window.scrollY > 8);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
   }
 
   /* Smooth scroll */
@@ -105,6 +116,7 @@
   const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
 
   if (sections.length && navLinks.length) {
+    const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 72;
     const sectionObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -117,7 +129,7 @@
           }
         });
       },
-      { threshold: 0.3, rootMargin: '-80px 0px -60% 0px' }
+      { threshold: 0.25, rootMargin: `-${navH}px 0px -55% 0px` }
     );
     sections.forEach((section) => sectionObserver.observe(section));
   }
