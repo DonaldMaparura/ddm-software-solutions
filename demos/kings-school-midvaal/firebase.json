@@ -1,0 +1,21 @@
+{
+  "hosting": {
+    "site": "the-kings-school-midvaal",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "qa-*.png",
+      "website-generation-prompt.md"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

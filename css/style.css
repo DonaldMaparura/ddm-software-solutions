@@ -552,8 +552,8 @@ h4 { font-size: 0.8125rem; letter-spacing: 0.02em; text-transform: uppercase; co
 
 .browser-viewport {
   position: relative;
-  aspect-ratio: 16 / 10;
-  min-height: min(52vh, 520px);
+  aspect-ratio: 21 / 10;
+  min-height: 0;
   background: var(--bg-muted);
   overflow: hidden;
 }
@@ -578,7 +578,7 @@ h4 { font-size: 0.8125rem; letter-spacing: 0.02em; text-transform: uppercase; co
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center;
+  object-position: top center;
 }
 
 .hero-slide-dots {
@@ -720,7 +720,7 @@ h4 { font-size: 0.8125rem; letter-spacing: 0.02em; text-transform: uppercase; co
   max-height: none;
   aspect-ratio: auto;
   object-fit: contain;
-  object-position: center;
+  object-position: top center;
   display: block;
   background: var(--bg-muted);
 }
@@ -1618,6 +1618,17 @@ h4 { font-size: 0.8125rem; letter-spacing: 0.02em; text-transform: uppercase; co
   .process-list { grid-template-columns: repeat(2, 1fr); gap: 28px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .project-card { gap: 20px; }
+
+  .browser-viewport {
+    aspect-ratio: 21 / 10;
+    min-height: 0;
+  }
+
+  .project-media img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
 }
 
 @media (max-width: 760px) {

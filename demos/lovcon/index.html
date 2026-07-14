@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LovCon – Roadrunner Farm Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e1a12;--bg2:#162018;--bg3:#1e2d22;--card:#1a2820;--border:#2e4535;--accent:#7ec97e;--a2:#f5c842;--a4:#5ba3d9;--text:#e8f0e9;--t2:#8aab8e;--t3:#5a7a5e;--red:#e05c5c;--orange:#e87c4e;--teal:#4ecec8;--purple:#9b7be8;--r:12px}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+.hidden{display:none!important}
+/* SPLASH */
+#splash{min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 20% 80%,rgba(126,201,126,.15),transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(245,200,66,.1),transparent 50%),linear-gradient(135deg,#081510,#0e1a12 50%,#142218)}
+.sc{display:flex;flex-direction:column;align-items:center;gap:28px;padding:20px;width:100%}
+.logo-ico{font-size:70px;animation:bob 3s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.logo-t{font-size:50px;font-weight:800;background:linear-gradient(135deg,#7ec97e,#f5c842);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-align:center}
+.logo-s{color:var(--t2);font-size:13px;letter-spacing:3px;text-transform:uppercase;text-align:center}
+.login-box{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:30px 34px;width:100%;max-width:350px;display:flex;flex-direction:column;gap:11px}
+.login-box h2{font-size:19px;font-weight:700}
+.or{text-align:center;color:var(--t3);font-size:12px}
+.aerr{color:var(--red);font-size:12px;min-height:14px}
+/* APP */
+#app{display:flex;min-height:100vh}
+#sb{width:225px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;transition:width .25s;z-index:100}
+#sb.col{width:56px}
+#sb.col .nl,#sb.col .st,#sb.col .ue,.bl{display:none}
+.sbh{display:flex;align-items:center;gap:9px;padding:16px 13px;border-bottom:1px solid var(--border)}
+.st{font-size:16px;font-weight:800;color:var(--accent)}
+.sbt{margin-left:auto;background:none;border:none;color:var(--t2);cursor:pointer;font-size:19px;padding:3px}
+nav{padding:9px 0;flex:1}
+.ni{display:flex;align-items:center;gap:9px;padding:9px 13px;width:100%;background:none;border:none;color:var(--t2);cursor:pointer;font-family:inherit;font-size:13px;border-left:3px solid transparent;transition:all .15s;white-space:nowrap;text-align:left}
+.ni:hover{background:var(--bg3);color:var(--text)}
+.ni.active{background:rgba(126,201,126,.12);color:var(--accent);border-left-color:var(--accent)}
+.ni-ico{font-size:16px;width:20px;text-align:center;flex-shrink:0}
+.sbf{padding:12px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:7px}
+.ue{font-size:11px;color:var(--t3);overflow:hidden;text-overflow:ellipsis}
+.btn-lo{background:rgba(224,92,92,.1);border:1px solid rgba(224,92,92,.3);color:var(--red);padding:6px 10px;border-radius:7px;cursor:pointer;font-size:12px;font-family:inherit}
+.main{flex:1;overflow-y:auto;display:flex;flex-direction:column}
+.topbar{display:flex;align-items:center;gap:12px;padding:13px 20px;border-bottom:1px solid var(--border);background:var(--bg2);position:sticky;top:0;z-index:50}
+.tb-m{display:none;background:none;border:none;color:var(--t2);font-size:21px;cursor:pointer}
+.pg-t{font-size:18px;font-weight:700;flex:1}
+.tbr{display:flex;gap:9px}
+.bdg{background:var(--bg3);border:1px solid var(--border);padding:5px 10px;border-radius:18px;font-size:11px;color:var(--t2)}
+#pages{padding:20px;flex:1}
+.pg{display:block}.pg.hidden{display:none}
+.pa{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center}
+/* BUTTONS */
+.bp{background:linear-gradient(135deg,#5aab5a,#7ec97e);color:#0e1a12;border:none;padding:8px 15px;border-radius:var(--r);cursor:pointer;font-family:inherit;font-size:13px;font-weight:600;transition:all .15s;white-space:nowrap}
+.bp:hover{transform:translateY(-1px)}
+.bs{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 15px;border-radius:var(--r);cursor:pointer;font-family:inherit;font-size:13px;transition:all .15s;white-space:nowrap}
+.bs:hover{border-color:var(--accent);color:var(--accent)}
+.bo{background:transparent;border:1px solid var(--border);color:var(--t2);padding:8px 15px;border-radius:var(--r);cursor:pointer;font-family:inherit;font-size:13px;transition:all .15s}
+.sm{padding:5px 9px!important;font-size:11px!important}
+.bd{background:rgba(224,92,92,.15)!important;border:1px solid rgba(224,92,92,.3)!important;color:var(--red)!important}
+/* INPUTS */
+.inp,.sel,.ta{background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 11px;border-radius:var(--r);font-family:inherit;font-size:13px;width:100%;outline:none;transition:border-color .15s}
+.inp:focus,.sel:focus,.ta:focus{border-color:var(--accent)}
+.inp::placeholder{color:var(--t3)}
+.sel{appearance:none;cursor:pointer}.sel option{background:var(--bg2)}
+.ta{resize:vertical;min-height:68px}
+.inp.sm2{width:auto;min-width:105px}
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px}
+.ct{font-size:13px;font-weight:700;margin-bottom:11px}
+.cw{grid-column:span 2}
+/* STATS */
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin-bottom:20px}
+.stc{border-radius:var(--r);padding:16px;display:flex;align-items:center;gap:11px;border:1px solid var(--border)}
+.stc.blue{background:linear-gradient(135deg,rgba(91,163,217,.15),rgba(91,163,217,.05));border-color:rgba(91,163,217,.3)}
+.stc.green{background:linear-gradient(135deg,rgba(126,201,126,.15),rgba(126,201,126,.05));border-color:rgba(126,201,126,.3)}
+.stc.orange{background:linear-gradient(135deg,rgba(232,124,78,.15),rgba(232,124,78,.05));border-color:rgba(232,124,78,.3)}
+.stc.red{background:linear-gradient(135deg,rgba(224,92,92,.15),rgba(224,92,92,.05));border-color:rgba(224,92,92,.3)}
+.stc.purple{background:linear-gradient(135deg,rgba(155,123,232,.15),rgba(155,123,232,.05));border-color:rgba(155,123,232,.3)}
+.stc.teal{background:linear-gradient(135deg,rgba(78,206,200,.15),rgba(78,206,200,.05));border-color:rgba(78,206,200,.3)}
+.si{font-size:28px}
+.sv{font-size:24px;font-weight:800;display:block;font-family:'Space Mono',monospace}
+.sl{font-size:10px;color:var(--t2);text-transform:uppercase;letter-spacing:.5px}
+.dg{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+/* PENS */
+.pg2{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.pc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;transition:transform .15s,border-color .15s}
+.pc:hover{transform:translateY(-2px);border-color:var(--accent)}
+.ph{display:flex;align-items:center;gap:9px;margin-bottom:11px}
+.pico{font-size:24px}.pn{font-size:16px;font-weight:700}
+.pt{font-size:11px;color:var(--t2);background:var(--bg3);padding:2px 8px;border-radius:18px;margin-top:2px}
+.ps{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:9px 0}
+.pst{background:var(--bg3);border-radius:7px;padding:8px;text-align:center}
+.psv{font-size:18px;font-weight:700}.psl{font-size:10px;color:var(--t2)}
+.pba{display:flex;gap:6px;margin-top:9px}
+/* TABLE */
+.tw{overflow-x:auto;border-radius:var(--r);border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:var(--bg3);padding:9px 11px;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--t2);border-bottom:1px solid var(--border)}
+td{padding:9px 11px;border-bottom:1px solid rgba(46,69,53,.4)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--bg3)}
+.tag{background:rgba(126,201,126,.15);color:var(--accent);padding:2px 6px;border-radius:5px;font-size:11px;font-weight:600;font-family:'Space Mono',monospace}
+.sbg{padding:2px 8px;border-radius:18px;font-size:10px;font-weight:600;text-transform:uppercase}
+.s-chick{background:rgba(245,200,66,.15);color:var(--a2)}.s-grower{background:rgba(126,201,126,.15);color:var(--accent)}
+.s-layer{background:rgba(91,163,217,.15);color:var(--a4)}.s-breeder{background:rgba(155,123,232,.15);color:var(--purple)}
+.s-sold{background:rgba(78,206,200,.15);color:var(--teal)}.s-deceased{background:rgba(224,92,92,.15);color:var(--red)}
+.s-sale{background:rgba(91,163,217,.15);color:var(--a4)}.s-purchase{background:rgba(245,200,66,.15);color:var(--a2)}.s-death{background:rgba(224,92,92,.15);color:var(--red)}
+/* EGGS */
+.esg{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:9px;margin-bottom:16px}
+.es{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:13px;text-align:center}
+.esv{font-size:21px;font-weight:800;font-family:'Space Mono',monospace}.esl{font-size:11px;color:var(--t2);margin-top:3px}
+/* HATCH */
+.hg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.hc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px}
+.hh{display:flex;align-items:center;gap:9px;margin-bottom:9px}
+.hi{font-size:28px}.hn{font-size:14px;font-weight:700}
+.hp{margin:11px 0}
+.pb{background:var(--bg3);border-radius:18px;height:8px;overflow:hidden}
+.pf{height:100%;border-radius:18px;background:linear-gradient(90deg,#5aab5a,#7ec97e)}
+.pl{display:flex;justify-content:space-between;font-size:10px;color:var(--t2);margin-top:4px}
+.hd{display:grid;grid-template-columns:1fr 1fr;gap:5px;font-size:11px}
+.hdl{color:var(--t3)}
+.hs{padding:2px 9px;border-radius:18px;font-size:10px;font-weight:600}
+.ha{background:rgba(126,201,126,.15);color:var(--accent)}.hco{background:rgba(91,163,217,.15);color:var(--a4)}
+/* FEED */
+.fg{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-bottom:16px}
+.fsg{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-bottom:16px}
+.fst{background:var(--bg3);border-radius:var(--r);padding:13px;border:1px solid var(--border)}
+.fbg{display:inline-block;padding:3px 9px;border-radius:18px;font-size:11px;font-weight:700;margin-bottom:5px}
+.fs1 .fbg{background:rgba(245,200,66,.15);color:var(--a2)}.fs2 .fbg{background:rgba(126,201,126,.15);color:var(--accent)}.fs3 .fbg{background:rgba(155,123,232,.15);color:var(--purple)}
+.fst h4{font-size:12px;font-weight:700;margin-bottom:7px}
+.ft{width:100%;border-collapse:collapse;font-size:11px}
+.ft td,.ft th{padding:4px 6px;border-bottom:1px solid var(--border)}
+.ft th{font-size:10px;text-transform:uppercase;color:var(--t3)}
+.bt{background:var(--bg3);border-radius:8px;padding:12px}
+.bt h4{margin-bottom:7px;font-size:12px}
+.tg{display:flex;gap:10px;flex-wrap:wrap}
+.tip{background:var(--card);border-radius:6px;padding:7px 11px;font-size:12px}
+/* VAX */
+.vc{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px;margin-bottom:16px}
+.vs{display:grid;gap:8px;margin-top:9px}
+.vi{display:grid;grid-template-columns:70px 1fr 1fr;align-items:center;gap:9px;background:var(--bg3);border-radius:8px;padding:11px 13px;border:1px solid var(--border)}
+.vd{font-family:'Space Mono',monospace;font-weight:700;color:var(--a2);font-size:12px}
+.vn{font-weight:600;font-size:12px}.vt{color:var(--t2);font-size:11px}
+/* SALES */
+.rs{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:9px;margin-bottom:16px}
+/* REPORTS */
+.rf{display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:13px;margin-bottom:16px}
+.ro{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px}
+.rph{text-align:center;color:var(--t3);padding:36px;font-size:13px}
+.rsec{margin-bottom:20px}
+.rsec h3{font-size:14px;font-weight:700;margin-bottom:9px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+@media print{#sb,.topbar,.pa,.rf{display:none!important}.ro{border:none;padding:0}body{background:#fff;color:#000}}
+/* SETTINGS */
+.stg{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:12px}
+.stg .card{display:flex;flex-direction:column;gap:9px}
+.tgl{display:flex;align-items:center;gap:8px;cursor:pointer;font-size:13px}
+.brl{display:flex;flex-direction:column;gap:6px;max-height:175px;overflow-y:auto}
+.bri{display:flex;align-items:center;justify-content:space-between;background:var(--bg3);border-radius:6px;padding:6px 10px;font-size:12px}
+.fl{font-size:11px;color:var(--t2);margin-bottom:3px;display:block}
+.fg2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.fg2>div{display:flex;flex-direction:column}
+/* MODALS */
+.mo{position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;z-index:1000;padding:16px}
+.md{background:var(--card);border:1px solid var(--border);border-radius:14px;width:100%;max-width:440px;max-height:90vh;overflow-y:auto;animation:su .2s ease}
+.md.w{max-width:660px}
+@keyframes su{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+.mh{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--card);z-index:1}
+.mh h3{font-size:15px;font-weight:700}
+.mh button{background:none;border:none;color:var(--t2);font-size:18px;cursor:pointer}
+.mb{padding:16px 20px;display:flex;flex-direction:column;gap:9px}
+.mf{display:flex;justify-content:flex-end;gap:8px;padding:12px 20px;border-top:1px solid var(--border);position:sticky;bottom:0;background:var(--card)}
+/* TOAST */
+.toast{position:fixed;bottom:20px;right:20px;background:var(--card);border:1px solid var(--border);padding:11px 16px;border-radius:var(--r);font-size:13px;z-index:9999;animation:ti .3s ease;max-width:290px}
+.toast.success{border-color:var(--accent);color:var(--accent)}
+.toast.error{border-color:var(--red);color:var(--red)}
+@keyframes ti{from{transform:translateX(16px);opacity:0}}
+/* LISTS */
+.al,.vl,.fl2{display:flex;flex-direction:column;gap:6px}
+.ai{display:flex;align-items:center;gap:8px;background:var(--bg3);border-radius:6px;padding:8px 10px;font-size:12px}
+.at{color:var(--t3);font-size:10px;white-space:nowrap;margin-left:auto}
+.vr{background:rgba(245,200,66,.08);border:1px solid rgba(245,200,66,.2);border-radius:6px;padding:8px 10px;font-size:12px}
+.vr.ov{background:rgba(224,92,92,.08);border-color:rgba(224,92,92,.2)}
+.fr{background:rgba(126,201,126,.08);border:1px solid rgba(126,201,126,.2);border-radius:6px;padding:8px 10px;font-size:12px}
+.emp{text-align:center;padding:40px 16px;color:var(--t3)}
+.ei{font-size:40px;margin-bottom:9px}.et{font-size:13px}
+@media(max-width:768px){
+  #sb{position:fixed;left:-225px;height:100vh;transition:left .25s}
+  #sb.open{left:0}.tb-m{display:block}
+  .dg{grid-template-columns:1fr}.cw{grid-column:span 1}
+  .fg2{grid-template-columns:1fr}.vi{grid-template-columns:1fr}
+  .tbr{display:none}.sg{grid-template-columns:repeat(2,1fr)}
+}
+</style>
+
+<style id="ddm-customizer-style">
+:root{--ddm-primary:#0a0a0a;--ddm-accent:#2563eb;--ddm-bg:#ffffff;--ddm-text:#111111;--ddm-font:Inter,system-ui,sans-serif}
+#ddm-preview-badge{position:fixed;z-index:2147483646;left:12px;bottom:12px;padding:8px 12px;border-radius:8px;background:#0a0a0a;color:#fff;font:600 12px/1.3 Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:min(280px,70vw)}
+.ddm-hide-section{display:none!important}
+</style>
+<script id="ddm-customizer-bridge">
+(function(){
+  var lastTheme=null;
+  var originals={};
+
+  function textOf(el){
+    return (el && (el.innerText||el.textContent)||'').replace(/\s+/g,' ').trim();
+  }
+
+  function setLeafText(el, value){
+    if(!el || !value) return;
+    if(!el.children || el.children.length===0){ el.textContent=value; return; }
+    var walker=document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var node=walker.nextNode();
+    if(node){ node.nodeValue=value; return; }
+    el.textContent=value;
+  }
+
+  function first(sel){ return document.querySelector(sel); }
+  function all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+  function stash(key, el){
+    if(!el || originals[key]!=null) return;
+    originals[key]=textOf(el);
+  }
+
+  function apply(theme){
+    if(!theme) return;
+    lastTheme=theme;
+    try{ sessionStorage.setItem('ddm-live-theme', JSON.stringify(theme)); }catch(e){}
+
+    var root=document.documentElement;
+    root.style.setProperty('--ddm-primary', theme.primaryColor||'#0a0a0a');
+    root.style.setProperty('--ddm-accent', theme.accentColor||'#2563eb');
+    root.style.setProperty('--ddm-bg', theme.bgColor||'#ffffff');
+    root.style.setProperty('--ddm-text', theme.textColor||'#111111');
+    root.style.setProperty('--ddm-font', theme.fontFamily||'Inter, system-ui, sans-serif');
+
+    var s=document.getElementById('ddm-live-style');
+    if(!s){ s=document.createElement('style'); s.id='ddm-live-style'; document.head.appendChild(s); }
+    s.textContent=[
+      'html,body{background:var(--ddm-bg)!important;color:var(--ddm-text)!important;font-family:var(--ddm-font)!important}',
+      'h1,h2,h3,h4,.logo,[class*="brand"],[class*="logo"] span,[class*="title"]{color:var(--ddm-primary)!important}',
+      'a{color:var(--ddm-accent)}',
+      'button,.btn,[class*="btn"],[class*="Btn"],[class*="cta"],[class*="Cta"],input[type="submit"],a[class*="button"]{background:var(--ddm-accent)!important;border-color:var(--ddm-accent)!important;color:#fff!important}',
+      theme.showHeader===false?'header,nav,[class*="navbar"],[class*="Navbar"],[class*="header"]:not(#ddm-preview-badge){display:none!important}':'',
+      theme.showFooter===false?'footer,[class*="footer"],[class*="Footer"]{display:none!important}':'',
+      theme.showHero===false?'[class*="hero"],[class*="Hero"],section:first-of-type{display:none!important}':'',
+      theme.showAbout===false?'[id*="about"],[class*="about"],[class*="About"]{display:none!important}':'',
+      theme.showContact===false?'[id*="contact"],[class*="contact"],[class*="Contact"]{display:none!important}':''
+    ].filter(Boolean).join('\n');
+
+    var brand=first('header a,[class*="brand"] a,[class*="logo"] a,nav a,a[class*="logo"],a[class*="brand"]');
+    stash('brand', brand);
+    if(brand && theme.bizName){
+      var brandImg=brand.querySelector('img');
+      if(brandImg && theme.logoDataUrl){ brandImg.src=theme.logoDataUrl; brandImg.alt=theme.bizName; }
+      else setLeafText(brand, theme.bizName);
+    }
+    if(theme.logoDataUrl){
+      var logoImg=first('header img, nav img, [class*="logo"] img, img[alt*="ogo" i]');
+      if(logoImg){ logoImg.src=theme.logoDataUrl; if(theme.bizName) logoImg.alt=theme.bizName; }
+    }
+
+    var h1=first('h1');
+    stash('h1', h1);
+    if(h1 && theme.headline) setLeafText(h1, theme.headline);
+
+    var heroP=first('h1 + p, [class*="hero"] p, section p, main p');
+    stash('heroP', heroP);
+    if(heroP && theme.subtext) setLeafText(heroP, theme.subtext);
+
+    if(theme.tagline){
+      var tag=first('[class*="tagline"],[class*="subtitle"], header p, nav p');
+      stash('tag', tag);
+      if(tag) setLeafText(tag, theme.tagline);
+    }
+
+    if(theme.ctaLabel){
+      var cta=first('a.btn, a[class*="btn"], button, [class*="cta"] a, [class*="hero"] a, [class*="Hero"] a');
+      stash('cta', cta);
+      if(cta) setLeafText(cta, theme.ctaLabel);
+    }
+
+    if(theme.aboutText){
+      var about=first('#about p, [id*="about"] p, [class*="about"] p, [class*="About"] p');
+      stash('about', about);
+      if(about) setLeafText(about, theme.aboutText);
+    }
+
+    if(theme.navLabels){
+      var labels=theme.navLabels.split(',').map(function(x){return x.trim();}).filter(Boolean);
+      var links=all('header nav a, nav a, [class*="nav"] a').filter(function(a){
+        return textOf(a) && textOf(a).length<28 && !a.querySelector('img');
+      }).slice(0, labels.length);
+      links.forEach(function(a,i){ if(labels[i]) setLeafText(a, labels[i]); });
+    }
+
+    if(theme.phone){
+      all('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+theme.phone.replace(/\s+/g,''); setLeafText(a, theme.phone); });
+    }
+    if(theme.email){
+      all('a[href^="mailto:"]').forEach(function(a){ a.href='mailto:'+theme.email; setLeafText(a, theme.email); });
+    }
+
+    var badge=document.getElementById('ddm-preview-badge');
+    if(!badge){
+      badge=document.createElement('div');
+      badge.id='ddm-preview-badge';
+      document.body.appendChild(badge);
+    }
+    badge.textContent='Previewing edits · '+(theme.bizName||'Your brand');
+  }
+
+  window.addEventListener('message', function(e){
+    if(!e.data || e.data.type!=='ddm-theme') return;
+    apply(e.data.theme||{});
+  });
+
+  try{
+    var stored=sessionStorage.getItem('ddm-live-theme');
+    if(stored) apply(JSON.parse(stored));
+  }catch(e){}
+
+  setInterval(function(){
+    if(lastTheme) apply(lastTheme);
+  }, 1500);
+
+  try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  document.addEventListener('DOMContentLoaded', function(){
+    try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  });
+})();
+</script></head>
+<body>
+
+<!-- LOADING -->
+<div id="loading" style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--bg)">
+  <div style="text-align:center"><div style="font-size:70px;animation:bob 3s ease-in-out infinite">🐓</div><div style="font-size:50px;font-weight:800;background:linear-gradient(135deg,#7ec97e,#f5c842);-webkit-background-clip:text;-webkit-text-fill-color:transparent">LovCon</div></div>
+</div>
+
+<!-- SPLASH -->
+<div id="splash" class="hidden">
+  <div class="sc">
+    <div>
+      <div class="logo-ico">🐓</div>
+      <div class="logo-t">LovCon</div>
+      <div class="logo-s">Roadrunner Farm Manager</div>
+    </div>
+    <div class="login-box">
+      <h2>Welcome Back</h2>
+      <input id="lem" type="email" placeholder="Email address" class="inp">
+      <input id="lpw" type="password" placeholder="Password" class="inp">
+      <button class="bp" onclick="doLogin()">🔑 Sign In</button>
+      <div class="or">— or —</div>
+      <button class="bo" onclick="doReg()">✨ Create Account</button>
+      <div id="aerr" class="aerr"></div>
+    </div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="hidden">
+  <aside id="sb">
+    <div class="sbh">
+      <span style="font-size:24px">🐓</span>
+      <span class="st">LovCon</span>
+      <button class="sbt" onclick="toggleSb()">☰</button>
+    </div>
+    <nav>
+      <button class="ni active" onclick="go('dash')" data-p="dash"><span class="ni-ico">📊</span><span class="nl">Dashboard</span></button>
+      <button class="ni" onclick="go('flocks')" data-p="flocks"><span class="ni-ico">🏠</span><span class="nl">Flocks &amp; Pens</span></button>
+      <button class="ni" onclick="go('chicks')" data-p="chicks"><span class="ni-ico">🐔</span><span class="nl">Chickens</span></button>
+      <button class="ni" onclick="go('eggs')" data-p="eggs"><span class="ni-ico">🥚</span><span class="nl">Egg Production</span></button>
+      <button class="ni" onclick="go('hatch')" data-p="hatch"><span class="ni-ico">🐣</span><span class="nl">Hatching</span></button>
+      <button class="ni" onclick="go('feed')" data-p="feed"><span class="ni-ico">🌾</span><span class="nl">Feeding</span></button>
+      <button class="ni" onclick="go('vax')" data-p="vax"><span class="ni-ico">💉</span><span class="nl">Vaccination</span></button>
+      <button class="ni" onclick="go('sales')" data-p="sales"><span class="ni-ico">💰</span><span class="nl">Sales &amp; Register</span></button>
+      <button class="ni" onclick="go('reports')" data-p="reports"><span class="ni-ico">📈</span><span class="nl">Reports</span></button>
+      <button class="ni" onclick="go('settings')" data-p="settings"><span class="ni-ico">⚙️</span><span class="nl">Settings</span></button>
+    </nav>
+    <div class="sbf">
+      <span id="uel" class="ue"></span>
+      <button class="btn-lo" onclick="doLogout()">🚪 <span class="bl">Logout</span></button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <button class="tb-m" onclick="toggleSb()">☰</button>
+      <h2 class="pg-t" id="pgt">📊 Dashboard</h2>
+      <div class="tbr">
+        <span class="bdg">📅 <span id="cdate"></span></span>
+        <span class="bdg">🌿 LovCon Farm</span>
+      </div>
+    </div>
+    <div id="pages">
+
+      <!-- DASHBOARD -->
+      <div class="pg" id="pg-dash">
+        <div class="sg">
+          <div class="stc blue"><span class="si">🐔</span><div><span class="sv" id="s1">0</span><span class="sl">Total Chickens</span></div></div>
+          <div class="stc green"><span class="si">🥚</span><div><span class="sv" id="s2">0</span><span class="sl">Eggs Today</span></div></div>
+          <div class="stc orange"><span class="si">🐣</span><div><span class="sv" id="s3">0</span><span class="sl">In Incubation</span></div></div>
+          <div class="stc red"><span class="si">💀</span><div><span class="sv" id="s4">0</span><span class="sl">Deaths (30d)</span></div></div>
+          <div class="stc purple"><span class="si">💰</span><div><span class="sv" id="s5">R0</span><span class="sl">Revenue (30d)</span></div></div>
+          <div class="stc teal"><span class="si">🏠</span><div><span class="sv" id="s6">0</span><span class="sl">Active Pens</span></div></div>
+        </div>
+        <div class="dg">
+          <div class="card"><h3 class="ct">💉 Upcoming Vaccinations</h3><div id="dvax" class="vl"></div></div>
+          <div class="card"><h3 class="ct">🌾 Feeding Reminders</h3><div id="dfeed" class="fl2"></div></div>
+          <div class="card cw"><h3 class="ct">📝 Recent Activity</h3><div id="dact" class="al"></div></div>
+        </div>
+      </div>
+
+      <!-- FLOCKS -->
+      <div class="pg hidden" id="pg-flocks">
+        <div class="pa"><button class="bp" onclick="oM('mPen')">➕ Add Pen / Location</button></div>
+        <div id="penList" class="pg2"></div>
+      </div>
+
+      <!-- CHICKENS -->
+      <div class="pg hidden" id="pg-chicks">
+        <div class="pa">
+          <button class="bp" onclick="oM('mChick')">➕ Add Chicken(s)</button>
+          <select id="fPen" class="sel" style="width:auto" onchange="rChicks()"><option value="">🏠 All Pens</option></select>
+          <select id="fBrd" class="sel" style="width:auto" onchange="rChicks()"><option value="">🐔 All Breeds</option></select>
+          <select id="fStg" class="sel" style="width:auto" onchange="rChicks()"><option value="">📊 All Stages</option><option>Chick</option><option>Grower</option><option>Layer</option><option>Breeder</option><option>Sold</option><option>Deceased</option></select>
+          <input id="fSrc" class="inp inp.sm2" placeholder="🔍 Tag..." style="width:120px" oninput="rChicks()">
+        </div>
+        <div id="ctbl" class="tw"></div>
+      </div>
+
+      <!-- EGGS -->
+      <div class="pg hidden" id="pg-eggs">
+        <div class="pa"><button class="bp" onclick="oM('mEgg')">➕ Record Egg Collection</button></div>
+        <div class="esg" id="esum"></div>
+        <div id="etbl" class="tw"></div>
+      </div>
+
+      <!-- HATCH -->
+      <div class="pg hidden" id="pg-hatch">
+        <div class="pa">
+          <button class="bp" onclick="oM('mHatch')">🔬 Start Incubator Batch</button>
+          <button class="bs" onclick="oM('mHen')">🐓 Hen Sitting Record</button>
+        </div>
+        <div id="hlist" class="hg"></div>
+      </div>
+
+      <!-- FEED -->
+      <div class="pg hidden" id="pg-feed">
+        <div class="fg">
+          <h3 class="ct">🌾 Roadrunner Feeding Program</h3>
+          <div class="fsg">
+            <div class="fst fs1"><div class="fbg">🐣 Starter (0–8 wks)</div><h4>Chick Phase</h4>
+              <table class="ft"><tr><th>Age</th><th>Amount/bird/day</th></tr><tr><td>0–4 weeks</td><td><b>AD LIB</b></td></tr><tr><td>5–6 weeks</td><td>50g</td></tr><tr><td>7–8 weeks</td><td>60g</td></tr></table></div>
+            <div class="fst fs2"><div class="fbg">🐔 Grower (9–16 wks)</div><h4>Roadrunner Grower</h4>
+              <table class="ft"><tr><th>Age</th><th>Amount/bird/day</th></tr><tr><td>9–10 wks</td><td>70g</td></tr><tr><td>11–12 wks</td><td>80g</td></tr><tr><td>13–14 wks</td><td>90g</td></tr><tr><td>15–16 wks</td><td>100g</td></tr></table></div>
+            <div class="fst fs3"><div class="fbg">🏆 Breeder (17+ wks)</div><h4>Breeder / Slaughter</h4>
+              <table class="ft"><tr><th>Age</th><th>Amount/bird/day</th></tr><tr><td>17–18 wks</td><td>110g</td></tr><tr><td>18+ slaughter</td><td>120g</td></tr></table></div>
+          </div>
+          <div class="bt"><h4>🔥 Brooding</h4><div class="tg"><div class="tip">🔆 Heat: Mbaura or infrared lights</div><div class="tip">🛏️ Bedding: Shavings or makoko enzungu</div></div></div>
+        </div>
+        <div class="pa"><button class="bp" onclick="oM('mFeed')">➕ Log Feed Usage</button></div>
+        <div id="ftbl" class="tw"></div>
+      </div>
+
+      <!-- VAX -->
+      <div class="pg hidden" id="pg-vax">
+        <div class="vc"><h3 class="ct">💉 Standard Vaccination Calendar</h3>
+          <div class="vs">
+            <div class="vi"><span class="vd">Day 10</span><span class="vn">🦠 Newcastle Disease</span><span class="vt">Drinking water or eye drop</span></div>
+            <div class="vi"><span class="vd">Day 18</span><span class="vn">🦠 IBD (Gumboro)</span><span class="vt">Via drinking water</span></div>
+            <div class="vi"><span class="vd">Day 28</span><span class="vn">🦠 Fowl Pox</span><span class="vt">Wing web method</span></div>
+            <div class="vi"><span class="vd">Day 60</span><span class="vn">🦠 Infectious Coryza</span><span class="vt">Subcutaneous injection</span></div>
+          </div>
+        </div>
+        <div class="pa"><button class="bp" onclick="oM('mVax')">➕ Record Vaccination</button></div>
+        <div id="vtbl" class="tw"></div>
+      </div>
+
+      <!-- SALES -->
+      <div class="pg hidden" id="pg-sales">
+        <div class="pa">
+          <button class="bp" onclick="oM('mSale')">💰 Record Sale</button>
+          <button class="bs" onclick="oM('mPurch')">🛒 Record Purchase</button>
+          <button class="bs" onclick="oM('mDeath')">💀 Record Death</button>
+        </div>
+        <div class="rs" id="regsum"></div>
+        <div id="stbl" class="tw"></div>
+      </div>
+
+      <!-- REPORTS -->
+      <div class="pg hidden" id="pg-reports">
+        <div class="rf">
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px">From <input type="date" id="rFrom" class="inp inp.sm2" style="width:auto"></label>
+          <label style="display:flex;align-items:center;gap:6px;font-size:12px">To <input type="date" id="rTo" class="inp inp.sm2" style="width:auto"></label>
+          <select id="rTyp" class="sel" style="width:auto"><option value="overview">📋 Full Overview</option><option value="eggs">🥚 Eggs</option><option value="sales">💰 Sales</option><option value="mortality">💀 Mortality</option><option value="vax">💉 Vaccination</option><option value="feed">🌾 Feed</option></select>
+          <button class="bp" onclick="genRep()">📊 Generate</button>
+          <button class="bo" onclick="window.print()">🖨️ Print</button>
+        </div>
+        <div id="rout" class="ro"><div class="rph">📋 Select report type and click Generate.</div></div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="pg hidden" id="pg-settings">
+        <div class="stg">
+          <div class="card">
+            <h3 class="ct">🏡 Farm Information</h3>
+            <div><label class="fl">Farm Name</label><input id="sName" class="inp" placeholder="LovCon Farm"></div>
+            <div><label class="fl">Owner</label><input id="sOwner" class="inp" placeholder="Owner Name"></div>
+            <div><label class="fl">Location</label><input id="sLoc" class="inp" placeholder="Location"></div>
+            <div><label class="fl">Contact</label><input id="sCon" class="inp" placeholder="+27..."></div>
+            <button class="bp" onclick="saveFarm()">💾 Save</button>
+          </div>
+          <div class="card">
+            <h3 class="ct">🐔 Breed Management</h3>
+            <div id="breedList" class="brl"></div>
+            <div style="display:flex;gap:6px;margin-top:8px"><input id="nBrd" class="inp" placeholder="Add breed..."><button class="bp sm" onclick="addBrd()">➕</button></div>
+          </div>
+          <div class="card">
+            <h3 class="ct">🔔 Notifications</h3>
+            <label class="tgl"><input type="checkbox" checked> 💉 Vaccination reminders</label>
+            <label class="tgl"><input type="checkbox" checked> 🌾 Feeding alerts</label>
+            <label class="tgl"><input type="checkbox" checked> 🐣 Hatch due alerts</label>
+            <button class="bp" onclick="showT('✅ Saved!','success')">💾 Save</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ── MODALS ─────────────────────────────────────────────── -->
+<div class="mo hidden" id="mPen"><div class="md"><div class="mh"><h3>🏠 Add Pen</h3><button onclick="cM('mPen')">✕</button></div><div class="mb"><div><label class="fl">Name *</label><input id="pNm" class="inp" placeholder="Pen A / Block 1"></div><div><label class="fl">Capacity</label><input id="pCp" class="inp" type="number" placeholder="Max birds"></div><div><label class="fl">Type</label><select id="pTp" class="sel"><option>Brooding Pen</option><option>Grower Pen</option><option>Layer Pen</option><option>Breeder Pen</option><option>Quarantine Pen</option><option>General</option></select></div><div><label class="fl">Notes</label><textarea id="pNt" class="inp ta" placeholder="Notes..."></textarea></div></div><div class="mf"><button class="bo" onclick="cM('mPen')">Cancel</button><button class="bp" onclick="savePen()">💾 Save</button></div></div></div>
+
+<div class="mo hidden" id="mChick"><div class="md w"><div class="mh"><h3>🐔 Add Chicken(s)</h3><button onclick="cM('mChick')">✕</button></div><div class="mb"><div class="fg2"><div><label class="fl">Entry Type</label><select id="cTyp" class="sel" onchange="tBatch()"><option value="batch">Batch (multiple)</option><option value="ind">Individual (tag)</option></select></div><div><label class="fl">Breed</label><select id="cBrd" class="sel"></select></div><div><label class="fl">Tag / Name</label><input id="cTag" class="inp" placeholder="RR-001"></div><div id="cQW"><label class="fl">Quantity</label><input id="cQty" class="inp" type="number" min="1" value="1"></div><div><label class="fl">Sex</label><select id="cSex" class="sel"><option value="mixed">Mixed</option><option value="female">♀ Female</option><option value="male">♂ Male</option></select></div><div><label class="fl">Source</label><select id="cSrc" class="sel"><option>Hatched on Farm</option><option>Purchased</option><option>Donated</option></select></div><div><label class="fl">Date of Birth / Arrival</label><input id="cDob" class="inp" type="date"></div><div><label class="fl">Stage</label><select id="cStg" class="sel"><option>Chick</option><option>Grower</option><option>Layer</option><option>Breeder</option></select></div><div><label class="fl">Pen</label><select id="cPen" class="sel"></select></div><div><label class="fl">Cost per Bird (R)</label><input id="cCst" class="inp" type="number" placeholder="0.00" step="0.01"></div><div><label class="fl">Color / Markings</label><input id="cCol" class="inp" placeholder="Brown..."></div><div><label class="fl">Purpose</label><select id="cPrp" class="sel"><option>Meat</option><option>Egg Laying</option><option>Breeding</option><option>Dual Purpose</option></select></div></div><textarea id="cNt" class="inp ta" placeholder="Notes..."></textarea></div><div class="mf"><button class="bo" onclick="cM('mChick')">Cancel</button><button class="bp" id="scBtn" onclick="saveChick()">💾 Save</button></div></div></div>
+
+<div class="mo hidden" id="mEgg"><div class="md"><div class="mh"><h3>🥚 Record Egg Collection</h3><button onclick="cM('mEgg')">✕</button></div><div class="mb"><div><label class="fl">Date</label><input id="eDt" class="inp" type="date"></div><div><label class="fl">Pen</label><select id="ePen" class="sel"></select></div><div><label class="fl">Total Collected</label><input id="eQty" class="inp" type="number" placeholder="Number"></div><div><label class="fl">Purpose</label><select id="ePrp" class="sel"><option>Selling</option><option>Hatching - Incubator</option><option>Hatching - Hen Sitting</option><option>Own Use</option></select></div><div><label class="fl">Cracked / Rejected</label><input id="eCrk" class="inp" type="number" value="0"></div><div><label class="fl">Price per Egg (R)</label><input id="ePrc" class="inp" type="number" placeholder="0.00" step="0.01"></div><textarea id="eNt" class="inp ta" placeholder="Notes..."></textarea></div><div class="mf"><button class="bo" onclick="cM('mEgg')">Cancel</button><button class="bp" onclick="saveEgg()">💾 Save</button></div></div></div>
+
+<div class="mo hidden" id="mHatch"><div class="md"><div class="mh"><h3>🔬 Start Incubation Batch</h3><button onclick="cM('mHatch')">✕</button></div><div class="mb"><div><label class="fl">Batch Name</label><input id="hNm" class="inp" placeholder="Batch-March-2026"></div><div><label class="fl">Breed</label><select id="hBrd" class="sel"></select></div><div><label class="fl">Eggs Set</label><input id="hEgg" class="inp" type="number" placeholder="Number"></div><div><label class="fl">Date Set</label><input id="hSdt" class="inp" type="date" oninput="aHatch()"></div><div><label class="fl">Method</label><select id="hMth" class="sel"><option>Incubator</option><option>Hen Sitting</option></select></div><div><label class="fl">Incubator ID</label><input id="hIid" class="inp" placeholder="Optional"></div><div><label class="fl">Expected Hatch (auto +21d)</label><input id="hEdt" class="inp" type="date"></div><div><label class="fl">Temp (°C)</label><input id="hTmp" class="inp" placeholder="37.5"></div><div><label class="fl">Humidity (%)</label><input id="hHum" class="inp" placeholder="55–65"></div><textarea id="hNt" class="inp ta" placeholder="Notes..."></textarea></div><div class="mf"><button class="bo" onclick="cM('mHatch')">Cancel</button><button class="bp" onclick="saveHatch()">💾 Start Batch</button></div></div></div>
+
+<div class="mo hidden" id="mHen"><div class="md"><div class="mh"><h3>🐓 Hen Sitting</h3><button onclick="cM('mHen')">✕</button></div><div class="mb"><div><label class="fl">Hen Tag</label><input id="hnTag" class="inp" placeholder="Tag"></div><div><label class="fl">Eggs Under Hen</label><input id="hnEgg" class="inp" type="number" placeholder="Number"></div><div><label class="fl">Start Date</label><input id="hnSdt" class="inp" type="date" oninput="aHen()"></div><div><label class="fl">Expected Hatch (21d)</label><input id="hnEdt" class="inp" type="date"></div><div><label class="fl">Pen</label><select id="hnPen" class="sel"></select></div><textarea id="hnNt" class="inp ta" placeholder="Notes..."></textarea></div><div class="mf"><button class="bo" onclick="cM('mHen')">Cancel</button><button class="bp" onclick="saveHen()">💾 Save</button></div></div></div>
+
+<div class="mo hidden" id="mFeed"><div class="md"><div class="mh"><h3>🌾 Log Feed Usage</h3><button onclick="cM('mFeed')">✕</button></div><div class="mb"><div><label class="fl">Date</label><input id="fdDt" class="inp" type="date"></div><div><label class="fl">Pen</label><select id="fdPen" class="sel"></select></div><div><label class="fl">Feed Type</label><select id="fdTyp" class="sel"><option>Starter Mash</option><option>Grower Mash</option><option>Breeder Mash</option><option>Layer Mash</option><option>Scratch / Grain</option><option>Other</option></select></div><div><label class="fl">Quantity (kg)</label><input id="fdKg" class="inp" type="number" placeholder="0.0" step="0.1"></div><div><label class="fl">Cost per kg (R)</label><input id="fdCk" class="inp" type="number" placeholder="0.00" step="0.01"></div><div><label class="fl">Birds Fed</label><input id="fdBrd" class="inp" type="number" placeholder="Number"></div><textarea id="fdNt" class="inp ta" placeholder="Notes..."></textarea></div><div class="mf"><button class="bo" onclick="cM('mFeed')">Cancel</button><button class="bp" onclick="saveFeed()">💾 Save</button></div></div></div>
+
+<div class="mo hidden" id="mVax"><div class="md"><div class="mh"><h3>💉 Record Vaccination</h3><button onclick="cM('mVax')">✕</button></div><div class="mb"><div><label class="fl">Date</label><input id="vxDt" class="inp" type="date"></div><div><label class="fl">Pen</label><select id="vxPen" class="sel"></select></div><div><label class="fl">Vaccine</label><select id="vxVc" class="sel"><option>Newcastle Disease (ND)</option><option>IBD (Gumboro)</option><option>Fowl Pox</option><option>Infectious Coryza</option><option>Marek's Disease</option><option>Other</option></select></div><div><label class="fl">Method</label><select id="vxMt" class="sel"><option>Drinking Water</option><option>Eye Drop</option><option>Wing Web</option><option>Subcutaneous Injection</option><option>Spray</option></select></div><div><label class="fl">Birds Vaccinated</label><input id="vxBrd" class="inp" type="number" placeholder="Number"></div><div><label class="fl">Administrator</label><input id="vxAdm" class="inp" placeholder="Name"></div><div><label class="fl">Cost (R)</label><input id="vxCst" class="inp" type="number" placeholder="0.00" step="0.01"></div><textarea id="vxNt" class="inp ta" placeholder="Notes..."></textarea></div><div class="mf"><button class="bo" onclick="cM('mVax')">Cancel</button><button class="bp" onclick="saveVax()">💾 Save</button></div></div></div>
+
+<div class="mo hidden" id="mSale"><div class="md"><div class="mh"><h3>💰 Record Sale</h3><button onclick="cM('mSale')">✕</button></div><div class="mb"><div><label class="fl">Date</label><input id="slDt" class="inp" type="date"></div><div><label class="fl">What was sold?</label><select id="slTyp" class="sel"><option>Live Bird</option><option>Eggs</option><option>Slaughtered Bird</option><option>Hatching Eggs</option><option>Day-Old Chick</option></select></div><div><label class="fl">Breed</label><select id="slBrd" class="sel"></select></div><div><label class="fl">Quantity</label><input id="slQty" class="inp" type="number" placeholder="Number"></div><div><label class="fl">Price per Unit (R)</label><input id="slPrc" class="inp" type="number" placeholder="0.00" step="0.01"></div><div><label class="fl">Buyer (optional)</label><input id="slByr" class="inp" placeholder="Buyer name"></div><div><label class="fl">Source Pen</label><select id="slPen" class="sel"></select></div><textarea id="slNt" class="inp ta" placeholder="Notes..."></textarea></div><div class="mf"><button class="bo" onclick="cM('mSale')">Cancel</button><button class="bp" onclick="saveSale()">💾 Save Sale</button></div></div></div>
+
+<div class="mo hidden" id="mPurch"><div class="md"><div class="mh"><h3>🛒 Record Purchase</h3><button onclick="cM('mPurch')">✕</button></div><div class="mb"><div><label class="fl">Date</label><input id="puDt" class="inp" type="date"></div><div><label class="fl">Item Purchased</label><select id="puTyp" class="sel"><option>Live Bird</option><option>Day-Old Chick</option><option>Hatching Eggs</option><option>Feed</option><option>Medicine / Vaccine</option><option>Equipment</option><option>Other</option></select></div><div><label class="fl">Breed (if birds)</label><input id="puBrd" class="inp" placeholder="Breed"></div><div><label class="fl">Quantity</label><input id="puQty" class="inp" type="number" placeholder="Number"></div><div><label class="fl">Cost per Unit (R)</label><input id="puCst" class="inp" type="number" placeholder="0.00" step="0.01"></div><div><label class="fl">Supplier</label><input id="puSup" class="inp" placeholder="Supplier name"></div><textarea id="puNt" class="inp ta" placeholder="Notes..."></textarea></div><div class="mf"><button class="bo" onclick="cM('mPurch')">Cancel</button><button class="bp" onclick="savePurch()">💾 Save</button></div></div></div>
+
+<div class="mo hidden" id="mDeath"><div class="md"><div class="mh"><h3>💀 Record Death / Loss</h3><button onclick="cM('mDeath')">✕</button></div><div class="mb"><div><label class="fl">Date</label><input id="dtDt" class="inp" type="date"></div><div><label class="fl">Pen</label><select id="dtPen" class="sel"></select></div><div><label class="fl">Tag (if individual)</label><input id="dtTag" class="inp" placeholder="Optional"></div><div><label class="fl">Quantity</label><input id="dtQty" class="inp" type="number" value="1"></div><div><label class="fl">Breed</label><select id="dtBrd" class="sel"></select></div><div><label class="fl">Cause</label><select id="dtCause" class="sel"><option>Disease</option><option>Predator Attack</option><option>Unknown</option><option>Injury</option><option>Culled</option><option>Natural</option><option>Other</option></select></div><div><label class="fl">Value per Bird (R)</label><input id="dtVal" class="inp" type="number" placeholder="0.00" step="0.01"></div><textarea id="dtNt" class="inp ta" placeholder="Symptoms / notes..."></textarea></div><div class="mf"><button class="bo" onclick="cM('mDeath')">Cancel</button><button class="bp" onclick="saveDeath()">💾 Save</button></div></div></div>
+
+<div id="toastEl" class="toast hidden"></div>
+
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import{getAuth,signInWithEmailAndPassword,createUserWithEmailAndPassword,signOut,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import{getFirestore,collection,addDoc,getDocs,doc,updateDoc,deleteDoc,query,where,orderBy,serverTimestamp,getDoc,setDoc,limit}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// ╔══════════════════════════════════════════════════════╗
+// ║  PASTE YOUR FIREBASE CONFIG HERE                    ║
+// ║  Firebase Console → Project Settings → Web App      ║
+// ╚══════════════════════════════════════════════════════╝
+const firebaseConfig = {
+  apiKey: "AIzaSyBjO2q_K7ZtAxVKKVHwzET9jXEyJ6bp3F8",
+  authDomain: "lovcon.firebaseapp.com",
+  projectId: "lovcon",
+  storageBucket: "lovcon.firebasestorage.app",
+  messagingSenderId: "31854393398",
+  appId: "1:31854393398:web:ce97b6b82b93e4da0c4097"
+};
+// ════════════════════════════════════════════════════════
+
+const fb=initializeApp(firebaseConfig);
+const auth=getAuth(fb);
+const db=getFirestore(fb);
+let uid=null,pens=[],chicks=[],breeds=['Roadrunner','Black Australorp','Potchefstroom Koekoek','Boschveld'];
+
+// ── HELPERS ───────────────────────────────────────────────────────
+const g=id=>document.getElementById(id);
+const v=id=>{const e=g(id);return e?e.value:''};
+const sv=(id,val)=>{const e=g(id);if(e)e.value=val};
+const emp=(ico,txt)=>`<div class="emp"><div class="ei">${ico}</div><div class="et">${txt}</div></div>`;
+const age=dob=>{const d=Math.floor((new Date()-new Date(dob))/86400000);if(d<7)return d+'d';const w=Math.floor(d/7);return w<52?w+'wk':Math.floor(w/52)+'y '+w%52+'wk';};
+const today=()=>new Date().toISOString().split('T')[0];
+const pName=id=>pens.find(p=>p.id===id)?.name||'—';
+
+window.showT=(msg,t='')=>{const el=g('toastEl');el.textContent=msg;el.className=`toast ${t}`;el.classList.remove('hidden');clearTimeout(el._t);el._t=setTimeout(()=>el.classList.add('hidden'),3500);};
+
+// ── AUTH ──────────────────────────────────────────────────────────
+onAuthStateChanged(auth,async u=>{
+  g('loading').classList.add('hidden');
+  if(u){uid=u.id||u.uid;g('uel').textContent=u.email;
+    g('splash').classList.add('hidden');g('app').classList.remove('hidden');
+    await loadAll();init();}
+  else{g('splash').classList.remove('hidden');g('app').classList.add('hidden');}
+});
+const ferr=c=>({'auth/user-not-found':'No account found.','auth/wrong-password':'Incorrect password.','auth/email-already-in-use':'Email already registered.','auth/weak-password':'Password needs 6+ chars.','auth/invalid-email':'Invalid email.','auth/invalid-credential':'Invalid email or password.'}[c]||'Auth error.');
+window.doLogin=async()=>{const err=g('aerr');try{err.textContent='';await signInWithEmailAndPassword(auth,v('lem'),v('lpw'));}catch(x){err.textContent='❌ '+ferr(x.code);}};
+window.doReg=async()=>{const err=g('aerr');if(!v('lem')||!v('lpw')){err.textContent='❌ Enter email and password';return;}try{err.textContent='';await createUserWithEmailAndPassword(auth,v('lem'),v('lpw'));}catch(x){err.textContent='❌ '+ferr(x.code);}};
+window.doLogout=()=>signOut(auth);
+
+// ── LOAD DATA ─────────────────────────────────────────────────────
+async function loadAll(){
+  const [ps,cs,ss]=await Promise.all([getDocs(collection(db,`farms/${uid}/pens`)),getDocs(query(collection(db,`farms/${uid}/chickens`),orderBy('createdAt','desc'))),getDoc(doc(db,`farms/${uid}/settings/main`))]);
+  pens=ps.docs.map(d=>({id:d.id,...d.data()}));
+  chicks=cs.docs.map(d=>({id:d.id,...d.data()}));
+  if(ss.exists()&&ss.data().breeds)breeds=ss.data().breeds;
+}
+function init(){
+  g('cdate').textContent=new Date().toLocaleDateString('en-ZA',{day:'2-digit',month:'short',year:'numeric'});
+  document.querySelectorAll('input[type="date"]').forEach(el=>{if(!el.value)el.value=today();});
+  rDash();fillPens();fillBreeds();
+}
+
+// ── NAV ───────────────────────────────────────────────────────────
+const titles={dash:'📊 Dashboard',flocks:'🏠 Flocks & Pens',chicks:'🐔 Chickens',eggs:'🥚 Egg Production',hatch:'🐣 Hatching',feed:'🌾 Feeding',vax:'💉 Vaccination',sales:'💰 Sales & Register',reports:'📈 Reports',settings:'⚙️ Settings'};
+window.go=pg=>{
+  document.querySelectorAll('.pg').forEach(p=>p.classList.add('hidden'));
+  document.querySelectorAll('.ni').forEach(n=>n.classList.remove('active'));
+  g('pg-'+pg).classList.remove('hidden');
+  document.querySelector(`[data-p="${pg}"]`)?.classList.add('active');
+  g('pgt').textContent=titles[pg]||pg;
+  ({flocks:rPens,chicks:rChicks,eggs:rEggs,hatch:rHatch,vax:rVax,sales:rSales,settings:rSettings,feed:rFeed}[pg]||(() => {}))();
+  g('sb').classList.remove('open');
+};
+window.toggleSb=()=>{const sb=g('sb');window.innerWidth<=768?sb.classList.toggle('open'):sb.classList.toggle('col');};
+
+// ── DASHBOARD ─────────────────────────────────────────────────────
+async function rDash(){
+  const ac=chicks.filter(c=>!['Sold','Deceased'].includes(c.stage));
+  g('s1').textContent=ac.reduce((s,c)=>s+(c.qty||1),0);
+  g('s6').textContent=pens.length;
+  const [es,hs,ds,ss]=await Promise.all([getDocs(query(collection(db,`farms/${uid}/eggs`),where('date','==',today()))),getDocs(query(collection(db,`farms/${uid}/hatching`),where('status','==','Active'))),getDocs(collection(db,`farms/${uid}/deaths`)),getDocs(collection(db,`farms/${uid}/sales`))]);
+  g('s2').textContent=es.docs.reduce((s,d)=>s+(d.data().qty||0),0);
+  g('s3').textContent=hs.docs.reduce((s,d)=>s+(d.data().eggsSet||0),0);
+  const d30=new Date();d30.setDate(d30.getDate()-30);
+  g('s4').textContent=ds.docs.filter(d=>d.data().date&&new Date(d.data().date)>=d30).reduce((s,d)=>s+(d.data().qty||1),0);
+  const rev=ss.docs.filter(d=>d.data().date&&new Date(d.data().date)>=d30).reduce((s,d)=>s+((d.data().qty||0)*(d.data().price||0)),0);
+  g('s5').textContent='R'+rev.toFixed(2);
+  dVax(hs.docs);dFeed();dAct();
+}
+function dVax(docs){
+  const c=g('dvax'),sc=[{d:10,n:'Newcastle Disease'},{d:18,n:'IBD (Gumboro)'},{d:28,n:'Fowl Pox'},{d:60,n:'Coryza'}];
+  if(!docs.length){c.innerHTML=emp('✅','No active batches');return;}
+  let h='';const now=new Date();
+  docs.forEach(d=>{const dt=d.data(),hd=dt.expectedDate?new Date(dt.expectedDate):null;if(!hd)return;
+    sc.forEach(s=>{const vd=new Date(hd);vd.setDate(vd.getDate()+s.d);const diff=Math.ceil((vd-now)/86400000);
+      if(diff>=-3&&diff<=14)h+=`<div class="vr ${diff<0?'ov':''}">💉 <b>${s.n}</b> — ${dt.batchName||'batch'} | ${diff<0?Math.abs(diff)+'d overdue':diff===0?'Today!':diff+'d away'}</div>`;});});
+  c.innerHTML=h||emp('✅','All clear');
+}
+function dFeed(){
+  const c=g('dfeed');const now=new Date();const byP={};
+  chicks.filter(ch=>!['Sold','Deceased'].includes(ch.stage)&&ch.dob).forEach(ch=>{
+    const wk=Math.floor((now-new Date(ch.dob))/604800000);
+    const a=wk<=4?'AD LIB':wk<=6?'50g':wk<=8?'60g':wk<=10?'70g':wk<=12?'80g':wk<=14?'90g':wk<=16?'100g':wk<=18?'110g':'120g';
+    const pn=pens.find(p=>p.id===ch.penId)?.name||'Unassigned';
+    if(!byP[pn])byP[pn]={wk,a,n:0};byP[pn].n+=(ch.qty||1);});
+  const h=Object.entries(byP).map(([pen,i])=>`<div class="fr">🌾 <b>${pen}</b> (${i.n} birds, ${i.wk}wk) → <b>${i.a}/bird/day</b></div>`).join('');
+  c.innerHTML=h||emp('🌾','Add chickens with DOB to see reminders');
+}
+async function dAct(){
+  const c=g('dact');const acts=[];
+  const map={eggs:{i:'🥚',f:d=>`Collected ${d.qty} eggs from ${d.penName||'pen'}`},sales:{i:'💰',f:d=>`Sold ${d.qty} ${d.saleType} — R${((d.qty||0)*(d.price||0)).toFixed(2)}`},deaths:{i:'💀',f:d=>`${d.qty||1} death(s): ${d.cause}`},vaccinations:{i:'💉',f:d=>`Vaccinated ${d.birds||0} birds: ${d.vaccine}`},hatching:{i:'🐣',f:d=>`Batch "${d.batchName}" — ${d.eggsSet} eggs`}};
+  for(const[col,cfg]of Object.entries(map)){try{const s=await getDocs(query(collection(db,`farms/${uid}/${col}`),orderBy('createdAt','desc'),limit(3)));s.docs.forEach(d=>{const dt=d.data();acts.push({ts:dt.createdAt?.toDate?.()??new Date(),i:cfg.i,t:cfg.f(dt)});});}catch(e){}}
+  acts.sort((a,b)=>b.ts-a.ts);
+  c.innerHTML=acts.slice(0,8).map(a=>`<div class="ai"><span>${a.i}</span><span>${a.t}</span><span class="at">${a.ts.toLocaleDateString('en-ZA')}</span></div>`).join('')||emp('📝','No activity yet');
+}
+
+// ── PENS ──────────────────────────────────────────────────────────
+async function rPens(){
+  const c=g('penList');if(!pens.length){c.innerHTML=emp('🏠','No pens yet!');return;}
+  const ic={'Brooding Pen':'🔥','Grower Pen':'🐔','Layer Pen':'🥚','Breeder Pen':'🏆','Quarantine Pen':'⚠️','General':'🏠'};
+  c.innerHTML=pens.map(p=>{
+    const pc=chicks.filter(c=>c.penId===p.id&&!['Sold','Deceased'].includes(c.stage));
+    const tot=pc.reduce((s,c)=>s+(c.qty||1),0),occ=p.capacity?Math.round((tot/p.capacity)*100):0;
+    return`<div class="pc"><div class="ph"><span class="pico">${ic[p.type]||'🏠'}</span><div><div class="pn">${p.name}</div><div class="pt">${p.type||'General'}</div></div></div>
+    <div class="ps"><div class="pst"><div class="psv">${tot}</div><div class="psl">🐔 Birds</div></div><div class="pst"><div class="psv">${p.capacity||'∞'}</div><div class="psl">📦 Capacity</div></div></div>
+    ${p.capacity?`<div class="hp"><div class="pb"><div class="pf" style="width:${Math.min(occ,100)}%"></div></div><div class="pl"><span>${occ}%</span><span>${tot}/${p.capacity}</span></div></div>`:''}
+    ${p.notes?`<p style="font-size:11px;color:var(--t2);margin-top:6px">${p.notes}</p>`:''}
+    <div class="pba"><button class="bs sm" onclick="go('chicks');g('fPen').value='${p.id}';rChicks()">🐔 Birds</button><button class="bo sm bd" onclick="delPen('${p.id}')">🗑️</button></div></div>`;
+  }).join('');
+}
+window.savePen=async()=>{
+  const nm=v('pNm').trim();if(!nm){showT('Enter pen name','error');return;}
+  try{const d={name:nm,capacity:parseInt(v('pCp'))||null,type:v('pTp'),notes:v('pNt'),createdAt:serverTimestamp()};
+    const r=await addDoc(collection(db,`farms/${uid}/pens`),d);pens.push({id:r.id,...d});cM('mPen');rPens();fillPens();showT('✅ Pen saved!','success');}
+  catch(e){showT('Error: '+e.message,'error');}
+};
+window.delPen=async id=>{if(!confirm('Delete pen?'))return;await deleteDoc(doc(db,`farms/${uid}/pens`,id));pens=pens.filter(p=>p.id!==id);rPens();fillPens();showT('🗑️ Deleted');};
+
+// ── CHICKENS ──────────────────────────────────────────────────────
+window.rChicks=()=>{
+  const fp=v('fPen'),fb=v('fBrd'),fs=v('fStg'),sr=v('fSrc').toLowerCase();
+  let f=chicks;if(fp)f=f.filter(c=>c.penId===fp);if(fb)f=f.filter(c=>c.breed===fb);if(fs)f=f.filter(c=>c.stage===fs);if(sr)f=f.filter(c=>(c.tag||'').toLowerCase().includes(sr));
+  const c=g('ctbl');if(!f.length){c.innerHTML=emp('🐔','No chickens found');return;}
+  c.innerHTML=`<table><thead><tr><th>Tag</th><th>Breed</th><th>Sex</th><th>Stage</th><th>Pen</th><th>Purpose</th><th>Age</th><th>Value</th><th>Actions</th></tr></thead><tbody>${f.map(ch=>{
+    const sl=(ch.stage||'').toLowerCase();
+    return`<tr><td><span class="tag">${ch.tag||'—'}</span>${(ch.qty||1)>1?` <span style="font-size:10px;color:var(--t3)">×${ch.qty}</span>`:''}</td><td>${ch.breed||'—'}</td><td>${ch.sex==='female'?'♀':ch.sex==='male'?'♂':'⚡'}</td><td><span class="sbg s-${sl}">${ch.stage||'—'}</span></td><td>${pens.find(p=>p.id===ch.penId)?.name||'—'}</td><td>${ch.purpose||'—'}</td><td>${ch.dob?age(ch.dob):'—'}</td><td>${ch.cost?'R'+parseFloat(ch.cost).toFixed(2):'—'}</td><td style="display:flex;gap:4px"><button class="bs sm" onclick="editChick('${ch.id}')">✏️</button><button class="bo sm bd" onclick="delChick('${ch.id}')">🗑️</button></td></tr>`;
+  }).join('')}</tbody></table>`;
+};
+window.saveChick=async()=>{
+  const penId=v('cPen');const d={breed:v('cBrd'),tag:v('cTag').trim(),qty:parseInt(v('cQty'))||1,sex:v('cSex'),source:v('cSrc'),dob:v('cDob'),stage:v('cStg'),penId,penName:pName(penId),cost:v('cCst'),color:v('cCol'),purpose:v('cPrp'),notes:v('cNt'),createdAt:serverTimestamp()};
+  try{const r=await addDoc(collection(db,`farms/${uid}/chickens`),d);chicks.unshift({id:r.id,...d});cM('mChick');rChicks();rDash();showT('✅ Saved!','success');}catch(e){showT('Error: '+e.message,'error');}
+};
+window.editChick=id=>{
+  const ch=chicks.find(x=>x.id===id);if(!ch)return;
+  sv('cBrd',ch.breed||'');sv('cTag',ch.tag||'');sv('cQty',ch.qty||1);sv('cSex',ch.sex||'mixed');sv('cSrc',ch.source||'Hatched on Farm');sv('cDob',ch.dob||'');sv('cStg',ch.stage||'Chick');sv('cPen',ch.penId||'');sv('cCst',ch.cost||'');sv('cCol',ch.color||'');sv('cPrp',ch.purpose||'Meat');sv('cNt',ch.notes||'');
+  oM('mChick');
+  const btn=g('scBtn');btn.onclick=async()=>{
+    const penId=v('cPen');const u={breed:v('cBrd'),tag:v('cTag'),qty:parseInt(v('cQty'))||1,sex:v('cSex'),source:v('cSrc'),dob:v('cDob'),stage:v('cStg'),penId,penName:pName(penId),cost:v('cCst'),color:v('cCol'),purpose:v('cPrp'),notes:v('cNt')};
+    try{await updateDoc(doc(db,`farms/${uid}/chickens`,id),u);const i=chicks.findIndex(x=>x.id===id);chicks[i]={...chicks[i],...u};cM('mChick');rChicks();showT('✅ Updated!','success');btn.onclick=window.saveChick;}catch(e){showT('Error: '+e.message,'error');}};
+};
+window.delChick=async id=>{if(!confirm('Remove?'))return;await deleteDoc(doc(db,`farms/${uid}/chickens`,id));chicks=chicks.filter(c=>c.id!==id);rChicks();rDash();showT('🗑️ Removed');};
+window.tBatch=()=>{g('cQW').style.display=v('cTyp')==='batch'?'flex':'none';};
+
+// ── EGGS ──────────────────────────────────────────────────────────
+async function rEggs(){
+  const s=await getDocs(query(collection(db,`farms/${uid}/eggs`),orderBy('createdAt','desc')));const eggs=s.docs.map(d=>({id:d.id,...d.data()}));
+  const tot=eggs.reduce((s,e)=>s+(e.qty||0),0),sel=eggs.filter(e=>e.purpose==='Selling').reduce((s,e)=>s+(e.qty||0),0),htch=eggs.filter(e=>e.purpose?.includes('Hatching')).reduce((s,e)=>s+(e.qty||0),0),rev=eggs.filter(e=>e.purpose==='Selling').reduce((s,e)=>s+((e.qty||0)*(e.price||0)),0);
+  g('esum').innerHTML=`<div class="es"><div class="esv">${tot}</div><div class="esl">🥚 Total</div></div><div class="es"><div class="esv">${sel}</div><div class="esl">🏪 For Sale</div></div><div class="es"><div class="esv">${htch}</div><div class="esl">🐣 Hatching</div></div><div class="es"><div class="esv">R${rev.toFixed(2)}</div><div class="esl">💰 Revenue</div></div>`;
+  g('etbl').innerHTML=!eggs.length?emp('🥚','No records yet'):`<table><thead><tr><th>Date</th><th>Pen</th><th>Qty</th><th>Purpose</th><th>Cracked</th><th>Price</th><th>Total</th><th>Notes</th><th>Del</th></tr></thead><tbody>${eggs.map(e=>`<tr><td>${e.date||'—'}</td><td>${e.penName||'—'}</td><td>${e.qty}</td><td>${e.purpose||'—'}</td><td>${e.cracks||0}</td><td>${e.price?'R'+parseFloat(e.price).toFixed(2):'—'}</td><td>${e.price?'R'+((e.qty||0)*parseFloat(e.price)).toFixed(2):'—'}</td><td>${e.notes||''}</td><td><button class="bo sm bd" onclick="delEgg('${e.id}')">🗑️</button></td></tr>`).join('')}</tbody></table>`;
+}
+window.saveEgg=async()=>{const penId=v('ePen');const d={date:v('eDt'),penId,penName:pName(penId),qty:parseInt(v('eQty'))||0,purpose:v('ePrp'),cracks:parseInt(v('eCrk'))||0,price:parseFloat(v('ePrc'))||0,notes:v('eNt'),createdAt:serverTimestamp()};try{await addDoc(collection(db,`farms/${uid}/eggs`),d);cM('mEgg');rEggs();rDash();showT('✅ Recorded!','success');}catch(e){showT('Error: '+e.message,'error');}};
+window.delEgg=async id=>{if(!confirm('Delete?'))return;await deleteDoc(doc(db,`farms/${uid}/eggs`,id));rEggs();showT('🗑️ Deleted');};
+
+// ── HATCHING ──────────────────────────────────────────────────────
+async function rHatch(){
+  const s=await getDocs(query(collection(db,`farms/${uid}/hatching`),orderBy('createdAt','desc')));const batches=s.docs.map(d=>({id:d.id,...d.data()}));
+  const c=g('hlist');if(!batches.length){c.innerHTML=emp('🐣','No batches yet');return;}
+  const now=new Date();
+  c.innerHTML=batches.map(b=>{
+    const sd=b.setDate?new Date(b.setDate):null,ed=b.expectedDate?new Date(b.expectedDate):null;
+    let prog=0;if(sd&&ed)prog=Math.min(100,Math.max(0,Math.round(((now-sd)/(ed-sd))*100)));
+    const dl=ed?Math.ceil((ed-now)/86400000):'—';
+    return`<div class="hc"><div class="hh"><span class="hi">${b.method==='Hen Sitting'?'🐓':'🔬'}</span><div><div class="hn">${b.batchName||'Batch'}</div><span class="hs ${b.status==='Active'?'ha':'hco'}">${b.status||'Active'}</span></div></div>
+    <div class="hp"><div class="pb"><div class="pf" style="width:${prog}%"></div></div><div class="pl"><span>${prog}%</span><span>${typeof dl==='number'?(dl>0?dl+'d left':dl===0?'🐣 Today!':'Overdue'):'—'}</span></div></div>
+    <div class="hd"><div><span class="hdl">🥚 </span>${b.eggsSet||0} eggs</div><div><span class="hdl">🐔 </span>${b.breed||'—'}</div><div><span class="hdl">Set: </span>${b.setDate||'—'}</div><div><span class="hdl">Due: </span>${b.expectedDate||'—'}</div><div><span class="hdl">🌡️ </span>${b.temp||'—'}°C</div><div><span class="hdl">💧 </span>${b.humidity||'—'}%</div>${b.hatchedCount!=null?`<div><span class="hdl">✅ </span>${b.hatchedCount} hatched</div>`:''}</div>
+    <div style="display:flex;gap:6px;margin-top:10px">${b.status==='Active'?`<button class="bp sm" onclick="completeHatch('${b.id}')">✅ Record Result</button>`:''}<button class="bo sm bd" onclick="delHatch('${b.id}')">🗑️</button></div></div>`;
+  }).join('');
+}
+window.saveHatch=async()=>{const sd=v('hSdt');let ed=v('hEdt');if(!ed&&sd){const d=new Date(sd);d.setDate(d.getDate()+21);ed=d.toISOString().split('T')[0];}const d={batchName:v('hNm'),breed:v('hBrd'),eggsSet:parseInt(v('hEgg'))||0,setDate:sd,method:v('hMth'),incubatorId:v('hIid'),expectedDate:ed,temp:v('hTmp'),humidity:v('hHum'),notes:v('hNt'),status:'Active',createdAt:serverTimestamp()};try{await addDoc(collection(db,`farms/${uid}/hatching`),d);cM('mHatch');rHatch();rDash();showT('✅ Batch started!','success');}catch(e){showT('Error: '+e.message,'error');}};
+window.saveHen=async()=>{const sd=v('hnSdt'),penId=v('hnPen');let ed=v('hnEdt');if(!ed&&sd){const d=new Date(sd);d.setDate(d.getDate()+21);ed=d.toISOString().split('T')[0];}const d={batchName:'🐓 Hen: '+v('hnTag'),eggsSet:parseInt(v('hnEgg'))||0,setDate:sd,expectedDate:ed,method:'Hen Sitting',incubatorId:v('hnTag'),penId,penName:pName(penId),notes:v('hnNt'),status:'Active',createdAt:serverTimestamp()};try{await addDoc(collection(db,`farms/${uid}/hatching`),d);cM('mHen');rHatch();showT('✅ Recorded!','success');}catch(e){showT('Error: '+e.message,'error');}};
+window.completeHatch=async id=>{const h=prompt('🐣 Chicks hatched?');if(h===null)return;const u=prompt('💔 Dead/unfertilized?')||'0';try{await updateDoc(doc(db,`farms/${uid}/hatching`,id),{status:'Completed',hatchedCount:parseInt(h)||0,unfertilized:parseInt(u)||0,completedDate:today()});showT(`✅ ${h} chicks!`,'success');rHatch();}catch(e){showT('Error: '+e.message,'error');}};
+window.delHatch=async id=>{if(!confirm('Delete batch?'))return;await deleteDoc(doc(db,`farms/${uid}/hatching`,id));rHatch();showT('🗑️ Deleted');};
+window.aHatch=()=>{const sd=v('hSdt');if(sd){const d=new Date(sd);d.setDate(d.getDate()+21);sv('hEdt',d.toISOString().split('T')[0]);}};
+window.aHen=()=>{const sd=v('hnSdt');if(sd){const d=new Date(sd);d.setDate(d.getDate()+21);sv('hnEdt',d.toISOString().split('T')[0]);}};
+
+// ── VACCINATION ───────────────────────────────────────────────────
+async function rVax(){
+  const s=await getDocs(query(collection(db,`farms/${uid}/vaccinations`),orderBy('createdAt','desc')));const recs=s.docs.map(d=>({id:d.id,...d.data()}));
+  g('vtbl').innerHTML=!recs.length?emp('💉','No records yet'):`<table><thead><tr><th>Date</th><th>Pen</th><th>Vaccine</th><th>Method</th><th>Birds</th><th>Admin</th><th>Cost</th><th>Notes</th><th>Del</th></tr></thead><tbody>${recs.map(r=>`<tr><td>${r.date||'—'}</td><td>${r.penName||'—'}</td><td>${r.vaccine||'—'}</td><td>${r.method||'—'}</td><td>${r.birds||'—'}</td><td>${r.admin||'—'}</td><td>${r.cost?'R'+parseFloat(r.cost).toFixed(2):'—'}</td><td>${r.notes||''}</td><td><button class="bo sm bd" onclick="delVax('${r.id}')">🗑️</button></td></tr>`).join('')}</tbody></table>`;
+}
+window.saveVax=async()=>{const penId=v('vxPen');const d={date:v('vxDt'),penId,penName:pName(penId),vaccine:v('vxVc'),method:v('vxMt'),birds:parseInt(v('vxBrd'))||0,admin:v('vxAdm'),cost:parseFloat(v('vxCst'))||0,notes:v('vxNt'),createdAt:serverTimestamp()};try{await addDoc(collection(db,`farms/${uid}/vaccinations`),d);cM('mVax');rVax();showT('✅ Recorded!','success');}catch(e){showT('Error: '+e.message,'error');}};
+window.delVax=async id=>{if(!confirm('Delete?'))return;await deleteDoc(doc(db,`farms/${uid}/vaccinations`,id));rVax();showT('🗑️ Deleted');};
+
+// ── FEED LOGS ─────────────────────────────────────────────────────
+async function rFeed(){
+  const s=await getDocs(query(collection(db,`farms/${uid}/feedLogs`),orderBy('createdAt','desc')));const logs=s.docs.map(d=>({id:d.id,...d.data()}));
+  g('ftbl').innerHTML=!logs.length?emp('🌾','No feed logs yet'):`<table><thead><tr><th>Date</th><th>Pen</th><th>Type</th><th>kg</th><th>Cost/kg</th><th>Total</th><th>Birds</th><th>Del</th></tr></thead><tbody>${logs.map(l=>`<tr><td>${l.date||'—'}</td><td>${l.penName||'—'}</td><td>${l.feedType||'—'}</td><td>${l.kg||'—'}</td><td>${l.costKg?'R'+parseFloat(l.costKg).toFixed(2):'—'}</td><td>${l.costKg&&l.kg?'R'+(l.kg*l.costKg).toFixed(2):'—'}</td><td>${l.birds||'—'}</td><td><button class="bo sm bd" onclick="delFeed('${l.id}')">🗑️</button></td></tr>`).join('')}</tbody></table>`;
+}
+window.saveFeed=async()=>{const penId=v('fdPen');const d={date:v('fdDt'),penId,penName:pName(penId),feedType:v('fdTyp'),kg:parseFloat(v('fdKg'))||0,costKg:parseFloat(v('fdCk'))||0,birds:parseInt(v('fdBrd'))||0,notes:v('fdNt'),createdAt:serverTimestamp()};try{await addDoc(collection(db,`farms/${uid}/feedLogs`),d);cM('mFeed');rFeed();showT('✅ Logged!','success');}catch(e){showT('Error: '+e.message,'error');}};
+window.delFeed=async id=>{if(!confirm('Delete?'))return;await deleteDoc(doc(db,`farms/${uid}/feedLogs`,id));rFeed();showT('🗑️ Deleted');};
+
+// ── SALES ─────────────────────────────────────────────────────────
+async function rSales(){
+  const[ss,ps,ds]=await Promise.all([getDocs(query(collection(db,`farms/${uid}/sales`),orderBy('createdAt','desc'))),getDocs(query(collection(db,`farms/${uid}/purchases`),orderBy('createdAt','desc'))),getDocs(query(collection(db,`farms/${uid}/deaths`),orderBy('createdAt','desc')))]);
+  const sales=ss.docs.map(d=>({id:d.id,_t:'sale',...d.data()})),purcs=ps.docs.map(d=>({id:d.id,_t:'purchase',...d.data()})),deaths=ds.docs.map(d=>({id:d.id,_t:'death',...d.data()}));
+  const rev=sales.reduce((s,r)=>s+((r.qty||0)*(r.price||0)),0),cost=purcs.reduce((s,r)=>s+((r.qty||0)*(r.cost||0)),0),loss=deaths.reduce((s,r)=>s+((r.qty||1)*(r.val||0)),0);
+  g('regsum').innerHTML=`<div class="es"><div class="esv" style="color:var(--accent)">R${rev.toFixed(2)}</div><div class="esl">💰 Revenue</div></div><div class="es"><div class="esv" style="color:var(--red)">R${cost.toFixed(2)}</div><div class="esl">🛒 Purchases</div></div><div class="es"><div class="esv" style="color:${rev-cost>=0?'var(--accent)':'var(--red)'}">R${(rev-cost).toFixed(2)}</div><div class="esl">📈 Net P/L</div></div><div class="es"><div class="esv" style="color:var(--orange)">R${loss.toFixed(2)}</div><div class="esl">💀 Loss</div></div>`;
+  const all=[...sales,...purcs,...deaths].sort((a,b)=>b.date>a.date?1:-1);
+  g('stbl').innerHTML=!all.length?emp('💰','No transactions yet'):`<table><thead><tr><th>Date</th><th>Type</th><th>Item</th><th>Qty</th><th>Price</th><th>Total</th><th>Party</th><th>Pen</th><th>Del</th></tr></thead><tbody>${all.map(r=>{
+    const iS=r._t==='sale',iP=r._t==='purchase';const badge=iS?'s-sale':iP?'s-purchase':'s-death';const lbl=iS?'SALE':iP?'PURCHASE':'DEATH';
+    const tot=iS?((r.qty||0)*(r.price||0)).toFixed(2):iP?((r.qty||0)*(r.cost||0)).toFixed(2):((r.qty||1)*(r.val||0)).toFixed(2);
+    const pr=iS?r.price:iP?r.cost:r.val;const party=iS?r.buyer:iP?r.supplier:r.cause;
+    return`<tr><td>${r.date||'—'}</td><td><span class="sbg ${badge}">${lbl}</span></td><td>${iS?r.saleType:iP?r.purchType:r.breed||'—'}</td><td>${r.qty??1}</td><td>R${parseFloat(pr||0).toFixed(2)}</td><td>R${tot}</td><td>${party||'—'}</td><td>${pens.find(p=>p.id===r.penId)?.name||r.penName||'—'}</td><td><button class="bo sm bd" onclick="delTx('${r.id}','${r._t}')">🗑️</button></td></tr>`;
+  }).join('')}</tbody></table>`;
+}
+window.saveSale=async()=>{const penId=v('slPen');const d={date:v('slDt'),saleType:v('slTyp'),breed:v('slBrd'),qty:parseInt(v('slQty'))||0,price:parseFloat(v('slPrc'))||0,buyer:v('slByr'),penId,penName:pName(penId),notes:v('slNt'),createdAt:serverTimestamp()};try{await addDoc(collection(db,`farms/${uid}/sales`),d);cM('mSale');rSales();rDash();showT('✅ Sale recorded!','success');}catch(e){showT('Error: '+e.message,'error');}};
+window.savePurch=async()=>{const d={date:v('puDt'),purchType:v('puTyp'),breed:v('puBrd'),qty:parseInt(v('puQty'))||0,cost:parseFloat(v('puCst'))||0,supplier:v('puSup'),notes:v('puNt'),createdAt:serverTimestamp()};try{await addDoc(collection(db,`farms/${uid}/purchases`),d);cM('mPurch');rSales();rDash();showT('✅ Recorded!','success');}catch(e){showT('Error: '+e.message,'error');}};
+window.saveDeath=async()=>{const penId=v('dtPen'),tag=v('dtTag');const d={date:v('dtDt'),penId,penName:pName(penId),tag,qty:parseInt(v('dtQty'))||1,breed:v('dtBrd'),cause:v('dtCause'),val:parseFloat(v('dtVal'))||0,notes:v('dtNt'),createdAt:serverTimestamp()};try{await addDoc(collection(db,`farms/${uid}/deaths`),d);if(tag){const ch=chicks.find(x=>x.tag===tag);if(ch){await updateDoc(doc(db,`farms/${uid}/chickens`,ch.id),{stage:'Deceased'});ch.stage='Deceased';}}cM('mDeath');rSales();rDash();showT('✅ Recorded','success');}catch(e){showT('Error: '+e.message,'error');}};
+window.delTx=async(id,type)=>{if(!confirm('Delete?'))return;await deleteDoc(doc(db,`farms/${uid}/${{sale:'sales',purchase:'purchases',death:'deaths'}[type]}`,id));rSales();showT('🗑️ Deleted');};
+
+// ── REPORTS ───────────────────────────────────────────────────────
+window.genRep=async()=>{
+  const from=v('rFrom'),to=v('rTo'),type=v('rTyp');const c=g('rout');c.innerHTML='<div class="rph">⏳ Generating...</div>';
+  const inR=d=>{if(!d)return true;if(from&&d<from)return false;if(to&&d>to)return false;return true;};
+  try{
+    let h=`<div class="rsec"><h3>📋 LovCon Farm Report</h3><p style="color:var(--t2);font-size:11px">Period: ${from||'All time'} → ${to||'Today'} | ${new Date().toLocaleString('en-ZA')}</p></div>`;
+    const ac=chicks.filter(c=>!['Sold','Deceased'].includes(c.stage));
+    h+=`<div class="rsec"><h3>🐔 Flock</h3><table><thead><tr><th>Stage</th><th>Count</th></tr></thead><tbody>${['Chick','Grower','Layer','Breeder'].map(st=>`<tr><td>${st}</td><td>${ac.filter(c=>c.stage===st).reduce((s,c)=>s+(c.qty||1),0)}</td></tr>`).join('')}<tr><td><b>Total Active</b></td><td><b>${ac.reduce((s,c)=>s+(c.qty||1),0)}</b></td></tr></tbody></table></div>`;
+    if(['overview','eggs'].includes(type)){const s=await getDocs(collection(db,`farms/${uid}/eggs`));const eggs=s.docs.map(d=>d.data()).filter(e=>inR(e.date));const tot=eggs.reduce((s,e)=>s+(e.qty||0),0),rev=eggs.filter(e=>e.purpose==='Selling').reduce((s,e)=>s+((e.qty||0)*(e.price||0)),0);h+=`<div class="rsec"><h3>🥚 Eggs</h3><table><thead><tr><th>Date</th><th>Pen</th><th>Qty</th><th>Purpose</th><th>Revenue</th></tr></thead><tbody>${eggs.map(e=>`<tr><td>${e.date}</td><td>${e.penName||'—'}</td><td>${e.qty}</td><td>${e.purpose||'—'}</td><td>${e.price?'R'+((e.qty||0)*e.price).toFixed(2):'—'}</td></tr>`).join('')}</tbody></table><p style="margin-top:6px;font-weight:700">Total: ${tot} | Revenue: R${rev.toFixed(2)}</p></div>`;}
+    if(['overview','sales'].includes(type)){const s=await getDocs(collection(db,`farms/${uid}/sales`));const sales=s.docs.map(d=>d.data()).filter(s=>inR(s.date));const tot=sales.reduce((s,r)=>s+((r.qty||0)*(r.price||0)),0);h+=`<div class="rsec"><h3>💰 Sales</h3><table><thead><tr><th>Date</th><th>Type</th><th>Qty</th><th>Price</th><th>Total</th><th>Buyer</th></tr></thead><tbody>${sales.map(s=>`<tr><td>${s.date}</td><td>${s.saleType}</td><td>${s.qty}</td><td>R${(s.price||0).toFixed(2)}</td><td>R${((s.qty||0)*(s.price||0)).toFixed(2)}</td><td>${s.buyer||'—'}</td></tr>`).join('')}</tbody></table><p style="margin-top:6px;font-weight:700">Total: R${tot.toFixed(2)}</p></div>`;}
+    if(['overview','mortality'].includes(type)){const s=await getDocs(collection(db,`farms/${uid}/deaths`));const deaths=s.docs.map(d=>d.data()).filter(d=>inR(d.date));const tot=deaths.reduce((s,d)=>s+(d.qty||1),0),loss=deaths.reduce((s,d)=>s+((d.qty||1)*(d.val||0)),0);h+=`<div class="rsec"><h3>💀 Mortality</h3><table><thead><tr><th>Date</th><th>Pen</th><th>Qty</th><th>Cause</th><th>Loss</th></tr></thead><tbody>${deaths.map(d=>`<tr><td>${d.date}</td><td>${d.penName||'—'}</td><td>${d.qty||1}</td><td>${d.cause||'—'}</td><td>R${((d.qty||1)*(d.val||0)).toFixed(2)}</td></tr>`).join('')}</tbody></table><p style="margin-top:6px;font-weight:700">Total: ${tot} birds | Loss: R${loss.toFixed(2)}</p></div>`;}
+    if(['overview','vax'].includes(type)){const s=await getDocs(collection(db,`farms/${uid}/vaccinations`));const vax=s.docs.map(d=>d.data()).filter(v=>inR(v.date));h+=`<div class="rsec"><h3>💉 Vaccinations</h3><table><thead><tr><th>Date</th><th>Pen</th><th>Vaccine</th><th>Method</th><th>Birds</th><th>Cost</th></tr></thead><tbody>${vax.map(v=>`<tr><td>${v.date}</td><td>${v.penName||'—'}</td><td>${v.vaccine}</td><td>${v.method}</td><td>${v.birds||0}</td><td>R${(v.cost||0).toFixed(2)}</td></tr>`).join('')}</tbody></table></div>`;}
+    if(['overview','feed'].includes(type)){const s=await getDocs(collection(db,`farms/${uid}/feedLogs`));const logs=s.docs.map(d=>d.data()).filter(l=>inR(l.date));const kg=logs.reduce((s,l)=>s+(l.kg||0),0),cost=logs.reduce((s,l)=>s+((l.kg||0)*(l.costKg||0)),0);h+=`<div class="rsec"><h3>🌾 Feed</h3><table><thead><tr><th>Date</th><th>Pen</th><th>Type</th><th>kg</th><th>Total Cost</th></tr></thead><tbody>${logs.map(l=>`<tr><td>${l.date}</td><td>${l.penName||'—'}</td><td>${l.feedType}</td><td>${l.kg}</td><td>R${((l.kg||0)*(l.costKg||0)).toFixed(2)}</td></tr>`).join('')}</tbody></table><p style="margin-top:6px;font-weight:700">Total: ${kg.toFixed(1)}kg | Cost: R${cost.toFixed(2)}</p></div>`;}
+    c.innerHTML=h;
+  }catch(e){c.innerHTML=`<div class="rph">❌ ${e.message}</div>`;}
+};
+
+// ── SETTINGS ──────────────────────────────────────────────────────
+async function rSettings(){
+  const s=await getDoc(doc(db,`farms/${uid}/settings/main`));
+  if(s.exists()){const d=s.data();sv('sName',d.name||'');sv('sOwner',d.owner||'');sv('sLoc',d.location||'');sv('sCon',d.contact||'');if(d.breeds)breeds=d.breeds;}
+  rBreeds();
+}
+function rBreeds(){g('breedList').innerHTML=breeds.map(b=>`<div class="bri"><span>🐔 ${b}</span><button class="bo sm bd" onclick="rmBrd('${b}')">✕</button></div>`).join('');}
+window.saveFarm=async()=>{const d={name:v('sName'),owner:v('sOwner'),location:v('sLoc'),contact:v('sCon'),breeds};try{await setDoc(doc(db,`farms/${uid}/settings/main`),d,{merge:true});showT('✅ Saved!','success');}catch(e){showT('Error: '+e.message,'error');}};
+window.addBrd=async()=>{const n=v('nBrd').trim();if(!n||breeds.includes(n))return;breeds.push(n);rBreeds();fillBreeds();sv('nBrd','');await setDoc(doc(db,`farms/${uid}/settings/main`),{breeds},{merge:true});};
+window.rmBrd=async n=>{breeds=breeds.filter(b=>b!==n);rBreeds();fillBreeds();await setDoc(doc(db,`farms/${uid}/settings/main`),{breeds},{merge:true});};
+
+// ── FILLS ─────────────────────────────────────────────────────────
+function fillPens(){
+  const opt='<option value="">— Select Pen —</option>'+pens.map(p=>`<option value="${p.id}">${p.name} (${p.type||'General'})</option>`).join('');
+  ['cPen','ePen','fdPen','vxPen','slPen','dtPen','hnPen','fPen'].forEach(id=>{const el=g(id);if(!el)return;const cur=el.value;el.innerHTML=opt;if(cur)el.value=cur;});
+}
+function fillBreeds(){
+  const opt=breeds.map(b=>`<option>${b}</option>`).join('');
+  ['cBrd','hBrd','slBrd','dtBrd','fBrd'].forEach(id=>{const el=g(id);if(!el)return;const cur=el.value;el.innerHTML=opt;if(cur)el.value=cur;});
+}
+
+// ── MODALS ────────────────────────────────────────────────────────
+window.oM=id=>{g(id).classList.remove('hidden');fillPens();fillBreeds();g(id).querySelectorAll('input[type="date"]').forEach(el=>{if(!el.value)el.value=today();});};
+window.cM=id=>g(id).classList.add('hidden');
+document.querySelectorAll('.mo').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)o.classList.add('hidden');}));
+</script>
+</body>
+</html>

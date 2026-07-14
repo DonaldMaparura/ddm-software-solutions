@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pretoria North Animal Clinic – compassionate small animal veterinary care in Pretoria North. Vaccinations, surgery, dental, emergencies & wellness for dogs and cats.">
+  <meta name="keywords" content="veterinary clinic Pretoria North, vet Pretoria, animal clinic, pet vaccinations, dog vet, cat vet, emergency vet Pretoria">
+  <meta property="og:title" content="Pretoria North Animal Clinic | Compassionate Care for Your Beloved Pets">
+  <meta property="og:description" content="Trusted small animal veterinary practice in Pretoria North. Book your appointment today.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/images/702830101_2109025989905724_3091614559316885035_n.jpg">
+  <title>Pretoria North Animal Clinic | Compassionate Care for Your Beloved Pets</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            green: { DEFAULT: '#4a9b7f', dark: '#3a7d66' },
+            blue: { DEFAULT: '#5b8fa8', dark: '#4a7589' },
+            cream: { DEFAULT: '#faf7f2', dark: '#f0ebe3' },
+            teal: { DEFAULT: '#2d8b8b', dark: '#236f6f' },
+            gold: { DEFAULT: '#c9a227', light: '#e8c84a' },
+            charcoal: '#2c3e3a',
+            slate: '#5a6b67',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/images/407384412_1391247098350287_6639627391579632721_n.jpg">
+  <link rel="apple-touch-icon" href="assets/images/407384412_1391247098350287_6639627391579632721_n.jpg">
+
+<style id="ddm-customizer-style">
+:root{--ddm-primary:#0a0a0a;--ddm-accent:#2563eb;--ddm-bg:#ffffff;--ddm-text:#111111;--ddm-font:Inter,system-ui,sans-serif}
+#ddm-preview-badge{position:fixed;z-index:2147483646;left:12px;bottom:12px;padding:8px 12px;border-radius:8px;background:#0a0a0a;color:#fff;font:600 12px/1.3 Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:min(280px,70vw)}
+.ddm-hide-section{display:none!important}
+</style>
+<script id="ddm-customizer-bridge">
+(function(){
+  var lastTheme=null;
+  var originals={};
+
+  function textOf(el){
+    return (el && (el.innerText||el.textContent)||'').replace(/\s+/g,' ').trim();
+  }
+
+  function setLeafText(el, value){
+    if(!el || !value) return;
+    if(!el.children || el.children.length===0){ el.textContent=value; return; }
+    var walker=document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var node=walker.nextNode();
+    if(node){ node.nodeValue=value; return; }
+    el.textContent=value;
+  }
+
+  function first(sel){ return document.querySelector(sel); }
+  function all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+  function stash(key, el){
+    if(!el || originals[key]!=null) return;
+    originals[key]=textOf(el);
+  }
+
+  function apply(theme){
+    if(!theme) return;
+    lastTheme=theme;
+    try{ sessionStorage.setItem('ddm-live-theme', JSON.stringify(theme)); }catch(e){}
+
+    var root=document.documentElement;
+    root.style.setProperty('--ddm-primary', theme.primaryColor||'#0a0a0a');
+    root.style.setProperty('--ddm-accent', theme.accentColor||'#2563eb');
+    root.style.setProperty('--ddm-bg', theme.bgColor||'#ffffff');
+    root.style.setProperty('--ddm-text', theme.textColor||'#111111');
+    root.style.setProperty('--ddm-font', theme.fontFamily||'Inter, system-ui, sans-serif');
+
+    var s=document.getElementById('ddm-live-style');
+    if(!s){ s=document.createElement('style'); s.id='ddm-live-style'; document.head.appendChild(s); }
+    s.textContent=[
+      'html,body{background:var(--ddm-bg)!important;color:var(--ddm-text)!important;font-family:var(--ddm-font)!important}',
+      'h1,h2,h3,h4,.logo,[class*="brand"],[class*="logo"] span,[class*="title"]{color:var(--ddm-primary)!important}',
+      'a{color:var(--ddm-accent)}',
+      'button,.btn,[class*="btn"],[class*="Btn"],[class*="cta"],[class*="Cta"],input[type="submit"],a[class*="button"]{background:var(--ddm-accent)!important;border-color:var(--ddm-accent)!important;color:#fff!important}',
+      theme.showHeader===false?'header,nav,[class*="navbar"],[class*="Navbar"],[class*="header"]:not(#ddm-preview-badge){display:none!important}':'',
+      theme.showFooter===false?'footer,[class*="footer"],[class*="Footer"]{display:none!important}':'',
+      theme.showHero===false?'[class*="hero"],[class*="Hero"],section:first-of-type{display:none!important}':'',
+      theme.showAbout===false?'[id*="about"],[class*="about"],[class*="About"]{display:none!important}':'',
+      theme.showContact===false?'[id*="contact"],[class*="contact"],[class*="Contact"]{display:none!important}':''
+    ].filter(Boolean).join('\n');
+
+    var brand=first('header a,[class*="brand"] a,[class*="logo"] a,nav a,a[class*="logo"],a[class*="brand"]');
+    stash('brand', brand);
+    if(brand && theme.bizName){
+      var brandImg=brand.querySelector('img');
+      if(brandImg && theme.logoDataUrl){ brandImg.src=theme.logoDataUrl; brandImg.alt=theme.bizName; }
+      else setLeafText(brand, theme.bizName);
+    }
+    if(theme.logoDataUrl){
+      var logoImg=first('header img, nav img, [class*="logo"] img, img[alt*="ogo" i]');
+      if(logoImg){ logoImg.src=theme.logoDataUrl; if(theme.bizName) logoImg.alt=theme.bizName; }
+    }
+
+    var h1=first('h1');
+    stash('h1', h1);
+    if(h1 && theme.headline) setLeafText(h1, theme.headline);
+
+    var heroP=first('h1 + p, [class*="hero"] p, section p, main p');
+    stash('heroP', heroP);
+    if(heroP && theme.subtext) setLeafText(heroP, theme.subtext);
+
+    if(theme.tagline){
+      var tag=first('[class*="tagline"],[class*="subtitle"], header p, nav p');
+      stash('tag', tag);
+      if(tag) setLeafText(tag, theme.tagline);
+    }
+
+    if(theme.ctaLabel){
+      var cta=first('a.btn, a[class*="btn"], button, [class*="cta"] a, [class*="hero"] a, [class*="Hero"] a');
+      stash('cta', cta);
+      if(cta) setLeafText(cta, theme.ctaLabel);
+    }
+
+    if(theme.aboutText){
+      var about=first('#about p, [id*="about"] p, [class*="about"] p, [class*="About"] p');
+      stash('about', about);
+      if(about) setLeafText(about, theme.aboutText);
+    }
+
+    if(theme.navLabels){
+      var labels=theme.navLabels.split(',').map(function(x){return x.trim();}).filter(Boolean);
+      var links=all('header nav a, nav a, [class*="nav"] a').filter(function(a){
+        return textOf(a) && textOf(a).length<28 && !a.querySelector('img');
+      }).slice(0, labels.length);
+      links.forEach(function(a,i){ if(labels[i]) setLeafText(a, labels[i]); });
+    }
+
+    if(theme.phone){
+      all('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+theme.phone.replace(/\s+/g,''); setLeafText(a, theme.phone); });
+    }
+    if(theme.email){
+      all('a[href^="mailto:"]').forEach(function(a){ a.href='mailto:'+theme.email; setLeafText(a, theme.email); });
+    }
+
+    var badge=document.getElementById('ddm-preview-badge');
+    if(!badge){
+      badge=document.createElement('div');
+      badge.id='ddm-preview-badge';
+      document.body.appendChild(badge);
+    }
+    badge.textContent='Previewing edits · '+(theme.bizName||'Your brand');
+  }
+
+  window.addEventListener('message', function(e){
+    if(!e.data || e.data.type!=='ddm-theme') return;
+    apply(e.data.theme||{});
+  });
+
+  try{
+    var stored=sessionStorage.getItem('ddm-live-theme');
+    if(stored) apply(JSON.parse(stored));
+  }catch(e){}
+
+  setInterval(function(){
+    if(lastTheme) apply(lastTheme);
+  }, 1500);
+
+  try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  document.addEventListener('DOMContentLoaded', function(){
+    try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  });
+})();
+</script></head>
+<body>
+
+  <!-- Emergency Banner -->
+  <div class="emergency-banner text-white text-center py-2 px-4 text-sm font-semibold tracking-wide">
+    🚨 Pet Emergency? Call us immediately:
+    <a href="tel:0125655485" class="underline hover:text-gold-light ml-1">012 565 5485</a>
+    <span class="mx-2 hidden sm:inline">|</span>
+    <a href="tel:0762073640" class="underline hover:text-gold-light">076 207 3640</a>
+  </div>
+
+  <!-- Navbar -->
+  <nav id="navbar" class="navbar-scrolled fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg shadow-sm" style="top: 36px;" data-always-solid="true">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <img src="assets/images/407384412_1391247098350287_6639627391579632721_n.jpg" alt="Pretoria North Animal Clinic" class="h-11 w-11 rounded-full object-cover shadow-lg group-hover:scale-105 transition-transform">
+          <div class="hidden sm:block">
+            <div class="font-display text-lg text-charcoal leading-tight">Pretoria North</div>
+            <div class="text-xs text-slate font-medium tracking-wider uppercase">Animal Clinic</div>
+          </div>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="index.html" class="nav-link text-charcoal hover:text-teal font-medium text-sm">Home</a>
+          <a href="about.html" class="nav-link text-charcoal hover:text-teal font-medium text-sm">About Us</a>
+          <a href="services.html" class="nav-link text-charcoal hover:text-teal font-medium text-sm">Services</a>
+          <a href="shop.html" class="nav-link text-charcoal hover:text-teal font-medium text-sm">Shop</a>
+          <a href="blog.html" class="nav-link text-charcoal hover:text-teal font-medium text-sm">Pet Care Tips</a>
+          <a href="contact.html" class="nav-link text-charcoal hover:text-teal font-medium text-sm">Contact</a>
+          <a href="contact.html#book" class="btn-gold px-6 py-2.5 rounded-full text-sm font-bold">Book Now</a>
+        </div>
+
+        <button id="mobile-toggle" class="lg:hidden text-charcoal p-2" aria-label="Open menu">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu fixed inset-0 z-[60] bg-charcoal/98 backdrop-blur-lg lg:hidden">
+    <div class="flex flex-col h-full p-8">
+      <div class="flex justify-between items-center mb-12">
+        <div class="font-display text-2xl text-white">Pretoria North Animal Clinic</div>
+        <button id="mobile-close" class="text-white p-2" aria-label="Close menu">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="flex flex-col gap-6 text-xl">
+        <a href="index.html" class="text-white hover:text-gold transition-colors">Home</a>
+        <a href="about.html" class="text-white hover:text-gold transition-colors">About Us</a>
+        <a href="services.html" class="text-white hover:text-gold transition-colors">Services</a>
+        <a href="shop.html" class="text-white hover:text-gold transition-colors">Shop</a>
+        <a href="blog.html" class="text-white hover:text-gold transition-colors">Pet Care Tips</a>
+        <a href="contact.html" class="text-white hover:text-gold transition-colors">Contact</a>
+        <a href="contact.html#book" class="btn-gold px-8 py-4 rounded-full text-center font-bold mt-4">Book Appointment</a>
+      </div>
+      <div class="mt-auto text-white/60 text-sm">
+        <p>📞 012 565 5485</p>
+        <p class="mt-1">📍 566 Rachel De Beer St, Pretoria North</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Carousel -->
+  <section id="hero-carousel" class="hero-carousel relative">
+    <!-- Slide 1 -->
+    <div class="hero-slide active">
+      <div class="hero-slide-media"><img class="hero-slide-img" src="assets/images/702830101_2109025989905724_3091614559316885035_n.jpg" alt="Happy dogs at Pretoria North Animal Clinic"></div>
+      <div class="hero-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 flex items-end sm:items-center pb-28 sm:pb-0 pt-20 sm:pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full hero-content">
+          <span class="inline-block bg-gold/90 text-charcoal text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 sm:mb-6">Pretoria North's Trusted Vet</span>
+          <h1 class="font-display text-3xl sm:text-5xl lg:text-7xl text-white leading-tight max-w-3xl">Compassionate Care for Your Beloved Pets</h1>
+          <p class="text-white/85 text-base sm:text-xl mt-4 sm:mt-6 max-w-xl leading-relaxed">We treat every patient like family — with gentle hands, expert care, and hearts full of love for animals.</p>
+          <div class="flex flex-wrap gap-3 sm:gap-4 mt-6 sm:mt-10">
+            <a href="contact.html#book" class="btn-gold px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-base inline-flex items-center gap-2">Book Appointment Now <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+            <a href="tel:0125655485" class="btn-outline px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-base">Call 012 565 5485</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 2 - Clinic exterior -->
+    <div class="hero-slide">
+      <div class="hero-slide-media"><img class="hero-slide-img" src="assets/images/491353399_1766179400857053_4990804816190999886_n.jpg" alt="Pretoria North Animal Clinic building exterior"></div>
+      <div class="hero-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 flex items-end sm:items-center pb-28 sm:pb-0 pt-20 sm:pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full hero-content">
+          <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl text-white leading-tight max-w-3xl">Visit Us on Rachel De Beer Street</h2>
+          <p class="text-white/85 text-base sm:text-xl mt-4 sm:mt-6 max-w-xl">566 Rachel De Beer St, Pretoria North — easy to find with parking right outside.</p>
+          <a href="contact.html" class="btn-gold px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-base inline-flex items-center gap-2 mt-6 sm:mt-10">Get Directions</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="hero-slide">
+      <div class="hero-slide-media"><img class="hero-slide-img img-contain" src="assets/images/654286796_2052245025583821_8861179355404795577_n.jpg" alt="Happy patient at Pretoria North Animal Clinic"></div>
+      <div class="hero-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 flex items-end sm:items-center pb-28 sm:pb-0 pt-20 sm:pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full hero-content">
+          <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl text-white leading-tight max-w-3xl">Expert Veterinary Care You Can Trust</h2>
+          <p class="text-white/85 text-base sm:text-xl mt-4 sm:mt-6 max-w-xl">From routine check-ups to complex surgery — our experienced team is here for every stage of your pet's life.</p>
+          <a href="services.html" class="btn-gold px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-base inline-flex items-center gap-2 mt-6 sm:mt-10">Explore Our Services</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="hero-slide">
+      <div class="hero-slide-media"><img class="hero-slide-img img-contain" src="assets/images/656072438_2057565825051741_6994652690114905236_n.jpg" alt="Adorable puppy — preventive care and vaccinations"></div>
+      <div class="hero-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 flex items-end sm:items-center pb-28 sm:pb-0 pt-20 sm:pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full hero-content">
+          <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl text-white leading-tight max-w-3xl">Prevention Is the Best Medicine</h2>
+          <p class="text-white/85 text-base sm:text-xl mt-4 sm:mt-6 max-w-xl">Vaccinations, wellness exams, and dental care to keep your pets healthy, happy, and thriving.</p>
+          <a href="contact.html#book" class="btn-gold px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-base inline-flex items-center gap-2 mt-6 sm:mt-10">Book Appointment Now</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="hero-slide">
+      <div class="hero-slide-media"><img class="hero-slide-img" src="assets/images/651135360_2049078605900463_2481504734155672226_n.jpg" alt="Pretoria North Animal Clinic pet nutrition shop"></div>
+      <div class="hero-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 flex items-end sm:items-center pb-28 sm:pb-0 pt-20 sm:pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full hero-content">
+          <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl text-white leading-tight max-w-3xl">Premium Pet Nutrition In-Store</h2>
+          <p class="text-white/85 text-base sm:text-xl mt-4 sm:mt-6 max-w-xl">Montego, Royal Canin, Hill's and more — expert advice on the best food for your pet.</p>
+          <a href="services.html" class="btn-outline px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-base inline-flex items-center gap-2 mt-6 sm:mt-10">View Services</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide 6 -->
+    <div class="hero-slide">
+      <div class="hero-slide-media"><img class="hero-slide-img img-contain" src="assets/images/650835154_2047214716086852_3293739556964125825_n.jpg" alt="Gentle veterinary examination"></div>
+      <div class="hero-overlay absolute inset-0"></div>
+      <div class="absolute inset-0 flex items-end sm:items-center pb-28 sm:pb-0 pt-20 sm:pt-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full hero-content">
+          <h2 class="font-display text-3xl sm:text-5xl lg:text-6xl text-white leading-tight max-w-3xl">Emergency Care When It Matters Most</h2>
+          <p class="text-white/85 text-base sm:text-xl mt-4 sm:mt-6 max-w-xl">When your pet needs urgent attention, we're here. Call us immediately — every moment counts.</p>
+          <a href="tel:0762073640" class="btn-gold px-6 sm:px-8 py-3 sm:py-4 rounded-full font-bold text-sm sm:text-base inline-flex items-center gap-2 mt-6 sm:mt-10">Emergency: 076 207 3640</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carousel Controls -->
+    <div class="hero-carousel-controls absolute left-1/2 -translate-x-1/2 z-10 flex items-center gap-2 sm:gap-3">
+      <button id="carousel-prev" class="carousel-btn w-10 h-10 rounded-full flex items-center justify-center text-white" aria-label="Previous slide">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+      </button>
+      <div class="flex gap-2 mx-2">
+        <button class="carousel-dot active" aria-label="Slide 1"></button>
+        <button class="carousel-dot" aria-label="Slide 2"></button>
+        <button class="carousel-dot" aria-label="Slide 3"></button>
+        <button class="carousel-dot" aria-label="Slide 4"></button>
+        <button class="carousel-dot" aria-label="Slide 5"></button>
+        <button class="carousel-dot" aria-label="Slide 6"></button>
+      </div>
+      <button id="carousel-next" class="carousel-btn w-10 h-10 rounded-full flex items-center justify-center text-white" aria-label="Next slide">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+      </button>
+      <button id="carousel-pause" class="carousel-btn w-10 h-10 rounded-full flex items-center justify-center text-white ml-1" aria-label="Pause slideshow" aria-pressed="false">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+      </button>
+    </div>
+  </section>
+
+  <!-- Trust Bar -->
+  <section class="bg-white py-8 border-b border-cream-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="trust-badge reveal">
+          <div class="stat-number text-3xl sm:text-4xl font-extrabold">15+</div>
+          <div class="text-slate text-sm mt-1 font-medium">Years of Experience</div>
+        </div>
+        <div class="trust-badge reveal" style="transition-delay: 0.1s">
+          <div class="stat-number text-3xl sm:text-4xl font-extrabold">2</div>
+          <div class="text-slate text-sm mt-1 font-medium">Dedicated Veterinarians</div>
+        </div>
+        <div class="trust-badge reveal" style="transition-delay: 0.2s">
+          <div class="stat-number text-3xl sm:text-4xl font-extrabold">5k+</div>
+          <div class="text-slate text-sm mt-1 font-medium">Pets Cared For</div>
+        </div>
+        <div class="trust-badge reveal" style="transition-delay: 0.3s">
+          <div class="stat-number text-3xl sm:text-4xl font-extrabold">100%</div>
+          <div class="text-slate text-sm mt-1 font-medium">Compassionate Care</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <span class="text-teal font-bold text-sm uppercase tracking-widest">Our Services</span>
+        <h2 class="font-display text-4xl lg:text-5xl text-charcoal mt-3">Complete Care for Dogs & Cats</h2>
+        <p class="text-slate mt-4 text-lg">From preventive wellness to advanced surgical procedures — we offer comprehensive veterinary services under one roof.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div class="service-card bg-cream rounded-3xl p-8 reveal">
+          <div class="icon-wrap w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm">
+            <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Preventive Care & Vaccinations</h3>
+          <p class="text-slate text-sm leading-relaxed">Annual wellness exams, puppy & kitten vaccinations, parasite prevention, and health screenings to keep your pet protected.</p>
+        </div>
+
+        <div class="service-card bg-cream rounded-3xl p-8 reveal" style="transition-delay: 0.1s">
+          <div class="icon-wrap w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm">
+            <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          </div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Surgery & Procedures</h3>
+          <p class="text-slate text-sm leading-relaxed">Spay and neuter, soft tissue surgery, wound care, and post-operative monitoring in a safe, sterile environment.</p>
+        </div>
+
+        <div class="service-card bg-cream rounded-3xl p-8 reveal" style="transition-delay: 0.2s">
+          <div class="icon-wrap w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm">
+            <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+          </div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Emergency Care</h3>
+          <p class="text-slate text-sm leading-relaxed">Urgent medical attention when your pet needs it most. Call us immediately for emergency situations.</p>
+        </div>
+
+        <div class="service-card bg-cream rounded-3xl p-8 reveal" style="transition-delay: 0.3s">
+          <div class="icon-wrap w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm">
+            <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Dental Care</h3>
+          <p class="text-slate text-sm leading-relaxed">Professional dental cleanings, extractions, and oral health assessments to prevent pain and disease.</p>
+        </div>
+
+        <div class="service-card bg-cream rounded-3xl p-8 reveal" style="transition-delay: 0.4s">
+          <div class="icon-wrap w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm">
+            <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+          </div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Wellness & Nutrition</h3>
+          <p class="text-slate text-sm leading-relaxed">Weight management, senior pet care, dietary advice, and holistic wellness plans tailored to your pet.</p>
+        </div>
+
+        <div class="service-card bg-cream rounded-3xl p-8 reveal" style="transition-delay: 0.5s">
+          <div class="icon-wrap w-14 h-14 rounded-2xl bg-white flex items-center justify-center mb-6 shadow-sm">
+            <svg class="w-7 h-7 text-teal" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+          </div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Pet Advice & Consultations</h3>
+          <p class="text-slate text-sm leading-relaxed">Behaviour guidance, new pet consultations, and ongoing support — we're always happy to answer your questions.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="services.html" class="btn-primary px-10 py-4 rounded-full font-bold inline-flex items-center gap-2">View All Services <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pet Food Shop -->
+  <section id="shop" class="py-20 lg:py-28 bg-cream relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <span class="text-teal font-bold text-sm uppercase tracking-widest">In-Clinic Shop</span>
+        <h2 class="font-display text-4xl lg:text-5xl text-charcoal mt-3">Shop for Premium Pet Food</h2>
+        <p class="text-slate mt-4 text-lg">Ultra Pet, Montego, Royal Canin, Hill's and more — with expert nutrition advice from our veterinarians.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div class="service-card bg-white rounded-3xl p-8 reveal">
+          <div class="h-40 rounded-2xl bg-cream flex items-center justify-center p-4 mb-6 shadow-sm">
+            <img src="assets/images/579791215_1948301585978166_777565346767803494_n.jpg" alt="Ultra Pet Premium Recipe" class="max-h-full max-w-full object-contain">
+          </div>
+          <p class="text-teal text-xs font-bold uppercase tracking-wide mb-1">Ultra Pet</p>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Premium Recipe</h3>
+          <p class="text-slate text-sm leading-relaxed">28% Protein · 3 kg — high-protein premium recipe for adult dogs with everyday vitality.</p>
+        </div>
+
+        <div class="service-card bg-white rounded-3xl p-8 reveal" style="transition-delay: 0.1s">
+          <div class="h-40 rounded-2xl bg-cream flex items-center justify-center p-4 mb-6 shadow-sm">
+            <img src="assets/images/581099555_1948301165978208_3745566668474130289_n.jpg" alt="Ultra Pet Super Woof Large Puppy" class="max-h-full max-w-full object-contain">
+          </div>
+          <p class="text-teal text-xs font-bold uppercase tracking-wide mb-1">Ultra Pet</p>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Super Woof Large Puppy</h3>
+          <p class="text-slate text-sm leading-relaxed">Chicken & Rice · 3 kg — formulated for large breed puppies with 28% protein.</p>
+        </div>
+
+        <div class="service-card bg-white rounded-3xl p-8 reveal" style="transition-delay: 0.2s">
+          <div class="h-40 rounded-2xl bg-cream flex items-center justify-center p-4 mb-6 shadow-sm">
+            <img src="assets/images/582009356_1948301262644865_6211547220828036077_n.jpg" alt="Ultra Pet Super Woof Large Adult" class="max-h-full max-w-full object-contain">
+          </div>
+          <p class="text-teal text-xs font-bold uppercase tracking-wide mb-1">Ultra Pet</p>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Super Woof Large Adult</h3>
+          <p class="text-slate text-sm leading-relaxed">Chicken & Rice · 8 kg — large breed adult formula with joint and mobility support.</p>
+        </div>
+
+        <div class="service-card bg-white rounded-3xl p-8 reveal" style="transition-delay: 0.3s">
+          <div class="h-40 rounded-2xl bg-cream flex items-center justify-center p-4 mb-6 shadow-sm">
+            <img src="assets/images/582210201_1948301702644821_3109705566475340718_n.jpg" alt="Ultra Pet Special Diet GI Care" class="max-h-full max-w-full object-contain">
+          </div>
+          <p class="text-teal text-xs font-bold uppercase tracking-wide mb-1">Ultra Pet</p>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Special Diet GI Care</h3>
+          <p class="text-slate text-sm leading-relaxed">Dogs & Cats · 750 g — veterinary diet for pets with digestive sensitivities.</p>
+        </div>
+
+        <div class="service-card bg-white rounded-3xl p-8 reveal" style="transition-delay: 0.4s">
+          <div class="h-40 rounded-2xl bg-cream flex items-center justify-center p-4 mb-6 shadow-sm">
+            <img src="assets/images/582219058_1948301409311517_6517054372847894076_n.jpg" alt="Ultra Pet Premium Recipe Maize Free" class="max-h-full max-w-full object-contain">
+          </div>
+          <p class="text-teal text-xs font-bold uppercase tracking-wide mb-1">Ultra Pet</p>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Premium Recipe Maize Free</h3>
+          <p class="text-slate text-sm leading-relaxed">30% Protein · 8 kg — maize-free formula for active adult dogs.</p>
+        </div>
+
+        <div class="service-card bg-white rounded-3xl p-8 reveal" style="transition-delay: 0.5s">
+          <div class="h-40 rounded-2xl bg-cream flex items-center justify-center p-4 mb-6 shadow-sm">
+            <img src="assets/images/583300853_1948301519311506_2097414901231928398_n.jpg" alt="Ultra Pet Premium Recipe High Protein" class="max-h-full max-w-full object-contain">
+          </div>
+          <p class="text-teal text-xs font-bold uppercase tracking-wide mb-1">Ultra Pet</p>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Premium Recipe High Protein</h3>
+          <p class="text-slate text-sm leading-relaxed">28% Protein · 8 kg — high protein premium recipe in a value bag.</p>
+        </div>
+      </div>
+
+      <div class="text-center mt-12 reveal">
+        <a href="shop.html" class="btn-primary px-10 py-4 rounded-full font-bold inline-flex items-center gap-2">View Full Shop <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 lg:py-28 bg-cream relative overflow-hidden">
+    <div class="paw-decoration top-10 right-10 text-9xl">🐾</div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal-left">
+          <span class="text-teal font-bold text-sm uppercase tracking-widest">About Us</span>
+          <h2 class="font-display text-4xl lg:text-5xl text-charcoal mt-3 leading-tight">Your Neighbourhood Veterinary Family</h2>
+          <p class="text-slate mt-6 text-lg leading-relaxed">Welcome to Pretoria North Animal Clinic — a dedicated two-veterinarian small animal practice serving the Pretoria North community, including Heatherdale and the Rachel De Beer area.</p>
+          <p class="text-slate mt-4 leading-relaxed">We believe every pet deserves personalised, compassionate care. Whether it's a routine wellness check, a vaccination, dental work, or an emergency — we're here with expertise, empathy, and a genuine love for animals.</p>
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a href="about.html" class="btn-primary px-8 py-3.5 rounded-full font-bold text-sm">Meet Our Team</a>
+            <a href="contact.html#book" class="border-2 border-teal text-teal px-8 py-3.5 rounded-full font-bold text-sm hover:bg-teal hover:text-white transition-all">Book a Visit</a>
+          </div>
+        </div>
+        <div class="reveal-right relative">
+          <div class="rounded-3xl overflow-hidden shadow-2xl">
+            <img src="assets/images/491353399_1766179400857053_4990804816190999886_n.jpg" alt="Pretoria North Animal Clinic building exterior" class="w-full h-[320px] sm:h-[420px] lg:h-[480px] object-cover object-center">
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-6 max-w-xs hidden sm:block">
+            <div class="flex items-center gap-3">
+              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-teal to-green flex items-center justify-center text-white text-xl">❤️</div>
+              <div>
+                <div class="font-bold text-charcoal">We treat your pets</div>
+                <div class="text-teal font-display text-lg">like our own family</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="py-20 lg:py-28 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <span class="text-teal font-bold text-sm uppercase tracking-widest">Gallery</span>
+        <h2 class="font-display text-4xl lg:text-5xl text-charcoal mt-3">Moments We Treasure</h2>
+        <p class="text-slate mt-4">Happy pets, caring moments, and life at our clinic.</p>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-16">
+        <div class="gallery-item rounded-2xl relative aspect-square reveal">
+          <img src="assets/images/702830101_2109025989905724_3091614559316885035_n.jpg" alt="Happy dog patients" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Happy Patients</span></div>
+        </div>
+        <div class="gallery-item rounded-2xl relative aspect-square reveal" style="transition-delay: 0.05s">
+          <img src="assets/images/715472116_2123300611811595_978338223717607456_n.jpg" alt="Sleeping kittens" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Gentle Care</span></div>
+        </div>
+        <div class="gallery-item rounded-2xl relative aspect-square reveal" style="transition-delay: 0.1s">
+          <img src="assets/images/651135360_2049078605900463_2481504734155672226_n.jpg" alt="Our clinic pet shop" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Our Clinic</span></div>
+        </div>
+        <div class="gallery-item rounded-2xl relative aspect-square reveal" style="transition-delay: 0.15s">
+          <img src="assets/images/677700411_2082564839218506_919984147756586857_n.jpg" alt="Bulldog puppies" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Puppy Love</span></div>
+        </div>
+        <div class="gallery-item rounded-2xl relative aspect-square reveal" style="transition-delay: 0.2s">
+          <img src="assets/images/668072364_2073196123488711_1509554818823702304_n.jpg" alt="Cat hugging owner" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Family Moments</span></div>
+        </div>
+        <div class="gallery-item rounded-2xl relative aspect-square reveal" style="transition-delay: 0.25s">
+          <img src="assets/images/650835154_2047214716086852_3293739556964125825_n.jpg" alt="Veterinary examination" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Expert Care</span></div>
+        </div>
+        <div class="gallery-item rounded-2xl relative aspect-square reveal" style="transition-delay: 0.3s">
+          <img src="assets/images/699491105_2103542720454051_3331195482804747179_n.jpg" alt="Chihuahua patients" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Small Breed Care</span></div>
+        </div>
+        <div class="gallery-item rounded-2xl relative aspect-square reveal" style="transition-delay: 0.35s">
+          <img src="assets/images/658706349_2062184347923222_5852414978620629427_n.jpg" alt="Happy ginger cat" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Feline Friends</span></div>
+        </div>
+        <div class="gallery-item rounded-2xl relative aspect-square reveal" style="transition-delay: 0.4s">
+          <img src="assets/images/686489259_2091215078353482_4909110243392911959_n.jpg" alt="Happy white dog" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Joyful Moments</span></div>
+        </div>
+        <div class="gallery-item rounded-2xl relative aspect-square reveal" style="transition-delay: 0.45s">
+          <img src="assets/images/643574167_2037203127088011_5078298491397674881_n.jpg" alt="German Shepherd patient" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Large Breed Care</span></div>
+        </div>
+        <div class="gallery-item rounded-2xl relative aspect-square reveal" style="transition-delay: 0.5s">
+          <img src="assets/images/662573329_2069114527230204_8938836189841697339_n.jpg" alt="Dog and cat together" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Dogs & Cats</span></div>
+        </div>
+        <div class="gallery-item rounded-2xl relative aspect-square reveal" style="transition-delay: 0.55s">
+          <img src="assets/images/706298170_2110857083055948_8850677843753252862_n.jpg" alt="Cockatiel bird care" class="w-full h-full object-cover rounded-2xl">
+          <div class="gallery-overlay absolute inset-0 rounded-2xl flex items-end p-4"><span class="text-white text-sm font-medium">Avian Care</span></div>
+        </div>
+      </div>
+
+      <div class="text-center mt-10 reveal">
+        <a href="https://www.facebook.com/PretoriaNorthVet" target="_blank" rel="noopener" class="text-teal font-semibold hover:underline inline-flex items-center gap-2">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          See more on our Facebook page
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Why Choose Us -->
+  <section id="why-us" class="py-20 lg:py-28 bg-gradient-to-br from-teal-dark to-charcoal text-white relative overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <span class="text-gold font-bold text-sm uppercase tracking-widest">Why Choose Us</span>
+        <h2 class="font-display text-4xl lg:text-5xl mt-3">The Pretoria North Difference</h2>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+        <div class="text-center reveal">
+          <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-5 text-3xl">🤝</div>
+          <h3 class="font-bold text-lg mb-2">Personalised Attention</h3>
+          <p class="text-white/70 text-sm leading-relaxed">As a boutique practice, we know you and your pets by name — never just a number.</p>
+        </div>
+        <div class="text-center reveal" style="transition-delay: 0.1s">
+          <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-5 text-3xl">🏥</div>
+          <h3 class="font-bold text-lg mb-2">Modern Facilities</h3>
+          <p class="text-white/70 text-sm leading-relaxed">Clean, well-equipped clinic with everything needed for quality diagnosis and treatment.</p>
+        </div>
+        <div class="text-center reveal" style="transition-delay: 0.2s">
+          <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-5 text-3xl">💚</div>
+          <h3 class="font-bold text-lg mb-2">Gentle Handling</h3>
+          <p class="text-white/70 text-sm leading-relaxed">We use fear-free techniques to make every visit as stress-free as possible for your pet.</p>
+        </div>
+        <div class="text-center reveal" style="transition-delay: 0.3s">
+          <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-5 text-3xl">📍</div>
+          <h3 class="font-bold text-lg mb-2">Convenient Location</h3>
+          <p class="text-white/70 text-sm leading-relaxed">Easy to find on Rachel De Beer Street with ample parking for your convenience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="py-20 lg:py-28 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <span class="text-teal font-bold text-sm uppercase tracking-widest">Client Stories</span>
+        <h2 class="font-display text-4xl lg:text-5xl text-charcoal mt-3">What Pet Parents Say</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8 mt-16">
+        <div class="testimonial-card bg-white rounded-3xl p-8 shadow-sm reveal">
+          <div class="flex text-gold mb-4">★★★★★</div>
+          <p class="text-slate leading-relaxed italic">"The team at Pretoria North Animal Clinic treated our Labrador with such care and patience. They explained everything clearly and made us feel at ease during a stressful time."</p>
+          <div class="flex items-center gap-3 mt-6 pt-6 border-t border-cream-dark">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-teal to-green flex items-center justify-center text-white font-bold text-sm">S</div>
+            <div>
+              <div class="font-bold text-charcoal text-sm">Sarah M.</div>
+              <div class="text-slate text-xs">Dog Owner, Heatherdale</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card bg-white rounded-3xl p-8 shadow-sm reveal" style="transition-delay: 0.1s">
+          <div class="flex text-gold mb-4">★★★★★</div>
+          <p class="text-slate leading-relaxed italic">"We've been bringing our cats here for years. The vets are knowledgeable, compassionate, and always go the extra mile. Highly recommend to anyone in Pretoria North!"</p>
+          <div class="flex items-center gap-3 mt-6 pt-6 border-t border-cream-dark">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue to-teal flex items-center justify-center text-white font-bold text-sm">J</div>
+            <div>
+              <div class="font-bold text-charcoal text-sm">Johan & Lisa K.</div>
+              <div class="text-slate text-xs">Cat Owners, Pretoria North</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card bg-white rounded-3xl p-8 shadow-sm reveal" style="transition-delay: 0.2s">
+          <div class="flex text-gold mb-4">★★★★★</div>
+          <p class="text-slate leading-relaxed italic">"When our puppy had an emergency, they were there for us immediately. Professional, caring, and affordable. This is the only vet we'll ever use."</p>
+          <div class="flex items-center gap-3 mt-6 pt-6 border-t border-cream-dark">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold to-gold-light flex items-center justify-center text-charcoal font-bold text-sm">P</div>
+            <div>
+              <div class="font-bold text-charcoal text-sm">Priya N.</div>
+              <div class="text-slate text-xs">Puppy Owner, Rachel De Beer</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Reviews Placeholder -->
+      <div class="reviews-widget rounded-3xl p-10 mt-16 text-center reveal">
+        <div class="flex items-center justify-center gap-2 mb-4">
+          <svg class="w-8 h-8" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+          <span class="font-bold text-charcoal text-lg">Google Reviews</span>
+        </div>
+        <p class="text-slate max-w-lg mx-auto">Google Reviews widget integration placeholder — connect your Google Business Profile to display live reviews here.</p>
+        <a href="https://www.google.com/maps/search/Pretoria+North+Animal+Clinic" target="_blank" rel="noopener" class="inline-block mt-4 text-teal font-semibold hover:underline">Leave us a review on Google →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-gradient-to-r from-teal to-green relative overflow-hidden">
+    <div class="max-w-4xl mx-auto px-4 text-center relative z-10 reveal">
+      <h2 class="font-display text-4xl lg:text-5xl text-white">Ready to Give Your Pet the Best Care?</h2>
+      <p class="text-white/85 text-lg mt-4 max-w-2xl mx-auto">Book an appointment today or give us a call. We can't wait to meet you and your furry family member.</p>
+      <div class="flex flex-wrap justify-center gap-4 mt-10">
+        <a href="contact.html#book" class="btn-gold px-10 py-4 rounded-full font-bold text-base">Book Appointment Now</a>
+        <a href="tel:0125655485" class="btn-outline px-10 py-4 rounded-full font-bold text-base">Call 012 565 5485</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 lg:py-28 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16">
+        <div class="reveal-left">
+          <span class="text-teal font-bold text-sm uppercase tracking-widest">Contact Us</span>
+          <h2 class="font-display text-4xl text-charcoal mt-3">Visit Our Clinic</h2>
+
+          <div class="space-y-6 mt-8">
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center flex-shrink-0 shadow-sm text-teal text-xl">📍</div>
+              <div>
+                <div class="font-bold text-charcoal">Address</div>
+                <p class="text-slate mt-1">566 Rachel De Beer Street<br>Pretoria North, Pretoria 0182<br>Gauteng, South Africa</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center flex-shrink-0 shadow-sm text-teal text-xl">📞</div>
+              <div>
+                <div class="font-bold text-charcoal">Phone</div>
+                <p class="text-slate mt-1">
+                  <a href="tel:0125655485" class="hover:text-teal transition-colors">012 565 5485</a><br>
+                  <a href="tel:0762073640" class="hover:text-teal transition-colors">076 207 3640</a>
+                </p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 rounded-xl bg-white flex items-center justify-center flex-shrink-0 shadow-sm text-teal text-xl">🕐</div>
+              <div>
+                <div class="font-bold text-charcoal">Opening Hours</div>
+                <div class="text-slate mt-1 text-sm space-y-1">
+                  <p>Mon – Fri: 08:00 – 19:00</p>
+                  <p>Saturday: 09:00 – 12:00</p>
+                  <p>Sunday: By appointment only</p>
+                  <p>Public Holidays: 11:00 – 12:00</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex gap-4 mt-8">
+            <a href="https://www.facebook.com/PretoriaNorthVet" target="_blank" rel="noopener" class="w-11 h-11 rounded-xl bg-white flex items-center justify-center shadow-sm hover:bg-teal hover:text-white transition-all text-teal" aria-label="Facebook">
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal-right">
+          <div class="rounded-3xl overflow-hidden shadow-xl h-[400px] bg-cream-dark">
+            <iframe
+              src="https://maps.google.com/maps?q=566+Rachel+De+Beer+Street,+Pretoria+North,+Pretoria,+0182&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Pretoria North Animal Clinic location on Google Maps">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-charcoal text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="assets/images/407384412_1391247098350287_6639627391579632721_n.jpg" alt="" class="h-10 w-10 rounded-full object-cover">
+            <div class="font-display text-lg">Pretoria North Animal Clinic</div>
+          </div>
+          <p class="text-white/60 text-sm leading-relaxed">Compassionate care for your beloved pets in Pretoria North, South Africa.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li><a href="index.html" class="hover:text-gold transition-colors">Home</a></li>
+            <li><a href="about.html" class="hover:text-gold transition-colors">About Us</a></li>
+            <li><a href="services.html" class="hover:text-gold transition-colors">Services</a></li>
+            <li><a href="shop.html" class="hover:text-gold transition-colors">Shop</a></li>
+            <li><a href="blog.html" class="hover:text-gold transition-colors">Pet Care Tips</a></li>
+            <li><a href="contact.html" class="hover:text-gold transition-colors">Contact & Book</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Services</h4>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li>Vaccinations</li>
+            <li>Surgery</li>
+            <li>Dental Care</li>
+            <li>Emergency Care</li>
+            <li>Wellness Exams</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Contact</h4>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li>566 Rachel De Beer St</li>
+            <li>Pretoria North, 0182</li>
+            <li><a href="tel:0125655485" class="hover:text-gold">012 565 5485</a></li>
+            <li><a href="tel:0762073640" class="hover:text-gold">076 207 3640</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-sm text-white/40">
+        <p>&copy; <span class="current-year"></span> Pretoria North Animal Clinic. All rights reserved.</p>
+        <p>Made with ❤️ for pets and their families</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons -->
+  <div class="fab-container">
+    <a href="tel:0762073640" class="fab fab-call" aria-label="Call us">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+    </a>
+    <a href="https://wa.me/27762073640?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment%20at%20Pretoria%20North%20Animal%20Clinic" target="_blank" rel="noopener" class="fab fab-whatsapp" aria-label="WhatsApp us">
+      <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

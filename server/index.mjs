@@ -3,6 +3,7 @@ import { createHash, randomBytes } from 'crypto';
 import { existsSync, mkdirSync, readFileSync, appendFileSync, createReadStream, statSync } from 'fs';
 import { join, extname, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { rewriteRootPaths, injectBridge } from './demo-utils.mjs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, '..');
@@ -30,13 +31,30 @@ const API_URL = (process.env.API_PUBLIC_URL || SITE_URL).replace(/\/$/, '');
 
 const TEMPLATES = JSON.parse(readFileSync(join(ROOT, 'js', 'templates.json'), 'utf8'));
 
-const DEMO_ROOTS = Object.fromEntries(
+const DEMO_IDEAS = Object.fromEntries(
   TEMPLATES.filter((t) => t.demo && t.entry != null).map((t) => {
     const base = join(IDEAS, t.projectPath);
     const dir = t.entry === '.' ? base : join(base, t.entry);
     return [t.id, dir];
   })
 );
+
+/** Prefer repo-vendored demos (GitHub Pages); fall back to IdeaProjects for local. */
+function resolveDemo(slug) {
+  const vendored = join(ROOT, 'demos', slug);
+  if (existsSync(join(vendored, 'index.html'))) {
+    return { root: vendored, preRewritten: true };
+  }
+  const ideas = DEMO_IDEAS[slug];
+  if (ideas && existsSync(ideas)) {
+    return { root: ideas, preRewritten: false };
+  }
+  return null;
+}
+
+const DEMO_SLUGS = [
+  ...new Set([...Object.keys(DEMO_IDEAS), ...TEMPLATES.filter((t) => t.demo).map((t) => t.id)]),
+];
 
 const MIME = {
   '.html': 'text/html; charset=utf-8',
@@ -125,170 +143,7 @@ function serveFile(res, filePath) {
   return true;
 }
 
-/** Rewrite root-absolute asset URLs so Next/static demos work under /demos/<slug>/ */
-function rewriteRootPaths(content, slug) {
-  const prefix = `/demos/${slug}`;
-  return content
-    .replace(/(href|src|action)=(["'])\/(?!\/)/g, `$1=$2${prefix}/`)
-    .replace(/(href|src|action)=(["'])\.\.\//g, `$1=$2${prefix}/`)
-    .replace(/url\(\s*(['"]?)\/(?!\/)/g, `url($1${prefix}/`)
-    .replace(/(["'])\/_next\//g, `$1${prefix}/_next/`)
-    .replace(/(["'])\/assets\//g, `$1${prefix}/assets/`)
-    .replace(/(["'])\/images\//g, `$1${prefix}/images/`)
-    .replace(/(["'])\/img\//g, `$1${prefix}/img/`)
-    .replace(/(["'])\/css\//g, `$1${prefix}/css/`)
-    .replace(/(["'])\/js\//g, `$1${prefix}/js/`)
-    .replace(/(["'])\/public\//g, `$1${prefix}/public/`);
-}
-
-const CUSTOMIZER_BRIDGE = `
-<style id="ddm-customizer-style">
-:root{--ddm-primary:#0a0a0a;--ddm-accent:#2563eb;--ddm-bg:#ffffff;--ddm-text:#111111;--ddm-font:Inter,system-ui,sans-serif}
-#ddm-preview-badge{position:fixed;z-index:2147483646;left:12px;bottom:12px;padding:8px 12px;border-radius:8px;background:#0a0a0a;color:#fff;font:600 12px/1.3 Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:min(280px,70vw)}
-.ddm-hide-section{display:none!important}
-</style>
-<script id="ddm-customizer-bridge">
-(function(){
-  var lastTheme=null;
-  var originals={};
-
-  function textOf(el){
-    return (el && (el.innerText||el.textContent)||'').replace(/\\s+/g,' ').trim();
-  }
-
-  function setLeafText(el, value){
-    if(!el || !value) return;
-    if(!el.children || el.children.length===0){ el.textContent=value; return; }
-    var walker=document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
-    var node=walker.nextNode();
-    if(node){ node.nodeValue=value; return; }
-    el.textContent=value;
-  }
-
-  function first(sel){ return document.querySelector(sel); }
-  function all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
-
-  function stash(key, el){
-    if(!el || originals[key]!=null) return;
-    originals[key]=textOf(el);
-  }
-
-  function apply(theme){
-    if(!theme) return;
-    lastTheme=theme;
-    try{ sessionStorage.setItem('ddm-live-theme', JSON.stringify(theme)); }catch(e){}
-
-    var root=document.documentElement;
-    root.style.setProperty('--ddm-primary', theme.primaryColor||'#0a0a0a');
-    root.style.setProperty('--ddm-accent', theme.accentColor||'#2563eb');
-    root.style.setProperty('--ddm-bg', theme.bgColor||'#ffffff');
-    root.style.setProperty('--ddm-text', theme.textColor||'#111111');
-    root.style.setProperty('--ddm-font', theme.fontFamily||'Inter, system-ui, sans-serif');
-
-    var s=document.getElementById('ddm-live-style');
-    if(!s){ s=document.createElement('style'); s.id='ddm-live-style'; document.head.appendChild(s); }
-    s.textContent=[
-      'html,body{background:var(--ddm-bg)!important;color:var(--ddm-text)!important;font-family:var(--ddm-font)!important}',
-      'h1,h2,h3,h4,.logo,[class*="brand"],[class*="logo"] span,[class*="title"]{color:var(--ddm-primary)!important}',
-      'a{color:var(--ddm-accent)}',
-      'button,.btn,[class*="btn"],[class*="Btn"],[class*="cta"],[class*="Cta"],input[type="submit"],a[class*="button"]{background:var(--ddm-accent)!important;border-color:var(--ddm-accent)!important;color:#fff!important}',
-      theme.showHeader===false?'header,nav,[class*="navbar"],[class*="Navbar"],[class*="header"]:not(#ddm-preview-badge){display:none!important}':'',
-      theme.showFooter===false?'footer,[class*="footer"],[class*="Footer"]{display:none!important}':'',
-      theme.showHero===false?'[class*="hero"],[class*="Hero"],section:first-of-type{display:none!important}':'',
-      theme.showAbout===false?'[id*="about"],[class*="about"],[class*="About"]{display:none!important}':'',
-      theme.showContact===false?'[id*="contact"],[class*="contact"],[class*="Contact"]{display:none!important}':''
-    ].filter(Boolean).join('\\n');
-
-    var brand=first('header a,[class*="brand"] a,[class*="logo"] a,nav a,a[class*="logo"],a[class*="brand"]');
-    stash('brand', brand);
-    if(brand && theme.bizName){
-      var brandImg=brand.querySelector('img');
-      if(brandImg && theme.logoDataUrl){ brandImg.src=theme.logoDataUrl; brandImg.alt=theme.bizName; }
-      else setLeafText(brand, theme.bizName);
-    }
-    if(theme.logoDataUrl){
-      var logoImg=first('header img, nav img, [class*="logo"] img, img[alt*="ogo" i]');
-      if(logoImg){ logoImg.src=theme.logoDataUrl; if(theme.bizName) logoImg.alt=theme.bizName; }
-    }
-
-    var h1=first('h1');
-    stash('h1', h1);
-    if(h1 && theme.headline) setLeafText(h1, theme.headline);
-
-    var heroP=first('h1 + p, [class*="hero"] p, section p, main p');
-    stash('heroP', heroP);
-    if(heroP && theme.subtext) setLeafText(heroP, theme.subtext);
-
-    if(theme.tagline){
-      var tag=first('[class*="tagline"],[class*="subtitle"], header p, nav p');
-      stash('tag', tag);
-      if(tag) setLeafText(tag, theme.tagline);
-    }
-
-    if(theme.ctaLabel){
-      var cta=first('a.btn, a[class*="btn"], button, [class*="cta"] a, [class*="hero"] a, [class*="Hero"] a');
-      stash('cta', cta);
-      if(cta) setLeafText(cta, theme.ctaLabel);
-    }
-
-    if(theme.aboutText){
-      var about=first('#about p, [id*="about"] p, [class*="about"] p, [class*="About"] p');
-      stash('about', about);
-      if(about) setLeafText(about, theme.aboutText);
-    }
-
-    if(theme.navLabels){
-      var labels=theme.navLabels.split(',').map(function(x){return x.trim();}).filter(Boolean);
-      var links=all('header nav a, nav a, [class*="nav"] a').filter(function(a){
-        return textOf(a) && textOf(a).length<28 && !a.querySelector('img');
-      }).slice(0, labels.length);
-      links.forEach(function(a,i){ if(labels[i]) setLeafText(a, labels[i]); });
-    }
-
-    if(theme.phone){
-      all('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+theme.phone.replace(/\\s+/g,''); setLeafText(a, theme.phone); });
-    }
-    if(theme.email){
-      all('a[href^="mailto:"]').forEach(function(a){ a.href='mailto:'+theme.email; setLeafText(a, theme.email); });
-    }
-
-    var badge=document.getElementById('ddm-preview-badge');
-    if(!badge){
-      badge=document.createElement('div');
-      badge.id='ddm-preview-badge';
-      document.body.appendChild(badge);
-    }
-    badge.textContent='Previewing edits · '+(theme.bizName||'Your brand');
-  }
-
-  window.addEventListener('message', function(e){
-    if(!e.data || e.data.type!=='ddm-theme') return;
-    apply(e.data.theme||{});
-  });
-
-  try{
-    var stored=sessionStorage.getItem('ddm-live-theme');
-    if(stored) apply(JSON.parse(stored));
-  }catch(e){}
-
-  setInterval(function(){
-    if(lastTheme) apply(lastTheme);
-  }, 1500);
-
-  try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
-  document.addEventListener('DOMContentLoaded', function(){
-    try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
-  });
-})();
-</script>`;
-
-function injectBridge(html) {
-  if (html.includes('ddm-customizer-bridge')) return html;
-  if (/<\/head>/i.test(html)) return html.replace(/<\/head>/i, CUSTOMIZER_BRIDGE + '</head>');
-  return CUSTOMIZER_BRIDGE + html;
-}
-
-function serveDemoFile(res, filePath, slug) {
+function serveDemoFile(res, filePath, slug, preRewritten) {
   if (!existsSync(filePath) || !statSync(filePath).isFile()) {
     res.writeHead(404).end('Not found');
     return;
@@ -296,7 +151,7 @@ function serveDemoFile(res, filePath, slug) {
   const ext = extname(filePath).toLowerCase();
   const type = MIME[ext] || 'application/octet-stream';
 
-  if (ext === '.html' || ext === '.css' || ext === '.js' || ext === '.mjs' || ext === '.json') {
+  if (!preRewritten && (ext === '.html' || ext === '.css' || ext === '.js' || ext === '.mjs' || ext === '.json')) {
     let content = readFileSync(filePath, 'utf8');
     content = rewriteRootPaths(content, slug);
     if (ext === '.html') content = injectBridge(content);
@@ -447,30 +302,31 @@ const server = createServer(async (req, res) => {
       return sendJson(res, 200, {
         ok: true,
         payfast: !!(cfg.merchantId && cfg.merchantKey),
-        demos: Object.keys(DEMO_ROOTS).length,
+        demos: DEMO_SLUGS.filter((id) => resolveDemo(id)).length,
       });
     }
 
     // Fallback for absolute /_next assets requested from iframe
     if (path.startsWith('/_next/') || path.startsWith('/assets/') || path.startsWith('/images/')) {
       const slug = demoSlugFromReferer(req) || url.searchParams.get('demo');
-      if (slug && DEMO_ROOTS[slug]) {
-        const file = safeJoin(DEMO_ROOTS[slug], path);
-        if (file && existsSync(file)) return serveDemoFile(res, file, slug);
+      const demo = slug ? resolveDemo(slug) : null;
+      if (demo) {
+        const file = safeJoin(demo.root, path);
+        if (file && existsSync(file)) return serveDemoFile(res, file, slug, demo.preRewritten);
       }
     }
 
     if (path.startsWith('/demos/')) {
       const rest = path.slice('/demos/'.length);
       const slug = rest.split('/')[0];
-      const root = DEMO_ROOTS[slug];
-      if (!root || !existsSync(root)) {
+      const demo = resolveDemo(slug);
+      if (!demo) {
         res.writeHead(404).end('Demo not available');
         return;
       }
       let sub = rest.slice(slug.length) || '/';
       if (sub === '/' || sub === '') sub = '/index.html';
-      let file = safeJoin(root, sub);
+      let file = safeJoin(demo.root, sub);
       if (!file) {
         res.writeHead(400).end('Bad path');
         return;
@@ -478,7 +334,7 @@ const server = createServer(async (req, res) => {
       if (existsSync(file) && statSync(file).isDirectory()) {
         file = join(file, 'index.html');
       }
-      return serveDemoFile(res, file, slug);
+      return serveDemoFile(res, file, slug, demo.preRewritten);
     }
 
     let rel = path === '/' ? '/index.html' : path;
@@ -503,5 +359,5 @@ const server = createServer(async (req, res) => {
 
 server.listen(PORT, () => {
   console.log(`DDM site + PayFast + demos on http://localhost:${PORT}`);
-  console.log(`Template demos: ${Object.keys(DEMO_ROOTS).length} mounted under /demos/<id>/`);
+  console.log(`Template demos: ${DEMO_SLUGS.filter((id) => resolveDemo(id)).length} mounted under /demos/<id>/`);
 });

@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en-ZA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The King's School Midvaal | Private Primary School in Meyerton</title>
+  <meta name="description" content="The King's School Midvaal is a private primary school in Meyerton, offering a warm Christian learning environment for primary school learners.">
+  <meta name="keywords" content="Private school Meyerton, Best primary school Midvaal, Primary school Gauteng, Christian school Meyerton">
+  <link rel="canonical" href="https://thekingsschoolmidvaal.co.za/">
+  <meta property="og:title" content="The King's School Midvaal">
+  <meta property="og:description" content="Building future leaders through excellence in education.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="images/unnamed%20(1).webp">
+  <link rel="icon" type="image/webp" href="images/unnamed%20(1).webp">
+  <link rel="apple-touch-icon" href="images/unnamed%20(1).webp">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+
+<style id="ddm-customizer-style">
+:root{--ddm-primary:#0a0a0a;--ddm-accent:#2563eb;--ddm-bg:#ffffff;--ddm-text:#111111;--ddm-font:Inter,system-ui,sans-serif}
+#ddm-preview-badge{position:fixed;z-index:2147483646;left:12px;bottom:12px;padding:8px 12px;border-radius:8px;background:#0a0a0a;color:#fff;font:600 12px/1.3 Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:min(280px,70vw)}
+.ddm-hide-section{display:none!important}
+</style>
+<script id="ddm-customizer-bridge">
+(function(){
+  var lastTheme=null;
+  var originals={};
+
+  function textOf(el){
+    return (el && (el.innerText||el.textContent)||'').replace(/\s+/g,' ').trim();
+  }
+
+  function setLeafText(el, value){
+    if(!el || !value) return;
+    if(!el.children || el.children.length===0){ el.textContent=value; return; }
+    var walker=document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var node=walker.nextNode();
+    if(node){ node.nodeValue=value; return; }
+    el.textContent=value;
+  }
+
+  function first(sel){ return document.querySelector(sel); }
+  function all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+  function stash(key, el){
+    if(!el || originals[key]!=null) return;
+    originals[key]=textOf(el);
+  }
+
+  function apply(theme){
+    if(!theme) return;
+    lastTheme=theme;
+    try{ sessionStorage.setItem('ddm-live-theme', JSON.stringify(theme)); }catch(e){}
+
+    var root=document.documentElement;
+    root.style.setProperty('--ddm-primary', theme.primaryColor||'#0a0a0a');
+    root.style.setProperty('--ddm-accent', theme.accentColor||'#2563eb');
+    root.style.setProperty('--ddm-bg', theme.bgColor||'#ffffff');
+    root.style.setProperty('--ddm-text', theme.textColor||'#111111');
+    root.style.setProperty('--ddm-font', theme.fontFamily||'Inter, system-ui, sans-serif');
+
+    var s=document.getElementById('ddm-live-style');
+    if(!s){ s=document.createElement('style'); s.id='ddm-live-style'; document.head.appendChild(s); }
+    s.textContent=[
+      'html,body{background:var(--ddm-bg)!important;color:var(--ddm-text)!important;font-family:var(--ddm-font)!important}',
+      'h1,h2,h3,h4,.logo,[class*="brand"],[class*="logo"] span,[class*="title"]{color:var(--ddm-primary)!important}',
+      'a{color:var(--ddm-accent)}',
+      'button,.btn,[class*="btn"],[class*="Btn"],[class*="cta"],[class*="Cta"],input[type="submit"],a[class*="button"]{background:var(--ddm-accent)!important;border-color:var(--ddm-accent)!important;color:#fff!important}',
+      theme.showHeader===false?'header,nav,[class*="navbar"],[class*="Navbar"],[class*="header"]:not(#ddm-preview-badge){display:none!important}':'',
+      theme.showFooter===false?'footer,[class*="footer"],[class*="Footer"]{display:none!important}':'',
+      theme.showHero===false?'[class*="hero"],[class*="Hero"],section:first-of-type{display:none!important}':'',
+      theme.showAbout===false?'[id*="about"],[class*="about"],[class*="About"]{display:none!important}':'',
+      theme.showContact===false?'[id*="contact"],[class*="contact"],[class*="Contact"]{display:none!important}':''
+    ].filter(Boolean).join('\n');
+
+    var brand=first('header a,[class*="brand"] a,[class*="logo"] a,nav a,a[class*="logo"],a[class*="brand"]');
+    stash('brand', brand);
+    if(brand && theme.bizName){
+      var brandImg=brand.querySelector('img');
+      if(brandImg && theme.logoDataUrl){ brandImg.src=theme.logoDataUrl; brandImg.alt=theme.bizName; }
+      else setLeafText(brand, theme.bizName);
+    }
+    if(theme.logoDataUrl){
+      var logoImg=first('header img, nav img, [class*="logo"] img, img[alt*="ogo" i]');
+      if(logoImg){ logoImg.src=theme.logoDataUrl; if(theme.bizName) logoImg.alt=theme.bizName; }
+    }
+
+    var h1=first('h1');
+    stash('h1', h1);
+    if(h1 && theme.headline) setLeafText(h1, theme.headline);
+
+    var heroP=first('h1 + p, [class*="hero"] p, section p, main p');
+    stash('heroP', heroP);
+    if(heroP && theme.subtext) setLeafText(heroP, theme.subtext);
+
+    if(theme.tagline){
+      var tag=first('[class*="tagline"],[class*="subtitle"], header p, nav p');
+      stash('tag', tag);
+      if(tag) setLeafText(tag, theme.tagline);
+    }
+
+    if(theme.ctaLabel){
+      var cta=first('a.btn, a[class*="btn"], button, [class*="cta"] a, [class*="hero"] a, [class*="Hero"] a');
+      stash('cta', cta);
+      if(cta) setLeafText(cta, theme.ctaLabel);
+    }
+
+    if(theme.aboutText){
+      var about=first('#about p, [id*="about"] p, [class*="about"] p, [class*="About"] p');
+      stash('about', about);
+      if(about) setLeafText(about, theme.aboutText);
+    }
+
+    if(theme.navLabels){
+      var labels=theme.navLabels.split(',').map(function(x){return x.trim();}).filter(Boolean);
+      var links=all('header nav a, nav a, [class*="nav"] a').filter(function(a){
+        return textOf(a) && textOf(a).length<28 && !a.querySelector('img');
+      }).slice(0, labels.length);
+      links.forEach(function(a,i){ if(labels[i]) setLeafText(a, labels[i]); });
+    }
+
+    if(theme.phone){
+      all('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+theme.phone.replace(/\s+/g,''); setLeafText(a, theme.phone); });
+    }
+    if(theme.email){
+      all('a[href^="mailto:"]').forEach(function(a){ a.href='mailto:'+theme.email; setLeafText(a, theme.email); });
+    }
+
+    var badge=document.getElementById('ddm-preview-badge');
+    if(!badge){
+      badge=document.createElement('div');
+      badge.id='ddm-preview-badge';
+      document.body.appendChild(badge);
+    }
+    badge.textContent='Previewing edits · '+(theme.bizName||'Your brand');
+  }
+
+  window.addEventListener('message', function(e){
+    if(!e.data || e.data.type!=='ddm-theme') return;
+    apply(e.data.theme||{});
+  });
+
+  try{
+    var stored=sessionStorage.getItem('ddm-live-theme');
+    if(stored) apply(JSON.parse(stored));
+  }catch(e){}
+
+  setInterval(function(){
+    if(lastTheme) apply(lastTheme);
+  }, 1500);
+
+  try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  document.addEventListener('DOMContentLoaded', function(){
+    try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  });
+})();
+</script></head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="The King's School Midvaal home">
+      <span class="brand-mark">K</span>
+      <span><strong>The King's School</strong><small>Midvaal</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">Menu</button>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="about.html">About</a>
+      <a href="academics.html">Academics</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-cta" href="admissions.html#apply">Apply Now</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-media" role="img" aria-label="Learners enjoying a bright classroom"></div>
+      <div class="hero-content">
+      <p class="eyebrow">Private primary school in Midvaal, Meyerton</p>
+        <h1>Building Future Leaders Through Excellence in Education</h1>
+        <div class="hero-actions">
+          <a class="button primary" href="admissions.html#apply">Apply Now</a>
+          <a class="button secondary" href="contact.html#tour">Book a School Tour</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Reasons parents enquire">
+      <div><span>01</span> Christian values with everyday warmth</div>
+      <div><span>02</span> Balanced academics, sport, and school life</div>
+      <div><span>03</span> Responsive admissions and personal tours</div>
+    </section>
+
+    <section class="section intro-grid">
+      <div>
+        <p class="eyebrow">Welcome</p>
+        <h2>A school where strong foundations and character grow together.</h2>
+      </div>
+      <div class="lead-copy">
+        <p>The King's School Midvaal serves families looking for a private primary school in Meyerton with a personal, values-led approach. The website has been designed to present the school with the polish parents expect from leading South African private schools while keeping the tone local, sincere, and accessible.</p>
+        <p>From the first enquiry to the first day of class, the experience should feel clear: supportive teachers, a safe learning environment, and a community that wants every child to flourish.</p>
+      </div>
+    </section>
+
+    <section class="section feature-band">
+      <div class="feature-image image-classroom"></div>
+      <div class="feature-content">
+        <p class="eyebrow">Why Parents Choose Us</p>
+        <h2>Personal attention with a premium private-school standard.</h2>
+        <div class="feature-list">
+          <article>
+            <h3>Known by name</h3>
+            <p>Children learn best when they feel seen. The school culture is intentionally welcoming, orderly, and family focused.</p>
+          </article>
+          <article>
+            <h3>Academic confidence</h3>
+            <p>Foundation skills, reading, numeracy, inquiry, and classroom discipline are developed through steady daily practice.</p>
+          </article>
+          <article>
+            <h3>Character formation</h3>
+            <p>Christian values shape respect, kindness, responsibility, perseverance, and service without feeling forced or performative.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <p class="eyebrow">Academic Journey</p>
+        <h2>Primary education built for curiosity, confidence, and readiness.</h2>
+        <a href="academics.html">Explore academics</a>
+      </div>
+      <div class="program-grid">
+        <article class="program-card">
+          <img class="program-photo" src="images/unnamed.webp" alt="Learners seated in a classroom at The King's School Midvaal">
+          <div>
+            <h3>Foundation Phase</h3>
+            <p>Early literacy, numeracy, social development, creative expression, and the routines that help young learners love school.</p>
+          </div>
+        </article>
+        <article class="program-card">
+          <img class="program-photo low-res-photo" src="images/unnamed%20(10).jpg" alt="Teacher assisting young learners in class">
+          <div>
+            <h3>Intermediate Phase</h3>
+            <p>Growing independence, subject confidence, teamwork, projects, leadership opportunities, and preparation for senior schooling.</p>
+          </div>
+        </article>
+        <article class="program-card">
+          <img class="program-photo low-res-photo" src="images/unnamed%20(13).jpg" alt="Learners gathered for a classroom activity">
+          <div>
+            <h3>Whole-Child Development</h3>
+            <p>School life includes sport, events, creative activities, assemblies, community moments, and meaningful parent partnership.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section achievements">
+      <div>
+        <p class="eyebrow">School Experience</p>
+        <h2>Designed around what parents look for before they enquire.</h2>
+      </div>
+      <div class="stats-grid">
+        <div><strong>Primary</strong><span>Focused learning pathway</span></div>
+        <div><strong>Family</strong><span>Approachable community culture</span></div>
+        <div><strong>Values</strong><span>Christian character foundation</span></div>
+        <div><strong>Midvaal</strong><span>Convenient Meyerton location</span></div>
+      </div>
+    </section>
+
+    <section class="section testimonials">
+      <div class="section-heading">
+        <p class="eyebrow">Parent Confidence</p>
+        <h2>Built around the reasons families choose a school and stay.</h2>
+      </div>
+      <div class="testimonial-grid">
+        <article>
+          <span>Care</span>
+          <h3>A school that feels personal</h3>
+          <p>Parents want more than a place on a class list. They want teachers who notice effort, growth, and confidence.</p>
+        </article>
+        <article>
+          <span>Trust</span>
+          <h3>Clear daily partnership</h3>
+          <p>The strongest school websites make communication visible: easy contact, direct admissions, and a human next step.</p>
+        </article>
+        <article>
+          <span>Character</span>
+          <h3>Values children carry home</h3>
+          <p>Christian education is presented through conduct, kindness, respect, service, and a calm learning culture.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section gallery-preview">
+      <div class="section-heading">
+        <p class="eyebrow">School Life</p>
+        <h2>Academics, friendships, sport, events, and everyday classroom moments.</h2>
+        <a href="gallery.html">View gallery</a>
+      </div>
+      <div class="masonry">
+        <img src="images/unnamed%20(1).webp" alt="The King's School Midvaal campus frontage">
+        <img class="low-res-photo" src="images/unnamed%20(1).jpg" alt="The King's School Midvaal pathway">
+        <img src="images/unnamed.webp" alt="Classroom at The King's School Midvaal">
+        <img class="low-res-photo" src="images/unnamed%20(4).jpg" alt="School event setup">
+      </div>
+    </section>
+
+    <section class="section news-events">
+      <div>
+        <p class="eyebrow">News & Events</p>
+        <h2>Keep families connected to what is happening at school.</h2>
+      </div>
+      <div class="event-list">
+        <article><span>Admissions</span><h3>Book a personal school tour</h3><p>Meet the team, view the campus, and discuss your child's grade placement.</p></article>
+        <article><span>Community</span><h3>Follow school updates on social media</h3><p>Connect Facebook and Instagram feeds here for current photos, event reminders, and parent notices.</p></article>
+        <article><span>Enrolment</span><h3>Applications open</h3><p>Start with a short enquiry and the admissions office will guide the next steps.</p></article>
+      </div>
+    </section>
+
+    <section class="section faq">
+      <div>
+        <p class="eyebrow">FAQ</p>
+        <h2>Questions parents ask before applying.</h2>
+      </div>
+      <div class="faq-list">
+        <details open>
+          <summary>Where is The King's School Midvaal located?</summary>
+          <p>The school is at 78 Shiplake Rd, Meyerton, Gauteng.</p>
+        </details>
+        <details>
+          <summary>How do I book a tour?</summary>
+          <p>Call or WhatsApp 082 921 4666 to arrange a suitable time with the school.</p>
+        </details>
+        <details>
+          <summary>Are school fees listed online?</summary>
+          <p>Call the school for the latest approved fee schedule and grade availability.</p>
+        </details>
+        <details>
+          <summary>Is the school Christian?</summary>
+          <p>The content positions the school as Christian and family-oriented while keeping the visual language warm and accessible.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="cta-band">
+      <div>
+        <p class="eyebrow">Admissions</p>
+        <h2>Ready to visit The King's School Midvaal?</h2>
+        <p>Speak to the school about placement, availability, school fees, and the next open tour time.</p>
+      </div>
+      <div class="hero-actions">
+        <a class="button primary" href="tel:+27829214666">Call Admissions</a>
+        <a class="button secondary" href="https://wa.me/27829214666">WhatsApp Us</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div>
+      <a class="brand footer-brand" href="index.html"><span class="brand-mark">K</span><span><strong>The King's School</strong><small>Midvaal</small></span></a>
+      <p>Private primary education in Midvaal, Meyerton, Gauteng.</p>
+    </div>
+    <div>
+      <h2>Quick Links</h2>
+      <a href="about.html">About</a>
+      <a href="academics.html">Academics</a>
+      <a href="admissions.html">Admissions</a>
+      <a href="gallery.html">Gallery</a>
+    </div>
+    <div>
+      <h2>Contact</h2>
+      <a href="tel:+27829214666">082 921 4666</a>
+      <a href="https://maps.google.com/?q=78+Shiplake+Rd,+Meyerton,+Gauteng">78 Shiplake Rd, Meyerton</a>
+      <a href="https://wa.me/27829214666">WhatsApp Admissions</a>
+    </div>
+    <div>
+      <h2>Admissions</h2>
+      <p>Speak directly to the school about tours, placement, and the next enrolment intake.</p>
+      <a href="tel:+27829214666">Call 082 921 4666</a>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/27829214666" aria-label="Chat on WhatsApp">WA</a>
+</body>
+</html>

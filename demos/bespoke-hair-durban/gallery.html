@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lookbook | Bespoke Hair Durban — Hair Transformations</title>
+  <meta name="description" content="Browse the Bespoke Hair Durban lookbook — balayage, colour transformations, and styling results from Durban's premier salon.">
+  <meta name="keywords" content="hair salon Durban, balayage Durban, hair colour Durban, hair transformations Durban, best hair salon Durban">
+  <link rel="canonical" href="https://bespokehairdurban.co.za/gallery">
+  <link rel="icon" type="image/svg+xml" href="/demos/bespoke-hair-durban/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" crossorigin onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap"></noscript>
+  <script type="module" crossorigin src="/demos/bespoke-hair-durban/assets/images-data-je3FWEv8.js"></script>
+  <script type="module" crossorigin src="/demos/bespoke-hair-durban/assets/main-C4bpWzuh.js"></script>
+  <link rel="stylesheet" crossorigin href="/demos/bespoke-hair-durban/assets/main-CB43D2kY.css">
+
+<style id="ddm-customizer-style">
+:root{--ddm-primary:#0a0a0a;--ddm-accent:#2563eb;--ddm-bg:#ffffff;--ddm-text:#111111;--ddm-font:Inter,system-ui,sans-serif}
+#ddm-preview-badge{position:fixed;z-index:2147483646;left:12px;bottom:12px;padding:8px 12px;border-radius:8px;background:#0a0a0a;color:#fff;font:600 12px/1.3 Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:min(280px,70vw)}
+.ddm-hide-section{display:none!important}
+</style>
+<script id="ddm-customizer-bridge">
+(function(){
+  var lastTheme=null;
+  var originals={};
+
+  function textOf(el){
+    return (el && (el.innerText||el.textContent)||'').replace(/\s+/g,' ').trim();
+  }
+
+  function setLeafText(el, value){
+    if(!el || !value) return;
+    if(!el.children || el.children.length===0){ el.textContent=value; return; }
+    var walker=document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var node=walker.nextNode();
+    if(node){ node.nodeValue=value; return; }
+    el.textContent=value;
+  }
+
+  function first(sel){ return document.querySelector(sel); }
+  function all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+  function stash(key, el){
+    if(!el || originals[key]!=null) return;
+    originals[key]=textOf(el);
+  }
+
+  function apply(theme){
+    if(!theme) return;
+    lastTheme=theme;
+    try{ sessionStorage.setItem('ddm-live-theme', JSON.stringify(theme)); }catch(e){}
+
+    var root=document.documentElement;
+    root.style.setProperty('--ddm-primary', theme.primaryColor||'#0a0a0a');
+    root.style.setProperty('--ddm-accent', theme.accentColor||'#2563eb');
+    root.style.setProperty('--ddm-bg', theme.bgColor||'#ffffff');
+    root.style.setProperty('--ddm-text', theme.textColor||'#111111');
+    root.style.setProperty('--ddm-font', theme.fontFamily||'Inter, system-ui, sans-serif');
+
+    var s=document.getElementById('ddm-live-style');
+    if(!s){ s=document.createElement('style'); s.id='ddm-live-style'; document.head.appendChild(s); }
+    s.textContent=[
+      'html,body{background:var(--ddm-bg)!important;color:var(--ddm-text)!important;font-family:var(--ddm-font)!important}',
+      'h1,h2,h3,h4,.logo,[class*="brand"],[class*="logo"] span,[class*="title"]{color:var(--ddm-primary)!important}',
+      'a{color:var(--ddm-accent)}',
+      'button,.btn,[class*="btn"],[class*="Btn"],[class*="cta"],[class*="Cta"],input[type="submit"],a[class*="button"]{background:var(--ddm-accent)!important;border-color:var(--ddm-accent)!important;color:#fff!important}',
+      theme.showHeader===false?'header,nav,[class*="navbar"],[class*="Navbar"],[class*="header"]:not(#ddm-preview-badge){display:none!important}':'',
+      theme.showFooter===false?'footer,[class*="footer"],[class*="Footer"]{display:none!important}':'',
+      theme.showHero===false?'[class*="hero"],[class*="Hero"],section:first-of-type{display:none!important}':'',
+      theme.showAbout===false?'[id*="about"],[class*="about"],[class*="About"]{display:none!important}':'',
+      theme.showContact===false?'[id*="contact"],[class*="contact"],[class*="Contact"]{display:none!important}':''
+    ].filter(Boolean).join('\n');
+
+    var brand=first('header a,[class*="brand"] a,[class*="logo"] a,nav a,a[class*="logo"],a[class*="brand"]');
+    stash('brand', brand);
+    if(brand && theme.bizName){
+      var brandImg=brand.querySelector('img');
+      if(brandImg && theme.logoDataUrl){ brandImg.src=theme.logoDataUrl; brandImg.alt=theme.bizName; }
+      else setLeafText(brand, theme.bizName);
+    }
+    if(theme.logoDataUrl){
+      var logoImg=first('header img, nav img, [class*="logo"] img, img[alt*="ogo" i]');
+      if(logoImg){ logoImg.src=theme.logoDataUrl; if(theme.bizName) logoImg.alt=theme.bizName; }
+    }
+
+    var h1=first('h1');
+    stash('h1', h1);
+    if(h1 && theme.headline) setLeafText(h1, theme.headline);
+
+    var heroP=first('h1 + p, [class*="hero"] p, section p, main p');
+    stash('heroP', heroP);
+    if(heroP && theme.subtext) setLeafText(heroP, theme.subtext);
+
+    if(theme.tagline){
+      var tag=first('[class*="tagline"],[class*="subtitle"], header p, nav p');
+      stash('tag', tag);
+      if(tag) setLeafText(tag, theme.tagline);
+    }
+
+    if(theme.ctaLabel){
+      var cta=first('a.btn, a[class*="btn"], button, [class*="cta"] a, [class*="hero"] a, [class*="Hero"] a');
+      stash('cta', cta);
+      if(cta) setLeafText(cta, theme.ctaLabel);
+    }
+
+    if(theme.aboutText){
+      var about=first('#about p, [id*="about"] p, [class*="about"] p, [class*="About"] p');
+      stash('about', about);
+      if(about) setLeafText(about, theme.aboutText);
+    }
+
+    if(theme.navLabels){
+      var labels=theme.navLabels.split(',').map(function(x){return x.trim();}).filter(Boolean);
+      var links=all('header nav a, nav a, [class*="nav"] a').filter(function(a){
+        return textOf(a) && textOf(a).length<28 && !a.querySelector('img');
+      }).slice(0, labels.length);
+      links.forEach(function(a,i){ if(labels[i]) setLeafText(a, labels[i]); });
+    }
+
+    if(theme.phone){
+      all('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+theme.phone.replace(/\s+/g,''); setLeafText(a, theme.phone); });
+    }
+    if(theme.email){
+      all('a[href^="mailto:"]').forEach(function(a){ a.href='mailto:'+theme.email; setLeafText(a, theme.email); });
+    }
+
+    var badge=document.getElementById('ddm-preview-badge');
+    if(!badge){
+      badge=document.createElement('div');
+      badge.id='ddm-preview-badge';
+      document.body.appendChild(badge);
+    }
+    badge.textContent='Previewing edits · '+(theme.bizName||'Your brand');
+  }
+
+  window.addEventListener('message', function(e){
+    if(!e.data || e.data.type!=='ddm-theme') return;
+    apply(e.data.theme||{});
+  });
+
+  try{
+    var stored=sessionStorage.getItem('ddm-live-theme');
+    if(stored) apply(JSON.parse(stored));
+  }catch(e){}
+
+  setInterval(function(){
+    if(lastTheme) apply(lastTheme);
+  }, 1500);
+
+  try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  document.addEventListener('DOMContentLoaded', function(){
+    try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  });
+})();
+</script></head>
+<body class="page-gallery">
+
+  <header class="header header--scrolled">
+    <div class="container header__inner">
+      <a href="/demos/bespoke-hair-durban/" class="logo">Bespoke <span>Hair</span></a>
+      <nav class="nav">
+        <ul class="nav__list">
+          <li><a href="/demos/bespoke-hair-durban/" class="nav__link">Home</a></li>
+          <li><a href="/demos/bespoke-hair-durban/services.html" class="nav__link">Services</a></li>
+          <li><a href="/demos/bespoke-hair-durban/gallery.html" class="nav__link nav__link--active">Lookbook</a></li>
+          <li><a href="/demos/bespoke-hair-durban/contact.html" class="nav__link">Contact</a></li>
+        </ul>
+        <a href="#" data-whatsapp class="btn btn--book nav__book">Book Now</a>
+      </nav>
+      <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-nav">
+    <a href="/demos/bespoke-hair-durban/" class="mobile-nav__link">Home</a>
+    <a href="/demos/bespoke-hair-durban/services.html" class="mobile-nav__link">Services</a>
+    <a href="/demos/bespoke-hair-durban/gallery.html" class="mobile-nav__link mobile-nav__link--active">Gallery</a>
+    <a href="/demos/bespoke-hair-durban/contact.html" class="mobile-nav__link">Contact</a>
+    <a href="#" data-whatsapp class="btn btn--whatsapp" style="margin-top: 1rem;">Book on WhatsApp</a>
+  </nav>
+
+  <main>
+    <section class="page-hero page-hero--dark">
+      <div class="container">
+        <span class="section-label reveal">Portfolio</span>
+        <h1 class="reveal">The Lookbook</h1>
+        <p class="reveal">Curated transformations, colour artistry &amp; styling excellence.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div id="gallery-grid" class="gallery-grid"></div>
+      </div>
+    </section>
+
+    <section class="section section--nude">
+      <div class="container text-center">
+        <span class="section-label reveal">More on Instagram</span>
+        <h2 class="section-title reveal">Follow Our Latest Work</h2>
+        <p class="section-subtitle reveal">See real-time transformations and behind-the-scenes moments on our Instagram.</p>
+        <a href="https://www.instagram.com/bespoke_hair_" target="_blank" rel="noopener noreferrer" class="btn btn--primary reveal">@bespoke_hair_</a>
+      </div>
+    </section>
+
+    <section class="cta-banner">
+      <div class="container reveal">
+        <h2>Love What You See?</h2>
+        <p>Book your appointment and let us create your bespoke transformation.</p>
+        <a href="#" data-whatsapp class="btn btn--whatsapp">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Book on WhatsApp
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" role="dialog" aria-label="Image preview">
+    <button class="lightbox__close" aria-label="Close preview">&times;</button>
+    <img class="lightbox__img" src="" alt="Bespoke Hair Durban portfolio preview">
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand">Bespoke <span>Hair</span></div>
+          <p class="footer__desc">Luxury hair and beauty services in Durban. Tailored experiences designed to enhance your natural beauty.</p>
+        </div>
+        <div>
+          <h4 class="footer__heading">Quick Links</h4>
+          <div class="footer__links">
+            <a href="/demos/bespoke-hair-durban/" class="footer__link">Home</a>
+            <a href="/demos/bespoke-hair-durban/services.html" class="footer__link">Services</a>
+            <a href="/demos/bespoke-hair-durban/gallery.html" class="footer__link">Lookbook</a>
+            <a href="/demos/bespoke-hair-durban/contact.html" class="footer__link">Contact</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer__heading">Connect</h4>
+          <div class="footer__social">
+            <a href="https://www.instagram.com/bespoke_hair_" data-instagram target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://www.facebook.com/BespokeHairDurban" data-facebook target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="#" data-whatsapp aria-label="WhatsApp">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p class="footer__copyright">&copy; 2026 Bespoke Hair Durban. All rights reserved.</p>
+        <p class="footer__copyright">892 Umgeni Road, Lion Match Complex, Durban, 4001</p>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" data-whatsapp class="whatsapp-float" aria-label="Book on WhatsApp">
+    <span class="whatsapp-float__tooltip">Book Now</span>
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+</body>
+</html>

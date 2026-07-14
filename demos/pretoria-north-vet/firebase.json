@@ -1,0 +1,14 @@
+{
+  "hosting": {
+    "site": "pretoria-north-animal-clinic",
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**",
+      "README.md",
+      "firebase-debug.log",
+      "firebase-debug.*.log"
+    ]
+  }
+}

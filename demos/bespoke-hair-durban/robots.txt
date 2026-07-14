@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bespokehairdurban.co.za/sitemap.xml

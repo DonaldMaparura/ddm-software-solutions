@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Meet the team at Pretoria North Animal Clinic — a trusted two-veterinarian practice serving Pretoria North with compassionate pet care.">
+  <title>About Us | Pretoria North Animal Clinic</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { green: { DEFAULT: '#4a9b7f' }, cream: { DEFAULT: '#faf7f2', dark: '#f0ebe3' }, teal: { DEFAULT: '#2d8b8b', dark: '#236f6f' }, gold: { DEFAULT: '#c9a227', light: '#e8c84a' }, charcoal: '#2c3e3a', slate: '#5a6b67' } } } }
+  </script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/images/407384412_1391247098350287_6639627391579632721_n.jpg">
+
+<style id="ddm-customizer-style">
+:root{--ddm-primary:#0a0a0a;--ddm-accent:#2563eb;--ddm-bg:#ffffff;--ddm-text:#111111;--ddm-font:Inter,system-ui,sans-serif}
+#ddm-preview-badge{position:fixed;z-index:2147483646;left:12px;bottom:12px;padding:8px 12px;border-radius:8px;background:#0a0a0a;color:#fff;font:600 12px/1.3 Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:min(280px,70vw)}
+.ddm-hide-section{display:none!important}
+</style>
+<script id="ddm-customizer-bridge">
+(function(){
+  var lastTheme=null;
+  var originals={};
+
+  function textOf(el){
+    return (el && (el.innerText||el.textContent)||'').replace(/\s+/g,' ').trim();
+  }
+
+  function setLeafText(el, value){
+    if(!el || !value) return;
+    if(!el.children || el.children.length===0){ el.textContent=value; return; }
+    var walker=document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var node=walker.nextNode();
+    if(node){ node.nodeValue=value; return; }
+    el.textContent=value;
+  }
+
+  function first(sel){ return document.querySelector(sel); }
+  function all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+  function stash(key, el){
+    if(!el || originals[key]!=null) return;
+    originals[key]=textOf(el);
+  }
+
+  function apply(theme){
+    if(!theme) return;
+    lastTheme=theme;
+    try{ sessionStorage.setItem('ddm-live-theme', JSON.stringify(theme)); }catch(e){}
+
+    var root=document.documentElement;
+    root.style.setProperty('--ddm-primary', theme.primaryColor||'#0a0a0a');
+    root.style.setProperty('--ddm-accent', theme.accentColor||'#2563eb');
+    root.style.setProperty('--ddm-bg', theme.bgColor||'#ffffff');
+    root.style.setProperty('--ddm-text', theme.textColor||'#111111');
+    root.style.setProperty('--ddm-font', theme.fontFamily||'Inter, system-ui, sans-serif');
+
+    var s=document.getElementById('ddm-live-style');
+    if(!s){ s=document.createElement('style'); s.id='ddm-live-style'; document.head.appendChild(s); }
+    s.textContent=[
+      'html,body{background:var(--ddm-bg)!important;color:var(--ddm-text)!important;font-family:var(--ddm-font)!important}',
+      'h1,h2,h3,h4,.logo,[class*="brand"],[class*="logo"] span,[class*="title"]{color:var(--ddm-primary)!important}',
+      'a{color:var(--ddm-accent)}',
+      'button,.btn,[class*="btn"],[class*="Btn"],[class*="cta"],[class*="Cta"],input[type="submit"],a[class*="button"]{background:var(--ddm-accent)!important;border-color:var(--ddm-accent)!important;color:#fff!important}',
+      theme.showHeader===false?'header,nav,[class*="navbar"],[class*="Navbar"],[class*="header"]:not(#ddm-preview-badge){display:none!important}':'',
+      theme.showFooter===false?'footer,[class*="footer"],[class*="Footer"]{display:none!important}':'',
+      theme.showHero===false?'[class*="hero"],[class*="Hero"],section:first-of-type{display:none!important}':'',
+      theme.showAbout===false?'[id*="about"],[class*="about"],[class*="About"]{display:none!important}':'',
+      theme.showContact===false?'[id*="contact"],[class*="contact"],[class*="Contact"]{display:none!important}':''
+    ].filter(Boolean).join('\n');
+
+    var brand=first('header a,[class*="brand"] a,[class*="logo"] a,nav a,a[class*="logo"],a[class*="brand"]');
+    stash('brand', brand);
+    if(brand && theme.bizName){
+      var brandImg=brand.querySelector('img');
+      if(brandImg && theme.logoDataUrl){ brandImg.src=theme.logoDataUrl; brandImg.alt=theme.bizName; }
+      else setLeafText(brand, theme.bizName);
+    }
+    if(theme.logoDataUrl){
+      var logoImg=first('header img, nav img, [class*="logo"] img, img[alt*="ogo" i]');
+      if(logoImg){ logoImg.src=theme.logoDataUrl; if(theme.bizName) logoImg.alt=theme.bizName; }
+    }
+
+    var h1=first('h1');
+    stash('h1', h1);
+    if(h1 && theme.headline) setLeafText(h1, theme.headline);
+
+    var heroP=first('h1 + p, [class*="hero"] p, section p, main p');
+    stash('heroP', heroP);
+    if(heroP && theme.subtext) setLeafText(heroP, theme.subtext);
+
+    if(theme.tagline){
+      var tag=first('[class*="tagline"],[class*="subtitle"], header p, nav p');
+      stash('tag', tag);
+      if(tag) setLeafText(tag, theme.tagline);
+    }
+
+    if(theme.ctaLabel){
+      var cta=first('a.btn, a[class*="btn"], button, [class*="cta"] a, [class*="hero"] a, [class*="Hero"] a');
+      stash('cta', cta);
+      if(cta) setLeafText(cta, theme.ctaLabel);
+    }
+
+    if(theme.aboutText){
+      var about=first('#about p, [id*="about"] p, [class*="about"] p, [class*="About"] p');
+      stash('about', about);
+      if(about) setLeafText(about, theme.aboutText);
+    }
+
+    if(theme.navLabels){
+      var labels=theme.navLabels.split(',').map(function(x){return x.trim();}).filter(Boolean);
+      var links=all('header nav a, nav a, [class*="nav"] a').filter(function(a){
+        return textOf(a) && textOf(a).length<28 && !a.querySelector('img');
+      }).slice(0, labels.length);
+      links.forEach(function(a,i){ if(labels[i]) setLeafText(a, labels[i]); });
+    }
+
+    if(theme.phone){
+      all('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+theme.phone.replace(/\s+/g,''); setLeafText(a, theme.phone); });
+    }
+    if(theme.email){
+      all('a[href^="mailto:"]').forEach(function(a){ a.href='mailto:'+theme.email; setLeafText(a, theme.email); });
+    }
+
+    var badge=document.getElementById('ddm-preview-badge');
+    if(!badge){
+      badge=document.createElement('div');
+      badge.id='ddm-preview-badge';
+      document.body.appendChild(badge);
+    }
+    badge.textContent='Previewing edits · '+(theme.bizName||'Your brand');
+  }
+
+  window.addEventListener('message', function(e){
+    if(!e.data || e.data.type!=='ddm-theme') return;
+    apply(e.data.theme||{});
+  });
+
+  try{
+    var stored=sessionStorage.getItem('ddm-live-theme');
+    if(stored) apply(JSON.parse(stored));
+  }catch(e){}
+
+  setInterval(function(){
+    if(lastTheme) apply(lastTheme);
+  }, 1500);
+
+  try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  document.addEventListener('DOMContentLoaded', function(){
+    try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  });
+})();
+</script></head>
+<body>
+
+  <div class="emergency-banner text-white text-center py-2 px-4 text-sm font-semibold">
+    🚨 Pet Emergency? <a href="tel:0125655485" class="underline hover:text-gold-light ml-1">012 565 5485</a> | <a href="tel:0762073640" class="underline hover:text-gold-light">076 207 3640</a>
+  </div>
+
+  <nav id="navbar" class="navbar-scrolled fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg shadow-sm" style="top:36px">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="assets/images/407384412_1391247098350287_6639627391579632721_n.jpg" alt="Pretoria North Animal Clinic" class="h-11 w-11 rounded-full object-cover shadow-lg">
+          <div class="hidden sm:block">
+            <div class="font-display text-lg text-charcoal leading-tight">Pretoria North</div>
+            <div class="text-xs text-slate font-medium tracking-wider uppercase">Animal Clinic</div>
+          </div>
+        </a>
+        <div class="hidden lg:flex items-center gap-8">
+          <a href="index.html" class="nav-link text-charcoal font-medium text-sm">Home</a>
+          <a href="about.html" class="nav-link text-teal font-medium text-sm active">About Us</a>
+          <a href="services.html" class="nav-link text-charcoal font-medium text-sm">Services</a>
+          <a href="shop.html" class="nav-link text-charcoal font-medium text-sm">Shop</a>
+          <a href="blog.html" class="nav-link text-charcoal font-medium text-sm">Pet Care Tips</a>
+          <a href="contact.html" class="nav-link text-charcoal font-medium text-sm">Contact</a>
+          <a href="contact.html#book" class="btn-gold px-6 py-2.5 rounded-full text-sm font-bold">Book Now</a>
+        </div>
+        <button id="mobile-toggle" class="lg:hidden text-charcoal p-2" aria-label="Open menu">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="mobile-menu fixed inset-0 z-[60] bg-charcoal/98 backdrop-blur-lg lg:hidden">
+    <div class="flex flex-col h-full p-8">
+      <div class="flex justify-between items-center mb-12">
+        <div class="font-display text-2xl text-white">Pretoria North Animal Clinic</div>
+        <button id="mobile-close" class="text-white p-2" aria-label="Close menu"><svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
+      </div>
+      <div class="flex flex-col gap-6 text-xl">
+        <a href="index.html" class="text-white hover:text-gold">Home</a>
+        <a href="about.html" class="text-gold">About Us</a>
+        <a href="services.html" class="text-white hover:text-gold">Services</a>
+        <a href="shop.html" class="text-white hover:text-gold">Shop</a>
+        <a href="blog.html" class="text-white hover:text-gold">Pet Care Tips</a>
+        <a href="contact.html" class="text-white hover:text-gold">Contact</a>
+        <a href="contact.html#book" class="btn-gold px-8 py-4 rounded-full text-center font-bold mt-4">Book Appointment</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="page-hero pt-44 pb-20 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+      <span class="text-gold font-bold text-sm uppercase tracking-widest">Our Story</span>
+      <h1 class="font-display text-5xl lg:text-6xl mt-3">About Pretoria North Animal Clinic</h1>
+      <p class="text-white/75 text-lg mt-4 max-w-2xl mx-auto">A dedicated small animal practice where every pet is treated with the compassion and expertise they deserve.</p>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal-left">
+          <h2 class="font-display text-4xl text-charcoal">Caring for Pretoria North's Pets Since Day One</h2>
+          <p class="text-slate mt-6 text-lg leading-relaxed">Pretoria North Animal Clinic is a two-veterinarian small animal practice proudly serving the Pretoria North community — including Heatherdale and the Rachel De Beer area.</p>
+          <p class="text-slate mt-4 leading-relaxed">We built our practice on a simple belief: every pet deserves to be treated like family. That means taking the time to listen to pet parents, explaining diagnoses clearly, and providing gentle, fear-free care at every visit.</p>
+          <p class="text-slate mt-4 leading-relaxed">Whether you're bringing in a new puppy for their first vaccinations, an elderly cat for a wellness check, or a pet in urgent need — you'll find a warm welcome and expert care waiting for you.</p>
+        </div>
+        <div class="reveal-right rounded-3xl overflow-hidden shadow-2xl">
+          <img src="assets/images/491353399_1766179400857053_4990804816190999886_n.jpg" alt="Pretoria North Animal Clinic building exterior" class="w-full h-[320px] sm:h-[420px] lg:h-[500px] object-cover object-center">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <span class="text-teal font-bold text-sm uppercase tracking-widest">Our Values</span>
+        <h2 class="font-display text-4xl text-charcoal mt-3">What Guides Everything We Do</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        <div class="bg-cream rounded-3xl p-8 reveal">
+          <div class="text-4xl mb-4">💚</div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Compassion First</h3>
+          <p class="text-slate text-sm leading-relaxed">We approach every patient with empathy and patience, understanding that a vet visit can be stressful for both pets and their owners.</p>
+        </div>
+        <div class="bg-cream rounded-3xl p-8 reveal" style="transition-delay:0.1s">
+          <div class="text-4xl mb-4">🎓</div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Clinical Excellence</h3>
+          <p class="text-slate text-sm leading-relaxed">Our veterinarians stay current with the latest veterinary medicine to provide the best possible outcomes for your pets.</p>
+        </div>
+        <div class="bg-cream rounded-3xl p-8 reveal" style="transition-delay:0.2s">
+          <div class="text-4xl mb-4">🤝</div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Honest Communication</h3>
+          <p class="text-slate text-sm leading-relaxed">We believe in transparent, jargon-free conversations so you can make informed decisions about your pet's health.</p>
+        </div>
+        <div class="bg-cream rounded-3xl p-8 reveal" style="transition-delay:0.3s">
+          <div class="text-4xl mb-4">🏠</div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Community Focused</h3>
+          <p class="text-slate text-sm leading-relaxed">We're proud to be part of the Pretoria North community and committed to serving local families and their beloved pets.</p>
+        </div>
+        <div class="bg-cream rounded-3xl p-8 reveal" style="transition-delay:0.4s">
+          <div class="text-4xl mb-4">🐾</div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Fear-Free Approach</h3>
+          <p class="text-slate text-sm leading-relaxed">We use gentle handling techniques and create a calm environment to make visits as positive as possible.</p>
+        </div>
+        <div class="bg-cream rounded-3xl p-8 reveal" style="transition-delay:0.5s">
+          <div class="text-4xl mb-4">❤️</div>
+          <h3 class="font-bold text-xl text-charcoal mb-3">Treat Pets Like Family</h3>
+          <p class="text-slate text-sm leading-relaxed">Because to us, they're not just patients — they're cherished members of your family, and we care for them accordingly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-20 bg-cream">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center max-w-2xl mx-auto reveal">
+        <span class="text-teal font-bold text-sm uppercase tracking-widest">Our Team</span>
+        <h2 class="font-display text-4xl text-charcoal mt-3">Life at Our Clinic</h2>
+        <p class="text-slate mt-4">Two dedicated veterinarians and a caring support team — passionate about animal welfare and serving our Pretoria North community.</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 max-w-4xl mx-auto">
+        <div class="team-card bg-white rounded-3xl overflow-hidden shadow-sm reveal">
+          <div class="h-72 overflow-hidden">
+            <img src="assets/images/650835154_2047214716086852_3293739556964125825_n.jpg" alt="Gentle veterinary examination" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="font-bold text-xl text-charcoal">Gentle Examinations</h3>
+            <p class="text-teal text-sm font-medium mt-1">Fear-Free Care</p>
+            <p class="text-slate text-sm mt-3 leading-relaxed">Every patient receives calm, thorough attention — from tiny Yorkies to gentle giants.</p>
+          </div>
+        </div>
+        <div class="team-card bg-white rounded-3xl overflow-hidden shadow-sm reveal" style="transition-delay:0.1s">
+          <div class="h-72 overflow-hidden">
+            <img src="assets/images/654286796_2052245025583821_8861179355404795577_n.jpg" alt="Happy patient at our clinic" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="font-bold text-xl text-charcoal">Happy Patients</h3>
+            <p class="text-teal text-sm font-medium mt-1">All Breeds Welcome</p>
+            <p class="text-slate text-sm mt-3 leading-relaxed">We care for dogs and cats of every size — and they love visiting us too!</p>
+          </div>
+        </div>
+        <div class="team-card bg-white rounded-3xl overflow-hidden shadow-sm reveal sm:col-span-2 lg:col-span-1" style="transition-delay:0.2s">
+          <div class="h-72 overflow-hidden">
+            <img src="assets/images/651219008_2049078662567124_6083348310042535613_n.jpg" alt="Pet nutrition shop" class="w-full h-full object-cover">
+          </div>
+          <div class="p-6 text-center">
+            <h3 class="font-bold text-xl text-charcoal">Pet Nutrition Shop</h3>
+            <p class="text-teal text-sm font-medium mt-1">Premium Pet Food</p>
+            <p class="text-slate text-sm mt-3 leading-relaxed">Stock up on trusted brands like Montego, Royal Canin and Hill's — Mon–Fri 08:00–19:00.</p>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-slate text-sm mt-8 reveal">Add veterinarian headshots and names here when available.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-gradient-to-r from-teal to-green text-center">
+    <div class="max-w-3xl mx-auto px-4 reveal">
+      <h2 class="font-display text-4xl text-white">We'd Love to Meet You and Your Pet</h2>
+      <p class="text-white/80 mt-4 text-lg">Book your first visit today and experience the Pretoria North Animal Clinic difference.</p>
+      <a href="contact.html#book" class="btn-gold px-10 py-4 rounded-full font-bold inline-block mt-8">Book Your First Visit</a>
+    </div>
+  </section>
+
+  <footer class="bg-charcoal text-white py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="assets/images/407384412_1391247098350287_6639627391579632721_n.jpg" alt="" class="h-10 w-10 rounded-full object-cover">
+            <div class="font-display text-lg">Pretoria North Animal Clinic</div>
+          </div>
+          <p class="text-white/60 text-sm">Compassionate care for your beloved pets.</p>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Quick Links</h4>
+          <ul class="space-y-2 text-sm text-white/60">
+            <li><a href="index.html" class="hover:text-gold">Home</a></li>
+            <li><a href="services.html" class="hover:text-gold">Services</a></li>
+            <li><a href="shop.html" class="hover:text-gold">Shop</a></li>
+            <li><a href="contact.html" class="hover:text-gold">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Hours</h4>
+          <ul class="space-y-1 text-sm text-white/60">
+            <li>Mon–Fri: 08:00–19:00</li>
+            <li>Sat: 09:00–12:00</li>
+            <li>Sun: By appointment</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-bold mb-4">Contact</h4>
+          <ul class="space-y-1 text-sm text-white/60">
+            <li>566 Rachel De Beer St</li>
+            <li><a href="tel:0125655485" class="hover:text-gold">012 565 5485</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-white/10 mt-12 pt-8 text-center text-sm text-white/40">
+        <p>&copy; <span class="current-year"></span> Pretoria North Animal Clinic. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div class="fab-container">
+    <a href="tel:0762073640" class="fab fab-call" aria-label="Call us"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></a>
+    <a href="https://wa.me/27762073640" target="_blank" rel="noopener" class="fab fab-whatsapp" aria-label="WhatsApp"><svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
