@@ -14,7 +14,8 @@
     "build": "webpack --config webpack.config.prod.js",
     "site": "node server/index.mjs",
     "capture:templates": "node scripts/capture-templates.mjs",
-    "sync:demos": "node scripts/sync-demos.mjs"
+    "sync:demos": "node scripts/sync-demos.mjs",
+    "test:demos": "node scripts/test-demos.mjs"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",

@@ -9,3 +9,5 @@ dist
 .env.*.local
 server/data/
 .playwright/
+img/demo-qa/
+img/templates/.capture-log.txt

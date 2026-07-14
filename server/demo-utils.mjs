@@ -2,17 +2,61 @@
 
 export function rewriteRootPaths(content, slug) {
   const prefix = `/demos/${slug}`;
-  return content
-    .replace(/(href|src|action)=(["'])\/(?!\/)/g, `$1=$2${prefix}/`)
-    .replace(/(href|src|action)=(["'])\.\.\//g, `$1=$2${prefix}/`)
-    .replace(/url\(\s*(['"]?)\/(?!\/)/g, `url($1${prefix}/`)
-    .replace(/(["'])\/_next\//g, `$1${prefix}/_next/`)
-    .replace(/(["'])\/assets\//g, `$1${prefix}/assets/`)
-    .replace(/(["'])\/images\//g, `$1${prefix}/images/`)
-    .replace(/(["'])\/img\//g, `$1${prefix}/img/`)
-    .replace(/(["'])\/css\//g, `$1${prefix}/css/`)
-    .replace(/(["'])\/js\//g, `$1${prefix}/js/`)
-    .replace(/(["'])\/public\//g, `$1${prefix}/public/`);
+
+  // Only rewrite root-absolute paths (preceded by non-path chars), never nested
+  // segments like /_next/static/css/ or /demos/slug/_next/.
+  const atRoot = `(?<![A-Za-z0-9._-])`;
+
+  let out = content
+    // Vite preload/dynamic import base: function(e){return"/"+e}
+    .replace(/function\((\w+)\)\{return"\/"\+\1\}/g, `function($1){return"${prefix}/"+$1}`)
+    .replace(/\((\w+)\)=>"\/"\+\1/g, `($1)=>"${prefix}/"+$1}`);
+
+  const folders = [
+    '/_next/',
+    '/assets/',
+    '/images/',
+    '/img/',
+    '/css/',
+    '/js/',
+    '/photos/',
+    '/public/',
+    '/gallery/',
+    '/media/',
+    '/fonts/',
+    '/static/',
+  ];
+  for (const folder of folders) {
+    out = out.replace(new RegExp(`${atRoot}${folder.replace(/\//g, '\\/')}`, 'g'), `${prefix}${folder}`);
+  }
+
+  const files = [
+    '/logo.png',
+    '/logo.jpg',
+    '/logo.jpeg',
+    '/logo.webp',
+    '/logo.svg',
+    '/favicon.ico',
+    '/favicon.svg',
+    '/icon.svg',
+    '/icon.png',
+    '/manifest.webmanifest',
+    '/robots.txt',
+    '/sitemap.xml',
+  ];
+  for (const file of files) {
+    out = out.replace(new RegExp(`${atRoot}${file.replace(/\./g, '\\.')}`, 'g'), `${prefix}${file}`);
+  }
+
+  // General absolute href/src/action — skip bare "/" and already /demos/...
+  out = out
+    .replace(/(href|src|action)=(["'`])\/(?!\/|["'`]|demos\/)/g, `$1=$2${prefix}/`)
+    .replace(/url\(\s*(['"`]?)\/(?!\/|['"`]|demos\/)/g, `url($1${prefix}/`);
+
+  // Safety: collapse accidental double prefixes
+  out = out.replaceAll(`${prefix}${prefix}`, prefix);
+  out = out.replace(new RegExp(`(/demos/${slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}){2,}`, 'g'), prefix);
+  return out;
 }
 
 export const CUSTOMIZER_BRIDGE = `
