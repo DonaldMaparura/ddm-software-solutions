@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>thirty eight Restaurant | Orlando East, Soweto</title>
+  <meta name="description" content="Premium BBQ grills and cuisine at thirty eight Restaurant — 3841 Hlakula Street, Orlando East, Soweto. Table bookings available." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+
+<style id="ddm-customizer-style">
+:root{--ddm-primary:#0a0a0a;--ddm-accent:#2563eb;--ddm-bg:#ffffff;--ddm-text:#111111;--ddm-font:Inter,system-ui,sans-serif}
+#ddm-preview-badge{position:fixed;z-index:2147483646;left:12px;bottom:12px;padding:8px 12px;border-radius:8px;background:#0a0a0a;color:#fff;font:600 12px/1.3 Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:min(280px,70vw)}
+.ddm-hide-section{display:none!important}
+</style>
+<script id="ddm-customizer-bridge">
+(function(){
+  var lastTheme=null;
+  var originals={};
+
+  function textOf(el){
+    return (el && (el.innerText||el.textContent)||'').replace(/\s+/g,' ').trim();
+  }
+
+  function setLeafText(el, value){
+    if(!el || !value) return;
+    if(!el.children || el.children.length===0){ el.textContent=value; return; }
+    var walker=document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var node=walker.nextNode();
+    if(node){ node.nodeValue=value; return; }
+    el.textContent=value;
+  }
+
+  function first(sel){ return document.querySelector(sel); }
+  function all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+  function stash(key, el){
+    if(!el || originals[key]!=null) return;
+    originals[key]=textOf(el);
+  }
+
+  function apply(theme){
+    if(!theme) return;
+    lastTheme=theme;
+    try{ sessionStorage.setItem('ddm-live-theme', JSON.stringify(theme)); }catch(e){}
+
+    var root=document.documentElement;
+    root.style.setProperty('--ddm-primary', theme.primaryColor||'#0a0a0a');
+    root.style.setProperty('--ddm-accent', theme.accentColor||'#2563eb');
+    root.style.setProperty('--ddm-bg', theme.bgColor||'#ffffff');
+    root.style.setProperty('--ddm-text', theme.textColor||'#111111');
+    root.style.setProperty('--ddm-font', theme.fontFamily||'Inter, system-ui, sans-serif');
+
+    var s=document.getElementById('ddm-live-style');
+    if(!s){ s=document.createElement('style'); s.id='ddm-live-style'; document.head.appendChild(s); }
+    s.textContent=[
+      'html,body{background:var(--ddm-bg)!important;color:var(--ddm-text)!important;font-family:var(--ddm-font)!important}',
+      'h1,h2,h3,h4,.logo,[class*="brand"],[class*="logo"] span,[class*="title"]{color:var(--ddm-primary)!important}',
+      'a{color:var(--ddm-accent)}',
+      'button,.btn,[class*="btn"],[class*="Btn"],[class*="cta"],[class*="Cta"],input[type="submit"],a[class*="button"]{background:var(--ddm-accent)!important;border-color:var(--ddm-accent)!important;color:#fff!important}',
+      theme.showHeader===false?'header,nav,[class*="navbar"],[class*="Navbar"],[class*="header"]:not(#ddm-preview-badge){display:none!important}':'',
+      theme.showFooter===false?'footer,[class*="footer"],[class*="Footer"]{display:none!important}':'',
+      theme.showHero===false?'[class*="hero"],[class*="Hero"],section:first-of-type{display:none!important}':'',
+      theme.showAbout===false?'[id*="about"],[class*="about"],[class*="About"]{display:none!important}':'',
+      theme.showContact===false?'[id*="contact"],[class*="contact"],[class*="Contact"]{display:none!important}':''
+    ].filter(Boolean).join('\n');
+
+    var brand=first('header a,[class*="brand"] a,[class*="logo"] a,nav a,a[class*="logo"],a[class*="brand"]');
+    stash('brand', brand);
+    if(brand && theme.bizName){
+      var brandImg=brand.querySelector('img');
+      if(brandImg && theme.logoDataUrl){ brandImg.src=theme.logoDataUrl; brandImg.alt=theme.bizName; }
+      else setLeafText(brand, theme.bizName);
+    }
+    if(theme.logoDataUrl){
+      var logoImg=first('header img, nav img, [class*="logo"] img, img[alt*="ogo" i]');
+      if(logoImg){ logoImg.src=theme.logoDataUrl; if(theme.bizName) logoImg.alt=theme.bizName; }
+    }
+
+    var h1=first('h1');
+    stash('h1', h1);
+    if(h1 && theme.headline) setLeafText(h1, theme.headline);
+
+    var heroP=first('h1 + p, [class*="hero"] p, section p, main p');
+    stash('heroP', heroP);
+    if(heroP && theme.subtext) setLeafText(heroP, theme.subtext);
+
+    if(theme.tagline){
+      var tag=first('[class*="tagline"],[class*="subtitle"], header p, nav p');
+      stash('tag', tag);
+      if(tag) setLeafText(tag, theme.tagline);
+    }
+
+    if(theme.ctaLabel){
+      var cta=first('a.btn, a[class*="btn"], button, [class*="cta"] a, [class*="hero"] a, [class*="Hero"] a');
+      stash('cta', cta);
+      if(cta) setLeafText(cta, theme.ctaLabel);
+    }
+
+    if(theme.aboutText){
+      var about=first('#about p, [id*="about"] p, [class*="about"] p, [class*="About"] p');
+      stash('about', about);
+      if(about) setLeafText(about, theme.aboutText);
+    }
+
+    if(theme.navLabels){
+      var labels=theme.navLabels.split(',').map(function(x){return x.trim();}).filter(Boolean);
+      var links=all('header nav a, nav a, [class*="nav"] a').filter(function(a){
+        return textOf(a) && textOf(a).length<28 && !a.querySelector('img');
+      }).slice(0, labels.length);
+      links.forEach(function(a,i){ if(labels[i]) setLeafText(a, labels[i]); });
+    }
+
+    if(theme.phone){
+      all('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+theme.phone.replace(/\s+/g,''); setLeafText(a, theme.phone); });
+    }
+    if(theme.email){
+      all('a[href^="mailto:"]').forEach(function(a){ a.href='mailto:'+theme.email; setLeafText(a, theme.email); });
+    }
+
+    var badge=document.getElementById('ddm-preview-badge');
+    if(!badge){
+      badge=document.createElement('div');
+      badge.id='ddm-preview-badge';
+      document.body.appendChild(badge);
+    }
+    badge.textContent='Previewing edits · '+(theme.bizName||'Your brand');
+  }
+
+  window.addEventListener('message', function(e){
+    if(!e.data || e.data.type!=='ddm-theme') return;
+    apply(e.data.theme||{});
+  });
+
+  try{
+    var stored=sessionStorage.getItem('ddm-live-theme');
+    if(stored) apply(JSON.parse(stored));
+  }catch(e){}
+
+  setInterval(function(){
+    if(lastTheme) apply(lastTheme);
+  }, 1500);
+
+  try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  document.addEventListener('DOMContentLoaded', function(){
+    try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  });
+})();
+</script></head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">@</span>
+      <span class="brand-text">
+        <strong>thirty eight</strong>
+        <small>RESTAURANT</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#menu">Menu</a>
+      <a href="#story">Our Story</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="btn btn-primary" href="tel:+27674384765">Book a table</a>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <img class="hero-media" src="images/promo.png" alt="BBQ grills on open flame at thirty eight Restaurant" />
+      <div class="hero-veil"></div>
+      <div class="hero-copy">
+        <p class="eyebrow">Orlando East · Soweto</p>
+        <h1>Come and enjoy our <em>BBQ grills</em></h1>
+        <p class="lead">Premium cuisine, live fire flavours, and warm hospitality — table bookings available.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="tel:+27674384765">Call 076 438 4765</a>
+          <a class="btn btn-ghost" href="#menu">View menu</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="strip" aria-label="Highlights">
+      <p>Premium cuisine</p>
+      <p>Open-flame BBQ</p>
+      <p>Non-alcoholic beverages</p>
+      <p>Family tables welcome</p>
+    </section>
+
+    <section class="section story" id="story">
+      <div class="story-copy">
+        <p class="eyebrow">Our story</p>
+        <h2>thirty eight is where Soweto gathers around the grill</h2>
+        <p>Bold smoke, generous plates, and a space made for celebration — from weeknight dinners to birthdays that fill the room with laughter.</p>
+        <a class="text-link" href="#visit">Find us in Orlando East →</a>
+      </div>
+      <figure class="story-media">
+        <img src="images/hero.png" alt="Guests celebrating at thirty eight Restaurant" />
+      </figure>
+    </section>
+
+    <section class="section menu" id="menu">
+      <div class="section-head">
+        <p class="eyebrow">From the grill</p>
+        <h2>Signature plates</h2>
+      </div>
+      <div class="menu-grid">
+        <article class="menu-card featured">
+          <img src="images/dish.png" alt="Braised shank with roasted vegetables" />
+          <div>
+            <h3>Braised shank board</h3>
+            <p>Slow-cooked shank, glazed jus, mash, and fire-roasted garden vegetables.</p>
+          </div>
+        </article>
+        <article class="menu-card">
+          <h3>BBQ grill share</h3>
+          <p>Open-flame cuts with house rubs, charred onions, and dipping sauces.</p>
+        </article>
+        <article class="menu-card">
+          <h3>Weekend feast</h3>
+          <p>Family-style platters built for gatherings — book ahead for larger tables.</p>
+        </article>
+        <article class="menu-card">
+          <h3>Fresh cooler bar</h3>
+          <p>Non-alcoholic beverages to pair with every plate from the grill.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section gallery" id="gallery">
+      <div class="section-head">
+        <p class="eyebrow">Atmosphere</p>
+        <h2>Moments at thirty eight</h2>
+      </div>
+      <div class="gallery-grid">
+        <img src="images/promo.png" alt="BBQ grills promotional scene" />
+        <img src="images/dish.png" alt="Signature plated dish" />
+        <img src="images/gallery.png" alt="Restaurant venue moment" />
+        <img src="images/hero.png" alt="Celebration at the restaurant" />
+      </div>
+    </section>
+
+    <section class="section visit" id="visit">
+      <div class="visit-card">
+        <p class="eyebrow">Visit us</p>
+        <h2>3841 Hlakula Street<br />Orlando East, Soweto</h2>
+        <p class="visit-note">Table bookings available. For enquiries call either line below.</p>
+        <div class="visit-contacts">
+          <a class="btn btn-primary" href="tel:+27674384765">076 438 4765</a>
+          <a class="btn btn-ghost" href="tel:+27670122102">067 012 2102</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="brand brand-footer">
+      <span class="brand-mark" aria-hidden="true">@</span>
+      <span class="brand-text">
+        <strong>thirty eight</strong>
+        <small>RESTAURANT</small>
+      </span>
+    </div>
+    <p>Premium cuisine · Orlando East, Soweto</p>
+  </footer>
+</body>
+</html>

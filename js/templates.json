@@ -15,9 +15,9 @@
       "Contact"
     ],
     "projectPath": "@38RESTAURANT",
-    "entry": null,
+    "entry": ".",
     "thumbnail": "img/templates/38-restaurant.png",
-    "demo": false,
+    "demo": true,
     "hostingPrice": 1999
   },
   {
