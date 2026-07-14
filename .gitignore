@@ -4,3 +4,8 @@
 node_modules
 dist
 .cache
+.env
+.env.local
+.env.*.local
+server/data/
+.playwright/

@@ -1,0 +1,320 @@
+[
+  {
+    "id": "38-restaurant",
+    "name": "38 Restaurant",
+    "industry": "Restaurants",
+    "category": "restaurant",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Bold restaurant brand presence with menu-forward storytelling and booking CTAs.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Modern Design",
+      "Gallery",
+      "Contact"
+    ],
+    "projectPath": "@38RESTAURANT",
+    "entry": null,
+    "thumbnail": "img/templates/38-restaurant.png",
+    "demo": false,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "1904-trattoria",
+    "name": "1904 Trattoria Ponte Vecchio",
+    "industry": "Restaurants",
+    "category": "restaurant",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Italian dining experience site with warm atmosphere and reservation-ready layout.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Next.js",
+      "Modern Design"
+    ],
+    "projectPath": "1904TrattoriaPonteVecchio",
+    "entry": "out",
+    "thumbnail": "img/templates/1904-trattoria.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "bell-street-baguettes",
+    "name": "Bell Street Baguettes",
+    "industry": "Restaurants",
+    "category": "restaurant",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Artisan bakery and caf\u00e9 website with product showcases and store identity.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Next.js",
+      "E-commerce Ready"
+    ],
+    "projectPath": "Bell-Street-Baguettes",
+    "entry": "out",
+    "thumbnail": "img/templates/bell-street-baguettes.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "bespoke-hair-durban",
+    "name": "Bespoke Hair Durban",
+    "industry": "Beauty Salons",
+    "category": "beauty",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Premium salon site with portfolio gallery and appointment-focused conversion.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Gallery",
+      "Contact"
+    ],
+    "projectPath": "bespoke-hair-durban",
+    "entry": "dist",
+    "thumbnail": "img/templates/bespoke-hair-durban.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "bh-auto-centre",
+    "name": "BH Auto Centre",
+    "industry": "Automotive",
+    "category": "automotive",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Automotive service centre presence with services, trust signals, and enquiry flow.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Next.js",
+      "Services"
+    ],
+    "projectPath": "BH-auto-centre",
+    "entry": "out",
+    "thumbnail": "img/templates/bh-auto-centre.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "growth-gate-investments",
+    "name": "Growth Gate Investments",
+    "industry": "Corporate",
+    "category": "corporate",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Investment firm site with professional credibility and clear service pathways.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Corporate",
+      "Contact"
+    ],
+    "projectPath": "growth-gate-investments",
+    "entry": "public",
+    "thumbnail": "img/templates/growth-gate-investments.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "lovcon",
+    "name": "Lovcon",
+    "industry": "Corporate",
+    "category": "corporate",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Clean corporate landing experience for a focused brand story.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Modern Design"
+    ],
+    "projectPath": "lovcon",
+    "entry": ".",
+    "thumbnail": "img/templates/lovcon.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "mataya-media",
+    "name": "Mataya Media",
+    "industry": "Media",
+    "category": "corporate",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Creative media studio website with visual storytelling and portfolio energy.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Portfolio",
+      "Gallery"
+    ],
+    "projectPath": "Mataya-media",
+    "entry": ".",
+    "thumbnail": "img/templates/mataya-media.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "menin-motorsport",
+    "name": "Menin Motorsport Pretoria",
+    "industry": "Automotive",
+    "category": "automotive",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Motorsport brand site with high-energy photography and performance positioning.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Gallery",
+      "Contact"
+    ],
+    "projectPath": "menin-motorsport-pretoria",
+    "entry": "dist",
+    "thumbnail": "img/templates/menin-motorsport.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "on-the-avenue",
+    "name": "On The Avenue",
+    "industry": "Restaurants",
+    "category": "restaurant",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Hospitality website with bookings mindset and premium venue presentation.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Next.js",
+      "Modern Design"
+    ],
+    "projectPath": "OnTheAvenue",
+    "entry": "out",
+    "thumbnail": "img/templates/on-the-avenue.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "pretoria-north-vet",
+    "name": "Pretoria North Veterinary Clinic",
+    "industry": "Veterinary Clinics",
+    "category": "medical",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Veterinary clinic site with services, about, and appointment-friendly contact paths.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Services",
+      "Blog Ready"
+    ],
+    "projectPath": "PretoriaNorthVeterinaryClinic",
+    "entry": ".",
+    "thumbnail": "img/templates/pretoria-north-vet.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "rocklite-bricks",
+    "name": "Rocklite Bricks",
+    "industry": "Construction",
+    "category": "construction",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Industrial manufacturer site for brick products with strong product clarity.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Next.js",
+      "Products"
+    ],
+    "projectPath": "Rocklite-bricks",
+    "entry": "out",
+    "thumbnail": "img/templates/rocklite-bricks.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "spectrum",
+    "name": "Spectrum",
+    "industry": "Corporate",
+    "category": "corporate",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Versatile corporate template with polished visual sections and clear CTAs.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Modern Design"
+    ],
+    "projectPath": "Spectrum",
+    "entry": ".",
+    "thumbnail": "img/templates/spectrum.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "takealot-accounting",
+    "name": "Takealot Accounting",
+    "industry": "Accounting",
+    "category": "corporate",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Operations-oriented accounting systems template for specialised business software presentation.",
+    "features": [
+      "Business Software",
+      "Customisable",
+      "Documentation Ready"
+    ],
+    "projectPath": "takealot-accounting",
+    "entry": null,
+    "thumbnail": "img/templates/takealot-accounting.png",
+    "demo": false,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "kings-school-midvaal",
+    "name": "The Kings School Midvaal",
+    "industry": "Schools",
+    "category": "school",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Independent school website covering academics, admissions, and campus life.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Admissions",
+      "Academics"
+    ],
+    "projectPath": "The-Kings-School-Midvaal",
+    "entry": ".",
+    "thumbnail": "img/templates/kings-school-midvaal.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
+    "id": "van-wyk-attorneys",
+    "name": "Van Wyk Attorneys",
+    "industry": "Law Firms",
+    "category": "law",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Law firm website with authoritative typography, practice areas, and consultation CTAs.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Next.js",
+      "Professional"
+    ],
+    "projectPath": "Van-Wyk-Attorneys",
+    "entry": "out",
+    "thumbnail": "img/templates/van-wyk-attorneys.png",
+    "demo": true,
+    "hostingPrice": 1999
+  }
+]

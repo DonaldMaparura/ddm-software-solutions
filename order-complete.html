@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order complete | DDM Software Solutions</title>
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main class="section" style="min-height:70vh;display:flex;align-items:center">
+    <div class="container" style="max-width:40rem;text-align:center">
+      <p class="eyebrow">Payment</p>
+      <h1>Thank you</h1>
+      <p class="lead" style="margin-left:auto;margin-right:auto">
+        If PayFast confirmed your payment, we will email you next steps for template delivery or customisation within one business day.
+      </p>
+      <p id="refLine" style="color:var(--ink-muted);font-size:0.875rem"></p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:28px">
+        <a class="btn btn-primary" href="templates.html">Back to templates</a>
+        <a class="btn btn-secondary" href="contact.html">Contact us</a>
+      </div>
+    </div>
+  </main>
+  <script>
+    var ref = new URLSearchParams(location.search).get('ref');
+    if (ref) document.getElementById('refLine').textContent = 'Reference: ' + ref;
+  </script>
+</body>
+</html>

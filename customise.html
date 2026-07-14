@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5" />
+  <title>Customise Template | DDM Software Solutions</title>
+  <meta name="description" content="WordPress-style template customiser — colours, fonts, content, logo, sections, then PayFast checkout." />
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('ddm-theme');
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body data-page="templates">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand" aria-label="DDM Software Solutions home">
+        <span class="brand-mark" aria-hidden="true">DDM</span>
+        <span class="brand-text">DDM <span>Software Solutions</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="templates.html" aria-current="page">Templates</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a class="btn btn-primary" href="templates.html">Buy Template</a>
+        <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <a href="services.html">Services</a>
+    <a href="templates.html" aria-current="page">Templates</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a class="btn btn-primary" href="templates.html">Buy Template</a>
+  </div>
+
+  <main id="main" class="customise-page">
+    <header class="page-hero">
+      <div class="container">
+        <p class="eyebrow"><a href="templates.html" class="text-link" style="margin:0">← Templates</a></p>
+        <h1 id="tplTitle">Customise template</h1>
+        <p class="lead" id="tplLead">WordPress-style controls — edit identity, colours, content, and sections. Preview updates live.</p>
+      </div>
+    </header>
+
+    <section class="section" style="padding-top:24px">
+      <div class="container customise-layout">
+        <aside class="customise-panel">
+          <form id="customiseForm" class="customise-form">
+            <details class="cz-section" open>
+              <summary>Site identity</summary>
+              <div class="form-group">
+                <label for="bizName">Site title</label>
+                <input id="bizName" name="bizName" type="text" maxlength="80" required />
+              </div>
+              <div class="form-group">
+                <label for="tagline">Tagline</label>
+                <input id="tagline" name="tagline" type="text" maxlength="140" />
+              </div>
+              <div class="form-group">
+                <label for="logoFile">Logo</label>
+                <input id="logoFile" name="logoFile" type="file" accept="image/*" />
+                <button type="button" class="btn btn-secondary btn-sm" id="clearLogo" style="margin-top:8px">Remove logo</button>
+              </div>
+            </details>
+
+            <details class="cz-section" open>
+              <summary>Colors &amp; typography</summary>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="primaryColor">Primary</label>
+                  <input id="primaryColor" type="color" value="#0a0a0a" />
+                </div>
+                <div class="form-group">
+                  <label for="accentColor">Accent / buttons</label>
+                  <input id="accentColor" type="color" value="#2563eb" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="bgColor">Background</label>
+                  <input id="bgColor" type="color" value="#ffffff" />
+                </div>
+                <div class="form-group">
+                  <label for="textColor">Text</label>
+                  <input id="textColor" type="color" value="#111111" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="fontFamily">Font</label>
+                <select id="fontFamily">
+                  <option value="Inter, system-ui, sans-serif">Inter</option>
+                  <option value="Georgia, 'Times New Roman', serif">Georgia (serif)</option>
+                  <option value="'Trebuchet MS', sans-serif">Trebuchet</option>
+                  <option value="system-ui, -apple-system, sans-serif">System UI</option>
+                  <option value="'Courier New', monospace">Monospace</option>
+                </select>
+              </div>
+            </details>
+
+            <details class="cz-section" open>
+              <summary>Homepage content</summary>
+              <div class="form-group">
+                <label for="headline">Hero headline</label>
+                <input id="headline" type="text" maxlength="120" />
+              </div>
+              <div class="form-group">
+                <label for="subtext">Hero supporting text</label>
+                <textarea id="subtext" rows="3" maxlength="280"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="ctaLabel">Primary button label</label>
+                <input id="ctaLabel" type="text" maxlength="40" />
+              </div>
+              <div class="form-group">
+                <label for="aboutText">About / intro paragraph</label>
+                <textarea id="aboutText" rows="4" maxlength="600"></textarea>
+              </div>
+            </details>
+
+            <details class="cz-section">
+              <summary>Contact &amp; social</summary>
+              <div class="form-group">
+                <label for="phone">Phone</label>
+                <input id="phone" type="tel" />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="email" />
+              </div>
+              <div class="form-group">
+                <label for="whatsapp">WhatsApp number</label>
+                <input id="whatsapp" type="tel" placeholder="27…" />
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <textarea id="address" rows="2"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="facebook">Facebook URL</label>
+                <input id="facebook" type="url" placeholder="https://" />
+              </div>
+              <div class="form-group">
+                <label for="instagram">Instagram URL</label>
+                <input id="instagram" type="url" placeholder="https://" />
+              </div>
+            </details>
+
+            <details class="cz-section">
+              <summary>Menus &amp; pages</summary>
+              <div class="form-group">
+                <label for="navLabels">Menu items (comma separated)</label>
+                <input id="navLabels" type="text" placeholder="Home, Services, About, Contact" />
+              </div>
+              <div class="form-group cz-checks">
+                <label><input type="checkbox" id="showHeader" checked /> Show header</label>
+                <label><input type="checkbox" id="showHero" checked /> Show hero</label>
+                <label><input type="checkbox" id="showServices" checked /> Show services</label>
+                <label><input type="checkbox" id="showAbout" checked /> Show about</label>
+                <label><input type="checkbox" id="showContact" checked /> Show contact</label>
+                <label><input type="checkbox" id="showFooter" checked /> Show footer</label>
+              </div>
+            </details>
+
+            <details class="cz-section">
+              <summary>Notes for our team</summary>
+              <div class="form-group">
+                <label for="notes">Anything else to change after purchase</label>
+                <textarea id="notes" rows="3" placeholder="Extra pages, booking forms, product catalogue…"></textarea>
+              </div>
+            </details>
+
+            <div class="customise-mode">
+              <label class="mode-option">
+                <input type="radio" name="mode" value="purchase" checked />
+                <span>
+                  <strong>Template only</strong>
+                  <em id="pricePurchase">R499</em>
+                </span>
+              </label>
+              <label class="mode-option">
+                <input type="radio" name="mode" value="hosting" />
+                <span>
+                  <strong>Full website hosting &amp; revamp</strong>
+                  <em id="priceHosting">R1,999</em>
+                </span>
+              </label>
+              <label class="mode-option">
+                <input type="radio" name="mode" value="customise" />
+                <span>
+                  <strong>With launch support</strong>
+                  <em id="priceCustomise">R499</em>
+                </span>
+              </label>
+            </div>
+
+            <div class="customise-actions">
+              <a class="btn btn-secondary" id="liveDemoBtn" href="#" target="_blank" rel="noopener noreferrer">Open demo</a>
+              <button type="submit" class="btn btn-primary" id="goCheckout">Continue to checkout</button>
+            </div>
+          </form>
+        </aside>
+
+        <div class="customise-preview">
+          <div class="preview-toolbar">
+            <span>Live preview</span>
+            <span class="preview-edit-status" id="previewEditStatus">Edits apply to the live site view</span>
+            <div class="preview-tabs">
+              <button type="button" class="is-active" id="tabDemo">Live site</button>
+              <button type="button" id="tabMock">Editor canvas</button>
+            </div>
+          </div>
+          <div class="preview-frame" id="previewDemoWrap">
+            <iframe id="demoFrame" title="Template live demo" loading="lazy"></iframe>
+            <div class="preview-fallback" id="demoFallback" hidden>
+              <p>Live demo unavailable for this template. Use the editor canvas, then checkout — we will apply your settings after payment.</p>
+            </div>
+          </div>
+          <div class="preview-frame brand-mock" id="previewMockWrap" hidden>
+            <div class="mock-chrome">
+              <span></span><span></span><span></span>
+              <em id="mockUrl">yourbusiness.co.za</em>
+            </div>
+            <div class="mock-body" id="mockBody">
+              <div class="mock-nav" id="mockHeader">
+                <div class="mock-brand">
+                  <img id="mockLogo" alt="" hidden />
+                  <strong id="mockName">Business</strong>
+                </div>
+                <span id="mockNav">Home · Services · About · Contact</span>
+              </div>
+              <div class="mock-hero" id="mockHero">
+                <p class="mock-tag" id="mockTag">Your tagline</p>
+                <h3 id="mockHeadline">Built for your brand.</h3>
+                <p id="mockSubtext" class="mock-sub"></p>
+                <button type="button" class="mock-cta" id="mockCta">Get in touch</button>
+              </div>
+              <div class="mock-about" id="mockAbout">
+                <h4>About</h4>
+                <p id="mockAboutText"></p>
+              </div>
+              <div class="mock-meta" id="mockMeta">phone · email</div>
+              <div class="mock-footer" id="mockFooter">© your business</div>
+              <img id="mockThumb" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-bottom">
+      <p>&copy; <span id="footer-year">2026</span> DDM Software Solutions (Pty) Ltd</p>
+    </div>
+  </footer>
+
+  <script src="js/templates-data.js"></script>
+  <script src="js/app.js" defer></script>
+  <script src="js/customise.js" defer></script>
+</body>
+</html>

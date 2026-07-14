@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5" />
+  <title>Contact | DDM Software Solutions</title>
+  <meta name="description" content="Book a consultation with DDM Software Solutions. WhatsApp, email, phone, or send an enquiry — Gauteng, South Africa." />
+  <link rel="canonical" href="https://ddm-software-solutions.co.za/contact.html" />
+  <meta property="og:title" content="Contact | DDM Software Solutions" />
+  <meta property="og:description" content="Book a consultation. We reply within one business day." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>
+    (function () {
+      var t = localStorage.getItem('ddm-theme');
+      if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+</head>
+<body data-page="contact">
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand" aria-label="DDM Software Solutions home">
+        <span class="brand-mark" aria-hidden="true">DDM</span>
+        <span class="brand-text">DDM <span>Software Solutions</span></span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="services.html">Services</a></li>
+        <li><a href="templates.html">Templates</a></li>
+        <li><a href="portfolio.html">Portfolio</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button type="button" class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode">
+          <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <a class="btn btn-primary" href="templates.html">Buy Template</a>
+        <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu" hidden>
+    <a href="services.html">Services</a>
+    <a href="templates.html">Templates</a>
+    <a href="portfolio.html">Portfolio</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" aria-current="page">Contact</a>
+    <a class="btn btn-primary" href="contact.html">Book Consultation</a>
+  </div>
+
+  <main id="main">
+    <section class="section contact-section">
+      <div class="container">
+        <div class="contact-cta reveal">
+          <p class="eyebrow">Contact</p>
+          <h1>Ready to start?</h1>
+          <p class="lead">Book a consultation. We reply within one business day with a practical next step.</p>
+          <div class="contact-quick">
+            <a class="btn btn-primary btn-lg" href="#contact-form">Send Enquiry</a>
+            <a class="btn btn-secondary btn-lg" href="https://wa.me/27715431166" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          </div>
+          <div class="contact-methods">
+            <a href="mailto:hello@ddm-software-solutions.co.za"><span>Email</span> hello@ddm-software-solutions.co.za</a>
+            <a href="tel:+27715431166"><span>Phone</span> 071 543 1166</a>
+            <a href="https://wa.me/27715431166" target="_blank" rel="noopener noreferrer"><span>WhatsApp</span> 071 543 1166</a>
+          </div>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-form-wrap reveal">
+            <h2 id="contact-form-title">Consultation enquiry</h2>
+            <form id="contact-form" novalidate aria-labelledby="contact-form-title">
+              <input type="hidden" name="_subject" value="New consultation enquiry — DDM Software Solutions" />
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fname">Your name *</label>
+                  <input type="text" name="name" id="fname" placeholder="Jane Smith" required autocomplete="name" />
+                  <div class="field-error" id="err-name" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                  <label for="fcompany">Company</label>
+                  <input type="text" name="company" id="fcompany" placeholder="Company name" autocomplete="organization" />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="femail">Email *</label>
+                  <input type="email" name="email" id="femail" placeholder="you@company.co.za" required autocomplete="email" />
+                  <div class="field-error" id="err-email" aria-live="polite"></div>
+                </div>
+                <div class="form-group">
+                  <label for="fphone">Phone / WhatsApp</label>
+                  <input type="tel" name="phone" id="fphone" placeholder="+27 XX XXX XXXX" autocomplete="tel" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="fservice">What do you need? *</label>
+                <select name="service" id="fservice" required>
+                  <option value="">Select one</option>
+                  <option>Website design</option>
+                  <option>Business software</option>
+                  <option>Web application</option>
+                  <option>Mobile app</option>
+                  <option>System integration</option>
+                  <option>Cloud solutions</option>
+                  <option>Website template</option>
+                  <option>Template customisation</option>
+                  <option>Not sure yet</option>
+                </select>
+                <div class="field-error" id="err-service" aria-live="polite"></div>
+              </div>
+              <div class="form-group">
+                <label for="fmessage">Project details *</label>
+                <textarea name="message" id="fmessage" placeholder="Briefly describe what you need built or improved." required></textarea>
+                <div class="field-error" id="err-message" aria-live="polite"></div>
+              </div>
+              <button type="submit" class="btn btn-primary" id="submitBtn">Send Enquiry</button>
+              <div id="formStatus" aria-live="polite"></div>
+            </form>
+          </div>
+
+          <div class="contact-map reveal">
+            <iframe
+              title="DDM Software Solutions — Gauteng, South Africa"
+              src="https://www.google.com/maps?q=Gauteng,South+Africa&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+            <p class="map-caption">Based in Gauteng, South Africa · Serving clients nationwide and remotely</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark" aria-hidden="true">DDM</span>
+          <span class="brand-text">DDM Software Solutions</span>
+        </a>
+        <p>Custom software and web solutions for growing Businesses</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="services.html">Website Design</a>
+        <a href="services.html">Business Software</a>
+        <a href="services.html">Web Applications</a>
+        <a href="services.html">Cloud Solutions</a>
+      </div>
+      <div class="footer-col">
+        <h4>Templates</h4>
+        <a href="templates.html">Browse Templates</a>
+        <a href="contact.html">Purchase</a>
+        <a href="contact.html">Customise</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="portfolio.html">Portfolio</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="https://www.linkedin.com/company/112502091" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span id="footer-year">2026</span> DDM Software Solutions (Pty) Ltd</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js" defer></script>
+</body>
+</html>
