@@ -21,6 +21,7 @@ const TEMPLATES = [
   { id: '38-restaurant', path: '@38RESTAURANT', entry: null, fallbackShot: 'Screenshot 2026-06-12 222230.png' },
   { id: '1904-trattoria', path: '1904TrattoriaPonteVecchio', entry: 'out' },
   { id: 'bell-street-baguettes', path: 'Bell-Street-Baguettes', entry: 'out' },
+  { id: 'blu-saffron', path: 'BluSaffron', entry: '.' },
   { id: 'bespoke-hair-durban', path: 'bespoke-hair-durban', entry: 'dist' },
   { id: 'bh-auto-centre', path: 'BH-auto-centre', entry: 'out' },
   { id: 'growth-gate-investments', path: 'growth-gate-investments', entry: 'public' },
@@ -143,8 +144,10 @@ async function captureOne(browser, tpl) {
 }
 
 async function main() {
+  const only = process.argv.slice(2);
+  const list = only.length ? TEMPLATES.filter((t) => only.includes(t.id)) : TEMPLATES;
   const browser = await chromium.launch({ headless: true });
-  for (const tpl of TEMPLATES) {
+  for (const tpl of list) {
     await captureOne(browser, tpl);
   }
   await browser.close();

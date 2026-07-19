@@ -61,6 +61,26 @@
     "hostingPrice": 1999
   },
   {
+    "id": "blu-saffron",
+    "name": "Blu Saffron",
+    "industry": "Restaurants",
+    "category": "restaurant",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Elegant garden restaurant & grill site with menu, gallery and WhatsApp reservations.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Gallery",
+      "Reservations"
+    ],
+    "projectPath": "BluSaffron",
+    "entry": ".",
+    "thumbnail": "img/templates/blu-saffron.png",
+    "demo": true,
+    "hostingPrice": 1999
+  },
+  {
     "id": "bespoke-hair-durban",
     "name": "Bespoke Hair Durban",
     "industry": "Beauty Salons",
