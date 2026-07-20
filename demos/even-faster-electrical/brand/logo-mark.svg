@@ -1,0 +1,7 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Even Faster mark">
+  <path d="M16 2.6 L27.6 9.3 L27.6 22.7 L16 29.4 L4.4 22.7 L4.4 9.3 Z" stroke="#0B5FFF" stroke-width="2.1" stroke-linejoin="round" fill="none"/>
+  <path d="M17.7 7.4 L10.6 17.3 L15.1 17.3 L14.1 24.6 L21.6 14.1 L16.9 14.1 Z" fill="#0B5FFF"/>
+  <circle cx="16" cy="2.6" r="2" fill="#F26A21"/>
+  <circle cx="27.6" cy="9.3" r="1.6" fill="#0B5FFF"/>
+  <circle cx="4.4" cy="22.7" r="1.6" fill="#0B5FFF"/>
+</svg>

@@ -1,0 +1,41 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0E1216"/>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#161B22"/>
+      <stop offset="1" stop-color="#0E1216"/>
+    </linearGradient>
+    <path id="star" d="M11 1 L13.7 7.9 L21 8.3 L15.3 12.9 L17.2 20 L11 15.9 L4.8 20 L6.7 12.9 L1 8.3 L8.3 7.9 Z" fill="#F5B301"/>
+  </defs>
+
+  <g transform="translate(96,96)">
+    <path d="M40 4 L74 24 L74 64 L40 84 L6 64 L6 24 Z" stroke="#2C74FF" stroke-width="5" stroke-linejoin="round" fill="none"/>
+    <path d="M45 16 L20 52 L36 52 L32 78 L60 40 L43 40 Z" fill="#2C74FF"/>
+    <circle cx="40" cy="4" r="5" fill="#F26A21"/>
+  </g>
+  <text x="200" y="150" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700" fill="#FFFFFF" letter-spacing="1">EVEN FASTER</text>
+  <text x="200" y="184" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="500" fill="#8A929C" letter-spacing="3">ELECTRICAL CONTRACTOR</text>
+
+  <text x="96" y="330" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800" fill="#FFFFFF" letter-spacing="-2">Electrician you can trust</text>
+  <text x="96" y="408" font-family="Inter, Arial, sans-serif" font-size="76" font-weight="800" fill="#2C74FF" letter-spacing="-2">in Roodepoort.</text>
+
+  <text x="96" y="500" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="600" fill="#C7CDD6">Fast.  Reliable.  Professional.</text>
+
+  <g transform="translate(96,532)">
+    <rect width="330" height="56" rx="10" fill="#161B22" stroke="#2A3340" stroke-width="1"/>
+    <g transform="translate(24,17)"><use href="#star"/></g>
+    <g transform="translate(52,17)"><use href="#star"/></g>
+    <g transform="translate(80,17)"><use href="#star"/></g>
+    <g transform="translate(108,17)"><use href="#star"/></g>
+    <g transform="translate(136,17)"><use href="#star"/></g>
+    <text x="176" y="37" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">4.6  |  82 reviews</text>
+  </g>
+
+  <g transform="translate(448,532)">
+    <rect width="300" height="56" rx="10" fill="#F26A21"/>
+    <text x="28" y="37" font-family="Inter, Arial, sans-serif" font-size="23" font-weight="700" fill="#FFFFFF">24/7 Emergency Call-outs</text>
+  </g>
+
+  <text x="1104" y="588" text-anchor="end" font-family="Inter, Arial, sans-serif" font-size="26" font-weight="700" fill="#FFFFFF">079 663 5498</text>
+</svg>

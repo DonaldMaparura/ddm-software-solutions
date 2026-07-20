@@ -336,5 +336,26 @@
     "thumbnail": "img/templates/van-wyk-attorneys.png",
     "demo": true,
     "hostingPrice": 1999
+  },
+  {
+    "id": "even-faster-electrical",
+    "name": "Even Faster Electrical & Plumbing",
+    "industry": "Trades",
+    "category": "construction",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Trade services site for residential and commercial electrical work, emergency repairs, and compliance.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Next.js",
+      "Services",
+      "Contact"
+    ],
+    "projectPath": "Even Faster-electrical-And-Plumbing-Services",
+    "entry": "out",
+    "thumbnail": "img/templates/even-faster-electrical.png",
+    "demo": true,
+    "hostingPrice": 1999
   }
 ]

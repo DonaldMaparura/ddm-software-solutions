@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://evenfasterelectrical.co.za
+Sitemap: https://evenfasterelectrical.co.za/sitemap.xml

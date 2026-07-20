@@ -1,0 +1,6 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Even Faster icon">
+  <rect width="512" height="512" rx="112" fill="#0E1216"/>
+  <path d="M256 88 L402 172 L402 340 L256 424 L110 340 L110 172 Z" stroke="#2C74FF" stroke-width="26" stroke-linejoin="round" fill="none"/>
+  <path d="M278 150 L172 300 L240 300 L224 410 L340 250 L268 250 Z" fill="#2C74FF"/>
+  <circle cx="256" cy="88" r="26" fill="#F26A21"/>
+</svg>
