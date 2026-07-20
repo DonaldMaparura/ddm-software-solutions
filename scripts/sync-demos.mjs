@@ -35,6 +35,26 @@ const SKIP_FILE = /^(qa-|lighthouse-|website-generation|\.|.*\.iml$|package-lock
 
 const TEXT_EXT = new Set(['.html', '.css', '.js', '.mjs', '.json', '.svg', '.txt', '.xml', '.webmanifest']);
 
+/** Asset / tooling folders — not app routes for Next.js path rewriting. */
+const NON_ROUTE_DIRS = new Set([
+  '_next',
+  'assets',
+  'images',
+  'img',
+  'css',
+  'js',
+  'photos',
+  'public',
+  'gallery',
+  'media',
+  'fonts',
+  'static',
+  'brand',
+  'icons',
+  'favicon',
+  'api',
+]);
+
 const TEMPLATES = JSON.parse(readFileSync(join(ROOT, 'js', 'templates.json'), 'utf8'));
 
 function shouldSkipName(name, isDir) {
@@ -45,21 +65,35 @@ function shouldSkipName(name, isDir) {
   return false;
 }
 
-function walkCopy(src, dest, slug, stats) {
+/** Discover page segments (about, services, …) from a static export root. */
+function collectAppRoutes(rootDir) {
+  const routes = [];
+  if (!existsSync(rootDir)) return routes;
+  for (const ent of readdirSync(rootDir, { withFileTypes: true })) {
+    if (!ent.isDirectory()) continue;
+    if (ent.name.startsWith('.') || ent.name.startsWith('_')) continue;
+    if (NON_ROUTE_DIRS.has(ent.name)) continue;
+    if (ent.name === '404') continue;
+    if (existsSync(join(rootDir, ent.name, 'index.html'))) routes.push(ent.name);
+  }
+  return routes;
+}
+
+function walkCopy(src, dest, slug, stats, routes) {
   mkdirSync(dest, { recursive: true });
   for (const ent of readdirSync(src, { withFileTypes: true })) {
     if (shouldSkipName(ent.name, ent.isDirectory())) continue;
     const from = join(src, ent.name);
     const to = join(dest, ent.name);
     if (ent.isDirectory()) {
-      walkCopy(from, to, slug, stats);
+      walkCopy(from, to, slug, stats, routes);
       continue;
     }
     const ext = extname(ent.name).toLowerCase();
     if (TEXT_EXT.has(ext)) {
       let content = readFileSync(from, 'utf8');
-      content = rewriteRootPaths(content, slug);
-      if (ext === '.html') content = injectBridge(content);
+      content = rewriteRootPaths(content, slug, { routes });
+      if (ext === '.html') content = injectBridge(content, slug);
       writeFileSync(to, content, 'utf8');
       stats.rewritten += 1;
     } else {
@@ -89,10 +123,12 @@ for (const tpl of demos) {
     continue;
   }
   if (existsSync(dest)) rmSync(dest, { recursive: true, force: true });
+  const routes = collectAppRoutes(src);
   const stats = { copied: 0, rewritten: 0, bytes: 0 };
-  walkCopy(src, dest, tpl.id, stats);
+  walkCopy(src, dest, tpl.id, stats, routes);
   const mb = (stats.bytes / (1024 * 1024)).toFixed(1);
-  console.log(`OK   ${tpl.id}: ${stats.rewritten} text + ${stats.copied} binary (~${mb} MB)`);
+  const routeNote = routes.length ? ` [${routes.join(', ')}]` : '';
+  console.log(`OK   ${tpl.id}: ${stats.rewritten} text + ${stats.copied} binary (~${mb} MB)${routeNote}`);
   ok += 1;
 }
 

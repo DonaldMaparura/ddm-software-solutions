@@ -154,7 +154,7 @@ function serveDemoFile(res, filePath, slug, preRewritten) {
   if (!preRewritten && (ext === '.html' || ext === '.css' || ext === '.js' || ext === '.mjs' || ext === '.json')) {
     let content = readFileSync(filePath, 'utf8');
     content = rewriteRootPaths(content, slug);
-    if (ext === '.html') content = injectBridge(content);
+    if (ext === '.html') content = injectBridge(content, slug);
     const buf = Buffer.from(content, 'utf8');
     res.writeHead(200, {
       'Content-Type': type,

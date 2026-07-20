@@ -1,7 +1,22 @@
 /** Shared demo path rewrite + customizer bridge injection (used by server + sync). */
 
-export function rewriteRootPaths(content, slug) {
+/**
+ * @param {string} content
+ * @param {string} slug
+ * @param {{ routes?: string[] }} [options] - App page segments (e.g. ['about','services']) for Next.js JS bundles
+ */
+export function rewriteRootPaths(content, slug, options = {}) {
   const prefix = `/demos/${slug}`;
+  const routes = Array.isArray(options.routes) ? options.routes : [];
+
+  // Next export already built with basePath/assetPrefix for this demo — don't double-prefix routes.
+  const preBuiltBase =
+    content.includes(`basePath:"${prefix}"`) ||
+    content.includes(`basePath:'${prefix}'`) ||
+    content.includes(`basePath="${prefix}"`) ||
+    content.includes(`"${prefix}/_next/"`) ||
+    content.includes(`'${prefix}/_next/'`) ||
+    content.includes(`/${slug}/_next/`);
 
   // Only rewrite root-absolute paths (preceded by non-path chars), never nested
   // segments like /_next/static/css/ or /demos/slug/_next/.
@@ -25,6 +40,7 @@ export function rewriteRootPaths(content, slug) {
     '/media/',
     '/fonts/',
     '/static/',
+    '/brand/',
   ];
   for (const folder of folders) {
     out = out.replace(new RegExp(`${atRoot}${folder.replace(/\//g, '\\/')}`, 'g'), `${prefix}${folder}`);
@@ -46,6 +62,38 @@ export function rewriteRootPaths(content, slug) {
   ];
   for (const file of files) {
     out = out.replace(new RegExp(`${atRoot}${file.replace(/\./g, '\\.')}`, 'g'), `${prefix}${file}`);
+  }
+
+  // When the app was not built with basePath, teach Next's client router about /demos/<slug>.
+  // Prefer patching basePath (Link keeps href:"/about"). Only rewrite route strings if we
+  // could not patch basePath — never do both, or paths double-prefix.
+  if (!preBuiltBase) {
+    const beforeBase = out;
+    out = out
+      .replace(/basePath:\s*""/g, `basePath:"${prefix}"`)
+      .replace(/basePath:\s*''/g, `basePath:'${prefix}'`)
+      .replace(/basePath=""/g, `basePath="${prefix}"`)
+      .replace(/basePath=''/g, `basePath='${prefix}'`)
+      .replace(/this\.basePath=""/g, `this.basePath="${prefix}"`)
+      .replace(/this\.basePath=''/g, `this.basePath='${prefix}'`);
+    const patchedBase = out !== beforeBase;
+
+    if (!patchedBase) {
+      const sortedRoutes = [...routes].filter(Boolean).sort((a, b) => b.length - a.length);
+      for (const route of sortedRoutes) {
+        const esc = route.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        out = out.replace(
+          new RegExp(`(["'])/${esc}(/)?\\1`, 'g'),
+          (match, q, slash) => `${q}${prefix}/${route}${slash || ''}${q}`,
+        );
+      }
+      // Home links only (href="/" / href:"/") — not bare "/" comparisons used by isActive
+      out = out.replace(/(href|src|action|to)=(["'`])\/\2/g, `$1=$2${prefix}/$2`);
+      out = out.replace(/(href|to):\s*(["'])\/\2/g, `$1:$2${prefix}/$2`);
+    } else {
+      // Static HTML still has href="/"; Next won't fix that until hydration
+      out = out.replace(/(href|src|action)=(["'`])\/\2/g, `$1=$2${prefix}/$2`);
+    }
   }
 
   // General absolute href/src/action — skip bare "/" and already /demos/...
@@ -200,8 +248,49 @@ export const CUSTOMIZER_BRIDGE = `
 })();
 </script>`;
 
-export function injectBridge(html) {
-  if (html.includes('ddm-customizer-bridge')) return html;
-  if (/<\/head>/i.test(html)) return html.replace(/<\/head>/i, CUSTOMIZER_BRIDGE + '</head>');
-  return CUSTOMIZER_BRIDGE + html;
+export function demoBaseNavScript(slug) {
+  const prefix = `/demos/${slug}`;
+  return `<script id="ddm-demo-base-nav">(function(){
+  var BASE=${JSON.stringify(prefix)};
+  function rewrite(href){
+    if(!href || href.charAt(0)!=='/') return null;
+    if(href.indexOf('//')===0) return null;
+    if(href.charAt(0)==='#') return null;
+    var path=href, hash='', query='';
+    var hi=path.indexOf('#');
+    if(hi>=0){ hash=path.slice(hi); path=path.slice(0,hi); }
+    var qi=path.indexOf('?');
+    if(qi>=0){ query=path.slice(qi); path=path.slice(0,qi); }
+    if(path.indexOf(BASE)===0){
+      if(path!==BASE && path!==BASE+'/' && path.charAt(path.length-1)!=='/') path+='/';
+      return path + query + hash;
+    }
+    if(path.indexOf('/demos/')===0) return null;
+    if(path!=='/' && path.charAt(path.length-1)!=='/') path+='/';
+    return BASE + (path==='/' ? '/' : path) + query + hash;
+  }
+  document.addEventListener('click', function(e){
+    if(e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a=e.target && e.target.closest && e.target.closest('a[href]');
+    if(!a) return;
+    var target=a.getAttribute('target');
+    if(target && target!=='_self') return;
+    var next=rewrite(a.getAttribute('href'));
+    if(!next) return;
+    e.preventDefault();
+    if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+    else e.stopPropagation();
+    location.assign(next);
+  }, true);
+})();</script>`;
+}
+
+export function injectBridge(html, slug) {
+  if (html.includes('ddm-customizer-bridge') && html.includes('ddm-demo-base-nav')) return html;
+  let inject = '';
+  if (!html.includes('ddm-customizer-bridge')) inject += CUSTOMIZER_BRIDGE;
+  if (slug && !html.includes('ddm-demo-base-nav')) inject += demoBaseNavScript(slug);
+  if (!inject) return html;
+  if (/<\/head>/i.test(html)) return html.replace(/<\/head>/i, inject + '</head>');
+  return inject + html;
 }

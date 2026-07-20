@@ -153,7 +153,39 @@
     try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
   });
 })();
-</script></head>
+</script><script id="ddm-demo-base-nav">(function(){
+  var BASE="/demos/pretoria-north-vet";
+  function rewrite(href){
+    if(!href || href.charAt(0)!=='/') return null;
+    if(href.indexOf('//')===0) return null;
+    if(href.charAt(0)==='#') return null;
+    var path=href, hash='', query='';
+    var hi=path.indexOf('#');
+    if(hi>=0){ hash=path.slice(hi); path=path.slice(0,hi); }
+    var qi=path.indexOf('?');
+    if(qi>=0){ query=path.slice(qi); path=path.slice(0,qi); }
+    if(path.indexOf(BASE)===0){
+      if(path!==BASE && path!==BASE+'/' && path.charAt(path.length-1)!=='/') path+='/';
+      return path + query + hash;
+    }
+    if(path.indexOf('/demos/')===0) return null;
+    if(path!=='/' && path.charAt(path.length-1)!=='/') path+='/';
+    return BASE + (path==='/' ? '/' : path) + query + hash;
+  }
+  document.addEventListener('click', function(e){
+    if(e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a=e.target && e.target.closest && e.target.closest('a[href]');
+    if(!a) return;
+    var target=a.getAttribute('target');
+    if(target && target!=='_self') return;
+    var next=rewrite(a.getAttribute('href'));
+    if(!next) return;
+    e.preventDefault();
+    if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+    else e.stopPropagation();
+    location.assign(next);
+  }, true);
+})();</script></head>
 <body>
 
   <div class="emergency-banner text-white text-center py-2 px-4 text-sm font-semibold">

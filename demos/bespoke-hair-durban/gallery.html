@@ -154,15 +154,47 @@
     try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
   });
 })();
-</script></head>
+</script><script id="ddm-demo-base-nav">(function(){
+  var BASE="/demos/bespoke-hair-durban";
+  function rewrite(href){
+    if(!href || href.charAt(0)!=='/') return null;
+    if(href.indexOf('//')===0) return null;
+    if(href.charAt(0)==='#') return null;
+    var path=href, hash='', query='';
+    var hi=path.indexOf('#');
+    if(hi>=0){ hash=path.slice(hi); path=path.slice(0,hi); }
+    var qi=path.indexOf('?');
+    if(qi>=0){ query=path.slice(qi); path=path.slice(0,qi); }
+    if(path.indexOf(BASE)===0){
+      if(path!==BASE && path!==BASE+'/' && path.charAt(path.length-1)!=='/') path+='/';
+      return path + query + hash;
+    }
+    if(path.indexOf('/demos/')===0) return null;
+    if(path!=='/' && path.charAt(path.length-1)!=='/') path+='/';
+    return BASE + (path==='/' ? '/' : path) + query + hash;
+  }
+  document.addEventListener('click', function(e){
+    if(e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a=e.target && e.target.closest && e.target.closest('a[href]');
+    if(!a) return;
+    var target=a.getAttribute('target');
+    if(target && target!=='_self') return;
+    var next=rewrite(a.getAttribute('href'));
+    if(!next) return;
+    e.preventDefault();
+    if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+    else e.stopPropagation();
+    location.assign(next);
+  }, true);
+})();</script></head>
 <body class="page-gallery">
 
   <header class="header header--scrolled">
     <div class="container header__inner">
-      <a href="/" class="logo">Bespoke <span>Hair</span></a>
+      <a href="/demos/bespoke-hair-durban/" class="logo">Bespoke <span>Hair</span></a>
       <nav class="nav">
         <ul class="nav__list">
-          <li><a href="/" class="nav__link">Home</a></li>
+          <li><a href="/demos/bespoke-hair-durban/" class="nav__link">Home</a></li>
           <li><a href="/demos/bespoke-hair-durban/services.html" class="nav__link">Services</a></li>
           <li><a href="/demos/bespoke-hair-durban/gallery.html" class="nav__link nav__link--active">Lookbook</a></li>
           <li><a href="/demos/bespoke-hair-durban/contact.html" class="nav__link">Contact</a></li>
@@ -176,7 +208,7 @@
   </header>
 
   <nav class="mobile-nav">
-    <a href="/" class="mobile-nav__link">Home</a>
+    <a href="/demos/bespoke-hair-durban/" class="mobile-nav__link">Home</a>
     <a href="/demos/bespoke-hair-durban/services.html" class="mobile-nav__link">Services</a>
     <a href="/demos/bespoke-hair-durban/gallery.html" class="mobile-nav__link mobile-nav__link--active">Gallery</a>
     <a href="/demos/bespoke-hair-durban/contact.html" class="mobile-nav__link">Contact</a>
@@ -235,7 +267,7 @@
         <div>
           <h4 class="footer__heading">Quick Links</h4>
           <div class="footer__links">
-            <a href="/" class="footer__link">Home</a>
+            <a href="/demos/bespoke-hair-durban/" class="footer__link">Home</a>
             <a href="/demos/bespoke-hair-durban/services.html" class="footer__link">Services</a>
             <a href="/demos/bespoke-hair-durban/gallery.html" class="footer__link">Lookbook</a>
             <a href="/demos/bespoke-hair-durban/contact.html" class="footer__link">Contact</a>
