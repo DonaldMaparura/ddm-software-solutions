@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Spectrum | Johannesburg Electrical & Construction</title>
+    <meta name="description" content="Spectrum is a Johannesburg-based team delivering electrical, construction and renovation services with reliable workmanship and 7-day availability." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://donaldmaparura.github.io/Spectrum/about/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="About Spectrum | Johannesburg Electrical & Construction" />
+    <meta property="og:description" content="Spectrum is a Johannesburg-based team delivering electrical, construction and renovation services with reliable workmanship and 7-day availability." />
+    <meta property="og:image" content="../logo.jpg" />
+    <meta property="og:locale" content="en_ZA" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="About Spectrum | Johannesburg Electrical & Construction" />
+    <meta name="twitter:description" content="Spectrum is a Johannesburg-based team delivering electrical, construction and renovation services with reliable workmanship and 7-day availability." />
+
+    <link rel="icon" href="../images/logo.webp" type="image/webp" />
+    <link rel="preload" href="../css/main.css" as="style" />
+    <link rel="stylesheet" href="../css/main.css" />
+    
+
+<style id="ddm-customizer-style">
+:root{--ddm-primary:#0a0a0a;--ddm-accent:#2563eb;--ddm-bg:#ffffff;--ddm-text:#111111;--ddm-font:Inter,system-ui,sans-serif}
+#ddm-preview-badge{position:fixed;z-index:2147483646;left:12px;bottom:12px;padding:8px 12px;border-radius:8px;background:#0a0a0a;color:#fff;font:600 12px/1.3 Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:min(280px,70vw)}
+.ddm-hide-section{display:none!important}
+</style>
+<script id="ddm-customizer-bridge">
+(function(){
+  var lastTheme=null;
+  var originals={};
+
+  function textOf(el){
+    return (el && (el.innerText||el.textContent)||'').replace(/\s+/g,' ').trim();
+  }
+
+  function setLeafText(el, value){
+    if(!el || !value) return;
+    if(!el.children || el.children.length===0){ el.textContent=value; return; }
+    var walker=document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var node=walker.nextNode();
+    if(node){ node.nodeValue=value; return; }
+    el.textContent=value;
+  }
+
+  function first(sel){ return document.querySelector(sel); }
+  function all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+  function stash(key, el){
+    if(!el || originals[key]!=null) return;
+    originals[key]=textOf(el);
+  }
+
+  function apply(theme){
+    if(!theme) return;
+    lastTheme=theme;
+    try{ sessionStorage.setItem('ddm-live-theme', JSON.stringify(theme)); }catch(e){}
+
+    var root=document.documentElement;
+    root.style.setProperty('--ddm-primary', theme.primaryColor||'#0a0a0a');
+    root.style.setProperty('--ddm-accent', theme.accentColor||'#2563eb');
+    root.style.setProperty('--ddm-bg', theme.bgColor||'#ffffff');
+    root.style.setProperty('--ddm-text', theme.textColor||'#111111');
+    root.style.setProperty('--ddm-font', theme.fontFamily||'Inter, system-ui, sans-serif');
+
+    var s=document.getElementById('ddm-live-style');
+    if(!s){ s=document.createElement('style'); s.id='ddm-live-style'; document.head.appendChild(s); }
+    s.textContent=[
+      'html,body{background:var(--ddm-bg)!important;color:var(--ddm-text)!important;font-family:var(--ddm-font)!important}',
+      'h1,h2,h3,h4,.logo,[class*="brand"],[class*="logo"] span,[class*="title"]{color:var(--ddm-primary)!important}',
+      'a{color:var(--ddm-accent)}',
+      'button,.btn,[class*="btn"],[class*="Btn"],[class*="cta"],[class*="Cta"],input[type="submit"],a[class*="button"]{background:var(--ddm-accent)!important;border-color:var(--ddm-accent)!important;color:#fff!important}',
+      theme.showHeader===false?'header,nav,[class*="navbar"],[class*="Navbar"],[class*="header"]:not(#ddm-preview-badge){display:none!important}':'',
+      theme.showFooter===false?'footer,[class*="footer"],[class*="Footer"]{display:none!important}':'',
+      theme.showHero===false?'[class*="hero"],[class*="Hero"],section:first-of-type{display:none!important}':'',
+      theme.showAbout===false?'[id*="about"],[class*="about"],[class*="About"]{display:none!important}':'',
+      theme.showContact===false?'[id*="contact"],[class*="contact"],[class*="Contact"]{display:none!important}':''
+    ].filter(Boolean).join('\n');
+
+    var brand=first('header a,[class*="brand"] a,[class*="logo"] a,nav a,a[class*="logo"],a[class*="brand"]');
+    stash('brand', brand);
+    if(brand && theme.bizName){
+      var brandImg=brand.querySelector('img');
+      if(brandImg && theme.logoDataUrl){ brandImg.src=theme.logoDataUrl; brandImg.alt=theme.bizName; }
+      else setLeafText(brand, theme.bizName);
+    }
+    if(theme.logoDataUrl){
+      var logoImg=first('header img, nav img, [class*="logo"] img, img[alt*="ogo" i]');
+      if(logoImg){ logoImg.src=theme.logoDataUrl; if(theme.bizName) logoImg.alt=theme.bizName; }
+    }
+
+    var h1=first('h1');
+    stash('h1', h1);
+    if(h1 && theme.headline) setLeafText(h1, theme.headline);
+
+    var heroP=first('h1 + p, [class*="hero"] p, section p, main p');
+    stash('heroP', heroP);
+    if(heroP && theme.subtext) setLeafText(heroP, theme.subtext);
+
+    if(theme.tagline){
+      var tag=first('[class*="tagline"],[class*="subtitle"], header p, nav p');
+      stash('tag', tag);
+      if(tag) setLeafText(tag, theme.tagline);
+    }
+
+    if(theme.ctaLabel){
+      var cta=first('a.btn, a[class*="btn"], button, [class*="cta"] a, [class*="hero"] a, [class*="Hero"] a');
+      stash('cta', cta);
+      if(cta) setLeafText(cta, theme.ctaLabel);
+    }
+
+    if(theme.aboutText){
+      var about=first('#about p, [id*="about"] p, [class*="about"] p, [class*="About"] p');
+      stash('about', about);
+      if(about) setLeafText(about, theme.aboutText);
+    }
+
+    if(theme.navLabels){
+      var labels=theme.navLabels.split(',').map(function(x){return x.trim();}).filter(Boolean);
+      var links=all('header nav a, nav a, [class*="nav"] a').filter(function(a){
+        return textOf(a) && textOf(a).length<28 && !a.querySelector('img');
+      }).slice(0, labels.length);
+      links.forEach(function(a,i){ if(labels[i]) setLeafText(a, labels[i]); });
+    }
+
+    if(theme.phone){
+      all('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+theme.phone.replace(/\s+/g,''); setLeafText(a, theme.phone); });
+    }
+    if(theme.email){
+      all('a[href^="mailto:"]').forEach(function(a){ a.href='mailto:'+theme.email; setLeafText(a, theme.email); });
+    }
+
+    var badge=document.getElementById('ddm-preview-badge');
+    if(!badge){
+      badge=document.createElement('div');
+      badge.id='ddm-preview-badge';
+      document.body.appendChild(badge);
+    }
+    badge.textContent='Previewing edits · '+(theme.bizName||'Your brand');
+  }
+
+  window.addEventListener('message', function(e){
+    if(!e.data || e.data.type!=='ddm-theme') return;
+    apply(e.data.theme||{});
+  });
+
+  try{
+    var stored=sessionStorage.getItem('ddm-live-theme');
+    if(stored) apply(JSON.parse(stored));
+  }catch(e){}
+
+  setInterval(function(){
+    if(lastTheme) apply(lastTheme);
+  }, 1500);
+
+  try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  document.addEventListener('DOMContentLoaded', function(){
+    try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  });
+})();
+</script><script id="ddm-demo-base-nav">(function(){
+  var BASE="/demos/spectrum";
+  function rewrite(href){
+    if(!href || href.charAt(0)!=='/') return null;
+    if(href.indexOf('//')===0) return null;
+    if(href.charAt(0)==='#') return null;
+    var path=href, hash='', query='';
+    var hi=path.indexOf('#');
+    if(hi>=0){ hash=path.slice(hi); path=path.slice(0,hi); }
+    var qi=path.indexOf('?');
+    if(qi>=0){ query=path.slice(qi); path=path.slice(0,qi); }
+    if(path.indexOf(BASE)===0){
+      if(path!==BASE && path!==BASE+'/' && path.charAt(path.length-1)!=='/') path+='/';
+      return path + query + hash;
+    }
+    if(path.indexOf('/demos/')===0) return null;
+    if(path!=='/' && path.charAt(path.length-1)!=='/') path+='/';
+    return BASE + (path==='/' ? '/' : path) + query + hash;
+  }
+  document.addEventListener('click', function(e){
+    if(e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a=e.target && e.target.closest && e.target.closest('a[href]');
+    if(!a) return;
+    var target=a.getAttribute('target');
+    if(target && target!=='_self') return;
+    var next=rewrite(a.getAttribute('href'));
+    if(!next) return;
+    e.preventDefault();
+    if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+    else e.stopPropagation();
+    location.assign(next);
+  }, true);
+})();</script></head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a class="site-brand" href="../">
+                <picture>
+                    <source srcset="../images/logo.webp" type="image/webp" />
+                    <img src="../logo.jpg" alt="" class="site-brand__logo" width="56" height="56" decoding="async" />
+                </picture>
+                <div class="site-brand__text">
+                    <p class="site-brand__name">Spectrum</p>
+                    <p class="site-brand__tagline">Electrical · Construction · Renovations</p>
+                </div>
+            </a>
+
+            <nav class="site-nav" aria-label="Primary">
+                <ul class="site-nav__list">
+                    <li>
+                        <a class="site-nav__link" href="../">Home</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="../services/">Services</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="../service-areas/">Service Areas</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="../gallery/">Gallery</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link is-active" href="../about/" aria-current="page">About</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="../contact/">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a class="btn btn--whatsapp btn--sm" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                    <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    <span class="btn__label">WhatsApp</span>
+                </a>
+                <a class="btn btn--primary btn--sm" href="tel:+27840212477" aria-label="Call 084 021 2477">
+                    <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span class="btn__label">084 021 2477</span>
+                    <span class="btn__label-short">Call</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <section class="page-header">
+        <div class="container page-header__grid">
+            <div class="page-header__copy">
+                <nav aria-label="Breadcrumb">
+                    <ol class="page-header__breadcrumb">
+                        <li><a href="../">Home</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li aria-current="page">About</li>
+                    </ol>
+                </nav>
+                <p class="eyebrow page-header__eyebrow">About us</p>
+                <h1 class="page-header__title">Your local electrical, construction & renovations team</h1>
+                <p class="page-header__intro">Spectrum is built on a simple idea: turn up reliably, do proper work, and treat people's homes and businesses with respect.</p>
+            </div>
+            <div class="page-header__logo" aria-hidden="true">
+                <picture>
+                    <source srcset="../images/logo.webp" type="image/webp" />
+                    <img src="../logo.jpg" alt="" width="180" height="180" decoding="async" />
+                </picture>
+            </div>
+        </div>
+    </section>
+
+        <section class="section">
+            <div class="container about-split">
+                <div>
+                    <p class="eyebrow">Who we are</p>
+                    <h2 class="section-title">Reliable when it matters, thorough where it counts</h2>
+                    <div class="section-subtitle" style="max-width:none;margin-top:1.5rem">
+                        <p>We're a residential, commercial and industrial service team based in Greenstone Hill, Johannesburg. Our work covers electrical installations, renovations, solar, construction and fencing.</p>
+                        <p style="margin-top:1rem">Whether you're a homeowner, estate agent, body corporate or business, you get the same thing: work done properly, safely and on time.</p>
+                    </div>
+                    <div class="btn-group" style="margin-top:2rem">
+                        <a class="btn btn--primary" href="tel:+27840212477"><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call 084 021 2477</a>
+                        <a class="btn btn--secondary" href="../contact/">Contact us</a>
+                    </div>
+                </div>
+                <div class="about-split__media">
+                    <picture>
+                        <source srcset="../images/IMG-20250604-WA0050.webp" type="image/webp" />
+                        <img src="../IMG-20250604-WA0050.jpg" alt="Spectrum team on site" width="576" height="1280" loading="lazy" decoding="async" />
+                    </picture>
+                    <div class="about-split__badge">
+                        <p><strong>Electrical · Construction · Renovations</strong></p>
+                        <p>Contact: Mr Forbes · Greenstone Hill</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--muted">
+            <div class="container">
+                <header class="section__header">
+                    <p class="eyebrow">How we work</p>
+                    <h2 class="section-title">Simple, straightforward, no surprises</h2>
+                    <p class="section-subtitle">Four steps from your first call to a job signed off and safe.</p>
+                </header>
+                <ol class="steps-grid">
+                    <li class="step-card">
+                        <span class="step-card__num">01</span>
+                        <h3 class="step-card__title">Call or WhatsApp</h3>
+                        <p class="step-card__text">Tell us what's going on and how we can help.</p>
+                    </li>
+                    <li class="step-card">
+                        <span class="step-card__num">02</span>
+                        <h3 class="step-card__title">Assess &amp; quote</h3>
+                        <p class="step-card__text">We assess the job and give you a clear, fair price before starting.</p>
+                    </li>
+                    <li class="step-card">
+                        <span class="step-card__num">03</span>
+                        <h3 class="step-card__title">Do the work</h3>
+                        <p class="step-card__text">Tidy, compliant workmanship — done right the first time.</p>
+                    </li>
+                    <li class="step-card">
+                        <span class="step-card__num">04</span>
+                        <h3 class="step-card__title">Sign-off</h3>
+                        <p class="step-card__text">We walk you through the finished job so you're happy before we leave.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="cta-band">
+        <div class="container cta-band__inner">
+            
+            <h2 class="cta-band__title">Let's get your next project sorted.</h2>
+            <p class="cta-band__text">Get honest advice and a fair quote. Call, WhatsApp or send an enquiry — we respond during business hours.</p>
+            <div class="btn-group cta-band__actions">
+                <a class="btn btn--primary btn--lg" href="tel:+27840212477"><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call 084 021 2477</a>
+                <a class="btn btn--on-dark btn--lg" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer"><svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+            </div>
+            <p class="cta-band__alt">Prefer the second line? <a href="tel:+27639216255">063 921 6255</a></p>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="site-footer__grid">
+                <div class="site-footer__brand-block">
+                    <a class="site-brand" href="../">
+                <picture>
+                    <source srcset="../images/logo.webp" type="image/webp" />
+                    <img src="../logo.jpg" alt="" class="site-brand__logo" width="56" height="56" decoding="async" />
+                </picture>
+                <div class="site-brand__text">
+                    <p class="site-brand__name">Spectrum</p>
+                    <p class="site-brand__tagline">Electrical · Construction · Renovations</p>
+                </div>
+            </a>
+                    <p class="site-footer__desc">Professional electrical, construction, renovations and fencing services across Johannesburg and surrounding areas.</p>
+                </div>
+                <nav aria-label="Footer pages">
+                    <h3 class="site-footer__heading">Pages</h3>
+                    <ul class="site-footer__list">
+                        <li><a href="../">Home</a></li>
+                        <li><a href="../services/">Services</a></li>
+                        <li><a href="../service-areas/">Service Areas</a></li>
+                        <li><a href="../gallery/">Gallery</a></li>
+                        <li><a href="../about/">About</a></li>
+                        <li><a href="../contact/">Contact</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <h3 class="site-footer__heading">Services</h3>
+                    <ul class="site-footer__list">
+                        <li><a href="../services/#electrical">Electrical Installations</a></li>
+                        <li><a href="../services/#solar">Solar Installations</a></li>
+                        <li><a href="../services/#renovations">House Renovations</a></li>
+                        <li><a href="../services/#floor">Tiling, Plumbing & Painting</a></li>
+                        <li><a href="../services/#construction">Construction</a></li>
+                        <li><a href="../services/#fencing">Electric Fencing & Gates</a></li>
+                        <li><a href="../services/#clearview">Clear View Fencing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="site-footer__heading">Get in touch</h3>
+                    <ul class="site-footer__list">
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <a href="tel:+27840212477">084 021 2477</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <a href="tel:+27639216255">063 921 6255</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> <a href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer">WhatsApp us</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> <a href="mailto:Specmechelectrical@gmail.com">Specmechelectrical@gmail.com</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span>590 Greenstone Crest, Greenstone Hill, Johannesburg</span></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> <span>7am – 6pm, Monday to Sunday</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-footer__areas">
+                <p><strong>Areas we serve:</strong> Greenstone Hill · Edenvale · Modderfontein · Sandton · Bedfordview · Kempton Park · Midrand · Johannesburg East and surrounding areas.</p>
+            </div>
+            <div class="site-footer__legal">
+                <p class="site-footer__copy">&copy; 2026 Spectrum. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <div class="mobile-cta" aria-label="Quick contact">
+        <div class="mobile-cta__grid">
+            <a class="mobile-cta__btn mobile-cta__btn--call" href="tel:+27840212477" aria-label="Call 084 021 2477">
+                <svg  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Call now
+            </a>
+            <a class="mobile-cta__btn mobile-cta__btn--wa" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                <svg  viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <script src="../js/main.js" defer></script>
+</body>
+</html>

@@ -3,34 +3,30 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spectrum | Electrical, Construction & Mechanical Services in Johannesburg</title>
-    <meta name="description" content="Spectrum provides professional electrical installations, COC certificates, renovations, solar, construction, fencing, and mechanical repairs across Johannesburg. Available 7 days a week." />
+    <title>Spectrum | Electrical, Construction & Renovation Services in Johannesburg</title>
+    <meta name="description" content="Spectrum provides professional electrical installations, renovations, solar, construction and fencing across Johannesburg. Available 7 days a week." />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://donaldmaparura.github.io/Spectrum/" />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Spectrum | Professional Electrical & Construction Services" />
-    <meta property="og:description" content="Trusted electrical, construction, and mechanical services in Johannesburg. COCs, solar, renovations, and 24-hour shutdown support." />
+    <meta property="og:title" content="Spectrum | Electrical, Construction & Renovation Services in Johannesburg" />
+    <meta property="og:description" content="Spectrum provides professional electrical installations, renovations, solar, construction and fencing across Johannesburg. Available 7 days a week." />
     <meta property="og:image" content="logo.jpg" />
     <meta property="og:locale" content="en_ZA" />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Spectrum | Professional Electrical & Construction Services" />
-    <meta name="twitter:description" content="Trusted electrical, construction, and mechanical services in Johannesburg." />
+    <meta name="twitter:title" content="Spectrum | Electrical, Construction & Renovation Services in Johannesburg" />
+    <meta name="twitter:description" content="Spectrum provides professional electrical installations, renovations, solar, construction and fencing across Johannesburg. Available 7 days a week." />
 
     <link rel="icon" href="images/logo.webp" type="image/webp" />
     <link rel="preload" href="css/main.css" as="style" />
-    <link rel="preload" href="images/hero.webp" as="image" type="image/webp" fetchpriority="high" />
     <link rel="stylesheet" href="css/main.css" />
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Spectrum",
-      "description": "Professional electrical, construction, and mechanical services in Johannesburg.",
+      "description": "Professional electrical, construction and renovation services in Johannesburg.",
       "telephone": "+27840212477",
       "email": "Specmechelectrical@gmail.com",
       "address": {
@@ -49,6 +45,7 @@
       "image": "logo.jpg"
     }
     </script>
+    <link rel="preload" href="images/hero.webp" as="image" type="image/webp" fetchpriority="high" />
 
 <style id="ddm-customizer-style">
 :root{--ddm-primary:#0a0a0a;--ddm-accent:#2563eb;--ddm-bg:#ffffff;--ddm-text:#111111;--ddm-font:Inter,system-ui,sans-serif}
@@ -226,45 +223,61 @@
 
     <header class="site-header">
         <div class="container site-header__inner">
-            <a class="site-brand" href="#top">
+            <a class="site-brand" href="./">
                 <picture>
                     <source srcset="images/logo.webp" type="image/webp" />
-                    <img src="logo.jpg" alt="" class="site-brand__logo" width="56" height="56" fetchpriority="high" decoding="async" />
+                    <img src="logo.jpg" alt="" class="site-brand__logo" width="56" height="56" decoding="async" />
                 </picture>
                 <div class="site-brand__text">
                     <p class="site-brand__name">Spectrum</p>
-                    <p class="site-brand__tagline">Electrical · Construction · Mechanical</p>
+                    <p class="site-brand__tagline">Electrical · Construction · Renovations</p>
                 </div>
             </a>
 
-            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation menu">
-                <span class="nav-toggle__bar" aria-hidden="true"></span>
-            </button>
-
-            <nav id="site-nav" class="site-nav" aria-label="Primary">
-                <a class="site-nav__link" href="#services">Services</a>
-                <a class="site-nav__link" href="#gallery">Gallery</a>
-                <a class="site-nav__link" href="#contact">Contact</a>
-                <div class="site-nav__cta">
-                    <a class="btn btn--primary" href="tel:+27840212477">Call Now</a>
-                </div>
+            <nav class="site-nav" aria-label="Primary">
+                <ul class="site-nav__list">
+                    <li>
+                        <a class="site-nav__link is-active" href="./" aria-current="page">Home</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="services/">Services</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="service-areas/">Service Areas</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="gallery/">Gallery</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="about/">About</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="contact/">Contact</a>
+                    </li>
+                </ul>
             </nav>
+
+            <div class="site-header__actions">
+                <a class="btn btn--whatsapp btn--sm" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                    <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    <span class="btn__label">WhatsApp</span>
+                </a>
+                <a class="btn btn--primary btn--sm" href="tel:+27840212477" aria-label="Call 084 021 2477">
+                    <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span class="btn__label">084 021 2477</span>
+                    <span class="btn__label-short">Call</span>
+                </a>
+            </div>
         </div>
     </header>
 
     <main id="main-content">
+
         <section class="hero" id="top" aria-labelledby="hero-title">
             <div class="hero__bg" aria-hidden="true">
                 <picture>
                     <source srcset="images/hero.webp" type="image/webp" />
-                    <img
-                        src="images/hero.jpg"
-                        alt=""
-                        width="1920"
-                        height="1280"
-                        decoding="async"
-                        fetchpriority="high"
-                    />
+                    <img src="images/hero.jpg" alt="" width="1920" height="1280" decoding="async" fetchpriority="high" />
                 </picture>
             </div>
             <div class="hero__overlay" aria-hidden="true"></div>
@@ -273,256 +286,301 @@
                     <p class="eyebrow hero__eyebrow">Johannesburg &amp; surrounds</p>
                     <h1 class="hero__title" id="hero-title">Professional services you can trust, delivered on time</h1>
                     <p class="hero__description">
-                        From electrical installations and COC certificates to full renovations, solar, and industrial mechanical repairs — Spectrum keeps your home and business running safely.
+                        From electrical installations to full renovations, solar, and fencing — Spectrum keeps your home and business running safely.
                     </p>
                     <div class="btn-group btn-group--hero">
-                        <a class="btn btn--primary btn--lg" href="tel:+27840212477">Call 084 021 2477</a>
-                        <a class="btn btn--whatsapp btn--lg" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer">
-                            <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                            WhatsApp
-                        </a>
-                        <a class="btn btn--secondary btn--lg btn--on-dark" href="#contact">Get a quote</a>
+                        <a class="btn btn--primary btn--lg" href="tel:+27840212477"><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call 084 021 2477</a>
+                        <a class="btn btn--whatsapp btn--lg" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer"><svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+                        <a class="btn btn--secondary btn--lg btn--on-dark" href="contact/">Get a quote</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="section" id="services" aria-labelledby="services-title">
-            <div class="container">
-                <header class="section__header section__header--center">
-                    <p class="eyebrow">What we do</p>
-                    <h2 class="section-title" id="services-title">Our Services</h2>
-                    <p class="section-subtitle">Comprehensive solutions for residential, commercial, and industrial clients across electrical, construction, and mechanical needs.</p>
-                </header>
+        <div class="trust-strip">
+            <div class="container trust-strip__grid">
+                <div class="trust-strip__item"><svg class="trust-strip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><span class="trust-strip__label">Safety-compliant work</span></div>
+                <div class="trust-strip__item"><svg class="trust-strip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg><span class="trust-strip__label">Electrical &amp; construction</span></div>
+                <div class="trust-strip__item"><svg class="trust-strip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><span class="trust-strip__label">Open 7 days a week</span></div>
+                <div class="trust-strip__item"><svg class="trust-strip__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg><span class="trust-strip__label">Johannesburg &amp; surrounds</span></div>
+            </div>
+        </div>
 
-                <div class="services-grid">
-                    <details class="service-item card" id="electrical">
-                        <summary class="service-item__summary">
-                            <span class="card__icon" aria-hidden="true">⚡</span>
-                            <span class="service-item__heading">
-                                <h3 class="card__title">Electrical Installations                                </h3>
-                                <span class="card__text">Domestic and industrial wiring, panel upgrades, and compliant installations.</span>
-                            </span>
-                            <span class="service-item__toggle" aria-hidden="true"></span>
-                        </summary>
-                        <div class="service-item__detail">
-                            <p>We provide expert electrical installations for homes and industrial facilities. From new wiring to panel upgrades, our certified electricians ensure your systems are safe, efficient, and compliant.</p>
-                        </div>
-                    </details>
-                    <details class="service-item card" id="coc">
-                        <summary class="service-item__summary">
-                            <span class="card__icon" aria-hidden="true">✓</span>
-                            <span class="service-item__heading">
-                                <h3 class="card__title">Certificate of Compliance                                </h3>
-                                <span class="card__text">COCs for property sales and leases, meeting South African safety standards.</span>
-                            </span>
-                            <span class="service-item__toggle" aria-hidden="true"></span>
-                        </summary>
-                        <div class="service-item__detail">
-                            <p>Need to sell or lease your property? We issue COCs for electrical work, ensuring your property meets the South African National Standards for safety and legal compliance.</p>
-                        </div>
-                    </details>
-                    <details class="service-item card" id="renovations">
-                        <summary class="service-item__summary">
-                            <span class="card__icon" aria-hidden="true">🏠</span>
-                            <span class="service-item__heading">
-                                <h3 class="card__title">House Renovations                                </h3>
-                                <span class="card__text">Layout redesign through to finishing touches with quality craftsmanship.</span>
-                            </span>
-                            <span class="service-item__toggle" aria-hidden="true"></span>
-                        </summary>
-                        <div class="service-item__detail">
-                            <p>Transform your living space with our renovation services. We handle everything from layout redesign to finishing touches with quality craftsmanship and attention to detail.</p>
-                        </div>
-                    </details>
-                    <details class="service-item card" id="floor">
-                        <summary class="service-item__summary">
-                            <span class="card__icon" aria-hidden="true">🔧</span>
-                            <span class="service-item__heading">
-                                <h3 class="card__title">Tiling, Plumbing &amp; Painting                                </h3>
-                                <span class="card__text">Tiling, plumbing repairs, painting, and durable paving solutions.</span>
-                            </span>
-                            <span class="service-item__toggle" aria-hidden="true"></span>
-                        </summary>
-                        <div class="service-item__detail">
-                            <p>We enhance the appearance and functionality of your home with expert tiling, plumbing repairs, painting services, and durable paving solutions for driveways and outdoor areas.</p>
-                        </div>
-                    </details>
-                    <details class="service-item card" id="solar">
-                        <summary class="service-item__summary">
-                            <span class="card__icon" aria-hidden="true">☀</span>
-                            <span class="service-item__heading">
-                                <h3 class="card__title">Solar Installations                                </h3>
-                                <span class="card__text">System design, installation, and maintenance for homes and businesses.</span>
-                            </span>
-                            <span class="service-item__toggle" aria-hidden="true"></span>
-                        </summary>
-                        <div class="service-item__detail">
-                            <p>Power your home or business sustainably with our reliable solar panel installations. We offer full solutions including system design, installation, and maintenance.</p>
-                        </div>
-                    </details>
-                    <details class="service-item card" id="construction">
-                        <summary class="service-item__summary">
-                            <span class="card__icon" aria-hidden="true">🏗</span>
-                            <span class="service-item__heading">
-                                <h3 class="card__title">Construction                                </h3>
-                                <span class="card__text">Foundations to roofing — projects delivered on time and on budget.</span>
-                            </span>
-                            <span class="service-item__toggle" aria-hidden="true"></span>
-                        </summary>
-                        <div class="service-item__detail">
-                            <p>From foundations to roofing, we manage construction projects of all sizes. Our team delivers high-quality, cost-effective construction solutions on time and on budget.</p>
-                        </div>
-                    </details>
-                    <details class="service-item card" id="fencing">
-                        <summary class="service-item__summary">
-                            <span class="card__icon" aria-hidden="true">🔒</span>
-                            <span class="service-item__heading">
-                                <h3 class="card__title">Electric Fencing &amp; Gates                                </h3>
-                                <span class="card__text">Installation, maintenance, and repair of perimeter security systems.</span>
-                            </span>
-                            <span class="service-item__toggle" aria-hidden="true"></span>
-                        </summary>
-                        <div class="service-item__detail">
-                            <p>Secure your property with state-of-the-art electric fencing and automated gate systems. We install, maintain, and repair all types of perimeter security solutions.</p>
-                        </div>
-                    </details>
-                    <details class="service-item card" id="mechanical">
-                        <summary class="service-item__summary">
-                            <span class="card__icon" aria-hidden="true">⚙</span>
-                            <span class="service-item__heading">
-                                <h3 class="card__title">Mechanical Repairs                                </h3>
-                                <span class="card__text">FMCG industry machinery repairs with minimal downtime.</span>
-                            </span>
-                            <span class="service-item__toggle" aria-hidden="true"></span>
-                        </summary>
-                        <div class="service-item__detail">
-                            <p>We specialize in mechanical repairs for the Fast-Moving Consumer Goods industry, ensuring your machinery stays operational and efficient with minimal downtime.</p>
-                        </div>
-                    </details>
-                    <details class="service-item card" id="shutdowns">
-                        <summary class="service-item__summary">
-                            <span class="card__icon" aria-hidden="true">🕐</span>
-                            <span class="service-item__heading">
-                                <h3 class="card__title">Shutdown Assistance                                </h3>
-                                <span class="card__text">Skilled labour and technical support for planned industrial shutdowns.</span>
-                            </span>
-                            <span class="service-item__toggle" aria-hidden="true"></span>
-                        </summary>
-                        <div class="service-item__detail">
-                            <p>Our team supports planned industrial shutdowns, providing skilled labor and technical services to ensure your operations resume quickly and safely.</p>
-                        </div>
-                    </details>
-                    <details class="service-item card" id="rubble">
-                        <summary class="service-item__summary">
-                            <span class="card__icon" aria-hidden="true">🚛</span>
-                            <span class="service-item__heading">
-                                <h3 class="card__title">Rubble Removal                                </h3>
-                                <span class="card__text">Post-renovation and construction debris removal to keep sites safe.</span>
-                            </span>
-                            <span class="service-item__toggle" aria-hidden="true"></span>
-                        </summary>
-                        <div class="service-item__detail">
-                            <p>Keep your site clean and safe with our rubble and debris removal services. Perfect for post-renovation, construction, and yard clean-up needs.</p>
-                        </div>
-                    </details>
-                    <details class="service-item card" id="clearview">
-                        <summary class="service-item__summary">
-                            <span class="card__icon" aria-hidden="true">🛡</span>
-                            <span class="service-item__heading">
-                                <h3 class="card__title">Clear View Fencing                                </h3>
-                                <span class="card__text">Maximum visibility and security for residential and commercial properties.</span>
-                            </span>
-                            <span class="service-item__toggle" aria-hidden="true"></span>
-                        </summary>
-                        <div class="service-item__detail">
-                            <p>We install clear view fences for maximum visibility and security, ideal for residential, commercial, and industrial properties.</p>
-                        </div>
-                    </details>
+        <section class="section" aria-labelledby="services-title">
+            <div class="container">
+                <div class="section__toolbar">
+                    <header class="section__header">
+                        <p class="eyebrow">What we do</p>
+                        <h2 class="section-title" id="services-title">Electrical, construction &amp; renovations — done right</h2>
+                        <p class="section-subtitle">Comprehensive solutions for residential, commercial, and industrial clients across Johannesburg.</p>
+                    </header>
+                    <a class="btn btn--secondary" href="services/">All services <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                </div>
+                <div class="service-cards">
+                <article class="service-card" id="electrical">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="images/stock/svc-electrical.webp" type="image/webp" />
+                            <img src="images/stock/svc-electrical.jpg" alt="Electrical Installations" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">⚡</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Electrical Installations</h3>
+                        <p class="service-card__text">Domestic and industrial wiring, panel upgrades, and compliant installations.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>New wiring & rewiring</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Panel upgrades</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Industrial installations</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Safety-compliant work</span></li>
+                        </ul>
+                        <a class="service-card__link" href="contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="solar">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="images/stock/svc-solar.webp" type="image/webp" />
+                            <img src="images/stock/svc-solar.jpg" alt="Solar Installations" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">☀</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Solar Installations</h3>
+                        <p class="service-card__text">System design, installation, and maintenance for homes and businesses.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>System design</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Panel installation</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Inverter setup</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Ongoing maintenance</span></li>
+                        </ul>
+                        <a class="service-card__link" href="contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="renovations">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="images/stock/svc-renovations.webp" type="image/webp" />
+                            <img src="images/stock/svc-renovations.jpg" alt="House Renovations" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">🏠</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">House Renovations</h3>
+                        <p class="service-card__text">Layout redesign through to finishing touches with quality craftsmanship.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Layout redesign</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Structural changes</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Finishing</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Project management</span></li>
+                        </ul>
+                        <a class="service-card__link" href="contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="floor">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="images/stock/svc-floor.webp" type="image/webp" />
+                            <img src="images/stock/svc-floor.jpg" alt="Tiling, Plumbing & Painting" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">🔧</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Tiling, Plumbing & Painting</h3>
+                        <p class="service-card__text">Tiling, plumbing repairs, painting, and durable paving solutions.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Floor & wall tiling</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Plumbing repairs</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Interior painting</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Driveway paving</span></li>
+                        </ul>
+                        <a class="service-card__link" href="contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="construction">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="images/stock/svc-construction.webp" type="image/webp" />
+                            <img src="images/stock/svc-construction.jpg" alt="Construction" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">🏗</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Construction</h3>
+                        <p class="service-card__text">Foundations to roofing — projects delivered on time and on budget.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Foundations</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Building work</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Roofing</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Site management</span></li>
+                        </ul>
+                        <a class="service-card__link" href="contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="fencing">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="images/stock/svc-fencing.webp" type="image/webp" />
+                            <img src="images/stock/svc-fencing.jpg" alt="Electric Fencing & Gates" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">🔒</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Electric Fencing & Gates</h3>
+                        <p class="service-card__text">Installation, maintenance, and repair of perimeter security systems.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Electric fencing</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Automated gates</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Maintenance</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Repairs</span></li>
+                        </ul>
+                        <a class="service-card__link" href="contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
                 </div>
             </div>
         </section>
 
-        <section class="section section--muted" id="gallery" aria-labelledby="gallery-title">
+        <section class="section section--muted" aria-labelledby="why-title">
             <div class="container">
-                <header class="section__header section__header--center">
-                    <p class="eyebrow">Our work</p>
-                    <h2 class="section-title" id="gallery-title">Project Gallery</h2>
-                    <p class="section-subtitle">Recent projects across electrical, construction, fencing, and flooring work.</p>
+                <header class="section__header">
+                    <p class="eyebrow">Why Spectrum</p>
+                    <h2 class="section-title" id="why-title">No shortcuts. Just proper work, delivered on time.</h2>
+                    <p class="section-subtitle">We keep it simple: turn up when we say we will, do the job properly, and leave it safe and compliant.</p>
                 </header>
+                <div class="why-grid">
+                <div class="why-card">
+                    <span class="why-card__icon" aria-hidden="true">🛡</span>
+                    <h3 class="why-card__title">Compliant workmanship</h3>
+                    <p class="why-card__text">Installations done carefully to South African safety standards.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card__icon" aria-hidden="true">⏱</span>
+                    <h3 class="why-card__title">Available 7 days</h3>
+                    <p class="why-card__text">Open 7am–6pm every day — ready when you need us.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card__icon" aria-hidden="true">🤝</span>
+                    <h3 class="why-card__title">Reliable delivery</h3>
+                    <p class="why-card__text">We show up when we say we will and finish the job properly.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card__icon" aria-hidden="true">🏢</span>
+                    <h3 class="why-card__title">Home & industry</h3>
+                    <p class="why-card__text">From domestic renovations to commercial and industrial sites.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card__icon" aria-hidden="true">✓</span>
+                    <h3 class="why-card__title">Quality finish</h3>
+                    <p class="why-card__text">Tidy, durable work we're happy to put the Spectrum name to.</p>
+                </div>
+                <div class="why-card">
+                    <span class="why-card__icon" aria-hidden="true">⚡</span>
+                    <h3 class="why-card__title">Full-service team</h3>
+                    <p class="why-card__text">Electrical, construction, fencing and renovations under one roof.</p>
+                </div>
+                </div>
+            </div>
+        </section>
 
-                <div class="gallery-wrapper" id="gallery-wrapper">
-                    <button type="button" class="gallery-stack" id="gallery-stack" aria-expanded="false" aria-controls="gallery-panel">
-                        <span class="gallery-stack__deck" aria-hidden="true">
-                            <span class="gallery-stack__layer gallery-stack__layer--3">
-                                <img src="images/IMG-20250604-WA0049.webp" alt="" width="576" height="1280" decoding="async" />
-                            </span>
-                            <span class="gallery-stack__layer gallery-stack__layer--2">
-                                <img src="images/IMG-20250604-WA0048.webp" alt="" width="576" height="1280" decoding="async" />
-                            </span>
-                            <span class="gallery-stack__layer gallery-stack__layer--1">
-                                <img src="images/IMG-20250604-WA0046.webp" alt="" width="576" height="1280" decoding="async" />
-                            </span>
-                            <span class="gallery-stack__count">+6 more</span>
-                        </span>
-                        <span class="gallery-stack__label">View all 9 project photos</span>
-                    </button>
-
-                    <div class="gallery-panel" id="gallery-panel" hidden>
-                        <div class="gallery-panel__toolbar">
-                            <p class="gallery-panel__title">All project photos</p>
-                            <button type="button" class="btn btn--secondary btn--sm" id="gallery-collapse">Show less</button>
-                        </div>
-                        <div class="gallery-grid">
-                    <figure class="gallery-item">
+        <section class="section" aria-labelledby="gallery-title">
+            <div class="container">
+                <div class="section__toolbar">
+                    <header class="section__header">
+                        <p class="eyebrow">Our work</p>
+                        <h2 class="section-title" id="gallery-title">Project Gallery</h2>
+                        <p class="section-subtitle">Recent projects across electrical, construction, fencing, and flooring work.</p>
+                    </header>
+                    <a class="btn btn--secondary" href="gallery/">View gallery <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                </div>
+                <div class="carousel" aria-label="Project photo carousel">
+                    <div class="carousel__viewport">
+                        <div class="carousel__track">
+                    <figure class="carousel__slide">
                         <picture>
                             <source srcset="images/IMG-20250604-WA0046.webp" type="image/webp" />
                             <img src="IMG-20250604-WA0046.jpg" alt="Electrical installation work on a commercial panel" width="576" height="1280" loading="lazy" decoding="async" />
                         </picture>
                     </figure>
-                    <figure class="gallery-item">
+                    <figure class="carousel__slide">
                         <picture>
                             <source srcset="images/IMG-20250604-WA0048.webp" type="image/webp" />
                             <img src="IMG-20250604-WA0048.jpg" alt="Construction project in progress" width="576" height="1280" loading="lazy" decoding="async" />
                         </picture>
                     </figure>
-                    <figure class="gallery-item">
+                    <figure class="carousel__slide">
                         <picture>
                             <source srcset="images/IMG-20250604-WA0049.webp" type="image/webp" />
                             <img src="IMG-20250604-WA0049.jpg" alt="Electric fencing installation on a property perimeter" width="576" height="1280" loading="lazy" decoding="async" />
                         </picture>
                     </figure>
-                    <figure class="gallery-item">
+                    <figure class="carousel__slide">
                         <picture>
                             <source srcset="images/IMG-20250604-WA0050.webp" type="image/webp" />
                             <img src="IMG-20250604-WA0050.jpg" alt="Spectrum team at a transformer sub-station" width="576" height="1280" loading="lazy" decoding="async" />
                         </picture>
                     </figure>
-                    <figure class="gallery-item">
+                    <figure class="carousel__slide">
                         <picture>
                             <source srcset="images/IMG-20250604-WA0052.webp" type="image/webp" />
                             <img src="IMG-20250604-WA0052.jpg" alt="Completed floor tiling with clean grout lines" width="576" height="1280" loading="lazy" decoding="async" />
                         </picture>
                     </figure>
-                    <figure class="gallery-item">
+                    <figure class="carousel__slide">
                         <picture>
                             <source srcset="images/IMG-20250604-WA0051.webp" type="image/webp" />
                             <img src="IMG-20250604-WA0051.jpg" alt="Tiling detail showing precision finish" width="576" height="1280" loading="lazy" decoding="async" />
                         </picture>
                     </figure>
-                    <figure class="gallery-item">
+                    <figure class="carousel__slide">
                         <picture>
                             <source srcset="images/IMG-20250604-WA0053.webp" type="image/webp" />
                             <img src="IMG-20250604-WA0053.jpg" alt="Large-format floor tiles being installed" width="576" height="1280" loading="lazy" decoding="async" />
                         </picture>
                     </figure>
-                    <figure class="gallery-item">
+                    <figure class="carousel__slide">
                         <picture>
                             <source srcset="images/IMG-20250604-WA0054.webp" type="image/webp" />
                             <img src="IMG-20250604-WA0054.jpg" alt="Tiled floor area with modern finish" width="576" height="1280" loading="lazy" decoding="async" />
                         </picture>
                     </figure>
-                    <figure class="gallery-item">
+                    <figure class="carousel__slide">
+                        <picture>
+                            <source srcset="images/IMG-20250604-WA0055.webp" type="image/webp" />
+                            <img src="IMG-20250604-WA0055.jpg" alt="Completed tiling project in a living area" width="576" height="1280" loading="lazy" decoding="async" />
+                        </picture>
+                    </figure>
+                    <figure class="carousel__slide">
+                        <picture>
+                            <source srcset="images/IMG-20250604-WA0046.webp" type="image/webp" />
+                            <img src="IMG-20250604-WA0046.jpg" alt="Electrical installation work on a commercial panel" width="576" height="1280" loading="lazy" decoding="async" />
+                        </picture>
+                    </figure>
+                    <figure class="carousel__slide">
+                        <picture>
+                            <source srcset="images/IMG-20250604-WA0048.webp" type="image/webp" />
+                            <img src="IMG-20250604-WA0048.jpg" alt="Construction project in progress" width="576" height="1280" loading="lazy" decoding="async" />
+                        </picture>
+                    </figure>
+                    <figure class="carousel__slide">
+                        <picture>
+                            <source srcset="images/IMG-20250604-WA0049.webp" type="image/webp" />
+                            <img src="IMG-20250604-WA0049.jpg" alt="Electric fencing installation on a property perimeter" width="576" height="1280" loading="lazy" decoding="async" />
+                        </picture>
+                    </figure>
+                    <figure class="carousel__slide">
+                        <picture>
+                            <source srcset="images/IMG-20250604-WA0050.webp" type="image/webp" />
+                            <img src="IMG-20250604-WA0050.jpg" alt="Spectrum team at a transformer sub-station" width="576" height="1280" loading="lazy" decoding="async" />
+                        </picture>
+                    </figure>
+                    <figure class="carousel__slide">
+                        <picture>
+                            <source srcset="images/IMG-20250604-WA0052.webp" type="image/webp" />
+                            <img src="IMG-20250604-WA0052.jpg" alt="Completed floor tiling with clean grout lines" width="576" height="1280" loading="lazy" decoding="async" />
+                        </picture>
+                    </figure>
+                    <figure class="carousel__slide">
+                        <picture>
+                            <source srcset="images/IMG-20250604-WA0051.webp" type="image/webp" />
+                            <img src="IMG-20250604-WA0051.jpg" alt="Tiling detail showing precision finish" width="576" height="1280" loading="lazy" decoding="async" />
+                        </picture>
+                    </figure>
+                    <figure class="carousel__slide">
+                        <picture>
+                            <source srcset="images/IMG-20250604-WA0053.webp" type="image/webp" />
+                            <img src="IMG-20250604-WA0053.jpg" alt="Large-format floor tiles being installed" width="576" height="1280" loading="lazy" decoding="async" />
+                        </picture>
+                    </figure>
+                    <figure class="carousel__slide">
+                        <picture>
+                            <source srcset="images/IMG-20250604-WA0054.webp" type="image/webp" />
+                            <img src="IMG-20250604-WA0054.jpg" alt="Tiled floor area with modern finish" width="576" height="1280" loading="lazy" decoding="async" />
+                        </picture>
+                    </figure>
+                    <figure class="carousel__slide">
                         <picture>
                             <source srcset="images/IMG-20250604-WA0055.webp" type="image/webp" />
                             <img src="IMG-20250604-WA0055.jpg" alt="Completed tiling project in a living area" width="576" height="1280" loading="lazy" decoding="async" />
@@ -534,98 +592,81 @@
             </div>
         </section>
 
-        <section class="section section--muted" id="contact" aria-labelledby="contact-title">
+        <section class="section section--muted" aria-labelledby="areas-title">
             <div class="container">
-                <header class="section__header section__header--center">
-                    <p class="eyebrow">Get in touch</p>
-                    <h2 class="section-title" id="contact-title">Contact Us</h2>
-                    <p class="section-subtitle">Reach out for a quote, COC inspection, or emergency shutdown support. We respond promptly during business hours.</p>
+                <header class="section__header">
+                    <p class="eyebrow">Service areas</p>
+                    <h2 class="section-title" id="areas-title">We come to you across Johannesburg</h2>
+                    <p class="section-subtitle">Based in Greenstone Hill, with coverage across the east and surrounding suburbs.</p>
                 </header>
-
-                <div class="contact-grid">
-                    <div class="contact-panel contact-panel--highlight">
-                        <h3 class="card__title">Contact details</h3>
-                        <ul class="info-list">
-                            <li class="info-list__item">
-                                <span class="info-list__label">Contact person</span>
-                                <p class="info-list__value">Mr Forbes</p>
-                            </li>
-                            <li class="info-list__item">
-                                <span class="info-list__label">Phone</span>
-                                <p class="info-list__value">
-                                    <a href="tel:+27840212477">084 021 2477</a> /
-                                    <a href="tel:+27639216255">063 921 6255</a>
-                                </p>
-                            </li>
-                            <li class="info-list__item">
-                                <span class="info-list__label">Email</span>
-                                <p class="info-list__value">
-                                    <a href="mailto:Specmechelectrical@gmail.com">Specmechelectrical@gmail.com</a>
-                                </p>
-                            </li>
-                            <li class="info-list__item">
-                                <span class="info-list__label">Hours</span>
-                                <p class="info-list__value">7am – 6pm, Monday to Sunday</p>
-                            </li>
-                            <li class="info-list__item">
-                                <span class="info-list__label">Shutdowns</span>
-                                <p class="info-list__value">24-hour availability</p>
-                            </li>
-                            <li class="info-list__item">
-                                <span class="info-list__label">Address</span>
-                                <p class="info-list__value">590 Greenstone Crest, Stoneridge Drive, Greenstone Hill, Johannesburg</p>
-                            </li>
-                        </ul>
-                        <div class="btn-group contact-actions">
-                            <a class="btn btn--primary" href="tel:+27840212477">Call now</a>
-                            <a class="btn btn--whatsapp" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer">
-                                <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-                                WhatsApp
-                            </a>
-                            <a class="btn btn--secondary" href="mailto:Specmechelectrical@gmail.com">Send email</a>
+                <div class="areas-layout">
+                    <ul class="areas-grid">
+                    <li class="area-card area-card--primary">
+                        <div class="area-card__top">
+                            <svg class="area-card__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <h3 class="area-card__name">Greenstone Hill</h3>
+                            <span class="area-card__badge">Priority</span>
                         </div>
-                    </div>
-
-                    <div class="contact-panel">
-                        <h3 class="card__title">Request a callback</h3>
-                        <p class="card__text contact-form__intro">Leave your details and we'll get back to you during working hours.</p>
-                        <form class="contact-form form-stack" action="mailto:Specmechelectrical@gmail.com" method="post" enctype="text/plain">
-                            <div class="form-group">
-                                <label class="form-label" for="name">Full name</label>
-                                <input class="form-input" type="text" id="name" name="name" autocomplete="name" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="phone">Phone number</label>
-                                <input class="form-input" type="tel" id="phone" name="phone" autocomplete="tel" required />
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="service">Service needed</label>
-                                <select class="form-select" id="service" name="service" required>
-                                    <option value="">Select a service</option>
-                                    <option value="electrical">Electrical Installations</option>
-                                    <option value="coc">Certificate of Compliance</option>
-                                    <option value="renovations">House Renovations</option>
-                                    <option value="floor">Tiling, Plumbing &amp; Painting</option>
-                                    <option value="solar">Solar Installations</option>
-                                    <option value="construction">Construction</option>
-                                    <option value="fencing">Electric Fencing &amp; Gates</option>
-                                    <option value="mechanical">Mechanical Repairs</option>
-                                    <option value="shutdowns">Shutdown Assistance</option>
-                                    <option value="rubble">Rubble Removal</option>
-                                    <option value="clearview">Clear View Fencing</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-label" for="message">Message</label>
-                                <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your project…"></textarea>
-                                <span class="form-hint">Include location and preferred contact time if possible.</span>
-                            </div>
-                            <button class="btn btn--primary btn--lg" type="submit">Send request</button>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="map-section">
+                        <p class="area-card__note">Our base — fastest response for local homes and businesses.</p>
+                    </li>
+                    <li class="area-card area-card--primary">
+                        <div class="area-card__top">
+                            <svg class="area-card__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <h3 class="area-card__name">Edenvale</h3>
+                            <span class="area-card__badge">Priority</span>
+                        </div>
+                        <p class="area-card__note">Regular electrical, renovations and fencing call-outs.</p>
+                    </li>
+                    <li class="area-card">
+                        <div class="area-card__top">
+                            <svg class="area-card__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <h3 class="area-card__name">Modderfontein</h3>
+                            
+                        </div>
+                        <p class="area-card__note">Residential installs, fencing and maintenance.</p>
+                    </li>
+                    <li class="area-card">
+                        <div class="area-card__top">
+                            <svg class="area-card__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <h3 class="area-card__name">Sandton</h3>
+                            
+                        </div>
+                        <p class="area-card__note">Commercial and residential electrical & construction.</p>
+                    </li>
+                    <li class="area-card">
+                        <div class="area-card__top">
+                            <svg class="area-card__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <h3 class="area-card__name">Bedfordview</h3>
+                            
+                        </div>
+                        <p class="area-card__note">Renovations, tiling and general electrical work.</p>
+                    </li>
+                    <li class="area-card">
+                        <div class="area-card__top">
+                            <svg class="area-card__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <h3 class="area-card__name">Kempton Park</h3>
+                            
+                        </div>
+                        <p class="area-card__note">Solar, fencing and general electrical services.</p>
+                    </li>
+                    <li class="area-card">
+                        <div class="area-card__top">
+                            <svg class="area-card__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <h3 class="area-card__name">Midrand</h3>
+                            
+                        </div>
+                        <p class="area-card__note">Installations, renovations and construction support.</p>
+                    </li>
+                    <li class="area-card">
+                        <div class="area-card__top">
+                            <svg class="area-card__pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <h3 class="area-card__name">Johannesburg East</h3>
+                            
+                        </div>
+                        <p class="area-card__note">Full Spectrum services across the east.</p>
+                    </li>
+                    </ul>
+                    <div class="map-section">
                     <h3 class="card__title">Find us</h3>
                     <p class="card__text map-section__address">590 Greenstone Crest, Stoneridge Drive, Greenstone Hill, Johannesburg</p>
                     <div class="map-embed">
@@ -644,28 +685,97 @@
                         rel="noopener noreferrer"
                     >Open in Google Maps</a>
                 </div>
+                </div>
+                <a class="text-link" href="service-areas/">See all service areas <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
             </div>
         </section>
+
+        <section class="cta-band">
+        <div class="container cta-band__inner">
+            <span class="cta-band__badge">⚡ Need a quote or site support?</span>
+            <h2 class="cta-band__title">Need help on site? Call Spectrum now.</h2>
+            <p class="cta-band__text">From electrical installs to renovations, fencing and construction — we cover Johannesburg and surrounds.</p>
+            <div class="btn-group cta-band__actions">
+                <a class="btn btn--primary btn--lg" href="tel:+27840212477"><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call 084 021 2477</a>
+                <a class="btn btn--on-dark btn--lg" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer"><svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+            </div>
+            <p class="cta-band__alt">Prefer the second line? <a href="tel:+27639216255">063 921 6255</a></p>
+        </div>
+    </section>
+
     </main>
 
     <footer class="site-footer">
-        <div class="container site-footer__inner">
-            <p class="site-footer__brand">Spectrum</p>
-            <p class="site-footer__text">Professional electrical, construction, and mechanical services across Johannesburg and surrounding areas.</p>
-            <nav class="site-footer__links" aria-label="Footer">
-                <a href="#services">Services</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#contact">Contact</a>
-                <a href="tel:+27840212477">084 021 2477</a>
-                <a href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer">WhatsApp</a>
-            </nav>
-            <p class="site-footer__copy">&copy; 2025 Spectrum. All rights reserved.</p>
+        <div class="container">
+            <div class="site-footer__grid">
+                <div class="site-footer__brand-block">
+                    <a class="site-brand" href="./">
+                <picture>
+                    <source srcset="images/logo.webp" type="image/webp" />
+                    <img src="logo.jpg" alt="" class="site-brand__logo" width="56" height="56" decoding="async" />
+                </picture>
+                <div class="site-brand__text">
+                    <p class="site-brand__name">Spectrum</p>
+                    <p class="site-brand__tagline">Electrical · Construction · Renovations</p>
+                </div>
+            </a>
+                    <p class="site-footer__desc">Professional electrical, construction, renovations and fencing services across Johannesburg and surrounding areas.</p>
+                </div>
+                <nav aria-label="Footer pages">
+                    <h3 class="site-footer__heading">Pages</h3>
+                    <ul class="site-footer__list">
+                        <li><a href="./">Home</a></li>
+                        <li><a href="services/">Services</a></li>
+                        <li><a href="service-areas/">Service Areas</a></li>
+                        <li><a href="gallery/">Gallery</a></li>
+                        <li><a href="about/">About</a></li>
+                        <li><a href="contact/">Contact</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <h3 class="site-footer__heading">Services</h3>
+                    <ul class="site-footer__list">
+                        <li><a href="services/#electrical">Electrical Installations</a></li>
+                        <li><a href="services/#solar">Solar Installations</a></li>
+                        <li><a href="services/#renovations">House Renovations</a></li>
+                        <li><a href="services/#floor">Tiling, Plumbing & Painting</a></li>
+                        <li><a href="services/#construction">Construction</a></li>
+                        <li><a href="services/#fencing">Electric Fencing & Gates</a></li>
+                        <li><a href="services/#clearview">Clear View Fencing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="site-footer__heading">Get in touch</h3>
+                    <ul class="site-footer__list">
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <a href="tel:+27840212477">084 021 2477</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <a href="tel:+27639216255">063 921 6255</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> <a href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer">WhatsApp us</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> <a href="mailto:Specmechelectrical@gmail.com">Specmechelectrical@gmail.com</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span>590 Greenstone Crest, Greenstone Hill, Johannesburg</span></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> <span>7am – 6pm, Monday to Sunday</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-footer__areas">
+                <p><strong>Areas we serve:</strong> Greenstone Hill · Edenvale · Modderfontein · Sandton · Bedfordview · Kempton Park · Midrand · Johannesburg East and surrounding areas.</p>
+            </div>
+            <div class="site-footer__legal">
+                <p class="site-footer__copy">&copy; 2026 Spectrum. All rights reserved.</p>
+            </div>
         </div>
     </footer>
-
-    <a class="whatsapp-fab" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-        <svg class="whatsapp-fab__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    </a>
+    <div class="mobile-cta" aria-label="Quick contact">
+        <div class="mobile-cta__grid">
+            <a class="mobile-cta__btn mobile-cta__btn--call" href="tel:+27840212477" aria-label="Call 084 021 2477">
+                <svg  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Call now
+            </a>
+            <a class="mobile-cta__btn mobile-cta__btn--wa" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                <svg  viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+            </a>
+        </div>
+    </div>
 
     <script src="js/main.js" defer></script>
 </body>

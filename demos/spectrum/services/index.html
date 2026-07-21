@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services | Spectrum Electrical, Construction & Renovations</title>
+    <meta name="description" content="Electrical installations, solar, renovations, construction and fencing across Johannesburg." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://donaldmaparura.github.io/Spectrum/services/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Services | Spectrum Electrical, Construction & Renovations" />
+    <meta property="og:description" content="Electrical installations, solar, renovations, construction and fencing across Johannesburg." />
+    <meta property="og:image" content="../logo.jpg" />
+    <meta property="og:locale" content="en_ZA" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Services | Spectrum Electrical, Construction & Renovations" />
+    <meta name="twitter:description" content="Electrical installations, solar, renovations, construction and fencing across Johannesburg." />
+
+    <link rel="icon" href="../images/logo.webp" type="image/webp" />
+    <link rel="preload" href="../css/main.css" as="style" />
+    <link rel="stylesheet" href="../css/main.css" />
+    
+
+<style id="ddm-customizer-style">
+:root{--ddm-primary:#0a0a0a;--ddm-accent:#2563eb;--ddm-bg:#ffffff;--ddm-text:#111111;--ddm-font:Inter,system-ui,sans-serif}
+#ddm-preview-badge{position:fixed;z-index:2147483646;left:12px;bottom:12px;padding:8px 12px;border-radius:8px;background:#0a0a0a;color:#fff;font:600 12px/1.3 Inter,system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.25);max-width:min(280px,70vw)}
+.ddm-hide-section{display:none!important}
+</style>
+<script id="ddm-customizer-bridge">
+(function(){
+  var lastTheme=null;
+  var originals={};
+
+  function textOf(el){
+    return (el && (el.innerText||el.textContent)||'').replace(/\s+/g,' ').trim();
+  }
+
+  function setLeafText(el, value){
+    if(!el || !value) return;
+    if(!el.children || el.children.length===0){ el.textContent=value; return; }
+    var walker=document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var node=walker.nextNode();
+    if(node){ node.nodeValue=value; return; }
+    el.textContent=value;
+  }
+
+  function first(sel){ return document.querySelector(sel); }
+  function all(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+  function stash(key, el){
+    if(!el || originals[key]!=null) return;
+    originals[key]=textOf(el);
+  }
+
+  function apply(theme){
+    if(!theme) return;
+    lastTheme=theme;
+    try{ sessionStorage.setItem('ddm-live-theme', JSON.stringify(theme)); }catch(e){}
+
+    var root=document.documentElement;
+    root.style.setProperty('--ddm-primary', theme.primaryColor||'#0a0a0a');
+    root.style.setProperty('--ddm-accent', theme.accentColor||'#2563eb');
+    root.style.setProperty('--ddm-bg', theme.bgColor||'#ffffff');
+    root.style.setProperty('--ddm-text', theme.textColor||'#111111');
+    root.style.setProperty('--ddm-font', theme.fontFamily||'Inter, system-ui, sans-serif');
+
+    var s=document.getElementById('ddm-live-style');
+    if(!s){ s=document.createElement('style'); s.id='ddm-live-style'; document.head.appendChild(s); }
+    s.textContent=[
+      'html,body{background:var(--ddm-bg)!important;color:var(--ddm-text)!important;font-family:var(--ddm-font)!important}',
+      'h1,h2,h3,h4,.logo,[class*="brand"],[class*="logo"] span,[class*="title"]{color:var(--ddm-primary)!important}',
+      'a{color:var(--ddm-accent)}',
+      'button,.btn,[class*="btn"],[class*="Btn"],[class*="cta"],[class*="Cta"],input[type="submit"],a[class*="button"]{background:var(--ddm-accent)!important;border-color:var(--ddm-accent)!important;color:#fff!important}',
+      theme.showHeader===false?'header,nav,[class*="navbar"],[class*="Navbar"],[class*="header"]:not(#ddm-preview-badge){display:none!important}':'',
+      theme.showFooter===false?'footer,[class*="footer"],[class*="Footer"]{display:none!important}':'',
+      theme.showHero===false?'[class*="hero"],[class*="Hero"],section:first-of-type{display:none!important}':'',
+      theme.showAbout===false?'[id*="about"],[class*="about"],[class*="About"]{display:none!important}':'',
+      theme.showContact===false?'[id*="contact"],[class*="contact"],[class*="Contact"]{display:none!important}':''
+    ].filter(Boolean).join('\n');
+
+    var brand=first('header a,[class*="brand"] a,[class*="logo"] a,nav a,a[class*="logo"],a[class*="brand"]');
+    stash('brand', brand);
+    if(brand && theme.bizName){
+      var brandImg=brand.querySelector('img');
+      if(brandImg && theme.logoDataUrl){ brandImg.src=theme.logoDataUrl; brandImg.alt=theme.bizName; }
+      else setLeafText(brand, theme.bizName);
+    }
+    if(theme.logoDataUrl){
+      var logoImg=first('header img, nav img, [class*="logo"] img, img[alt*="ogo" i]');
+      if(logoImg){ logoImg.src=theme.logoDataUrl; if(theme.bizName) logoImg.alt=theme.bizName; }
+    }
+
+    var h1=first('h1');
+    stash('h1', h1);
+    if(h1 && theme.headline) setLeafText(h1, theme.headline);
+
+    var heroP=first('h1 + p, [class*="hero"] p, section p, main p');
+    stash('heroP', heroP);
+    if(heroP && theme.subtext) setLeafText(heroP, theme.subtext);
+
+    if(theme.tagline){
+      var tag=first('[class*="tagline"],[class*="subtitle"], header p, nav p');
+      stash('tag', tag);
+      if(tag) setLeafText(tag, theme.tagline);
+    }
+
+    if(theme.ctaLabel){
+      var cta=first('a.btn, a[class*="btn"], button, [class*="cta"] a, [class*="hero"] a, [class*="Hero"] a');
+      stash('cta', cta);
+      if(cta) setLeafText(cta, theme.ctaLabel);
+    }
+
+    if(theme.aboutText){
+      var about=first('#about p, [id*="about"] p, [class*="about"] p, [class*="About"] p');
+      stash('about', about);
+      if(about) setLeafText(about, theme.aboutText);
+    }
+
+    if(theme.navLabels){
+      var labels=theme.navLabels.split(',').map(function(x){return x.trim();}).filter(Boolean);
+      var links=all('header nav a, nav a, [class*="nav"] a').filter(function(a){
+        return textOf(a) && textOf(a).length<28 && !a.querySelector('img');
+      }).slice(0, labels.length);
+      links.forEach(function(a,i){ if(labels[i]) setLeafText(a, labels[i]); });
+    }
+
+    if(theme.phone){
+      all('a[href^="tel:"]').forEach(function(a){ a.href='tel:'+theme.phone.replace(/\s+/g,''); setLeafText(a, theme.phone); });
+    }
+    if(theme.email){
+      all('a[href^="mailto:"]').forEach(function(a){ a.href='mailto:'+theme.email; setLeafText(a, theme.email); });
+    }
+
+    var badge=document.getElementById('ddm-preview-badge');
+    if(!badge){
+      badge=document.createElement('div');
+      badge.id='ddm-preview-badge';
+      document.body.appendChild(badge);
+    }
+    badge.textContent='Previewing edits · '+(theme.bizName||'Your brand');
+  }
+
+  window.addEventListener('message', function(e){
+    if(!e.data || e.data.type!=='ddm-theme') return;
+    apply(e.data.theme||{});
+  });
+
+  try{
+    var stored=sessionStorage.getItem('ddm-live-theme');
+    if(stored) apply(JSON.parse(stored));
+  }catch(e){}
+
+  setInterval(function(){
+    if(lastTheme) apply(lastTheme);
+  }, 1500);
+
+  try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  document.addEventListener('DOMContentLoaded', function(){
+    try{ if(window.parent!==window) window.parent.postMessage({type:'ddm-demo-ready'}, '*'); }catch(e){}
+  });
+})();
+</script><script id="ddm-demo-base-nav">(function(){
+  var BASE="/demos/spectrum";
+  function rewrite(href){
+    if(!href || href.charAt(0)!=='/') return null;
+    if(href.indexOf('//')===0) return null;
+    if(href.charAt(0)==='#') return null;
+    var path=href, hash='', query='';
+    var hi=path.indexOf('#');
+    if(hi>=0){ hash=path.slice(hi); path=path.slice(0,hi); }
+    var qi=path.indexOf('?');
+    if(qi>=0){ query=path.slice(qi); path=path.slice(0,qi); }
+    if(path.indexOf(BASE)===0){
+      if(path!==BASE && path!==BASE+'/' && path.charAt(path.length-1)!=='/') path+='/';
+      return path + query + hash;
+    }
+    if(path.indexOf('/demos/')===0) return null;
+    if(path!=='/' && path.charAt(path.length-1)!=='/') path+='/';
+    return BASE + (path==='/' ? '/' : path) + query + hash;
+  }
+  document.addEventListener('click', function(e){
+    if(e.button!==0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a=e.target && e.target.closest && e.target.closest('a[href]');
+    if(!a) return;
+    var target=a.getAttribute('target');
+    if(target && target!=='_self') return;
+    var next=rewrite(a.getAttribute('href'));
+    if(!next) return;
+    e.preventDefault();
+    if(e.stopImmediatePropagation) e.stopImmediatePropagation();
+    else e.stopPropagation();
+    location.assign(next);
+  }, true);
+})();</script></head>
+<body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+
+    <header class="site-header">
+        <div class="container site-header__inner">
+            <a class="site-brand" href="../">
+                <picture>
+                    <source srcset="../images/logo.webp" type="image/webp" />
+                    <img src="../logo.jpg" alt="" class="site-brand__logo" width="56" height="56" decoding="async" />
+                </picture>
+                <div class="site-brand__text">
+                    <p class="site-brand__name">Spectrum</p>
+                    <p class="site-brand__tagline">Electrical · Construction · Renovations</p>
+                </div>
+            </a>
+
+            <nav class="site-nav" aria-label="Primary">
+                <ul class="site-nav__list">
+                    <li>
+                        <a class="site-nav__link" href="../">Home</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link is-active" href="../services/" aria-current="page">Services</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="../service-areas/">Service Areas</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="../gallery/">Gallery</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="../about/">About</a>
+                    </li>
+                    <li>
+                        <a class="site-nav__link" href="../contact/">Contact</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="site-header__actions">
+                <a class="btn btn--whatsapp btn--sm" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                    <svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    <span class="btn__label">WhatsApp</span>
+                </a>
+                <a class="btn btn--primary btn--sm" href="tel:+27840212477" aria-label="Call 084 021 2477">
+                    <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    <span class="btn__label">084 021 2477</span>
+                    <span class="btn__label-short">Call</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+
+        <section class="page-header">
+        <div class="container page-header__grid">
+            <div class="page-header__copy">
+                <nav aria-label="Breadcrumb">
+                    <ol class="page-header__breadcrumb">
+                        <li><a href="../">Home</a></li>
+                        <li aria-hidden="true">/</li>
+                        <li aria-current="page">Services</li>
+                    </ol>
+                </nav>
+                <p class="eyebrow page-header__eyebrow">Services</p>
+                <h1 class="page-header__title">Everything we do for home and business</h1>
+                <p class="page-header__intro">From electrical installs to renovations, solar and fencing — one team for the full job.</p>
+            </div>
+            <div class="page-header__logo" aria-hidden="true">
+                <picture>
+                    <source srcset="../images/logo.webp" type="image/webp" />
+                    <img src="../logo.jpg" alt="" width="180" height="180" decoding="async" />
+                </picture>
+            </div>
+        </div>
+    </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="service-cards">
+                <article class="service-card" id="electrical">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="../images/stock/svc-electrical.webp" type="image/webp" />
+                            <img src="../images/stock/svc-electrical.jpg" alt="Electrical Installations" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">⚡</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Electrical Installations</h3>
+                        <p class="service-card__text">Domestic and industrial wiring, panel upgrades, and compliant installations.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>New wiring & rewiring</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Panel upgrades</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Industrial installations</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Safety-compliant work</span></li>
+                        </ul>
+                        <a class="service-card__link" href="../contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="solar">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="../images/stock/svc-solar.webp" type="image/webp" />
+                            <img src="../images/stock/svc-solar.jpg" alt="Solar Installations" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">☀</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Solar Installations</h3>
+                        <p class="service-card__text">System design, installation, and maintenance for homes and businesses.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>System design</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Panel installation</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Inverter setup</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Ongoing maintenance</span></li>
+                        </ul>
+                        <a class="service-card__link" href="../contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="renovations">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="../images/stock/svc-renovations.webp" type="image/webp" />
+                            <img src="../images/stock/svc-renovations.jpg" alt="House Renovations" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">🏠</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">House Renovations</h3>
+                        <p class="service-card__text">Layout redesign through to finishing touches with quality craftsmanship.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Layout redesign</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Structural changes</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Finishing</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Project management</span></li>
+                        </ul>
+                        <a class="service-card__link" href="../contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="floor">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="../images/stock/svc-floor.webp" type="image/webp" />
+                            <img src="../images/stock/svc-floor.jpg" alt="Tiling, Plumbing & Painting" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">🔧</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Tiling, Plumbing & Painting</h3>
+                        <p class="service-card__text">Tiling, plumbing repairs, painting, and durable paving solutions.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Floor & wall tiling</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Plumbing repairs</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Interior painting</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Driveway paving</span></li>
+                        </ul>
+                        <a class="service-card__link" href="../contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="construction">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="../images/stock/svc-construction.webp" type="image/webp" />
+                            <img src="../images/stock/svc-construction.jpg" alt="Construction" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">🏗</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Construction</h3>
+                        <p class="service-card__text">Foundations to roofing — projects delivered on time and on budget.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Foundations</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Building work</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Roofing</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Site management</span></li>
+                        </ul>
+                        <a class="service-card__link" href="../contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="fencing">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="../images/stock/svc-fencing.webp" type="image/webp" />
+                            <img src="../images/stock/svc-fencing.jpg" alt="Electric Fencing & Gates" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">🔒</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Electric Fencing & Gates</h3>
+                        <p class="service-card__text">Installation, maintenance, and repair of perimeter security systems.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Electric fencing</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Automated gates</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Maintenance</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Repairs</span></li>
+                        </ul>
+                        <a class="service-card__link" href="../contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="clearview">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="../images/stock/svc-clearview.webp" type="image/webp" />
+                            <img src="../images/stock/svc-clearview.jpg" alt="Clear View Fencing" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">🛡</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Clear View Fencing</h3>
+                        <p class="service-card__text">Maximum visibility and security for residential and commercial properties.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Clear view install</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Residential</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Commercial</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Industrial sites</span></li>
+                        </ul>
+                        <a class="service-card__link" href="../contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                <article class="service-card" id="rubble">
+                    <div class="service-card__media">
+                        <picture>
+                            <source srcset="../images/stock/svc-rubble.webp" type="image/webp" />
+                            <img src="../images/stock/svc-rubble.jpg" alt="Rubble Removal" width="1400" height="933" loading="lazy" decoding="async" />
+                        </picture>
+                        <span class="service-card__icon" aria-hidden="true">🚛</span>
+                    </div>
+                    <div class="service-card__body">
+                        <h3 class="service-card__title">Rubble Removal</h3>
+                        <p class="service-card__text">Post-renovation and construction debris removal to keep sites safe.</p>
+                        <ul class="service-card__list">
+                            <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Site clean-up</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Post-renovation</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Construction debris</span></li><li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Yard clearing</span></li>
+                        </ul>
+                        <a class="service-card__link" href="../contact/">Get a quote <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+                    </div>
+                </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--muted">
+            <div class="container">
+                <header class="section__header">
+                    <p class="eyebrow">The full list</p>
+                    <h2 class="section-title">Every service we offer</h2>
+                    <p class="section-subtitle">Not sure which category your job falls under? Here's everything we do — call us if you don't see it.</p>
+                </header>
+                <ul class="service-checklist">
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Electrical Installations</span></li>
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>House Renovations</span></li>
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Tiling, Plumbing & Painting</span></li>
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Solar Installations</span></li>
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Construction</span></li>
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Electric Fencing & Gates</span></li>
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Clear View Fencing</span></li>
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Rubble Removal</span></li>
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Domestic wiring</span></li>
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Industrial panel upgrades</span></li>
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Solar system design & install</span></li>
+                    <li><svg class="service-card__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Automated gate systems</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="cta-band">
+        <div class="container cta-band__inner">
+            
+            <h2 class="cta-band__title">Let's get your next project sorted.</h2>
+            <p class="cta-band__text">Get honest advice and a fair quote. Call, WhatsApp or send an enquiry — we respond during business hours.</p>
+            <div class="btn-group cta-band__actions">
+                <a class="btn btn--primary btn--lg" href="tel:+27840212477"><svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call 084 021 2477</a>
+                <a class="btn btn--on-dark btn--lg" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer"><svg class="btn__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+            </div>
+            <p class="cta-band__alt">Prefer the second line? <a href="tel:+27639216255">063 921 6255</a></p>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="site-footer__grid">
+                <div class="site-footer__brand-block">
+                    <a class="site-brand" href="../">
+                <picture>
+                    <source srcset="../images/logo.webp" type="image/webp" />
+                    <img src="../logo.jpg" alt="" class="site-brand__logo" width="56" height="56" decoding="async" />
+                </picture>
+                <div class="site-brand__text">
+                    <p class="site-brand__name">Spectrum</p>
+                    <p class="site-brand__tagline">Electrical · Construction · Renovations</p>
+                </div>
+            </a>
+                    <p class="site-footer__desc">Professional electrical, construction, renovations and fencing services across Johannesburg and surrounding areas.</p>
+                </div>
+                <nav aria-label="Footer pages">
+                    <h3 class="site-footer__heading">Pages</h3>
+                    <ul class="site-footer__list">
+                        <li><a href="../">Home</a></li>
+                        <li><a href="../services/">Services</a></li>
+                        <li><a href="../service-areas/">Service Areas</a></li>
+                        <li><a href="../gallery/">Gallery</a></li>
+                        <li><a href="../about/">About</a></li>
+                        <li><a href="../contact/">Contact</a></li>
+                    </ul>
+                </nav>
+                <div>
+                    <h3 class="site-footer__heading">Services</h3>
+                    <ul class="site-footer__list">
+                        <li><a href="../services/#electrical">Electrical Installations</a></li>
+                        <li><a href="../services/#solar">Solar Installations</a></li>
+                        <li><a href="../services/#renovations">House Renovations</a></li>
+                        <li><a href="../services/#floor">Tiling, Plumbing & Painting</a></li>
+                        <li><a href="../services/#construction">Construction</a></li>
+                        <li><a href="../services/#fencing">Electric Fencing & Gates</a></li>
+                        <li><a href="../services/#clearview">Clear View Fencing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="site-footer__heading">Get in touch</h3>
+                    <ul class="site-footer__list">
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <a href="tel:+27840212477">084 021 2477</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <a href="tel:+27639216255">063 921 6255</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> <a href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer">WhatsApp us</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> <a href="mailto:Specmechelectrical@gmail.com">Specmechelectrical@gmail.com</a></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span>590 Greenstone Crest, Greenstone Hill, Johannesburg</span></li>
+                        <li class="site-footer__contact-item"><svg class="site-footer__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> <span>7am – 6pm, Monday to Sunday</span></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="site-footer__areas">
+                <p><strong>Areas we serve:</strong> Greenstone Hill · Edenvale · Modderfontein · Sandton · Bedfordview · Kempton Park · Midrand · Johannesburg East and surrounding areas.</p>
+            </div>
+            <div class="site-footer__legal">
+                <p class="site-footer__copy">&copy; 2026 Spectrum. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <div class="mobile-cta" aria-label="Quick contact">
+        <div class="mobile-cta__grid">
+            <a class="mobile-cta__btn mobile-cta__btn--call" href="tel:+27840212477" aria-label="Call 084 021 2477">
+                <svg  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Call now
+            </a>
+            <a class="mobile-cta__btn mobile-cta__btn--wa" href="https://wa.me/27840212477?text=Hi%20Spectrum%2C%20I%27d%20like%20to%20get%20a%20quote." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                <svg  viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.881 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                WhatsApp
+            </a>
+        </div>
+    </div>
+
+    <script src="../js/main.js" defer></script>
+</body>
+</html>

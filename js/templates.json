@@ -262,15 +262,17 @@
   {
     "id": "spectrum",
     "name": "Spectrum",
-    "industry": "Corporate",
-    "category": "corporate",
+    "industry": "Trades",
+    "category": "construction",
     "price": 499,
     "customisePrice": 499,
-    "summary": "Versatile corporate template with polished visual sections and clear CTAs.",
+    "summary": "Multi-page trades site for electrical, solar, renovations and construction with gallery and service areas.",
     "features": [
       "Responsive",
       "SEO Ready",
-      "Modern Design"
+      "Services",
+      "Gallery",
+      "Contact"
     ],
     "projectPath": "Spectrum",
     "entry": ".",

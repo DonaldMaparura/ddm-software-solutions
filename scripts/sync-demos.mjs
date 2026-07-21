@@ -29,9 +29,10 @@ const SKIP_DIR = new Set([
   '.firebase',
   '.github',
   'dist-ssr',
+  'scripts',
 ]);
 
-const SKIP_FILE = /^(qa-|lighthouse-|website-generation|\.|.*\.iml$|package-lock\.json$)/i;
+const SKIP_FILE = /^(qa-|lighthouse-|website-generation|\.|.*\.iml$|package-lock\.json$|package\.json$)/i;
 
 const TEXT_EXT = new Set(['.html', '.css', '.js', '.mjs', '.json', '.svg', '.txt', '.xml', '.webmanifest']);
 
@@ -45,7 +46,6 @@ const NON_ROUTE_DIRS = new Set([
   'js',
   'photos',
   'public',
-  'gallery',
   'media',
   'fonts',
   'static',
@@ -53,6 +53,7 @@ const NON_ROUTE_DIRS = new Set([
   'icons',
   'favicon',
   'api',
+  'scripts',
 ]);
 
 const TEMPLATES = JSON.parse(readFileSync(join(ROOT, 'js', 'templates.json'), 'utf8'));
