@@ -1,0 +1,7 @@
+User-Agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /account/
+Disallow: /api/
+
+Sitemap: https://www.midvaallionpark.co.za/sitemap.xml

@@ -36,6 +36,7 @@ const TEMPLATES = [
   { id: 'kings-school-midvaal', path: 'The-Kings-School-Midvaal', entry: '.' },
   { id: 'van-wyk-attorneys', path: 'Van-Wyk-Attorneys', entry: 'out' },
   { id: 'even-faster-electrical', path: 'Even Faster-electrical-And-Plumbing-Services', entry: 'out' },
+  { id: 'midvaal-lion-park', path: 'Midvaal-Lion-Park', entry: 'out' },
 ];
 
 const MIME = {

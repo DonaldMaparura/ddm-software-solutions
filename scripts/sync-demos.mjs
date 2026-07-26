@@ -30,6 +30,7 @@ const SKIP_DIR = new Set([
   '.github',
   'dist-ssr',
   'scripts',
+  'admin', // marketplace demos leave staff admin out
 ]);
 
 const SKIP_FILE = /^(qa-|lighthouse-|website-generation|\.|.*\.iml$|package-lock\.json$|package\.json$)/i;
@@ -66,16 +67,19 @@ function shouldSkipName(name, isDir) {
   return false;
 }
 
-/** Discover page segments (about, services, …) from a static export root. */
-function collectAppRoutes(rootDir) {
+/** Discover page segments (about, services, book/family, …) from a static export root. */
+function collectAppRoutes(rootDir, prefix = '') {
   const routes = [];
   if (!existsSync(rootDir)) return routes;
   for (const ent of readdirSync(rootDir, { withFileTypes: true })) {
     if (!ent.isDirectory()) continue;
     if (ent.name.startsWith('.') || ent.name.startsWith('_')) continue;
     if (NON_ROUTE_DIRS.has(ent.name)) continue;
-    if (ent.name === '404') continue;
-    if (existsSync(join(rootDir, ent.name, 'index.html'))) routes.push(ent.name);
+    if (ent.name === '404' || ent.name === 'admin') continue;
+    const segment = prefix ? `${prefix}/${ent.name}` : ent.name;
+    const dir = join(rootDir, ent.name);
+    if (existsSync(join(dir, 'index.html'))) routes.push(segment);
+    routes.push(...collectAppRoutes(dir, segment));
   }
   return routes;
 }

@@ -359,5 +359,26 @@
     "thumbnail": "img/templates/even-faster-electrical.png",
     "demo": true,
     "hostingPrice": 1999
+  },
+  {
+    "id": "midvaal-lion-park",
+    "name": "Midvaal Lion Park & Splash Kingdom",
+    "industry": "Tourism",
+    "category": "tourism",
+    "price": 499,
+    "customisePrice": 499,
+    "summary": "Family wildlife park site with Splash Kingdom, live shows, pricing, gallery, and ticket booking.",
+    "features": [
+      "Responsive",
+      "SEO Ready",
+      "Next.js",
+      "Booking",
+      "Gallery"
+    ],
+    "projectPath": "Midvaal-Lion-Park",
+    "entry": "out",
+    "thumbnail": "img/templates/midvaal-lion-park.png",
+    "demo": true,
+    "hostingPrice": 1999
   }
 ]
