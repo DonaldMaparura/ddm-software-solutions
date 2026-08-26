@@ -4,20 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5" />
   <title>DDM Software Solutions | Custom Business Software South Africa</title>
-  <meta name="description" content="DDM Software Solutions designs and develops custom business systems, web applications, digital platforms and cloud solutions for organisations across South Africa." />
+  <meta name="description" content="DDM Software Solutions designs and engineers custom business systems, web applications, marketplaces and digital platforms for organisations across South Africa." />
   <meta name="keywords" content="Custom Business Software South Africa, Web Applications, System Integrations, Cloud Solutions, Software Engineering Gauteng, Digital Platforms" />
   <link rel="canonical" href="https://ddm-software-solutions.co.za/" />
   <meta property="og:title" content="DDM Software Solutions | Custom Business Software South Africa" />
-  <meta property="og:description" content="DDM Software Solutions designs, builds and supports business software, web applications and digital platforms for organisations across South Africa." />
+  <meta property="og:description" content="DDM designs and engineers custom business systems, web applications, marketplaces and digital platforms for organisations across South Africa." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://ddm-software-solutions.co.za/" />
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#F5F2EA" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#081426" media="(prefers-color-scheme: dark)" />
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
   <link rel="manifest" href="site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" as="image" href="img/hona-hero.webp" type="image/webp" />
   <link rel="stylesheet" href="css/style.css" />
   <script>
     (function () {
@@ -70,8 +71,8 @@
           <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
-        <a class="btn btn-primary" href="contact.html">Discuss Your Project</a>
-        <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false">
+        <a class="btn btn-primary" href="contact.html">Discuss a project</a>
+        <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -86,335 +87,309 @@
     <a href="about.html">About</a>
     <a href="templates.html">Templates</a>
     <a href="contact.html">Contact</a>
-    <a class="btn btn-primary" href="contact.html">Discuss Your Project</a>
+    <a class="btn btn-primary" href="contact.html">Discuss a project</a>
   </div>
 
   <main id="main">
     <section class="hero">
-      <div class="container hero-grid">
+      <div class="container container-wide hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">Software engineering · South Africa</p>
-          <h1>Business software designed around how your organisation works.</h1>
-          <p class="lead">DDM Software Solutions designs and develops business systems, web applications and digital platforms that improve operations, support customers and create new opportunities for growth.</p>
+          <h1>Build the software your business actually needs.</h1>
+          <p class="lead">DDM designs and engineers custom business systems, web applications, marketplaces and digital platforms for organisations across South Africa—from the first requirement to a reliable production release.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary btn-lg" href="contact.html">Discuss Your Project</a>
-            <a class="btn btn-secondary btn-lg" href="portfolio.html">View Our Work</a>
+            <a class="btn btn-primary btn-lg" href="contact.html">Discuss a project</a>
+            <a class="btn btn-secondary btn-lg" href="portfolio.html">See our work</a>
           </div>
-          <p class="credibility-line">Based in Gauteng. Serving organisations across South Africa and remotely.</p>
+          <p class="credibility-line">Gauteng, South Africa · Nationwide and remote delivery</p>
         </div>
 
-        <div class="hero-visual" aria-label="Project showcase">
-          <div class="browser-frame" id="heroShowcase">
-            <div class="browser-chrome">
-              <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-              <div class="browser-url" id="heroUrl">honamarketplace.com</div>
-            </div>
-            <div class="browser-viewport">
-              <div class="hero-slides" id="heroSlides">
-                <figure class="hero-slide is-active" data-url="honamarketplace.com">
-                  <img src="img/honamarketplace.png" alt="Hona Marketplace homepage with vehicle search filters, dealer navigation and browse cars call to action" width="1892" height="897" fetchpriority="high" decoding="async">
-                </figure>
-                <figure class="hero-slide" data-url="propservice.web.app">
-                  <img src="img/propservice.png" alt="PropService property operations workspace showing listings and administration tools" width="1902" height="891" loading="lazy" decoding="async">
-                </figure>
-                <figure class="hero-slide" data-url="elegantlaine.co.za">
-                  <img src="img/elegantlaine.png" alt="Elegantlaine fashion e-commerce storefront with product catalogue presentation" width="1892" height="877" loading="lazy" decoding="async">
-                </figure>
-                <figure class="hero-slide" data-url="liberty-homes.co.za">
-                  <img src="img/liberty-homes.co.za.png" alt="Liberty Homes resident portal sign-in screen with maintenance and communication features" width="1902" height="902" loading="lazy" decoding="async">
-                </figure>
-              </div>
-            </div>
-          </div>
-          <div class="hero-slide-dots" id="heroDots" role="tablist" aria-label="Showcase projects">
-            <button type="button" class="is-active" role="tab" aria-selected="true" aria-controls="heroSlides" aria-label="Show Hona Marketplace"></button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="heroSlides" aria-label="Show PropService"></button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="heroSlides" aria-label="Show Elegantlaine"></button>
-            <button type="button" role="tab" aria-selected="false" aria-controls="heroSlides" aria-label="Show Liberty Homes"></button>
+        <div class="hero-visual" aria-label="Selected DDM platforms">
+          <div class="hero-collage">
+            <figure class="collage-item collage-hona">
+              <picture>
+                <source srcset="img/hona-hero.webp" type="image/webp" />
+                <img src="img/honamarketplace.png" alt="Hona Marketplace interface with vehicle search, filters and dealer navigation" width="1892" height="897" fetchpriority="high" decoding="async" />
+              </picture>
+              <figcaption class="collage-label">Hona Marketplace · Automotive</figcaption>
+            </figure>
+            <figure class="collage-item collage-prop">
+              <picture>
+                <source srcset="img/propservice-800.webp" type="image/webp" />
+                <img src="img/propservice.png" alt="PropService property operations workspace" width="1902" height="891" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption class="collage-label">PropService · Property</figcaption>
+            </figure>
+            <figure class="collage-item collage-elegant">
+              <picture>
+                <source srcset="img/elegantlaine-800.webp" type="image/webp" />
+                <img src="img/elegantlaine.png" alt="Elegantlaine fashion e-commerce storefront" width="1892" height="877" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption class="collage-label">Elegantlaine · Retail</figcaption>
+            </figure>
+            <figure class="collage-item collage-liberty">
+              <picture>
+                <source srcset="img/liberty-homes-800.webp" type="image/webp" />
+                <img src="img/liberty-homes.co.za.png" alt="Liberty Homes resident services platform" width="1902" height="902" loading="lazy" decoding="async" />
+              </picture>
+              <figcaption class="collage-label">Liberty Homes · Residents</figcaption>
+            </figure>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section" aria-labelledby="capabilities-heading">
+    <section class="section" aria-labelledby="situations-heading">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Where custom software creates value</p>
+          <h2 id="situations-heading">When standard software stops fitting the business.</h2>
+          <p class="section-intro">Manual processes, disconnected tools and generic platforms eventually become obstacles. DDM builds software around the organisation’s workflows, users and commercial priorities.</p>
+        </div>
+
+        <div class="situation-band" data-motion>
+          <div class="situation-num" aria-hidden="true">01</div>
+          <div>
+            <h3>Make the operation easier to control.</h3>
+            <p>Replace spreadsheets, repeated administration and fragmented approvals with one structured operating environment.</p>
+            <ul class="cap-list">
+              <li>Workflow management</li>
+              <li>Approvals</li>
+              <li>Reporting</li>
+              <li>Integration</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="situation-band" data-motion>
+          <div class="situation-num" aria-hidden="true">02</div>
+          <div>
+            <h3>Give customers a clearer way to interact.</h3>
+            <p>Create portals and applications where customers, residents, dealers or partners can access services and complete important tasks.</p>
+            <ul class="cap-list">
+              <li>Secure access</li>
+              <li>Requests</li>
+              <li>Notifications</li>
+              <li>Self-service</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="situation-band" data-motion>
+          <div class="situation-num" aria-hidden="true">03</div>
+          <div>
+            <h3>Bring a new platform to market.</h3>
+            <p>Turn a marketplace, portal or software-product idea into a focused release that can be tested, launched and improved.</p>
+            <ul class="cap-list">
+              <li>Product discovery</li>
+              <li>UX and interface design</li>
+              <li>Software engineering</li>
+              <li>Production deployment</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-muted" aria-labelledby="work-heading">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Our work</p>
+          <h2 id="work-heading">Software designed to be used.</h2>
+          <p class="section-intro">Selected marketplaces, operational systems and customer platforms engineered by DDM Software Solutions.</p>
+        </div>
+
+        <article class="project-strip" data-motion>
+          <div class="shot">
+            <a class="shot-frame" href="https://honamarketplace.com/" target="_blank" rel="noopener noreferrer">
+              <picture>
+                <source srcset="img/hona-hero.webp" type="image/webp" />
+                <img src="img/honamarketplace.png" alt="Hona Marketplace vehicle discovery interface" width="1892" height="897" loading="lazy" decoding="async" />
+              </picture>
+            </a>
+          </div>
+          <div>
+            <p class="meta">Automotive marketplace · <span class="case-status">Live</span></p>
+            <h3>Hona Marketplace</h3>
+            <p>A digital platform for vehicle discovery, dealer listings and buyer journeys.</p>
+            <ul class="cap-list">
+              <li>Vehicle search</li>
+              <li>Dealer listings</li>
+              <li>Buyer enquiries</li>
+            </ul>
+            <a class="text-link" href="https://honamarketplace.com/" target="_blank" rel="noopener noreferrer">View live platform</a>
+          </div>
+        </article>
+
+        <article class="project-strip project-strip--flip" data-motion>
+          <div class="shot">
+            <a class="shot-frame" href="https://propservice.web.app/" target="_blank" rel="noopener noreferrer">
+              <picture>
+                <source srcset="img/propservice.webp" type="image/webp" />
+                <img src="img/propservice.png" alt="PropService operational workspace" width="1902" height="891" loading="lazy" decoding="async" />
+              </picture>
+            </a>
+          </div>
+          <div>
+            <p class="meta">Property operations · <span class="case-status">Live</span></p>
+            <h3>PropService</h3>
+            <p>A secure operating environment for property listings, CRM, finance and compliance workflows.</p>
+            <ul class="cap-list">
+              <li>Listings</li>
+              <li>CRM</li>
+              <li>Operations</li>
+            </ul>
+            <a class="text-link" href="https://propservice.web.app/" target="_blank" rel="noopener noreferrer">View live platform</a>
+          </div>
+        </article>
+
+        <article class="project-strip" data-motion>
+          <div class="shot">
+            <a class="shot-frame" href="https://elegantlaine.co.za/" target="_blank" rel="noopener noreferrer">
+              <picture>
+                <source srcset="img/elegantlaine.webp" type="image/webp" />
+                <img src="img/elegantlaine.png" alt="Elegantlaine product catalogue and storefront" width="1892" height="877" loading="lazy" decoding="async" />
+              </picture>
+            </a>
+          </div>
+          <div>
+            <p class="meta">Retail and e-commerce · <span class="case-status">Live</span></p>
+            <h3>Elegantlaine</h3>
+            <p>A premium commerce experience connecting product presentation, checkout and PayFast payments.</p>
+            <ul class="cap-list">
+              <li>Catalogue</li>
+              <li>Checkout</li>
+              <li>PayFast</li>
+            </ul>
+            <a class="text-link" href="https://elegantlaine.co.za/" target="_blank" rel="noopener noreferrer">View live platform</a>
+          </div>
+        </article>
+
+        <article class="project-strip project-strip--flip" data-motion>
+          <div class="shot">
+            <a class="shot-frame" href="https://liberty-homes.co.za/" target="_blank" rel="noopener noreferrer">
+              <picture>
+                <source srcset="img/liberty-homes.webp" type="image/webp" />
+                <img src="img/liberty-homes.co.za.png" alt="Liberty Homes resident portal" width="1902" height="902" loading="lazy" decoding="async" />
+              </picture>
+            </a>
+          </div>
+          <div>
+            <p class="meta">Resident services · <span class="case-status">Live</span></p>
+            <h3>Liberty Homes</h3>
+            <p>A resident platform bringing maintenance requests, communication and lifestyle services into one place.</p>
+            <ul class="cap-list">
+              <li>Maintenance</li>
+              <li>Communication</li>
+              <li>Resident access</li>
+            </ul>
+            <a class="text-link" href="https://liberty-homes.co.za/" target="_blank" rel="noopener noreferrer">View live platform</a>
+          </div>
+        </article>
+
+        <div class="section-actions">
+          <a class="btn btn-secondary" href="portfolio.html">Explore our work</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="services-heading">
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Capabilities</p>
-          <h2 id="capabilities-heading">Engineering that turns requirements into working systems</h2>
-          <p class="section-intro">From initial planning through deployment and support, DDM combines product thinking, software engineering and cloud delivery to turn business requirements into dependable working systems.</p>
+          <h2 id="services-heading">Engineering capability from requirement to release.</h2>
+          <p class="section-intro">DDM combines business analysis, product thinking, software engineering and cloud delivery to build systems that work in production.</p>
         </div>
-        <div class="strength-grid">
-          <article class="strength-item">
-            <h3>Business-focused discovery</h3>
-            <p>Clarify how the organisation operates, where work is delayed, and what a successful solution must achieve.</p>
-          </article>
-          <article class="strength-item">
-            <h3>End-to-end software delivery</h3>
-            <p>Design, build and validate systems in reviewable increments with clear scope, milestones and technical ownership.</p>
-          </article>
-          <article class="strength-item">
-            <h3>Production support and improvement</h3>
-            <p>Deploy securely, monitor performance and continue improving the product after launch where required.</p>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <section class="section section-muted" aria-labelledby="services-heading">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Services</p>
-          <h2 id="services-heading">Core software capabilities</h2>
-          <p class="section-intro">Custom software comes first. Website templates remain a secondary option for organisations that need a faster marketing-site launch.</p>
-        </div>
-        <div class="service-rows service-rows--home">
-          <article class="service-row service-row--compact">
+        <div class="service-rows">
+          <article class="service-row" data-motion>
             <div>
               <span class="service-row-index">01</span>
               <h3>Custom Business Software</h3>
-              <p class="problem">Replace disconnected spreadsheets, manual approvals and repetitive administration with one system designed around the organisation’s workflow.</p>
+              <p class="problem">Systems designed around the organisation’s workflows, roles and reporting requirements.</p>
             </div>
             <div>
               <ul class="capability-list">
                 <li>Workflow management</li>
-                <li>Reporting dashboards</li>
-                <li>System integration</li>
+                <li>Reporting</li>
+                <li>Integration</li>
               </ul>
-              <a class="text-link" href="services.html#custom-business-software">View service details</a>
             </div>
           </article>
-          <article class="service-row service-row--compact">
+          <article class="service-row" data-motion>
             <div>
               <span class="service-row-index">02</span>
               <h3>Web Applications and Portals</h3>
-              <p class="problem">Give customers, staff or residents a secure place to request services, track progress and access information.</p>
+              <p class="problem">Secure digital platforms for customers, employees, residents, dealers and operational teams.</p>
             </div>
             <div>
               <ul class="capability-list">
-                <li>Customer portals</li>
-                <li>Request tracking</li>
-                <li>Secure authentication</li>
+                <li>Portals</li>
+                <li>Dashboards</li>
+                <li>Secure access</li>
               </ul>
-              <a class="text-link" href="services.html#web-applications">View service details</a>
             </div>
           </article>
-          <article class="service-row service-row--compact">
+          <article class="service-row" data-motion>
             <div>
               <span class="service-row-index">03</span>
               <h3>Marketplaces and E-commerce</h3>
-              <p class="problem">Support searchable catalogues, seller or dealer flows, checkout and order handling in one digital channel.</p>
+              <p class="problem">Digital platforms connecting product discovery, listings, transactions and operational tools.</p>
             </div>
             <div>
               <ul class="capability-list">
-                <li>Product search</li>
-                <li>Secure checkout</li>
-                <li>Dealer / seller tools</li>
+                <li>Search</li>
+                <li>Listings</li>
+                <li>Payments</li>
               </ul>
-              <a class="text-link" href="services.html#marketplaces">View service details</a>
             </div>
           </article>
-          <article class="service-row service-row--compact">
+          <article class="service-row" data-motion>
             <div>
               <span class="service-row-index">04</span>
               <h3>System Integrations</h3>
-              <p class="problem">Connect payments, accounting, CRM and internal tools so information moves without rework.</p>
+              <p class="problem">Reliable connections between payments, accounting, CRM and internal systems.</p>
             </div>
             <div>
               <ul class="capability-list">
-                <li>Payment gateways</li>
-                <li>API design</li>
-                <li>CRM sync</li>
+                <li>APIs</li>
+                <li>Webhooks</li>
+                <li>Data flows</li>
               </ul>
-              <a class="text-link" href="services.html#integrations">View service details</a>
             </div>
           </article>
-          <article class="service-row service-row--compact">
+          <article class="service-row" data-motion>
             <div>
               <span class="service-row-index">05</span>
               <h3>Cloud and DevOps</h3>
-              <p class="problem">Host applications securely with controlled releases and production visibility.</p>
+              <p class="problem">Production infrastructure, controlled releases and monitoring for dependable software.</p>
             </div>
             <div>
               <ul class="capability-list">
-                <li>AWS hosting</li>
-                <li>CI/CD pipelines</li>
+                <li>Cloud hosting</li>
+                <li>CI/CD</li>
                 <li>Monitoring</li>
               </ul>
-              <a class="text-link" href="services.html#cloud">View service details</a>
             </div>
           </article>
-          <article class="service-row service-row--compact">
+          <article class="service-row" data-motion>
             <div>
               <span class="service-row-index">06</span>
               <h3>Business Websites</h3>
-              <p class="problem">Present services clearly and convert visitors into enquiries with a credible business website.</p>
+              <p class="problem">Professional websites structured around credibility, enquiries and business growth.</p>
             </div>
             <div>
               <ul class="capability-list">
-                <li>Service presentation</li>
-                <li>Enquiry flows</li>
+                <li>Conversion</li>
                 <li>SEO foundations</li>
+                <li>Mobile delivery</li>
               </ul>
-              <a class="text-link" href="services.html#business-websites">View service details</a>
             </div>
           </article>
         </div>
+
         <div class="section-actions">
           <a class="btn btn-secondary" href="services.html">Explore all services</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" aria-labelledby="work-heading">
-      <div class="container">
-        <div class="section-head">
-          <p class="eyebrow">Our work</p>
-          <h2 id="work-heading">Selected platforms</h2>
-          <p class="section-intro">Genuine interfaces from platforms designed and engineered by DDM Software Solutions.</p>
-        </div>
-        <div class="work-grid">
-          <article class="case-study">
-            <a class="case-media" href="https://honamarketplace.com/" target="_blank" rel="noopener noreferrer">
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-                  <div class="browser-url">honamarketplace.com</div>
-                </div>
-                <div class="browser-viewport">
-                  <img src="img/honamarketplace.png" alt="Hona Marketplace desktop interface showing vehicle search" width="1892" height="897" loading="lazy">
-                </div>
-              </div>
-            </a>
-            <div class="case-body">
-              <p class="case-meta">Automotive · Marketplace</p>
-              <span class="case-status">Live</span>
-              <h3>Hona Marketplace</h3>
-              <dl>
-                <div>
-                  <dt>Requirement</dt>
-                  <dd>A digital marketplace for vehicle discovery, dealer listings and buyer journeys.</dd>
-                </div>
-                <div>
-                  <dt>Solution</dt>
-                  <dd>A searchable marketplace platform with listing flows and buyer-facing navigation.</dd>
-                </div>
-              </dl>
-              <ul class="capability-list">
-                <li>Search</li>
-                <li>Dealer listings</li>
-                <li>Buyer flows</li>
-              </ul>
-              <a class="text-link" href="https://honamarketplace.com/" target="_blank" rel="noopener noreferrer">Visit live platform</a>
-            </div>
-          </article>
-
-          <article class="case-study">
-            <a class="case-media" href="https://propservice.web.app/" target="_blank" rel="noopener noreferrer">
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-                  <div class="browser-url">propservice.web.app</div>
-                </div>
-                <div class="browser-viewport">
-                  <img src="img/propservice.png" alt="PropService property operations dashboard" width="1902" height="891" loading="lazy">
-                </div>
-              </div>
-            </a>
-            <div class="case-body">
-              <p class="case-meta">Property · Operations</p>
-              <span class="case-status">Live</span>
-              <h3>PropService</h3>
-              <dl>
-                <div>
-                  <dt>Requirement</dt>
-                  <dd>Consolidate listings, CRM, finance and compliance work into one secure operations workspace.</dd>
-                </div>
-                <div>
-                  <dt>Solution</dt>
-                  <dd>A property operations application for agency workflows and day-to-day administration.</dd>
-                </div>
-              </dl>
-              <ul class="capability-list">
-                <li>Listings</li>
-                <li>CRM</li>
-                <li>Operations</li>
-              </ul>
-              <a class="text-link" href="https://propservice.web.app/" target="_blank" rel="noopener noreferrer">Visit live platform</a>
-            </div>
-          </article>
-
-          <article class="case-study">
-            <a class="case-media" href="https://elegantlaine.co.za/" target="_blank" rel="noopener noreferrer">
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-                  <div class="browser-url">elegantlaine.co.za</div>
-                </div>
-                <div class="browser-viewport">
-                  <img src="img/elegantlaine.png" alt="Elegantlaine online fashion storefront" width="1892" height="877" loading="lazy">
-                </div>
-              </div>
-            </a>
-            <div class="case-body">
-              <p class="case-meta">Retail · E-commerce</p>
-              <span class="case-status">Live</span>
-              <h3>Elegantlaine</h3>
-              <dl>
-                <div>
-                  <dt>Requirement</dt>
-                  <dd>A premium storefront for fashion products with secure South African checkout.</dd>
-                </div>
-                <div>
-                  <dt>Solution</dt>
-                  <dd>An e-commerce website with product presentation and payment-ready purchase flows.</dd>
-                </div>
-              </dl>
-              <ul class="capability-list">
-                <li>Catalogue</li>
-                <li>Checkout</li>
-                <li>PayFast</li>
-              </ul>
-              <a class="text-link" href="https://elegantlaine.co.za/" target="_blank" rel="noopener noreferrer">Visit live platform</a>
-            </div>
-          </article>
-
-          <article class="case-study">
-            <a class="case-media" href="https://liberty-homes.co.za/" target="_blank" rel="noopener noreferrer">
-              <div class="browser-frame">
-                <div class="browser-chrome">
-                  <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-                  <div class="browser-url">liberty-homes.co.za</div>
-                </div>
-                <div class="browser-viewport">
-                  <img src="img/liberty-homes.co.za.png" alt="Liberty Homes resident lifestyle portal" width="1902" height="902" loading="lazy">
-                </div>
-              </div>
-            </a>
-            <div class="case-body">
-              <p class="case-meta">Property · Resident portal</p>
-              <span class="case-status">Live</span>
-              <h3>Liberty Homes</h3>
-              <dl>
-                <div>
-                  <dt>Requirement</dt>
-                  <dd>Give residents a single place for maintenance requests, communication and lifestyle services.</dd>
-                </div>
-                <div>
-                  <dt>Solution</dt>
-                  <dd>A resident portal for requests, community communication and day-to-day living support.</dd>
-                </div>
-              </dl>
-              <ul class="capability-list">
-                <li>Requests</li>
-                <li>Communication</li>
-                <li>Portal access</li>
-              </ul>
-              <a class="text-link" href="https://liberty-homes.co.za/" target="_blank" rel="noopener noreferrer">Visit live platform</a>
-            </div>
-          </article>
-        </div>
-        <div class="section-actions">
-          <a class="btn btn-primary" href="portfolio.html">View All Work</a>
         </div>
       </div>
     </section>
@@ -423,45 +398,21 @@
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Industries</p>
-          <h2 id="industries-heading">Software shaped around real operating environments.</h2>
-          <p class="section-intro">DDM works across sectors where digital systems must support concrete operational and customer needs.</p>
+          <h2 id="industries-heading">Software for real operating environments.</h2>
+          <p class="section-intro">DDM applies software engineering across industries where organisations need better operational systems, customer platforms, integrations or new digital products.</p>
         </div>
-        <div class="industry-grid">
-          <article class="industry-item">
-            <h3>Property</h3>
-            <p>Listings, agency operations, resident portals and maintenance request workflows.</p>
-          </article>
-          <article class="industry-item">
-            <h3>E-commerce and retail</h3>
-            <p>Catalogues, checkout, payments and order handling for online and hybrid retail.</p>
-          </article>
-          <article class="industry-item">
-            <h3>Automotive</h3>
-            <p>Vehicle marketplaces, dealer listings and buyer discovery journeys.</p>
-          </article>
-          <article class="industry-item">
-            <h3>Financial services</h3>
-            <p>Secure portals, process automation and controlled access to sensitive information.</p>
-          </article>
-          <article class="industry-item">
-            <h3>Healthcare</h3>
-            <p>Appointment and enquiry flows, internal administration and patient-facing information.</p>
-          </article>
-          <article class="industry-item">
-            <h3>Student accommodation</h3>
-            <p>Resident services, applications, facility communication and operational administration.</p>
-          </article>
-          <article class="industry-item">
-            <h3>Logistics</h3>
-            <p>Tracking visibility, operational dashboards and integration between partners and systems.</p>
-          </article>
-          <article class="industry-item">
-            <h3>Professional services</h3>
-            <p>Client intake, service presentation, document workflows and enquiry conversion.</p>
-          </article>
+        <div class="industry-chips" data-motion>
+          <span>Property</span>
+          <span>E-commerce and retail</span>
+          <span>Automotive</span>
+          <span>Financial services</span>
+          <span>Healthcare</span>
+          <span>Student accommodation</span>
+          <span>Logistics</span>
+          <span>Professional services</span>
         </div>
         <div class="section-actions">
-          <a class="btn btn-secondary" href="industries.html">Explore industries</a>
+          <a class="text-link" href="industries.html">Explore industries</a>
         </div>
       </div>
     </section>
@@ -470,48 +421,52 @@
       <div class="container">
         <div class="section-head">
           <p class="eyebrow">Delivery approach</p>
-          <h2 id="delivery-heading">A clear path from requirement to production</h2>
-          <p class="section-intro">Each project is assigned clear delivery responsibilities, communication channels and review milestones.</p>
+          <h2 id="delivery-heading">Structured delivery. Visible progress.</h2>
+          <p class="section-intro">Good software begins with a clear problem, defined responsibilities and regular opportunities to test the direction.</p>
         </div>
-        <ol class="process-list">
+        <ol class="delivery-steps" data-motion>
           <li>
-            <span class="process-num">01</span>
-            <h3>Understand</h3>
-            <p>Clarify the business problem, users, current processes and required outcomes.</p>
+            <strong>01 Understand</strong>
+            <span>Clarify the business problem, users, current process and required outcome.</span>
           </li>
           <li>
-            <span class="process-num">02</span>
-            <h3>Define</h3>
-            <p>Establish scope, responsibilities, priorities, delivery milestones and commercial terms.</p>
+            <strong>02 Define</strong>
+            <span>Agree on scope, priorities, delivery milestones and commercial terms.</span>
           </li>
           <li>
-            <span class="process-num">03</span>
-            <h3>Design</h3>
-            <p>Structure the user experience, workflows, technical architecture and integration requirements.</p>
+            <strong>03 Design</strong>
+            <span>Structure the workflows, user experience, architecture and integrations.</span>
           </li>
           <li>
-            <span class="process-num">04</span>
-            <h3>Build and Validate</h3>
-            <p>Develop the solution in reviewable increments and test it against agreed requirements.</p>
+            <strong>04 Build and validate</strong>
+            <span>Develop in reviewable increments and test against the agreed requirements.</span>
           </li>
           <li>
-            <span class="process-num">05</span>
-            <h3>Launch and Support</h3>
-            <p>Deploy the approved solution, monitor performance and continue improving where required.</p>
+            <strong>05 Launch and support</strong>
+            <span>Deploy the approved system, monitor performance and improve it where required.</span>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="cta-band">
-      <div class="container cta-band-inner">
-        <div>
-          <h2>Planning a software project?</h2>
-          <p>Tell us what the organisation needs to improve, replace or launch. DDM will assess the requirement and recommend a practical next step.</p>
+    <section class="section section-muted" aria-labelledby="sa-heading">
+      <div class="container">
+        <div class="sa-block" data-motion>
+          <h2 id="sa-heading">Built in South Africa. Ready for wherever business happens.</h2>
+          <p class="lead sa-lead">DDM combines local market understanding with remote software delivery. Projects can be planned, reviewed and supported across South Africa and beyond through clear communication and visible delivery milestones.</p>
         </div>
-        <div class="hero-actions" style="margin:0">
-          <a class="btn btn-primary btn-lg" href="contact.html">Discuss Your Project</a>
-          <a class="btn btn-secondary btn-lg" href="contact.html">Contact DDM</a>
+      </div>
+    </section>
+
+    <section class="section section-dark final-cta" aria-labelledby="cta-heading">
+      <div class="container">
+        <p class="eyebrow">Start a conversation</p>
+        <h2 id="cta-heading">What does your business need software to do?</h2>
+        <p class="lead">Share the process that needs to improve, the platform you want to launch or the system that no longer fits. DDM will assess the requirement and recommend a practical next step.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href="contact.html">Discuss a project</a>
+          <a class="btn btn-ghost btn-lg" href="mailto:hello@ddm-software-solutions.co.za">hello@ddm-software-solutions.co.za</a>
+          <a class="btn btn-ghost btn-lg" href="https://wa.me/27715431166" target="_blank" rel="noopener noreferrer">WhatsApp DDM</a>
         </div>
       </div>
     </section>
@@ -524,7 +479,8 @@
           <span class="brand-mark" aria-hidden="true">DDM</span>
           <span class="brand-text">DDM Software Solutions</span>
         </a>
-        <p>Business software, web applications and digital platforms · Gauteng, South Africa</p>
+        <p>Custom business software, web applications and digital platforms engineered in South Africa.</p>
+        <p>Gauteng, South Africa</p>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
@@ -542,8 +498,9 @@
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="contact.html">Discuss Your Project</a>
+        <a href="contact.html">Discuss a project</a>
         <a href="mailto:hello@ddm-software-solutions.co.za">hello@ddm-software-solutions.co.za</a>
+        <a href="tel:+27715431166">071 543 1166</a>
         <a href="https://wa.me/27715431166" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         <a href="https://www.linkedin.com/company/112502091" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>

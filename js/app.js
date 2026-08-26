@@ -37,18 +37,36 @@
   var yearEl = document.getElementById('footer-year');
   if (yearEl) yearEl.textContent = String(new Date().getFullYear());
 
-  /* Mobile menu */
+  /* Mobile menu — Escape, focus trap, body scroll lock */
   var menuButton = document.getElementById('menuButton');
   var mobileMenu = document.getElementById('mobileMenu');
+  var lastFocusBeforeMenu = null;
+
+  function getMenuFocusables() {
+    if (!mobileMenu) return [];
+    return Array.prototype.slice.call(
+      mobileMenu.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+    ).filter(function (el) {
+      return !el.hasAttribute('hidden') && el.offsetParent !== null;
+    });
+  }
 
   function setMenuOpen(open) {
     if (!mobileMenu || !menuButton) return;
     if (open) {
+      lastFocusBeforeMenu = document.activeElement;
       mobileMenu.hidden = false;
       document.body.classList.add('menu-open');
+      var focusables = getMenuFocusables();
+      if (focusables.length) focusables[0].focus();
     } else {
       mobileMenu.hidden = true;
       document.body.classList.remove('menu-open');
+      if (lastFocusBeforeMenu && typeof lastFocusBeforeMenu.focus === 'function') {
+        lastFocusBeforeMenu.focus();
+      } else {
+        menuButton.focus();
+      }
     }
     menuButton.setAttribute('aria-expanded', String(open));
     menuButton.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
@@ -62,7 +80,27 @@
       link.addEventListener('click', function () { setMenuOpen(false); });
     });
     window.addEventListener('resize', function () {
-      if (window.innerWidth > 760) setMenuOpen(false);
+      if (window.innerWidth > 900) setMenuOpen(false);
+    });
+    document.addEventListener('keydown', function (event) {
+      if (mobileMenu.hidden) return;
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        setMenuOpen(false);
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      var focusables = getMenuFocusables();
+      if (!focusables.length) return;
+      var first = focusables[0];
+      var last = focusables[focusables.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     });
   }
 
@@ -93,7 +131,7 @@
       var target = document.querySelector(href);
       if (!target) return;
       event.preventDefault();
-      var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 64;
+      var navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'), 10) || 72;
       var top = target.getBoundingClientRect().top + window.scrollY - navH + 1;
       window.scrollTo({ top: top, behavior: 'smooth' });
     });
@@ -118,104 +156,6 @@
     motionEls.forEach(function (el) { observer.observe(el); });
   } else {
     motionEls.forEach(function (el) { el.classList.add('is-shown'); });
-  }
-
-  /* Hero slideshow — Hona Marketplace first; pause on hover/focus/reduced-motion */
-  var slides = document.querySelectorAll('.hero-slide');
-  var dots = document.querySelectorAll('#heroDots button');
-  var urlEl = document.getElementById('heroUrl');
-  var heroShowcase = document.getElementById('heroShowcase');
-  var heroDots = document.getElementById('heroDots');
-  var slideIndex = 0;
-  var slideTimer;
-  var heroPaused = false;
-
-  function goToSlide(index) {
-    if (!slides.length) return;
-    slideIndex = (index + slides.length) % slides.length;
-    slides.forEach(function (slide, i) {
-      slide.classList.toggle('is-active', i === slideIndex);
-    });
-    dots.forEach(function (dot, i) {
-      var active = i === slideIndex;
-      dot.classList.toggle('is-active', active);
-      dot.setAttribute('aria-selected', String(active));
-      dot.setAttribute('tabindex', active ? '0' : '-1');
-    });
-    if (urlEl && slides[slideIndex]) {
-      urlEl.textContent = slides[slideIndex].getAttribute('data-url') || '';
-    }
-  }
-
-  function stopSlideshow() {
-    if (slideTimer) {
-      window.clearInterval(slideTimer);
-      slideTimer = null;
-    }
-  }
-
-  function startSlideshow() {
-    if (prefersReducedMotion || heroPaused || slides.length < 2) return;
-    stopSlideshow();
-    slideTimer = window.setInterval(function () {
-      goToSlide(slideIndex + 1);
-    }, 5500);
-  }
-
-  function pauseHero() {
-    heroPaused = true;
-    stopSlideshow();
-  }
-
-  function resumeHero() {
-    heroPaused = false;
-    startSlideshow();
-  }
-
-  if (slides.length) {
-    goToSlide(0);
-    dots.forEach(function (dot, i) {
-      dot.addEventListener('click', function () {
-        goToSlide(i);
-        startSlideshow();
-      });
-      dot.addEventListener('keydown', function (event) {
-        var next = slideIndex;
-        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = slideIndex + 1;
-        else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = slideIndex - 1;
-        else if (event.key === 'Home') next = 0;
-        else if (event.key === 'End') next = slides.length - 1;
-        else return;
-        event.preventDefault();
-        goToSlide(next);
-        dots[slideIndex].focus();
-        startSlideshow();
-      });
-    });
-
-    if (heroShowcase) {
-      heroShowcase.addEventListener('mouseenter', pauseHero);
-      heroShowcase.addEventListener('mouseleave', resumeHero);
-      heroShowcase.addEventListener('focusin', pauseHero);
-      heroShowcase.addEventListener('focusout', function (event) {
-        if (!heroShowcase.contains(event.relatedTarget)) resumeHero();
-      });
-    }
-    if (heroDots) {
-      heroDots.addEventListener('mouseenter', pauseHero);
-      heroDots.addEventListener('mouseleave', resumeHero);
-      heroDots.addEventListener('focusin', pauseHero);
-      heroDots.addEventListener('focusout', function (event) {
-        if (!heroDots.contains(event.relatedTarget)) resumeHero();
-      });
-    }
-
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) stopSlideshow();
-      else startSlideshow();
-    });
-
-    startSlideshow();
   }
 
   /* Prefill contact form from query string */

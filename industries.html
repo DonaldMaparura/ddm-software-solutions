@@ -4,17 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5" />
   <title>Industries | DDM Software Solutions</title>
-  <meta name="description" content="Software shaped around real operating environments — property, retail, automotive, financial services, healthcare, logistics and professional services." />
+  <meta name="description" content="Software shaped around real operating environments â€” property, retail, automotive, financial services, healthcare, logistics and professional services." />
   <link rel="canonical" href="https://ddm-software-solutions.co.za/industries.html" />
   <meta property="og:title" content="Industries | DDM Software Solutions" />
   <meta property="og:description" content="Software shaped around real operating environments." />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#0a0a0a" media="(prefers-color-scheme: dark)" />
+  <meta name="theme-color" content="#F5F2EA" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#081426" media="(prefers-color-scheme: dark)" />
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <script>
     (function () {
@@ -48,7 +48,7 @@
           <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         </button>
-        <a class="btn btn-primary" href="contact.html">Discuss Your Project</a>
+        <a class="btn btn-primary" href="contact.html">Discuss a project</a>
         <button class="menu-button" id="menuButton" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
@@ -62,7 +62,7 @@
     <a href="about.html">About</a>
     <a href="templates.html">Templates</a>
     <a href="contact.html">Contact</a>
-    <a class="btn btn-primary" href="contact.html">Discuss Your Project</a>
+    <a class="btn btn-primary" href="contact.html">Discuss a project</a>
   </div>
 
   <main id="main">
@@ -70,99 +70,180 @@
       <div class="container">
         <p class="eyebrow">Industries</p>
         <h1>Software shaped around real operating environments.</h1>
-        <p class="lead">DDM Software Solutions works with organisations whose digital systems must support concrete operational and customer needs. The company does not claim industry leadership — it focuses on the problems software can solve in each sector.</p>
+        <p class="lead">DDM applies software engineering across industries where organisations need better operational systems, customer platforms, integrations or new digital products. The company is not limited to its current portfolio.</p>
       </div>
     </header>
 
     <section class="section">
-      <div class="container">
-        <div class="service-rows">
-          <article class="service-row">
+      <div class="container industry-panel">
+        <nav class="industry-list" aria-label="Industries">
+          <a href="#property">Property</a>
+          <a href="#ecommerce">E-commerce and retail</a>
+          <a href="#automotive">Automotive</a>
+          <a href="#financial">Financial services</a>
+          <a href="#healthcare">Healthcare</a>
+          <a href="#student">Student accommodation</a>
+          <a href="#logistics">Logistics</a>
+          <a href="#professional">Professional services</a>
+        </nav>
+
+        <div class="industry-detail">
+          <details id="property" open>
+            <summary>Property</summary>
             <div>
-              <h2>Property</h2>
-              <p class="problem">Agencies and operators often manage listings, tenants and maintenance across disconnected tools.</p>
+              <h3>Common operational problem</h3>
+              <p>Agencies and operators often manage listings, tenants and maintenance across disconnected tools.</p>
+              <h3>Suitable software</h3>
+              <p>Operations workspaces, listings management, CRM, resident portals and maintenance request flows.</p>
+              <h3>Representative capabilities</h3>
+              <ul class="cap-list">
+                <li>Listings administration</li>
+                <li>CRM workflows</li>
+                <li>Resident portals</li>
+                <li>Maintenance requests</li>
+                <li>Operational dashboards</li>
+              </ul>
+              <p class="service-related"><strong>Related work:</strong> <a href="portfolio.html#propservice">PropService</a>, <a href="portfolio.html#liberty-homes">Liberty Homes</a></p>
             </div>
+          </details>
+
+          <details id="ecommerce">
+            <summary>E-commerce and retail</summary>
             <div>
-              <p class="deliverable">Typical needs include listings management, CRM, resident portals, maintenance requests and operational dashboards.</p>
-              <p class="service-related"><strong>Related work:</strong> PropService, Liberty Homes</p>
+              <h3>Common operational problem</h3>
+              <p>Retailers need product discovery, checkout and payment handling that match how they sell.</p>
+              <h3>Suitable software</h3>
+              <p>Storefronts, catalogues, secure checkout and order workflows with South African payment options.</p>
+              <h3>Representative capabilities</h3>
+              <ul class="cap-list">
+                <li>Product catalogues</li>
+                <li>Shopping journeys</li>
+                <li>Checkout</li>
+                <li>PayFast and payment flows</li>
+                <li>Order administration</li>
+              </ul>
+              <p class="service-related"><strong>Related work:</strong> <a href="portfolio.html#elegantlaine">Elegantlaine</a></p>
             </div>
-          </article>
-          <article class="service-row">
+          </details>
+
+          <details id="automotive">
+            <summary>Automotive</summary>
             <div>
-              <h2>E-commerce and retail</h2>
-              <p class="problem">Retailers need product discovery, checkout and payment handling that match how they sell.</p>
+              <h3>Common operational problem</h3>
+              <p>Buyers and dealers need a reliable way to discover vehicles and manage listings digitally.</p>
+              <h3>Suitable software</h3>
+              <p>Vehicle marketplaces, dealer listings, buyer journeys and marketplace administration.</p>
+              <h3>Representative capabilities</h3>
+              <ul class="cap-list">
+                <li>Vehicle search</li>
+                <li>Dealer listings</li>
+                <li>Buyer enquiries</li>
+                <li>Filtering</li>
+                <li>Marketplace navigation</li>
+              </ul>
+              <p class="service-related"><strong>Related work:</strong> <a href="portfolio.html#hona-marketplace">Hona Marketplace</a></p>
             </div>
+          </details>
+
+          <details id="financial">
+            <summary>Financial services</summary>
             <div>
-              <p class="deliverable">Typical needs include catalogues, secure checkout, South African payments, order workflows and brand-led storefronts.</p>
-              <p class="service-related"><strong>Related work:</strong> Elegantlaine</p>
+              <h3>Common operational problem</h3>
+              <p>Sensitive processes require controlled access, clear workflows and dependable audit trails.</p>
+              <h3>Suitable software</h3>
+              <p>Secure portals, process automation, role-based access and controlled information exchange.</p>
+              <h3>Representative capabilities</h3>
+              <ul class="cap-list">
+                <li>Secure authentication</li>
+                <li>Role-based access</li>
+                <li>Workflow automation</li>
+                <li>Audit history</li>
+                <li>Document handling</li>
+              </ul>
             </div>
-          </article>
-          <article class="service-row">
+          </details>
+
+          <details id="healthcare">
+            <summary>Healthcare</summary>
             <div>
-              <h2>Automotive</h2>
-              <p class="problem">Buyers and dealers need a reliable way to discover vehicles and manage listings digitally.</p>
+              <h3>Common operational problem</h3>
+              <p>Practices and clinics need clearer enquiry handling, scheduling support and internal administration.</p>
+              <h3>Suitable software</h3>
+              <p>Appointment and enquiry flows, service presentation and operational administration tools.</p>
+              <h3>Representative capabilities</h3>
+              <ul class="cap-list">
+                <li>Enquiry journeys</li>
+                <li>Booking flows</li>
+                <li>Service presentation</li>
+                <li>Staff dashboards</li>
+                <li>Contact integrations</li>
+              </ul>
             </div>
+          </details>
+
+          <details id="student">
+            <summary>Student accommodation</summary>
             <div>
-              <p class="deliverable">Typical needs include vehicle search, dealer listings, buyer journeys and marketplace administration.</p>
-              <p class="service-related"><strong>Related work:</strong> Hona Marketplace</p>
+              <h3>Common operational problem</h3>
+              <p>Operators need structured resident services, applications and facility communication.</p>
+              <h3>Suitable software</h3>
+              <p>Applications, resident portals, facility updates and operational administration.</p>
+              <h3>Representative capabilities</h3>
+              <ul class="cap-list">
+                <li>Application flows</li>
+                <li>Resident access</li>
+                <li>Maintenance requests</li>
+                <li>Community communication</li>
+                <li>Operational dashboards</li>
+              </ul>
             </div>
-          </article>
-          <article class="service-row">
+          </details>
+
+          <details id="logistics">
+            <summary>Logistics</summary>
             <div>
-              <h2>Financial services</h2>
-              <p class="problem">Sensitive processes require controlled access, clear workflows and dependable audit trails.</p>
+              <h3>Common operational problem</h3>
+              <p>Movement of goods depends on visibility, partner coordination and consistent operational data.</p>
+              <h3>Suitable software</h3>
+              <p>Tracking visibility, operational dashboards and integrations between systems and partners.</p>
+              <h3>Representative capabilities</h3>
+              <ul class="cap-list">
+                <li>Operational dashboards</li>
+                <li>Status workflows</li>
+                <li>Partner portals</li>
+                <li>API integrations</li>
+                <li>Notifications</li>
+              </ul>
             </div>
+          </details>
+
+          <details id="professional">
+            <summary>Professional services</summary>
             <div>
-              <p class="deliverable">Typical needs include secure portals, process automation, role-based access and controlled information exchange.</p>
+              <h3>Common operational problem</h3>
+              <p>Firms need credible digital presence and structured client intake without unnecessary complexity.</p>
+              <h3>Suitable software</h3>
+              <p>Service presentation, enquiry conversion, document workflows and client intake systems.</p>
+              <h3>Representative capabilities</h3>
+              <ul class="cap-list">
+                <li>Service websites</li>
+                <li>Enquiry journeys</li>
+                <li>Client intake</li>
+                <li>Document workflows</li>
+                <li>Internal administration</li>
+              </ul>
             </div>
-          </article>
-          <article class="service-row">
-            <div>
-              <h2>Healthcare</h2>
-              <p class="problem">Practices and clinics need clearer enquiry handling, scheduling support and internal administration.</p>
-            </div>
-            <div>
-              <p class="deliverable">Typical needs include appointment and enquiry flows, service presentation and operational administration tools.</p>
-            </div>
-          </article>
-          <article class="service-row">
-            <div>
-              <h2>Student accommodation</h2>
-              <p class="problem">Operators need structured resident services, applications and facility communication.</p>
-            </div>
-            <div>
-              <p class="deliverable">Typical needs include applications, resident portals, facility updates and operational administration.</p>
-            </div>
-          </article>
-          <article class="service-row">
-            <div>
-              <h2>Logistics</h2>
-              <p class="problem">Movement of goods depends on visibility, partner coordination and consistent operational data.</p>
-            </div>
-            <div>
-              <p class="deliverable">Typical needs include tracking visibility, operational dashboards and integrations between systems and partners.</p>
-            </div>
-          </article>
-          <article class="service-row">
-            <div>
-              <h2>Professional services</h2>
-              <p class="problem">Firms need credible digital presence and structured client intake without unnecessary complexity.</p>
-            </div>
-            <div>
-              <p class="deliverable">Typical needs include service presentation, enquiry conversion, document workflows and client intake systems.</p>
-            </div>
-          </article>
+          </details>
         </div>
       </div>
     </section>
 
-    <section class="cta-band">
-      <div class="container cta-band-inner">
-        <div>
-          <h2>Discuss a sector-specific requirement</h2>
-          <p>Share the operating environment and the outcome the organisation needs. DDM will recommend a practical next step.</p>
-        </div>
-        <a class="btn btn-primary btn-lg" href="contact.html">Discuss Your Project</a>
+    <section class="section section-dark final-cta">
+      <div class="container">
+        <p class="eyebrow">Start a conversation</p>
+        <h2>Discuss a sector-specific requirement</h2>
+        <p class="lead">Share the operating environment and the outcome the organisation needs. DDM will recommend a practical next step.</p>
+        <a class="btn btn-primary btn-lg" href="contact.html">Discuss a project</a>
       </div>
     </section>
   </main>
@@ -174,7 +255,8 @@
           <span class="brand-mark" aria-hidden="true">DDM</span>
           <span class="brand-text">DDM Software Solutions</span>
         </a>
-        <p>Business software, web applications and digital platforms · Gauteng, South Africa</p>
+        <p>Custom business software, web applications and digital platforms engineered in South Africa.</p>
+        <p>Gauteng, South Africa</p>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
@@ -192,8 +274,9 @@
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="contact.html">Discuss Your Project</a>
+        <a href="contact.html">Discuss a project</a>
         <a href="mailto:hello@ddm-software-solutions.co.za">hello@ddm-software-solutions.co.za</a>
+        <a href="tel:+27715431166">071 543 1166</a>
         <a href="https://wa.me/27715431166" target="_blank" rel="noopener noreferrer">WhatsApp</a>
         <a href="https://www.linkedin.com/company/112502091" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
