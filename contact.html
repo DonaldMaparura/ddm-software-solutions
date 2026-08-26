@@ -88,8 +88,18 @@
         <div class="contact-grid">
           <div class="contact-form-wrap">
             <h2 id="contact-form-title">Project enquiry</h2>
-            <form id="contact-form" novalidate aria-labelledby="contact-form-title">
+            <form
+              id="contact-form"
+              action="https://formspree.io/f/xzdelned"
+              method="POST"
+              novalidate
+              aria-labelledby="contact-form-title"
+            >
               <input type="hidden" name="_subject" value="New project enquiry — DDM Software Solutions" />
+              <div class="hp-honeypot" aria-hidden="true">
+                <label for="fcompany_url">Company website</label>
+                <input type="text" id="fcompany_url" name="company_website" tabindex="-1" autocomplete="off" />
+              </div>
               <div class="form-row">
                 <div class="form-group">
                   <label for="fname">Name *</label>

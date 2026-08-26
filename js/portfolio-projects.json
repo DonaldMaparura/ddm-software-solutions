@@ -1,0 +1,42 @@
+[
+  {
+    "id": "hona-marketplace",
+    "name": "Hona Marketplace",
+    "industry": "Automotive · Marketplace",
+    "classification": null,
+    "classificationNote": "Requires owner confirmation: Client Project, DDM Product, Demonstration Project, or Concept Project.",
+    "deploymentStatus": "live",
+    "url": "https://honamarketplace.com/",
+    "screenshot": "img/honamarketplace.png"
+  },
+  {
+    "id": "propservice",
+    "name": "PropService",
+    "industry": "Property · Operations",
+    "classification": null,
+    "classificationNote": "Requires owner confirmation: Client Project, DDM Product, Demonstration Project, or Concept Project.",
+    "deploymentStatus": "live",
+    "url": "https://propservice.web.app/",
+    "screenshot": "img/propservice.png"
+  },
+  {
+    "id": "elegantlaine",
+    "name": "Elegantlaine",
+    "industry": "Retail · E-commerce",
+    "classification": null,
+    "classificationNote": "Requires owner confirmation: Client Project, DDM Product, Demonstration Project, or Concept Project.",
+    "deploymentStatus": "live",
+    "url": "https://elegantlaine.co.za/",
+    "screenshot": "img/elegantlaine.png"
+  },
+  {
+    "id": "liberty-homes",
+    "name": "Liberty Homes",
+    "industry": "Property · Resident portal",
+    "classification": null,
+    "classificationNote": "Requires owner confirmation: Client Project, DDM Product, Demonstration Project, or Concept Project. Current screenshot shows the sign-in screen.",
+    "deploymentStatus": "live",
+    "url": "https://liberty-homes.co.za/",
+    "screenshot": "img/liberty-homes.co.za.png"
+  }
+]

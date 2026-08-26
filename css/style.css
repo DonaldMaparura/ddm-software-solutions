@@ -1387,7 +1387,53 @@ h4 { font-size: 0.8125rem; letter-spacing: 0.02em; text-transform: uppercase; co
   scroll-margin-top: calc(var(--nav-h) + 16px);
 }
 
-.service-row:last-child { border-bottom: 1px solid var(--border); }
+.service-row--compact {
+  padding: clamp(18px, 2.5vw, 24px) 0;
+  gap: clamp(16px, 3vw, 32px);
+}
+
+.service-row--compact .problem {
+  margin-bottom: 0;
+}
+
+.service-rows--home .service-row--compact:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.case-status {
+  display: inline-block;
+  margin: 0 0 10px 8px;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.case-classification {
+  display: inline-block;
+  margin: 0 0 10px;
+  padding: 3px 8px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--ink-secondary);
+}
+
+.hp-honeypot {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 
 .service-row-index {
   display: block;

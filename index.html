@@ -104,7 +104,7 @@
         </div>
 
         <div class="hero-visual" aria-label="Project showcase">
-          <div class="browser-frame">
+          <div class="browser-frame" id="heroShowcase">
             <div class="browser-chrome">
               <span class="browser-dots" aria-hidden="true"><i></i><i></i><i></i></span>
               <div class="browser-url" id="heroUrl">honamarketplace.com</div>
@@ -112,25 +112,25 @@
             <div class="browser-viewport">
               <div class="hero-slides" id="heroSlides">
                 <figure class="hero-slide is-active" data-url="honamarketplace.com">
-                  <img src="img/honamarketplace.png" alt="Hona Marketplace vehicle listing and search interface" width="1892" height="897" fetchpriority="high">
+                  <img src="img/honamarketplace.png" alt="Hona Marketplace homepage with vehicle search filters, dealer navigation and browse cars call to action" width="1892" height="897" fetchpriority="high" decoding="async">
                 </figure>
                 <figure class="hero-slide" data-url="propservice.web.app">
-                  <img src="img/propservice.png" alt="PropService property operations platform interface" width="1902" height="891" loading="lazy">
+                  <img src="img/propservice.png" alt="PropService property operations workspace showing listings and administration tools" width="1902" height="891" loading="lazy" decoding="async">
                 </figure>
                 <figure class="hero-slide" data-url="elegantlaine.co.za">
-                  <img src="img/elegantlaine.png" alt="Elegantlaine fashion e-commerce storefront" width="1892" height="877" loading="lazy">
+                  <img src="img/elegantlaine.png" alt="Elegantlaine fashion e-commerce storefront with product catalogue presentation" width="1892" height="877" loading="lazy" decoding="async">
                 </figure>
                 <figure class="hero-slide" data-url="liberty-homes.co.za">
-                  <img src="img/liberty-homes.co.za.png" alt="Liberty Homes resident portal interface" width="1902" height="902" loading="lazy">
+                  <img src="img/liberty-homes.co.za.png" alt="Liberty Homes resident portal sign-in screen with maintenance and communication features" width="1902" height="902" loading="lazy" decoding="async">
                 </figure>
               </div>
             </div>
           </div>
           <div class="hero-slide-dots" id="heroDots" role="tablist" aria-label="Showcase projects">
-            <button type="button" class="is-active" role="tab" aria-selected="true" aria-label="Hona Marketplace"></button>
-            <button type="button" role="tab" aria-selected="false" aria-label="PropService"></button>
-            <button type="button" role="tab" aria-selected="false" aria-label="Elegantlaine"></button>
-            <button type="button" role="tab" aria-selected="false" aria-label="Liberty Homes"></button>
+            <button type="button" class="is-active" role="tab" aria-selected="true" aria-controls="heroSlides" aria-label="Show Hona Marketplace"></button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="heroSlides" aria-label="Show PropService"></button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="heroSlides" aria-label="Show Elegantlaine"></button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="heroSlides" aria-label="Show Liberty Homes"></button>
           </div>
         </div>
       </div>
@@ -167,120 +167,93 @@
           <h2 id="services-heading">Core software capabilities</h2>
           <p class="section-intro">Custom software comes first. Website templates remain a secondary option for organisations that need a faster marketing-site launch.</p>
         </div>
-        <div class="service-rows">
-          <article class="service-row">
+        <div class="service-rows service-rows--home">
+          <article class="service-row service-row--compact">
             <div>
               <span class="service-row-index">01</span>
               <h3>Custom Business Software</h3>
-              <p class="problem">Disconnected spreadsheets, manual approvals and repetitive administration slow day-to-day operations.</p>
-              <p class="deliverable">DDM designs systems around the organisation’s actual workflow, roles and reporting needs.</p>
+              <p class="problem">Replace disconnected spreadsheets, manual approvals and repetitive administration with one system designed around the organisation’s workflow.</p>
             </div>
             <div>
               <ul class="capability-list">
                 <li>Workflow management</li>
-                <li>Role-based access</li>
                 <li>Reporting dashboards</li>
-                <li>Internal approvals</li>
-                <li>Data integration</li>
-                <li>Audit history</li>
+                <li>System integration</li>
               </ul>
-              <p class="service-related"><strong>Related work:</strong> PropService</p>
               <a class="text-link" href="services.html#custom-business-software">View service details</a>
             </div>
           </article>
-          <article class="service-row">
+          <article class="service-row service-row--compact">
             <div>
               <span class="service-row-index">02</span>
               <h3>Web Applications and Portals</h3>
-              <p class="problem">Customers, staff or residents need a secure place to request services, track progress and access information.</p>
-              <p class="deliverable">DDM builds portals and applications that support authenticated users, clear workflows and reliable performance.</p>
+              <p class="problem">Give customers, staff or residents a secure place to request services, track progress and access information.</p>
             </div>
             <div>
               <ul class="capability-list">
                 <li>Customer portals</li>
-                <li>Staff dashboards</li>
                 <li>Request tracking</li>
-                <li>Notifications</li>
-                <li>Document access</li>
                 <li>Secure authentication</li>
               </ul>
-              <p class="service-related"><strong>Related work:</strong> Liberty Homes</p>
               <a class="text-link" href="services.html#web-applications">View service details</a>
             </div>
           </article>
-          <article class="service-row">
+          <article class="service-row service-row--compact">
             <div>
               <span class="service-row-index">03</span>
               <h3>Marketplaces and E-commerce</h3>
-              <p class="problem">Organisations need searchable catalogues, seller or dealer flows, checkout and order handling in one digital channel.</p>
-              <p class="deliverable">DDM engineers marketplace and commerce platforms with product discovery, payments and operational tooling.</p>
+              <p class="problem">Support searchable catalogues, seller or dealer flows, checkout and order handling in one digital channel.</p>
             </div>
             <div>
               <ul class="capability-list">
                 <li>Product search</li>
-                <li>Listings management</li>
                 <li>Secure checkout</li>
-                <li>Payments</li>
-                <li>Order workflows</li>
                 <li>Dealer / seller tools</li>
               </ul>
-              <p class="service-related"><strong>Related work:</strong> Hona Marketplace, Elegantlaine</p>
               <a class="text-link" href="services.html#marketplaces">View service details</a>
             </div>
           </article>
-          <article class="service-row">
+          <article class="service-row service-row--compact">
             <div>
               <span class="service-row-index">04</span>
               <h3>System Integrations</h3>
-              <p class="problem">Payments, accounting, CRM and internal tools often operate in isolation, creating rework and inconsistent data.</p>
-              <p class="deliverable">DDM connects systems through APIs and reliable data flows so information moves where the business needs it.</p>
+              <p class="problem">Connect payments, accounting, CRM and internal tools so information moves without rework.</p>
             </div>
             <div>
               <ul class="capability-list">
                 <li>Payment gateways</li>
-                <li>Accounting links</li>
-                <li>CRM sync</li>
                 <li>API design</li>
-                <li>Webhooks</li>
-                <li>Data mapping</li>
+                <li>CRM sync</li>
               </ul>
               <a class="text-link" href="services.html#integrations">View service details</a>
             </div>
           </article>
-          <article class="service-row">
+          <article class="service-row service-row--compact">
             <div>
               <span class="service-row-index">05</span>
               <h3>Cloud and DevOps</h3>
-              <p class="problem">Applications need secure hosting, controlled releases and visibility once they are live in production.</p>
-              <p class="deliverable">DDM sets up cloud infrastructure, deployment pipelines and monitoring suited to the product’s risk profile.</p>
+              <p class="problem">Host applications securely with controlled releases and production visibility.</p>
             </div>
             <div>
               <ul class="capability-list">
                 <li>AWS hosting</li>
                 <li>CI/CD pipelines</li>
-                <li>Environment setup</li>
                 <li>Monitoring</li>
-                <li>Backups</li>
-                <li>Release control</li>
               </ul>
               <a class="text-link" href="services.html#cloud">View service details</a>
             </div>
           </article>
-          <article class="service-row">
+          <article class="service-row service-row--compact">
             <div>
               <span class="service-row-index">06</span>
               <h3>Business Websites</h3>
-              <p class="problem">Many organisations still need a clear, credible website that converts visitors into enquiries.</p>
-              <p class="deliverable">DDM designs and builds business websites with strong structure, content hierarchy and conversion paths.</p>
+              <p class="problem">Present services clearly and convert visitors into enquiries with a credible business website.</p>
             </div>
             <div>
               <ul class="capability-list">
                 <li>Service presentation</li>
                 <li>Enquiry flows</li>
                 <li>SEO foundations</li>
-                <li>Content structure</li>
-                <li>Mobile layouts</li>
-                <li>Template customisation</li>
               </ul>
               <a class="text-link" href="services.html#business-websites">View service details</a>
             </div>
@@ -314,7 +287,7 @@
             </a>
             <div class="case-body">
               <p class="case-meta">Automotive · Marketplace</p>
-              <span class="case-label">Live platform</span>
+              <span class="case-status">Live</span>
               <h3>Hona Marketplace</h3>
               <dl>
                 <div>
@@ -349,7 +322,7 @@
             </a>
             <div class="case-body">
               <p class="case-meta">Property · Operations</p>
-              <span class="case-label">Live platform</span>
+              <span class="case-status">Live</span>
               <h3>PropService</h3>
               <dl>
                 <div>
@@ -384,7 +357,7 @@
             </a>
             <div class="case-body">
               <p class="case-meta">Retail · E-commerce</p>
-              <span class="case-label">Live platform</span>
+              <span class="case-status">Live</span>
               <h3>Elegantlaine</h3>
               <dl>
                 <div>
@@ -419,7 +392,7 @@
             </a>
             <div class="case-body">
               <p class="case-meta">Property · Resident portal</p>
-              <span class="case-label">Live platform</span>
+              <span class="case-status">Live</span>
               <h3>Liberty Homes</h3>
               <dl>
                 <div>

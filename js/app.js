@@ -120,12 +120,15 @@
     motionEls.forEach(function (el) { el.classList.add('is-shown'); });
   }
 
-  /* Hero slideshow */
+  /* Hero slideshow — Hona Marketplace first; pause on hover/focus/reduced-motion */
   var slides = document.querySelectorAll('.hero-slide');
   var dots = document.querySelectorAll('#heroDots button');
   var urlEl = document.getElementById('heroUrl');
+  var heroShowcase = document.getElementById('heroShowcase');
+  var heroDots = document.getElementById('heroDots');
   var slideIndex = 0;
   var slideTimer;
+  var heroPaused = false;
 
   function goToSlide(index) {
     if (!slides.length) return;
@@ -137,31 +140,81 @@
       var active = i === slideIndex;
       dot.classList.toggle('is-active', active);
       dot.setAttribute('aria-selected', String(active));
+      dot.setAttribute('tabindex', active ? '0' : '-1');
     });
     if (urlEl && slides[slideIndex]) {
       urlEl.textContent = slides[slideIndex].getAttribute('data-url') || '';
     }
   }
 
+  function stopSlideshow() {
+    if (slideTimer) {
+      window.clearInterval(slideTimer);
+      slideTimer = null;
+    }
+  }
+
   function startSlideshow() {
-    if (prefersReducedMotion || slides.length < 2) return;
+    if (prefersReducedMotion || heroPaused || slides.length < 2) return;
     stopSlideshow();
     slideTimer = window.setInterval(function () {
       goToSlide(slideIndex + 1);
-    }, 4500);
+    }, 5500);
   }
 
-  function stopSlideshow() {
-    if (slideTimer) window.clearInterval(slideTimer);
+  function pauseHero() {
+    heroPaused = true;
+    stopSlideshow();
+  }
+
+  function resumeHero() {
+    heroPaused = false;
+    startSlideshow();
   }
 
   if (slides.length) {
+    goToSlide(0);
     dots.forEach(function (dot, i) {
       dot.addEventListener('click', function () {
         goToSlide(i);
         startSlideshow();
       });
+      dot.addEventListener('keydown', function (event) {
+        var next = slideIndex;
+        if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = slideIndex + 1;
+        else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') next = slideIndex - 1;
+        else if (event.key === 'Home') next = 0;
+        else if (event.key === 'End') next = slides.length - 1;
+        else return;
+        event.preventDefault();
+        goToSlide(next);
+        dots[slideIndex].focus();
+        startSlideshow();
+      });
     });
+
+    if (heroShowcase) {
+      heroShowcase.addEventListener('mouseenter', pauseHero);
+      heroShowcase.addEventListener('mouseleave', resumeHero);
+      heroShowcase.addEventListener('focusin', pauseHero);
+      heroShowcase.addEventListener('focusout', function (event) {
+        if (!heroShowcase.contains(event.relatedTarget)) resumeHero();
+      });
+    }
+    if (heroDots) {
+      heroDots.addEventListener('mouseenter', pauseHero);
+      heroDots.addEventListener('mouseleave', resumeHero);
+      heroDots.addEventListener('focusin', pauseHero);
+      heroDots.addEventListener('focusout', function (event) {
+        if (!heroDots.contains(event.relatedTarget)) resumeHero();
+      });
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stopSlideshow();
+      else startSlideshow();
+    });
+
     startSlideshow();
   }
 
@@ -176,10 +229,12 @@
     messageField.value = params.get('message');
   }
 
-  /* Contact form */
+  /* Contact form — Formspree https://formspree.io/f/xzdelned */
   var form = document.getElementById('contact-form');
   var status = document.getElementById('formStatus');
   var btn = document.getElementById('submitBtn');
+  var FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzdelned';
+  var isSubmitting = false;
 
   if (form && status && btn) {
     var errors = {
@@ -193,31 +248,47 @@
       Object.keys(errors).forEach(function (key) {
         if (errors[key]) errors[key].textContent = '';
       });
-      status.style.display = 'none';
-      status.className = '';
+      var fields = form.querySelectorAll('[aria-invalid]');
+      fields.forEach(function (field) { field.removeAttribute('aria-invalid'); });
     }
 
     function setError(key, message) {
       if (errors[key]) errors[key].textContent = message;
+      var fieldMap = {
+        name: 'fname',
+        email: 'femail',
+        service: 'fservice',
+        message: 'fmessage'
+      };
+      var field = document.getElementById(fieldMap[key]);
+      if (field) field.setAttribute('aria-invalid', 'true');
     }
 
     function validate() {
       clearErrors();
+      status.style.display = 'none';
+      status.className = '';
+      status.textContent = '';
       var valid = true;
       var name = document.getElementById('fname').value.trim();
       var email = document.getElementById('femail').value.trim();
       var service = document.getElementById('fservice').value;
       var message = document.getElementById('fmessage').value.trim();
+      var honeypot = document.getElementById('fcompany_url');
+
+      if (honeypot && honeypot.value) {
+        return false;
+      }
 
       if (!name) { setError('name', 'Please enter your name.'); valid = false; }
       if (!email) {
-        setError('email', 'Please enter your email address.');
+        setError('email', 'Please enter your work email address.');
         valid = false;
       } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
         setError('email', 'Please enter a valid email address.');
         valid = false;
       }
-      if (!service) { setError('service', 'Please select what you need.'); valid = false; }
+      if (!service) { setError('service', 'Please select a project type.'); valid = false; }
       if (message.length < 20) {
         setError('message', 'Please add a bit more detail so we can respond properly.');
         valid = false;
@@ -226,35 +297,63 @@
     }
 
     form.querySelectorAll('input, select, textarea').forEach(function (field) {
-      field.addEventListener('input', clearErrors);
+      field.addEventListener('input', function () {
+        if (status.className === 'error') return;
+        clearErrors();
+      });
+      field.addEventListener('change', function () {
+        if (status.className === 'error') return;
+        clearErrors();
+      });
     });
 
     form.addEventListener('submit', async function (event) {
       event.preventDefault();
-      if (!validate()) return;
+      if (isSubmitting) return;
+      if (!validate()) {
+        var firstInvalid = form.querySelector('[aria-invalid="true"]');
+        if (firstInvalid) firstInvalid.focus();
+        return;
+      }
 
+      isSubmitting = true;
       btn.disabled = true;
-      btn.textContent = 'Sending…';
+      btn.setAttribute('aria-busy', 'true');
+      btn.textContent = 'Sending enquiry…';
+      status.style.display = 'none';
+      status.className = '';
 
       try {
-        var response = await fetch('https://formspree.io/f/xzdelned', {
+        var response = await fetch(FORMSPREE_ENDPOINT, {
           method: 'POST',
           body: new FormData(form),
           headers: { Accept: 'application/json' }
         });
 
-        if (!response.ok) throw new Error('Form submission failed');
+        var payload = null;
+        try {
+          payload = await response.json();
+        } catch (parseErr) {
+          payload = null;
+        }
+
+        if (!response.ok) {
+          throw new Error((payload && payload.error) || 'Form submission failed');
+        }
 
         status.className = 'success';
         status.textContent = 'Thank you. Your enquiry has been received. We will respond within one business day.';
         status.style.display = 'block';
         form.reset();
+        clearErrors();
       } catch (err) {
         status.className = 'error';
-        status.innerHTML = 'Something went wrong. Please try again or contact us on <a href="https://wa.me/27715431166" target="_blank" rel="noopener noreferrer">WhatsApp</a>.';
+        status.innerHTML = 'Something went wrong sending your enquiry. Please try again, email <a href="mailto:hello@ddm-software-solutions.co.za">hello@ddm-software-solutions.co.za</a>, or contact DDM on <a href="https://wa.me/27715431166" target="_blank" rel="noopener noreferrer">WhatsApp</a>.';
         status.style.display = 'block';
       } finally {
+        isSubmitting = false;
         btn.disabled = false;
+        btn.removeAttribute('aria-busy');
         btn.textContent = 'Send Enquiry';
       }
     });
