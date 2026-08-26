@@ -457,14 +457,16 @@ p:last-child { margin-bottom: 0; }
 
 .hero-collage {
   position: relative;
-  min-height: 420px;
+  min-height: 440px;
   isolation: isolate;
+  overflow: hidden;
+  padding-bottom: 8px;
 }
 .collage-item {
   position: absolute;
   border-radius: var(--radius);
   overflow: hidden;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-strong);
   background: var(--bg-elevated);
   box-shadow: var(--shadow);
 }
@@ -478,36 +480,68 @@ p:last-child { margin-bottom: 0; }
   position: absolute;
   left: 10px;
   bottom: 10px;
-  padding: 4px 8px;
+  z-index: 2;
+  padding: 5px 9px;
   border-radius: 4px;
-  background: rgba(8, 20, 38, 0.82);
+  background: rgba(8, 20, 38, 0.88);
   color: #fff;
   font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   max-width: calc(100% - 20px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.collage-hona { inset: 0 18% 12% 0; z-index: 1; }
+/* Hona leads; supporting frames ~10-12% smaller and tucked to edges */
+.collage-hona {
+  inset: 0 12% 6% 0;
+  z-index: 1;
+}
+.collage-hona img {
+  object-position: left top;
+}
 .collage-prop {
-  width: 48%;
-  right: 0;
-  bottom: 0;
+  width: 40%;
+  right: -1%;
+  bottom: -2%;
   aspect-ratio: 16 / 10;
   z-index: 3;
 }
+.collage-prop img {
+  object-position: left center;
+}
 .collage-elegant {
-  width: 34%;
-  right: 4%;
-  top: 4%;
+  width: 28%;
+  right: 1%;
+  top: 0;
   aspect-ratio: 16 / 10;
   z-index: 2;
 }
 .collage-liberty {
-  width: 28%;
-  left: 4%;
-  bottom: 0;
+  width: 22%;
+  left: 0;
+  bottom: -4%;
   aspect-ratio: 16 / 10;
   z-index: 2;
+}
+.collage-liberty img {
+  object-position: left center;
+}
+
+@media (max-width: 1280px) and (min-width: 901px) {
+  .collage-hona { inset: 0 16% 10% 0; }
+  .collage-prop { width: 40%; }
+  .collage-elegant { width: 28%; right: 1%; }
+  .collage-liberty { width: 22%; }
+}
+
+@media (max-width: 1100px) and (min-width: 901px) {
+  .hero-collage { min-height: 380px; }
+  .collage-hona { inset: 0 12% 6% 0; }
+  .collage-prop { width: 38%; }
+  .collage-elegant { width: 26%; }
+  .collage-liberty { width: 20%; left: 1%; }
 }
 
 @media (max-width: 900px) {
@@ -515,22 +549,34 @@ p:last-child { margin-bottom: 0; }
   .hero-collage {
     min-height: 0;
     display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
+    grid-template-columns: 1.35fr 0.85fr;
     gap: 12px;
   }
   .collage-item {
     position: relative;
     inset: auto;
-    width: auto;
+    width: auto !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
     aspect-ratio: 16 / 10;
   }
   .collage-hona { grid-column: 1 / -1; }
+  .collage-prop { order: 2; }
+  .collage-elegant { order: 3; }
   .collage-liberty { display: none; }
 }
 
 @media (max-width: 560px) {
-  .hero-collage { grid-template-columns: 1fr; }
-  .collage-liberty { display: block; }
+  .hero-collage {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .collage-hona { order: 1; }
+  .collage-prop { order: 2; display: block; }
+  .collage-elegant { order: 3; display: block; }
+  .collage-liberty { order: 4; display: block; }
 }
 
 /* ——— Business situations ——— */
@@ -637,9 +683,9 @@ p:last-child { margin-bottom: 0; }
 .project-strip {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
-  gap: clamp(24px, 4vw, 48px);
+  gap: clamp(20px, 3.5vw, 40px);
   align-items: center;
-  padding: 40px 0;
+  padding: 28px 0;
   border-top: 1px solid var(--border);
 }
 .project-strip:last-child { border-bottom: 1px solid var(--border); }
@@ -649,6 +695,18 @@ p:last-child { margin-bottom: 0; }
   margin: 0 0 8px;
   font-size: 0.875rem;
   color: var(--ink-muted);
+}
+.project-strip .shot-frame img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top center;
+}
+.project-strip[data-project="propservice"] .shot-frame img,
+.project-strip[data-project="liberty"] .shot-frame img {
+  object-position: left center;
+}
+.section-muted .section-head {
+  margin-bottom: 32px;
 }
 
 /* ——— Services ——— */
@@ -860,8 +918,8 @@ p:last-child { margin-bottom: 0; }
   color: var(--ink-muted);
   font-size: 0.8125rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
+  text-transform: none;
+  letter-spacing: 0.02em;
 }
 .contact-note {
   margin-top: 16px;
@@ -1616,6 +1674,88 @@ section[id],
   font-family: inherit;
   font-size: 0.9375rem;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--ink-faint);
+  opacity: 1;
+}
+
+.form-group select:invalid,
+.form-group select option[value=""] {
+  color: var(--ink-faint);
+}
+
+.form-group select:valid {
+  color: var(--ink);
+}
+
+[data-theme="dark"] .form-group label {
+  color: #C5CDD8;
+}
+
+[data-theme="dark"] .form-group input,
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] .form-group textarea {
+  background: #0F1A2C;
+  border-color: rgba(221, 230, 243, 0.28);
+  color: #F3F5F8;
+}
+
+[data-theme="dark"] .form-group input::placeholder,
+[data-theme="dark"] .form-group textarea::placeholder {
+  color: #8B97A8;
+  opacity: 1;
+}
+
+[data-theme="dark"] .form-group select:invalid {
+  color: #8B97A8;
+}
+
+[data-theme="dark"] .form-group input:focus,
+[data-theme="dark"] .form-group select:focus,
+[data-theme="dark"] .form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(75, 132, 255, 0.28);
+}
+
+[data-theme="dark"] .field-error {
+  color: #F07167;
+}
+
+[data-theme="dark"] .btn-primary[disabled],
+[data-theme="dark"] .btn-primary[aria-busy="true"] {
+  color: #F3F5F8;
+  opacity: 0.85;
+}
+
+[data-theme="dark"] .nav-links a {
+  color: #A8B3C2;
+}
+
+[data-theme="dark"] .nav-links a:hover,
+[data-theme="dark"] .nav-links a.active,
+[data-theme="dark"] .nav-links a[aria-current="page"] {
+  color: #F3F5F8;
+}
+
+[data-theme="dark"] .theme-toggle {
+  border-color: rgba(221, 230, 243, 0.28);
+  color: #C5CDD8;
+}
+
+[data-theme="dark"] .contact-form-wrap,
+[data-theme="dark"] .contact-aside {
+  border-color: rgba(221, 230, 243, 0.22);
+}
+
+.work-feature .shot-frame img {
+  object-position: top center;
+}
+#propservice .shot-frame img,
+#liberty-homes .shot-frame img {
+  object-position: left center;
 }
 
 .form-group textarea { min-height: 120px; resize: vertical; }

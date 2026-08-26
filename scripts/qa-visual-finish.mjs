@@ -185,7 +185,7 @@ async function main() {
     const need = [
       'Build the software your business actually needs',
       'When standard software stops fitting the business',
-      'Software designed to be used',
+      'Selected software in production',
       'What does your business need software to do'
     ];
     const t = document.body.innerText;
