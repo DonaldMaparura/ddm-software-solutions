@@ -99,29 +99,25 @@
     });
   });
 
-  /* Reveal */
+  /* Optional entrance motion — content stays visible without JS */
   var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (!prefersReducedMotion) {
-    var revealEls = document.querySelectorAll('.reveal');
-    if (revealEls.length) {
-      var observer = new IntersectionObserver(
-        function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              observer.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.1, rootMargin: '0px 0px -32px 0px' }
-      );
-      revealEls.forEach(function (el) { observer.observe(el); });
-    }
+  var motionEls = document.querySelectorAll('[data-motion]');
+  if (motionEls.length && !prefersReducedMotion) {
+    document.documentElement.classList.add('js-motion');
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-shown');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -24px 0px' }
+    );
+    motionEls.forEach(function (el) { observer.observe(el); });
   } else {
-    document.querySelectorAll('.reveal').forEach(function (el) {
-      el.classList.add('visible');
-    });
+    motionEls.forEach(function (el) { el.classList.add('is-shown'); });
   }
 
   /* Hero slideshow */
