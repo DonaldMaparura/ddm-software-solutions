@@ -288,7 +288,7 @@
         clearErrors();
       } catch (err) {
         status.className = 'error';
-        status.innerHTML = 'Something went wrong sending your enquiry. Please try again, email <a href="mailto:hello@ddm-software-solutions.co.za">hello@ddm-software-solutions.co.za</a>, or contact DDM on <a href="https://wa.me/27638885279" target="_blank" rel="noopener noreferrer">WhatsApp</a>.';
+        status.innerHTML = 'Something went wrong sending your enquiry. Please try again, email <a href="mailto:hello@ddm-software-solutions.co.za">hello@ddm-software-solutions.co.za</a>, or contact DDM on <a href="https://wa.me/27715431166" target="_blank" rel="noopener noreferrer">WhatsApp</a>.';
         status.style.display = 'block';
       } finally {
         isSubmitting = false;
