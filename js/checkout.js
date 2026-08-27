@@ -140,7 +140,7 @@
       } catch (err) {
         status.className = 'error';
         status.style.display = 'block';
-        status.textContent = err.message + ' — start the site with npm run site so PayFast signing works.';
+        status.textContent = err.message + '. Start the site with npm run site so PayFast signing works.';
         btn.disabled = false;
         btn.textContent = 'Pay with PayFast';
       }

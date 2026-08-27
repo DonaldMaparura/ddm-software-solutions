@@ -30,7 +30,7 @@
     try { draft = JSON.parse(localStorage.getItem(draftKey) || '{}') || {}; } catch (e) { draft = {}; }
 
     document.getElementById('tplTitle').textContent = 'Customise · ' + tpl.name;
-    document.getElementById('tplLead').textContent = tpl.summary + ' — from ' + zar(tpl.price) + '.';
+    document.getElementById('tplLead').textContent = tpl.summary + ', from ' + zar(tpl.price) + '.';
     document.getElementById('pricePurchase').textContent = zar(tpl.price);
     document.getElementById('priceHosting').textContent = zar(tpl.hostingPrice || 1999);
     document.getElementById('priceCustomise').textContent = zar(tpl.customisePrice);
